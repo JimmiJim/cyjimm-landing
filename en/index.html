@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyJimm — Security • Infrastructure • Innovation</title>
+  <meta name="description" content="CyJimm — Security & Infrastructure services. Managed IT, Blue/Red, DevSecOps."/>
+  <meta name="theme-color" content="#0b0b10">
+  <link rel="canonical" href="https://www.cyjimm.com/en/">
+
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    object-src 'none';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' data:;
+    font-src 'self' https://fonts.gstatic.com;
+    connect-src 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+  ">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;background:#0b0b10;color:#e7e9ee;font-family:Inter,system-ui,Segoe UI,Roboto,Ubuntu,Arial}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:rgba(11,11,16,.7);backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid rgba(255,255,255,.1)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    section{padding:72px 0}
+    .cta a{display:inline-block;margin-right:12px;padding:10px 16px;border-radius:12px;background:linear-gradient(180deg,#e11d48,#be123c);text-decoration:none;color:#fff;font-weight:600}
+    a.btn-ghost{background:rgba(255,255,255,.06)}
+  </style>
+</head>
+<body>
+  <header><div class="wrap nav"><div class="brand">⚡ CyJimm</div><nav><a href="/">עברית</a></nav></div></header>
+  <main>
+    <section><div class="wrap">
+      <h1>Security. Infrastructure. Performance.</h1>
+      <p>We build and protect business systems with hands-on engineering and secure-by-default methodology.</p>
+      <div class="cta"><a href="/#contact">Contact</a><a class="btn-ghost" href="/#services">Services</a></div>
+    </div></section>
+  </main>
+  <footer><div class="wrap" style="padding:28px 0;border-top:1px solid rgba(255,255,255,.1)">
+    © <span id="year"></span> CyJimm. All rights reserved. · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+  </div></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>

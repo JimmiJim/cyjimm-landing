@@ -4,84 +4,109 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CyJimm — אבטחה • תשתיות • חדשנות</title>
-  <meta name="description" content="CyJimm — פתרונות אבטחת מידע ותשתיות. שירותים מנוהלים, פרויקטים, וייעוץ קצה‑לקצה."/>
-  <meta name="theme-color" content="#0b0b10">
-  <link rel="canonical" href="https://www.cyjimm.com/">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta property="og:title" content="CyJimm — אבטחה • תשתיות • חדשנות">
-  <meta property="og:description" content="פתרונות אבטחת מידע ותשתיות. שירותים מנוהלים, פרויקטים, וייעוץ קצה-לקצה.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.cyjimm.com/">
-  <meta property="og:image" content="https://www.cyjimm.com/og.jpg">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="CyJimm — פתרונות אבטחת מידע ותשתיות. שירותים מנוהלים, פרויקטים, וייעוץ קצה-לקצה."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0b10;--bg-soft:#12121a;--card:#15161f;--muted:#9aa0aa;--primary:#e11d48;--primary-700:#be123c;--ring:#ff2748;--text:#e7e9ee;--text-dim:#cbd3dd;--border:rgba(255,255,255,.10);--border-strong:rgba(255,255,255,.18)}
-    html,body{height:100%} html{scroll-behavior:smooth}
-    body{margin:0;color:var(--text);font-family:"Noto Sans Hebrew",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;letter-spacing:.2px;background: radial-gradient(1200px 700px at 70% -10%,#1b1b27 0%, #0b0b10 55%) fixed}
-    @media (min-width:720px){body{background: radial-gradient(1200px 700px at 70% -10%,#1b1b27 0%, #0b0b10 55%) fixed, url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=60&auto=format&fit=crop&w=1600') center/cover fixed}}
-    a{color:inherit;text-decoration:none}
+    :root{
+      --bg:#0b0b10; --bg-soft:#12121a; --card:#15161f; --muted:#9aa0aa; --primary:#e11d48; --primary-700:#be123c; --ring:#ff2748;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:"Noto Sans Hebrew",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;
+      letter-spacing:.2px;
+      background:radial-gradient(1200px 700px at 70% -10%,#1b1b27 0%, #0b0b10 55%) fixed,
+        url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1974&auto=format&fit=crop') center/cover fixed;
+      color:#e7e9ee;
+    }
+    a{color:#e7e9ee;text-decoration:none}
     .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;background:rgba(11,11,16,.75);backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
+
+    /* ===== HEADER נקי עם מותג יחיד מימין ===== */
+    header{position:sticky;top:0;background:rgba(11,11,16,.7);backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex;align-items:center;gap:28px;flex-direction:row-reverse;height:64px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px}
-    .brand-logo{width:36px;height:36px;border-radius:8px;box-shadow:0 8px 24px rgba(225,29,72,.35)}
-    .brand-name{font-weight:900}
-    .links{display:flex;gap:26px;font-weight:600}
-    .links a{position:relative;padding:8px 2px;opacity:.92}
+    .brand-logo{width:36px;height:36px;border-radius:10px;box-shadow:0 8px 24px rgba(225,29,72,.45)}
+    .links{display:flex;gap:22px;font-weight:600}
+    .links a{position:relative;padding:8px 2px;opacity:.95}
     .links a:hover{opacity:1}
-    .links a::after{content:"";position:absolute;inset-inline:0;bottom:-8px;height:2px;background:var(--ring);transform:scaleX(0);transform-origin:center;transition:transform .2s ease-out}
-    .links a:hover::after,.links a[aria-current="page"]::after{transform:scaleX(1)}
+    .links a::after{content:"";position:absolute;inset-inline:0;bottom:-8px;height:2px;background:var(--ring);transform:scaleX(0);transform-origin:center;transition:transform .18s ease}
+    .links a:hover::after{transform:scaleX(1)}
     .mobile-menu{display:none;margin-inline-start:auto}
-    @media (max-width:720px){.links{display:none}.mobile-menu{display:inline-flex}.mobile-panel{display:none;position:absolute;inset-inline-end:20px;inset-block-start:64px;background:rgba(0,0,0,.8);border:1px solid var(--border);border-radius:12px;padding:12px 16px;flex-direction:column;gap:10px;min-width:180px;text-align:right}.mobile-panel a{padding:8px 6px;border-radius:8px}.mobile-panel a:hover{background:rgba(255,255,255,.06)}}
+    .mobile-panel{display:none;position:absolute;inset-inline-end:20px;inset-block-start:64px;background:rgba(0,0,0,.82);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 16px;flex-direction:column;gap:10px;min-width:180px;text-align:right}
+    .mobile-panel a{padding:8px 6px;border-radius:8px}
+    .mobile-panel a:hover{background:rgba(255,255,255,.06)}
+
     .hero{padding:96px 0 56px;border-bottom:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
     .hero h1{font-size:40px;line-height:1.15;margin:0 0 12px}
     .hero p{margin:0;color:var(--muted)}
     .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:12px 18px;border-radius:14px;border:1px solid transparent;font-weight:700;cursor:pointer}
+    .btn{padding:12px 18px;border-radius:14px;border:1px solid transparent;font-weight:700}
     .btn-primary{background:linear-gradient(180deg,var(--primary),var(--primary-700));box-shadow:0 14px 34px rgba(225,29,72,.35)}
-    .btn-ghost{border-color:var(--border-strong);background:rgba(255,255,255,.02)}
+    .btn-ghost{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.02)}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid var(--border);border-radius:18px;padding:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
     .card h3{margin:0 0 6px}
     section{padding:56px 0}
-    .tag{display:inline-block;font-size:12px;color:#fff;background:rgba(225,29,72,.16);border:1px solid rgba(225,29,72,.4);padding:4px 8px;border-radius:999px}
+    .tag{display:inline-block;font-size:12px;color:#fff;background:rgba(225,29,72,.16);border:1px solid rgba(225,29,72,.4);padding:4px 8px;border-radius:999px;}
     .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .stack span{font-size:12px;padding:6px 10px;border-radius:999px;background:#0f1017;border:1px solid var(--border);color:#cbd3dd}
-    .cols-3 > *{grid-column:span 4} .cols-4 > *{grid-column:span 3} .cols-2 > *{grid-column:span 6}
+    .stack span{font-size:12px;padding:6px 10px;border-radius:999px;background:#0f1017;border:1px solid rgba(255,255,255,.08);color:#cbd3dd}
+    .cols-3 > *{grid-column:span 4}
+    .cols-4 > *{grid-column:span 3}
+    .cols-2 > *{grid-column:span 6}
     .kpi{display:flex;align-items:center;gap:12px}
     .kpi .num{font-size:28px;font-weight:900}
     .pill{padding:2px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:12px;color:#cbd3dd}
     .org-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
     .org-grid .unit{grid-column:span 2}
-    .unit{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid var(--border);border-radius:16px;padding:14px}
-    .unit h4{margin:4px 0 6px} .unit small{color:var(--muted)}
+    .unit{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px}
+    .unit h4{margin:4px 0 6px}
+    .unit small{color:var(--muted)}
     .footer{padding:28px 0;border-top:1px solid rgba(255,255,255,.08);color:#b9c2cf}
     .contact form{display:grid;gap:12px}
-    .input, textarea{background:#0f1017;border:1px solid var(--border-strong);border-radius:12px;padding:12px 14px;color:#e7e9ee;font:inherit}
+    .input, textarea{background:#0f1017;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;color:#e7e9ee;font:inherit}
     textarea{min-height:120px;resize:vertical}
     .notice{font-size:12px;color:#93a0ad}
-    :target{scroll-margin-top:84px}
+
+    @media (max-width:960px){
+      .cols-3 > *{grid-column:span 12}
+      .cols-4 > *{grid-column:span 6}
+      .cols-2 > *{grid-column:span 12}
+      .org-grid{grid-template-columns:repeat(2,1fr)}
+      .org-grid .unit{grid-column:span 1}
+    }
+    @media (max-width:720px){
+      .links{display:none}
+      .mobile-menu{display:block}
+    }
   </style>
 </head>
 <body>
-  <header role="banner">
+  <header>
     <div class="wrap nav">
+      <!-- מותג יחיד: לוגו שלך + שם -->
       <a class="brand" href="#top" aria-label="CyJimm">
-        <img class="brand-logo" src="/logo-84.png" srcset="/logo-84.png 1x, /logo-168.png 2x" alt="CyJimm" width="36" height="36" />
-        <span class="brand-name">CyJimm</span>
+        <img class="brand-logo" src="/logo-84.png" srcset="/logo-84.png 1x, /logo-168.png 2x" alt="CyJimm" width="36" height="36">
+        <span>CyJimm</span>
       </a>
+
+      <!-- ניווט דסקטופ -->
       <nav class="links" aria-label="ניווט ראשי">
-        <a href="#about">עלינו</a><a href="#services">שירותים</a><a href="#org">מבנה ארגוני</a><a href="#contact">צור קשר</a>
+        <a href="#about">עלינו</a>
+        <a href="#services">שירותים</a>
+        <a href="#org">מבנה ארגוני</a>
+        <a href="#contact">צור קשר</a>
       </nav>
+
+      <!-- כפתור מובייל + פאנל -->
       <button class="mobile-menu btn btn-ghost" id="menuBtn" aria-haspopup="true" aria-controls="mobilePanel" aria-expanded="false">תפריט</button>
       <nav id="mobilePanel" class="mobile-panel" aria-label="ניווט מובייל">
-        <a href="#about">עלינו</a><a href="#services">שירותים</a><a href="#org">מבנה ארגוני</a><a href="#contact">צור קשר</a>
+        <a href="#about">עלינו</a>
+        <a href="#services">שירותים</a>
+        <a href="#org">מבנה ארגוני</a>
+        <a href="#contact">צור קשר</a>
       </nav>
     </div>
   </header>
@@ -91,14 +116,14 @@
       <div class="wrap">
         <span class="tag">Launching Soon — Private Beta</span>
         <h1>אבטחה. תשתיות. ביצועים — <span style="color:var(--ring)">בלי בולשיט</span>.</h1>
-        <p>אנחנו בונים ומגינים על מערכות עסקיות בקצב שמכתיב השוק: SOC קטן‑בינוני, הקשחות, DevSecOps, ו‑IT מנוהל מקצה לקצה.</p>
+        <p>אנחנו בונים ומגינים על מערכות עסקיות בקצב שמכתיב השוק: SOC קטן-בינוני, הקשחות, DevSecOps, ו-IT מנוהל מקצה לקצה.</p>
         <div class="cta">
           <a href="#contact" class="btn btn-primary">דברו איתנו</a>
           <a href="#services" class="btn btn-ghost">מה אנחנו עושים</a>
         </div>
         <div class="grid cols-3" style="margin-top:26px">
           <div class="card kpi"><span class="num">99.95%</span><div><div>יעד זמינות</div><small class="muted">SLA מנוהל</small></div></div>
-          <div class="card kpi"><span class="num">24/7</span><div><div>תגובה לאירועים</div><small class="muted">IR On‑Call</small></div></div>
+          <div class="card kpi"><span class="num">24/7</span><div><div>תגובה לאירועים</div><small class="muted">IR On-Call</small></div></div>
           <div class="card kpi"><span class="num">0→1</span><div><div>פרויקטי הקמה</div><small class="muted">יעילות מעל הכל</small></div></div>
         </div>
       </div>
@@ -108,10 +133,10 @@
       <div class="wrap grid cols-2">
         <div>
           <h2>מי אנחנו</h2>
-          <p>CyJimm מובילה פרויקטי אבטחה ותשתיות לארגונים שרוצים להיות ממוקדים תוצאה. אנחנו משלבים ניסיון Hands‑On, אוטומציה חכמה, ומתודולוגיה של "Secure by Default".</p>
+          <p>CyJimm מובילה פרויקטי אבטחה ותשתיות לארגונים שרוצים להיות ממוקדים תוצאה. אנחנו משלבים ניסיון Hands-On, אוטומציה חכמה, ומתודולוגיה של "Secure by Default".</p>
           <div class="stack">
             <span>Windows Server / AD / GPO</span>
-            <span>Cloudflare / Zero‑Trust</span>
+            <span>Cloudflare / Zero-Trust</span>
             <span>Linux • Kali • Wazuh</span>
             <span>Azure / M365 / Exchange</span>
             <span>CI/CD • GitHub Actions</span>
@@ -122,7 +147,7 @@
           <p>אנחנו לא מוכרים שקופיות. אנחנו בונים מערכות: סטנדרטיזציה, הקשחות, ניטור, ותהליכי תגובה — עם דוקומנטציה מסודרת והעברה מסודרת לצוות.</p>
           <ul>
             <li>Baseline אבטחה לארגון תוך 14–30 יום.</li>
-            <li>Runbooks ו‑Playbooks בעברית/אנגלית.</li>
+            <li>Runbooks ו-Playbooks בעברית/אנגלית.</li>
             <li>תמחור שקוף לפי תכולה, לא לפי "רשיון קסם".</li>
           </ul>
         </div>
@@ -133,7 +158,7 @@
       <div class="wrap">
         <h2>שירותים</h2>
         <div class="grid cols-4" style="margin-top:14px">
-          <div class="card"><h3>Managed IT</h3><p>ניהול תחנות, שרתים ו‑M365, GPOs חכמים, ניהול עדכונים וגיבויים.</p></div>
+          <div class="card"><h3>Managed IT</h3><p>ניהול תחנות, שרתים ו-M365, GPOs חכמים, ניהול עדכונים וגיבויים.</p></div>
           <div class="card"><h3>Blue Team</h3><p>Wazuh/Splunk, SIEM מינימלי, חקירת אירועים ובניית דשבורדים.</p></div>
           <div class="card"><h3>Red / PT</h3><p>בחינות חדירה, מבדקי הקשחה, והדרכות צוותים מבצעיות.</p></div>
           <div class="card"><h3>DevSecOps</h3><p>CI/CD מאובטח, סריקות SAST/DAST, Secrets Hygiene, IaC.</p></div>
@@ -151,7 +176,7 @@
           <div class="unit"><span class="pill">3</span><h4>Blue Team</h4><small>IR, SIEM, הקשחות</small></div>
           <div class="unit"><span class="pill">4</span><h4>Red Team</h4><small>PT, Adversary Sim</small></div>
           <div class="unit"><span class="pill">5</span><h4>Infra</h4><small>AD, רשת, ענן</small></div>
-          <div class="unit"><span class="pill">6</span><h4>DevSecOps</h4><small>CI/CD, Cloud‑Native</small></div>
+          <div class="unit"><span class="pill">6</span><h4>DevSecOps</h4><small>CI/CD, Cloud-Native</small></div>
         </div>
       </div>
     </section>
@@ -176,7 +201,7 @@
   <footer class="footer">
     <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
       <div>© <span id="year"></span> CyJimm. כל הזכויות שמורות.</div>
-      <div style="display:flex;gap:12px"><a href="/privacy.html">מדיניות פרטיות</a><span>•</span><a href="/terms.html">תנאים</a></div>
+      <div style="display:flex;gap:12px"><a href="#">מדיניות פרטיות</a><span>•</span><a href="#">תנאים</a></div>
     </div>
   </footer>
 

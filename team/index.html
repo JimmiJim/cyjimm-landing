@@ -42,6 +42,15 @@
     .pill.stop{background:rgba(229,9,20,.12);color:#ffb3b8;border:1px solid rgba(229,9,20,.35)}
     footer{color:#8d97a6;font-size:12px;margin:24px auto 40px}
     .lead{font-size:15px;line-height:1.6}
+    /* Accordion Style */
+    .skill-head {
+      background:none;border:none;color:inherit;font:inherit;padding:0;width:100%;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:color .18s;
+    }
+    .skill-head:hover { color:var(--accent);}
+    .arrow {font-size:16px;transition:transform .18s;}
+    .skill.open .arrow { transform:rotate(180deg);}
+    .skill ul {overflow:hidden;transition:max-height .28s cubic-bezier(.4,0,.2,1),opacity .28s;max-height:0;opacity:0;}
+    .skill.open ul {max-height:500px;opacity:1;}
   </style>
 </head>
 <body>
@@ -103,7 +112,7 @@
             <li>Chief Personal Lab — <span class="pill warn">בפיתוח פעיל</span></li>
           </ul>
           <div class="tags">
-            <a class="chip" href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>
+            <a class="chip" href="mailto:madara@cyjimm.com">madara@cyjimm.com</a>
             <a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
           </div>
         </article>
@@ -123,12 +132,136 @@
         </article>
       </div>
     </section>
-  </main>
 
-  <footer class="wrap" style="padding:0">
-    <div class="muted">© <span id="year"></span> CyJimm — אבטחה • תשתיות • חדשנות</div>
-  </footer>
+    <!-- PROJECTS & DELIVERABLES -->
+    <section class="card" style="margin-top:14px">
+      <h2>Projects & Deliverables (Selected)</h2>
+      <div class="skillgrid">
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>Custom OS & Imaging</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>Windows 11 Custom ISO — OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li>
+            <li>Kali Linux ISO (GNOME) — Nvidia RTX 4050 drivers, full tooling, Hebrew+EN layouts.</li>
+            <li>Baseline hardening templates (CIS-inspired) עבור תחנות ושרתים.</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>Enterprise Automation</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>SLA Alerts — Google Apps Script + Power Automate (Cross‑suite).</li>
+            <li>Auto‑Deploy via Winget + Post‑Install checks (PS7).</li>
+            <li>M365: EWS Backup jobs, mailbox/archive routines.</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>Monitoring & SIEM</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>Splunk on Kali (POC→Dashboards) + Wazuh integration.</li>
+            <li>Proxmox/VMware lab telemetry, pfSense logs, VLAN segmentation.</li>
+            <li>Incident drill runbooks (IR, containment, comms).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+    <!-- RUNBOOKS / PLAYBOOKS -->
+    <section class="card" style="margin-top:14px">
+      <h2>Runbooks & Playbooks</h2>
+      <div class="skillgrid">
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>Windows</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>Join‑Domain & GPO bootstrap (OU per dept).</li>
+            <li>Printer server & shares (permissions & recovery).</li>
+            <li>Endpoint Hardening, Defender tuning, CrowdStrike/WSS policy alignment.</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>Linux</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>PrivEsc lab flow (enum → exploit → stabilize → persist).</li>
+            <li>Service hardening (SSH, sudoers, auditd, journald, fail2ban).</li>
+            <li>Backup & health jobs (systemd timers + scripts).</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>Network / pfSense</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>VLAN design & rules per environment.</li>
+            <li>DHCP/DNS diagramming (offer/request/ack flow).</li>
+            <li>Captive Portal & policy exceptions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLBOX / SCRIPTS -->
+    <section class="card" style="margin-top:14px">
+      <h2>Toolbox & Scripts</h2>
+      <div class="skillgrid">
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>PowerShell Suite</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li><b>Optimize‑System.ps1</b> — תחזוקת מערכת מרובת שלבים + דיווח.</li>
+            <li><b>FoldersPermissionV7.ps1</b> — GUI ל‑ACL עם Fallback IT Admin.</li>
+            <li><b>Browser‑RunAsAdmin.ps1</b> — אכיפת UAC לדפדפנים.</li>
+            <li><b>OutlookArchiveSync.ps1</b> — ניהול ארכיונים ב‑Exchange Online.</li>
+            <li><b>HealthReport.ps1</b> — בדיקות Battery/Disk/CPU.</li>
+            <li><b>AnyDesk‑AutoStart.ps1</b> — הפעלה ובקרה מרחוק.</li>
+            <li><b>EWS‑Backup.ps1</b> — גיבוי Online Archive (יעודי).</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>Linux / Offensive</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>nmap / netcat workflows, metasploit, burp, wireshark.</li>
+            <li>THM: Linux Privilege Escalation (methodical enum & privesc).</li>
+            <li>Forensics בסיסי: לוגים, snapshots, triage.</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <button class="skill-head" onclick="toggleSkill(this)">
+            <h4>M365 / Automation</h4>
+            <span class="arrow">▼</span>
+          </button>
+          <ul>
+            <li>Power Automate flows (SLA, notifications, routing).</li>
+            <li>Google Apps Script (sheets, webhooks, mail merge).</li>
+            <li>Graph/EWS API integrations.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES / IMPACT -->
+    <section class="card" style="margin-top:14px">
+      <h2>Impact Highlights</h2>
+      <ul class="list">
+        <li>הורדת MTTR בתקלות משתמשים בזכות סטנדרטיזציה ו‑PS automation.</li>
+        <li>הקמת ארסנל התקנות אחיד שהפחית זמן פריסה בתחנות ובמעבדה.</li>
+        <li>שיפור נראות הארגון (Dashboards ב‑Splunk/Wazuh) — איתור חריגות מוקדם.</li>
+      </ul>

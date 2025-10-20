@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CyJimm — הצוות</title>
+  <meta name="description" content="הכירו את צוות CyJimm: תשתיות, סייבר ואוטומציה. פרופילי מומחיות, טכנולוגיות מובילות וניסיון שטח אמיתי."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0e1016; --card:#141925; --ink:#eaeef5; --muted:#9aa4b2; --line:#232b3a; --accent:#e50914; --ok:#19c37d; --warn:#f5a524; --chip:#1a2333; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Hebrew',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+    header.hero{position:relative;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101525 0%, rgba(16,21,37,0) 60%)}
+    nav{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{font-weight:900;letter-spacing:.5px}
+    .navlinks{display:flex;gap:12px;flex-wrap:wrap}
+    .hero h1{margin:8px 0 0 0;font-size:40px}
+    .hero .sub{color:var(--muted);margin-top:6px;font-size:16px}
+    .grid{display:grid;gap:14px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .teamgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+    .member{background:#0f1420;border:1px solid #212a3e;border-radius:16px;padding:16px;display:grid;gap:10px}
+    .member h3{margin:0;font-size:20px}
+    .role{color:#cfd6e4}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid #2a3347;color:#cfd6e4;padding:6px 12px;border-radius:999px;font-size:12px}
+    .list{margin:0;padding:0 18px}
+    .meter{flex:1 1 160px;background:#0d1119;border:1px solid #20283a;border-radius:12px;padding:10px}
+    .bar{height:8px;background:#20283a;border-radius:6px;overflow:hidden;margin-top:6px}
+    .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ff7a7a)}
+    .kpis{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:#20283a;color:#cfd6e4;border:1px solid #2a3347;border-radius:999px;padding:4px 10px;font-size:12px}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px}
+    .pill.ok{background:rgba(25,195,125,.12);color:#b5f1d8;border:1px solid rgba(25,195,125,.35)}
+    .pill.warn{background:rgba(245,165,36,.12);color:#ffe4b8;border:1px solid rgba(245,165,36,.35)}
+    .pill.stop{background:rgba(229,9,20,.12);color:#ffb3b8;border:1px solid rgba(229,9,20,.35)}
+    footer{color:#8d97a6;font-size:12px;margin:24px auto 40px}
+    .lead{font-size:15px;line-height:1.6}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <nav>
+        <div class="brand"><a href="/">CyJimm</a></div>
+        <div class="navlinks">
+          <a href="/">דף הבית</a>
+          <a href="/team/" aria-current="page">הצוות</a>
+          <a href="/contact/">יצירת קשר</a>
+        </div>
+      </nav>
+      <h1>הצוות</h1>
+      <div class="sub">אנחנו בונים מערכות שמחזיקות אמת — תשתיות, סייבר ואוטומציה. פחות מילים, יותר תוצאות.</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- תיאור כללי -->
+    <section class="card">
+      <h2>מי אנחנו</h2>
+      <p class="lead">CyJimm הוא צוות Hands‑On שמאחד תשתיות Windows & Linux, אבטחה ארגונית ו‑Automation. אנחנו מגדירים סטנדרטים, בונים תהליכים ומעלים את רמת היציבות והאבטחה מבלי לפגוע בקצב. הגישה שלנו: <b>Build · Measure · Secure</b>.</p>
+    </section>
+
+    <!-- גריד הצוות -->
+    <section class="card" style="margin-top:14px">
+      <h2>המובילים</h2>
+      <div class="teamgrid">
+        <!-- חבר צוות: צ'יף -->
+        <article class="member">
+          <header>
+            <h3>צ'יף — Zero‑Day Tamer</h3>
+            <div class="role">Team Lead Hands‑On · System, Cyber & Automation</div>
+          </header>
+          <div class="tags">
+            <span class="tag">System & Infra</span>
+            <span class="tag">Linux (Kali · Parrot · Elementary)</span>
+            <span class="tag">Automation (PowerShell · Python)</span>
+            <span class="tag">SecOps · Hardening</span>
+            <span class="tag">CI/CD Basics</span>
+          </div>
+          <p class="lead">בונה מערכות אמיתיות—לא מצגות. מחבר IT קלאסי ל‑Cyber ואוטומציה עם דגש על סטנדרטיזציה, יציבות ו‑Hardening. הוביל ארסנל התקנות מותאם (Win11/Kali), יצר מערכות התרעות SLA ונהל AD/GPO מורכב ללא Intune.</p>
+          <div class="kpis">
+            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אוטומציה</span><span>88%</span></div><div class="bar"><span style="width:88%"></span></div></div>
+            <div class="meter"><div style="display:flex;justify-content:space-between"><span>יציבות מערכות</span><span>93%</span></div><div class="bar"><span style="width:93%"></span></div></div>
+            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אימפקט ארגוני</span><span>85%</span></div><div class="bar"><span style="width:85%"></span></div></div>
+          </div>
+          <h4 style="margin:6px 0 4px">Core Systems</h4>
+          <ul class="list">
+            <li>Windows Server (AD, DNS, DHCP, GPO), pfSense, VLANs</li>
+            <li>Linux: Kali, Parrot, Elementary — PrivEsc, Hardening</li>
+            <li>Automation: PowerShell 7+, Python 3.12, GitHub Actions</li>
+            <li>SIEM/Monitoring: Splunk, Wazuh, Grafana Integration</li>
+          </ul>
+          <h4 style="margin:6px 0 4px">סטטוס</h4>
+          <ul class="list">
+            <li>ChiefBot — <span class="pill stop">הוקפא לאחר POC</span></li>
+            <li>Chief Personal Lab — <span class="pill warn">בפיתוח פעיל</span></li>
+          </ul>
+          <div class="tags">
+            <a class="chip" href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>
+            <a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+        <!-- Placeholder לחבר צוות נוסף בעתיד -->
+        <article class="member" aria-disabled="true">
+          <header>
+            <h3>מצטרף בקרוב</h3>
+            <div class="role">SecOps / DevOps</div>
+          </header>
+          <p class="lead">מקום שמור לשותף הבא במסע — מישהו שאכפת לו מתוצאות, מאנשים ומקוד נקי.</p>
+          <div class="tags">
+            <span class="tag">Threat Hunting</span>
+            <span class="tag">Pipelines</span>
+            <span class="tag">Infra as Code</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap" style="padding:0">
+    <div class="muted">© <span id="year"></span> CyJimm — אבטחה • תשתיות • חדשנות</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

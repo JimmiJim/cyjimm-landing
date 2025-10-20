@@ -42,15 +42,6 @@
     .pill.stop{background:rgba(229,9,20,.12);color:#ffb3b8;border:1px solid rgba(229,9,20,.35)}
     footer{color:#8d97a6;font-size:12px;margin:24px auto 40px}
     .lead{font-size:15px;line-height:1.6}
-    /* Accordion Style */
-    .skill-head {
-      background:none;border:none;color:inherit;font:inherit;padding:0;width:100%;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:color .18s;
-    }
-    .skill-head:hover { color:var(--accent);}
-    .arrow {font-size:16px;transition:transform .18s;}
-    .skill.open .arrow { transform:rotate(180deg);}
-    .skill ul {overflow:hidden;transition:max-height .28s cubic-bezier(.4,0,.2,1),opacity .28s;max-height:0;opacity:0;}
-    .skill.open ul {max-height:500px;opacity:1;}
   </style>
 </head>
 <body>
@@ -112,7 +103,7 @@
             <li>Chief Personal Lab — <span class="pill warn">בפיתוח פעיל</span></li>
           </ul>
           <div class="tags">
-            <a class="chip" href="mailto:madara@cyjimm.com">madara@cyjimm.com</a>
+            <a class="chip" href="mailto:madara@cyjimm.com">madara@cyjimm.com/a>
             <a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
           </div>
         </article>
@@ -138,10 +129,7 @@
       <h2>Projects & Deliverables (Selected)</h2>
       <div class="skillgrid">
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>Custom OS & Imaging</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>Custom OS & Imaging</h4>
           <ul>
             <li>Windows 11 Custom ISO — OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li>
             <li>Kali Linux ISO (GNOME) — Nvidia RTX 4050 drivers, full tooling, Hebrew+EN layouts.</li>
@@ -149,10 +137,7 @@
           </ul>
         </div>
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>Enterprise Automation</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>Enterprise Automation</h4>
           <ul>
             <li>SLA Alerts — Google Apps Script + Power Automate (Cross‑suite).</li>
             <li>Auto‑Deploy via Winget + Post‑Install checks (PS7).</li>
@@ -160,10 +145,7 @@
           </ul>
         </div>
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>Monitoring & SIEM</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>Monitoring & SIEM</h4>
           <ul>
             <li>Splunk on Kali (POC→Dashboards) + Wazuh integration.</li>
             <li>Proxmox/VMware lab telemetry, pfSense logs, VLAN segmentation.</li>
@@ -178,10 +160,7 @@
       <h2>Runbooks & Playbooks</h2>
       <div class="skillgrid">
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>Windows</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>Windows</h4>
           <ul>
             <li>Join‑Domain & GPO bootstrap (OU per dept).</li>
             <li>Printer server & shares (permissions & recovery).</li>
@@ -189,10 +168,7 @@
           </ul>
         </div>
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>Linux</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>Linux</h4>
           <ul>
             <li>PrivEsc lab flow (enum → exploit → stabilize → persist).</li>
             <li>Service hardening (SSH, sudoers, auditd, journald, fail2ban).</li>
@@ -200,10 +176,7 @@
           </ul>
         </div>
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>Network / pfSense</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>Network / pfSense</h4>
           <ul>
             <li>VLAN design & rules per environment.</li>
             <li>DHCP/DNS diagramming (offer/request/ack flow).</li>
@@ -218,10 +191,7 @@
       <h2>Toolbox & Scripts</h2>
       <div class="skillgrid">
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>PowerShell Suite</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>PowerShell Suite</h4>
           <ul>
             <li><b>Optimize‑System.ps1</b> — תחזוקת מערכת מרובת שלבים + דיווח.</li>
             <li><b>FoldersPermissionV7.ps1</b> — GUI ל‑ACL עם Fallback IT Admin.</li>
@@ -233,10 +203,7 @@
           </ul>
         </div>
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>Linux / Offensive</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>Linux / Offensive</h4>
           <ul>
             <li>nmap / netcat workflows, metasploit, burp, wireshark.</li>
             <li>THM: Linux Privilege Escalation (methodical enum & privesc).</li>
@@ -244,10 +211,7 @@
           </ul>
         </div>
         <div class="skill">
-          <button class="skill-head" onclick="toggleSkill(this)">
-            <h4>M365 / Automation</h4>
-            <span class="arrow">▼</span>
-          </button>
+          <h4>M365 / Automation</h4>
           <ul>
             <li>Power Automate flows (SLA, notifications, routing).</li>
             <li>Google Apps Script (sheets, webhooks, mail merge).</li>
@@ -265,3 +229,35 @@
         <li>הקמת ארסנל התקנות אחיד שהפחית זמן פריסה בתחנות ובמעבדה.</li>
         <li>שיפור נראות הארגון (Dashboards ב‑Splunk/Wazuh) — איתור חריגות מוקדם.</li>
       </ul>
+      <div class="kpis" style="margin-top:10px">
+        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Automation Footprint</span><span>90%</span></div><div class="bar"><span style="width:90%"></span></div></div>
+        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Deploy Time ↓</span><span>‑40%</span></div><div class="bar"><span style="width:40%"></span></div></div>
+        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Visibility ↑</span><span>+60%</span></div><div class="bar"><span style="width:60%"></span></div></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="split" style="margin-top:14px">
+      <div class="card">
+        <h2>רוצה לשתף פעולה?</h2>
+        <p class="lead">פרויקטים, הקמות, הקשחות או טיוב תהליכים — נשב על הבעיה, נבנה פתרון, נריץ מדדים, ונמסור תוצאה.</p>
+        <div class="chips">
+          <a class="chip" href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>
+          <a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="card">
+        <h2>מסמכי מדיניות/אבטחה</h2>
+        <p class="lead">אפשר להוסיף כאן לינקים/קבצים (PDF) ל‑Baseline, SOP, Runbooks ו‑Hardening Guides.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="wrap" style="padding:0">
+    <div class="muted">© <span id="year"></span> CyJimm — אבטחה • תשתיות • חדשנות</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

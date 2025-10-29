@@ -63,8 +63,11 @@
       height:40px;
       width:40px;
       object-fit:contain;
-      /* העלאת בהירות וקונטרסט כדי שהאייקונים יבלטו על רקע הבועה הבהירה */
-      filter:brightness(2) contrast(1.2);
+      /*
+       * Keep the icons legible on the light bubbles without washing them out. A moderate
+       * brightness boost ensures dark logos remain visible while preserving midtones.
+       */
+      filter:brightness(1.3) contrast(1.1);
     }
 
     /* הדגשת ציטוט */

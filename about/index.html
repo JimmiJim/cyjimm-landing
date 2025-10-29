@@ -1,51 +1,68 @@
-<style>
-  body{margin:0;background:#0b0b0e;color:#f2f2f7;font-family:'Noto Sans Hebrew',sans-serif;overflow-x:hidden}
-  main{max-width:1100px;margin:auto;padding:28px}
-  .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.35);padding:24px;transition:transform .25s ease,box-shadow .25s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:0 25px 40px rgba(0,0,0,.4)}
-  h1,h2{margin-top:0}
-  h1 span.role{font-size:smaller;color:#b3b7c0}
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>מתן ג'מיל— About Me | CyJimm — אבטחה • תשתיות • חדשנות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      background:#0b0b0e;
+      color:#f2f2f7;
+      font-family:'Noto Sans Hebrew',sans-serif;
+      overflow-x:hidden;
+      text-align:right;         /* הוספת יישור לימין לכל הטקסט */
+    }
+    main{max-width:1100px;margin:auto;padding:28px}
+    .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.35);padding:24px;transition:transform .25s ease,box-shadow .25s ease}
+    .card:hover{transform:translateY(-3px);box-shadow:0 25px 40px rgba(0,0,0,.4)}
+    h1,h2{margin-top:0}
+    h1 span.role{font-size:smaller;color:#b3b7c0}
 
-  /* ריווח לטקסטים */
-  p{line-height:1.6;margin-bottom:0.8em}
-  li{margin-bottom:0.5em;line-height:1.6}
+    /* ריווח לטקסטים */
+    p{line-height:1.6;margin-bottom:0.8em}
+    li{margin-bottom:0.5em;line-height:1.6}
 
-  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(90deg,#d61f26,#e94057);color:#fff;transition:transform .3s ease,box-shadow .3s ease;text-decoration:none;font-size:1.05rem}
-  .btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 20px rgba(233,64,87,.3)}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(90deg,#d61f26,#e94057);color:#fff;transition:transform .3s ease,box-shadow .3s ease;text-decoration:none;font-size:1.05rem}
+    .btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 20px rgba(233,64,87,.3)}
 
-  /* מיכל כפתורים בשורה אחת – הכפתור מתאים עצמו לטקסט */
-  .btn-group{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-  .btn-group .btn{
-    flex:0 0 auto;           /* רוחב טבעי ללא מתיחה */
-    text-align:center;
-    box-shadow:0 6px 12px rgba(0,0,0,.3);
-    /* אין הגדרת min-width – הרוחב ייקבע לפי התוכן והפדינג */
-  }
+    /* מיכל כפתורים בשורה אחת – הכפתור מתאים עצמו לטקסט */
+    .btn-group{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .btn-group .btn{
+      flex:0 0 auto;           /* רוחב טבעי ללא מתיחה */
+      text-align:center;
+      box-shadow:0 6px 12px rgba(0,0,0,.3);
+      /* אין הגדרת min-width – הרוחב ייקבע לפי התוכן והפדינג */
+    }
 
-  .avatar{width:min(100%,340px);border-radius:24px;border:1px solid rgba(255,255,255,.06);background:conic-gradient(from 220deg,rgba(214,31,38,.15),rgba(233,64,87,.05));transition:transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
-  .avatar:hover{transform:rotate(-1.5deg) scale(1.05);filter:drop-shadow(0 0 15px rgba(214,31,38,.3))}
+    .avatar{width:min(100%,340px);border-radius:24px;border:1px solid rgba(255,255,255,.06);background:conic-gradient(from 220deg,rgba(214,31,38,.15),rgba(233,64,87,.05));transition:transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+    .avatar:hover{transform:rotate(-1.5deg) scale(1.05);filter:drop-shadow(0 0 15px rgba(214,31,38,.3))}
 
-  .logos{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;align-items:center}
-  /* מילוי בהיר יותר לבועות הלוגואים */
-  .logos div{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    font-size:12px;
-    color:#b3b7c0;
-    transition:transform .3s ease,filter .3s ease;
-    background:rgba(255,255,255,0.12);          /* מילוי אפור‑לבן בהיר */
-    padding:6px 8px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,0.2);
-  }
-  .logos div:hover{transform:translateY(-3px) scale(1.05);filter:drop-shadow(0 0 10px rgba(214,31,38,.4))}
-  .logos img{
-    height:40px;
-    width:40px;
-    object-fit:contain;
-    filter:brightness(1.6);  /* מבהיר אייקונים כהים */
-  }
+    .logos{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;align-items:center}
+    /* מילוי בהיר יותר לבועות הלוגואים */
+    .logos div{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      font-size:12px;
+      color:#b3b7c0;
+      transition:transform .3s ease,filter .3s ease;
+      background:rgba(255,255,255,0.12);          /* מילוי אפור‑לבן בהיר */
+      padding:6px 8px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.2);
+    }
+    .logos div:hover{transform:translateY(-3px) scale(1.05);filter:drop-shadow(0 0 10px rgba(214,31,38,.4))}
+    .logos img{
+      height:40px;
+      width:40px;
+      object-fit:contain;
+      filter:brightness(1.6);  /* מבהיר אייקונים כהים */
+    }
+
     /* הדגשת ציטוט */
     .quote{font-size:1.1rem;font-weight:600;color:#e94057;margin-bottom:0.8rem}
   </style>

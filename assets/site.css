@@ -89,3 +89,25 @@
   .links{display:none}
   .mobile-menu{display:block}
 }
+/* === Cursor spaceship === */
+/* מסתיר את סמן העכבר הרגיל באתר */
+body {
+  cursor: none;
+}
+
+/* המכולה שמכילה את אייקון החללית (לא מונעת אינטראקציה) */
+.cursor-ship {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.08s ease-out;
+}
+
+/* אייקון החללית עצמו – ניתן להתאים את הגודל פה */
+.cursor-ship img {
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+}

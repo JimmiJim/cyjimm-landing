@@ -9,39 +9,113 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    :root{ --bg:#0e1016; --card:#141925; --ink:#eaeef5; --muted:#9aa4b2; --line:#232b3a; --accent:#e50914; --ok:#19c37d; --warn:#f5a524; --chip:#1a2333; }
+    /* ===== Light Theme ===== */
+    :root{
+      --bg:#f6f7fb;          /* רקע כללי בהיר */
+      --card:#ffffff;        /* כרטיסים */
+      --ink:#0f172a;         /* טקסט ראשי כהה */
+      --muted:#64748b;       /* טקסט משני */
+      --line:#e5e7eb;        /* קווי הפרדה */
+      --accent:#e11d48;      /* אדום מותג */
+      --ok:#19c37d;
+      --warn:#f5a524;
+      --chip:#f8fafc;        /* תגיות/צ'יפים */
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Hebrew',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
-    a{color:var(--accent);text-decoration:none}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 70% -10%, #ffffff 0%, #f6f7fb 55%) fixed,
+        linear-gradient(180deg,#ffffff 0%, #eef2ff 100%) fixed;
+      color:var(--ink);
+      font-family:'Noto Sans Hebrew',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+    }
+    a{color:#0f172a;text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1200px;margin:0 auto;padding:20px}
-    header.hero{position:relative;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101525 0%, rgba(16,21,37,0) 60%)}
+
+    /* Hero / Header (בהיר עם גבול עדין) */
+    header.hero{
+      position:relative;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.55) 60%);
+      backdrop-filter:saturate(1.1) blur(6px);
+    }
     nav{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{font-weight:900;letter-spacing:.5px}
+    .brand{font-weight:900;letter-spacing:.5px;color:#0f172a}
+    .brand a{color:#0f172a}
     .navlinks{display:flex;gap:12px;flex-wrap:wrap}
-    .hero h1{margin:8px 0 0 0;font-size:40px}
+    .navlinks a{color:#0f172a;opacity:.9}
+    .navlinks a:hover{opacity:1}
+
+    .hero h1{margin:8px 0 0 0;font-size:40px;color:#0f172a}
     .hero .sub{color:var(--muted);margin-top:6px;font-size:16px}
+
     .grid{display:grid;gap:14px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+
+    /* כרטיסים בהירים עם צל רך */
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 10px 30px rgba(2,6,23,.06);
+      color:#0f172a;
+    }
+
     .teamgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
-    .member{background:#0f1420;border:1px solid #212a3e;border-radius:16px;padding:16px;display:grid;gap:10px}
-    .member h3{margin:0;font-size:20px}
-    .role{color:#cfd6e4}
+
+    .member{
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      display:grid;gap:10px;
+      box-shadow:0 6px 18px rgba(2,6,23,.05);
+    }
+    .member h3{margin:0;font-size:20px;color:#0f172a}
+    .role{color:#334155}
+
     .tags{display:flex;gap:8px;flex-wrap:wrap}
-    .tag{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid #2a3347;color:#cfd6e4;padding:6px 12px;border-radius:999px;font-size:12px}
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--chip);
+      border:1px solid #e5e7eb;
+      color:#334155;
+      padding:6px 12px;border-radius:999px;font-size:12px
+    }
+
     .list{margin:0;padding:0 18px}
-    .meter{flex:1 1 160px;background:#0d1119;border:1px solid #20283a;border-radius:12px;padding:10px}
-    .bar{height:8px;background:#20283a;border-radius:6px;overflow:hidden;margin-top:6px}
+
+    .meter{
+      flex:1 1 160px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px
+    }
+    .bar{height:8px;background:#e5e7eb;border-radius:6px;overflow:hidden;margin-top:6px}
     .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ff7a7a)}
+
     .kpis{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{background:#20283a;color:#cfd6e4;border:1px solid #2a3347;border-radius:999px;padding:4px 10px;font-size:12px}
+
+    .chip{
+      background:#ffffff;
+      color:#0f172a;
+      border:1px solid #e5e7eb;
+      border-radius:999px;
+      padding:4px 10px;font-size:12px
+    }
+
     .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px}
-    .pill.ok{background:rgba(25,195,125,.12);color:#b5f1d8;border:1px solid rgba(25,195,125,.35)}
-    .pill.warn{background:rgba(245,165,36,.12);color:#ffe4b8;border:1px solid rgba(245,165,36,.35)}
-    .pill.stop{background:rgba(229,9,20,.12);color:#ffb3b8;border:1px solid rgba(229,9,20,.35)}
-    footer{color:#8d97a6;font-size:12px;margin:24px auto 40px}
-    .lead{font-size:15px;line-height:1.6}
+    .pill.ok{background:rgba(25,195,125,.12);color:#065f46;border:1px solid rgba(25,195,125,.35)}
+    .pill.warn{background:rgba(245,165,36,.12);color:#92400e;border:1px solid rgba(245,165,36,.35)}
+    .pill.stop{background:rgba(229,9,20,.12);color:#991b1b;border:1px solid rgba(229,9,20,.35)}
+
+    footer{color:#475569;font-size:12px;margin:24px auto 40px}
+
+    .lead{font-size:15px;line-height:1.6;color:#0f172a}
   </style>
 </head>
 <body>
@@ -64,7 +138,7 @@
     <!-- תיאור כללי -->
     <section class="card">
       <h2>מי אנחנו</h2>
-      <p class="lead">CyJimm הוא צוות Hands‑On שמאחד תשתיות Windows & Linux, אבטחה ארגונית ו‑Automation. אנחנו מגדירים סטנדרטים, בונים תהליכים ומעלים את רמת היציבות והאבטחה מבלי לפגוע בקצב. הגישה שלנו: <b>Build · Measure · Secure</b>.</p>
+      <p class="lead">CyJimm הוא צוות Hands-On שמאחד תשתיות Windows & Linux, אבטחה ארגונית ו-Automation. אנחנו מגדירים סטנדרטים, בונים תהליכים ומעלים את רמת היציבות והאבטחה מבלי לפגוע בקצב. הגישה שלנו: <b>Build · Measure · Secure</b>.</p>
     </section>
 
     <!-- גריד הצוות -->
@@ -74,8 +148,8 @@
         <!-- חבר צוות: צ'יף -->
         <article class="member">
           <header>
-            <h3>צ'יף — Zero‑Day Tamer</h3>
-            <div class="role">Team Lead Hands‑On · System, Cyber & Automation</div>
+            <h3>צ'יף — Zero-Day Tamer</h3>
+            <div class="role">Team Lead Hands-On · System, Cyber & Automation</div>
           </header>
           <div class="tags">
             <span class="tag">System & Infra</span>
@@ -84,11 +158,20 @@
             <span class="tag">SecOps · Hardening</span>
             <span class="tag">CI/CD Basics</span>
           </div>
-          <p class="lead">בונה מערכות אמיתיות—לא מצגות. מחבר IT קלאסי ל‑Cyber ואוטומציה עם דגש על סטנדרטיזציה, יציבות ו‑Hardening. הוביל ארסנל התקנות מותאם (Win11/Kali), יצר מערכות התרעות SLA ונהל AD/GPO מורכב ללא Intune.</p>
+          <p class="lead">בונה מערכות אמיתיות—לא מצגות. מחבר IT קלאסי ל-Cyber ואוטומציה עם דגש על סטנדרטיזציה, יציבות ו-Hardening. הוביל ארסנל התקנות מותאם (Win11/Kali), יצר מערכות התרעות SLA ונהל AD/GPO מורכב ללא Intune.</p>
           <div class="kpis">
-            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אוטומציה</span><span>88%</span></div><div class="bar"><span style="width:88%"></span></div></div>
-            <div class="meter"><div style="display:flex;justify-content:space-between"><span>יציבות מערכות</span><span>93%</span></div><div class="bar"><span style="width:93%"></span></div></div>
-            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אימפקט ארגוני</span><span>85%</span></div><div class="bar"><span style="width:85%"></span></div></div>
+            <div class="meter">
+              <div style="display:flex;justify-content:space-between"><span>אוטומציה</span><span>88%</span></div>
+              <div class="bar"><span style="width:88%"></span></div>
+            </div>
+            <div class="meter">
+              <div style="display:flex;justify-content:space-between"><span>יציבות מערכות</span><span>93%</span></div>
+              <div class="bar"><span style="width:93%"></span></div>
+            </div>
+            <div class="meter">
+              <div style="display:flex;justify-content:space-between"><span>אימפקט ארגוני</span><span>85%</span></div>
+              <div class="bar"><span style="width:85%"></span></div>
+            </div>
           </div>
           <h4 style="margin:6px 0 4px">Core Systems</h4>
           <ul class="list">
@@ -103,7 +186,7 @@
             <li>Chief Personal Lab — <span class="pill warn">בפיתוח פעיל</span></li>
           </ul>
           <div class="tags">
-            <a class="chip" href="mailto:madara@cyjimm.com">דבר איתנו>
+            <a class="chip" href="mailto:madara@cyjimm.com">דבר איתנו</a>
             <a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
           </div>
         </article>
@@ -139,8 +222,8 @@
         <div class="skill">
           <h4>Enterprise Automation</h4>
           <ul>
-            <li>SLA Alerts — Google Apps Script + Power Automate (Cross‑suite).</li>
-            <li>Auto‑Deploy via Winget + Post‑Install checks (PS7).</li>
+            <li>SLA Alerts — Google Apps Script + Power Automate (Cross-suite).</li>
+            <li>Auto-Deploy via Winget + Post-Install checks (PS7).</li>
             <li>M365: EWS Backup jobs, mailbox/archive routines.</li>
           </ul>
         </div>
@@ -162,7 +245,7 @@
         <div class="skill">
           <h4>Windows</h4>
           <ul>
-            <li>Join‑Domain & GPO bootstrap (OU per dept).</li>
+            <li>Join-Domain & GPO bootstrap (OU per dept).</li>
             <li>Printer server & shares (permissions & recovery).</li>
             <li>Endpoint Hardening, Defender tuning, CrowdStrike/WSS policy alignment.</li>
           </ul>
@@ -193,13 +276,13 @@
         <div class="skill">
           <h4>PowerShell Suite</h4>
           <ul>
-            <li><b>Optimize‑System.ps1</b> — תחזוקת מערכת מרובת שלבים + דיווח.</li>
-            <li><b>FoldersPermissionV7.ps1</b> — GUI ל‑ACL עם Fallback IT Admin.</li>
-            <li><b>Browser‑RunAsAdmin.ps1</b> — אכיפת UAC לדפדפנים.</li>
-            <li><b>OutlookArchiveSync.ps1</b> — ניהול ארכיונים ב‑Exchange Online.</li>
+            <li><b>Optimize-System.ps1</b> — תחזוקת מערכת מרובת שלבים + דיווח.</li>
+            <li><b>FoldersPermissionV7.ps1</b> — GUI ל-ACL עם Fallback IT Admin.</li>
+            <li><b>Browser-RunAsAdmin.ps1</b> — אכיפת UAC לדפדפנים.</li>
+            <li><b>OutlookArchiveSync.ps1</b> — ניהול ארכיונים ב-Exchange Online.</li>
             <li><b>HealthReport.ps1</b> — בדיקות Battery/Disk/CPU.</li>
-            <li><b>AnyDesk‑AutoStart.ps1</b> — הפעלה ובקרה מרחוק.</li>
-            <li><b>EWS‑Backup.ps1</b> — גיבוי Online Archive (יעודי).</li>
+            <li><b>AnyDesk-AutoStart.ps1</b> — הפעלה ובקרה מרחוק.</li>
+            <li><b>EWS-Backup.ps1</b> — גיבוי Online Archive (יעודי).</li>
           </ul>
         </div>
         <div class="skill">
@@ -225,13 +308,13 @@
     <section class="card" style="margin-top:14px">
       <h2>Impact Highlights</h2>
       <ul class="list">
-        <li>הורדת MTTR בתקלות משתמשים בזכות סטנדרטיזציה ו‑PS automation.</li>
+        <li>הורדת MTTR בתקלות משתמשים בזכות סטנדרטיזציה ו-PS automation.</li>
         <li>הקמת ארסנל התקנות אחיד שהפחית זמן פריסה בתחנות ובמעבדה.</li>
-        <li>שיפור נראות הארגון (Dashboards ב‑Splunk/Wazuh) — איתור חריגות מוקדם.</li>
+        <li>שיפור נראות הארגון (Dashboards ב-Splunk/Wazuh) — איתור חריגות מוקדם.</li>
       </ul>
       <div class="kpis" style="margin-top:10px">
         <div class="meter"><div style="display:flex;justify-content:space-between"><span>Automation Footprint</span><span>90%</span></div><div class="bar"><span style="width:90%"></span></div></div>
-        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Deploy Time ↓</span><span>‑40%</span></div><div class="bar"><span style="width:40%"></span></div></div>
+        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Deploy Time ↓</span><span>-40%</span></div><div class="bar"><span style="width:40%"></span></div></div>
         <div class="meter"><div style="display:flex;justify-content:space-between"><span>Visibility ↑</span><span>+60%</span></div><div class="bar"><span style="width:60%"></span></div></div>
       </div>
     </section>
@@ -248,7 +331,7 @@
       </div>
       <div class="card">
         <h2>מסמכי מדיניות/אבטחה</h2>
-        <p class="lead">אפשר להוסיף כאן לינקים/קבצים (PDF) ל‑Baseline, SOP, Runbooks ו‑Hardening Guides.</p>
+        <p class="lead">אפשר להוסיף כאן לינקים/קבצים (PDF) ל-Baseline, SOP, Runbooks ו-Hardening Guides.</p>
       </div>
     </section>
 

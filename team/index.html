@@ -1,263 +1,315 @@
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CyJimm — הצוות</title>
-  <meta name="description" content="הכירו את צוות CyJimm: תשתיות, סייבר ואוטומציה. פרופילי מומחיות, טכנולוגיות מובילות וניסיון שטח אמיתי."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root{ --bg:#0e1016; --card:#141925; --ink:#eaeef5; --muted:#9aa4b2; --line:#232b3a; --accent:#e50914; --ok:#19c37d; --warn:#f5a524; --chip:#1a2333; }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Hebrew',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:1200px;margin:0 auto;padding:20px}
-    header.hero{position:relative;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101525 0%, rgba(16,21,37,0) 60%)}
-    nav{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{font-weight:900;letter-spacing:.5px}
-    .navlinks{display:flex;gap:12px;flex-wrap:wrap}
-    .hero h1{margin:8px 0 0 0;font-size:40px}
-    .hero .sub{color:var(--muted);margin-top:6px;font-size:16px}
-    .grid{display:grid;gap:14px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .teamgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
-    .member{background:#0f1420;border:1px solid #212a3e;border-radius:16px;padding:16px;display:grid;gap:10px}
-    .member h3{margin:0;font-size:20px}
-    .role{color:#cfd6e4}
-    .tags{display:flex;gap:8px;flex-wrap:wrap}
-    .tag{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid #2a3347;color:#cfd6e4;padding:6px 12px;border-radius:999px;font-size:12px}
-    .list{margin:0;padding:0 18px}
-    .meter{flex:1 1 160px;background:#0d1119;border:1px solid #20283a;border-radius:12px;padding:10px}
-    .bar{height:8px;background:#20283a;border-radius:6px;overflow:hidden;margin-top:6px}
-    .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ff7a7a)}
-    .kpis{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{background:#20283a;color:#cfd6e4;border:1px solid #2a3347;border-radius:999px;padding:4px 10px;font-size:12px}
-    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px}
-    .pill.ok{background:rgba(25,195,125,.12);color:#b5f1d8;border:1px solid rgba(25,195,125,.35)}
-    .pill.warn{background:rgba(245,165,36,.12);color:#ffe4b8;border:1px solid rgba(245,165,36,.35)}
-    .pill.stop{background:rgba(229,9,20,.12);color:#ffb3b8;border:1px solid rgba(229,9,20,.35)}
-    footer{color:#8d97a6;font-size:12px;margin:24px auto 40px}
-    .lead{font-size:15px;line-height:1.6}
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CyJimm — הצוות</title>
+  <meta name="description" content="הכירו את צוות CyJimm: תשתיות, סייבר ואוטומציה. פרופילי מומחיות, טכנולוגיות מובילות וניסיון שטח אמיתי."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0e1016; --card:#141925; --ink:#eaeef5; --muted:#9aa4b2; --line:#232b3a; --accent:#e50914; --ok:#19c37d; --warn:#f5a524; --chip:#1a2333; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Hebrew',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+        /* --- הוספה: הסתרת הסמן הרגיל --- */
+        cursor: none;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+    header.hero{position:relative;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101525 0%, rgba(16,21,37,0) 60%)}
+    nav{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{font-weight:900;letter-spacing:.5px}
+    .navlinks{display:flex;gap:12px;flex-wrap:wrap}
+    .hero h1{margin:8px 0 0 0;font-size:40px}
+    .hero .sub{color:var(--muted);margin-top:6px;font-size:16px}
+    .grid{display:grid;gap:14px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .teamgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+    .member{background:#0f1420;border:1px solid #212a3e;border-radius:16px;padding:16px;display:grid;gap:10px}
+    .member h3{margin:0;font-size:20px}
+    .role{color:#cfd6e4}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid #2a3347;color:#cfd6e4;padding:6px 12px;border-radius:999px;font-size:12px}
+    .list{margin:0;padding:0 18px}
+    .meter{flex:1 1 160px;background:#0d1119;border:1px solid #20283a;border-radius:12px;padding:10px}
+    .bar{height:8px;background:#20283a;border-radius:6px;overflow:hidden;margin-top:6px}
+    .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ff7a7a)}
+    .kpis{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:#20283a;color:#cfd6e4;border:1px solid #2a3347;border-radius:999px;padding:4px 10px;font-size:12px}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px}
+    .pill.ok{background:rgba(25,195,125,.12);color:#b5f1d8;border:1px solid rgba(25,195,125,.35)}
+    .pill.warn{background:rgba(245,165,36,.12);color:#ffe4b8;border:1px solid rgba(245,165,36,.35)}
+    .pill.stop{background:rgba(229,9,20,.12);color:#ffb3b8;border:1px solid rgba(229,9,20,.35)}
+    footer{color:#8d97a6;font-size:12px;margin:24px auto 40px}
+    .lead{font-size:15px;line-height:1.6}
+
+    /* --- הוספה: עיצוב החללית --- */
+    .cursor-ship {
+        position: fixed; /* נשאר במקום בזמן גלילה */
+        top: 0;
+        left: 0;
+        width: 50px; /* רוחב התמונה הרצוי */
+        height: 50px; /* גובה התמונה הרצוי */
+        pointer-events: none; /* מאפשר ללחוץ "דרך" התמונה */
+        z-index: 9999; /* מוודא שהיא תמיד למעלה */
+        transition: transform 0.1s ease-out; /* תנועה חלקה */
+    }
+    .cursor-ship img {
+        width: 100%;
+        height: auto;
+        /* אפשר להוסיף סיבוב קל אם רוצים */
+        /* transform: rotate(15deg); */
+    }
+    /* אופציונלי: החבאת החללית במסכים קטנים (מגע) */
+    @media (max-width: 768px) {
+        .cursor-ship {
+            display: none;
+        }
+        /* החזרת הסמן הרגיל למסכי מגע */
+        body {
+            cursor: default;
+        }
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <nav>
-        <div class="brand"><a href="/">CyJimm</a></div>
-        <div class="navlinks">
-          <a href="/">דף הבית</a>
-          <a href="/team/" aria-current="page">הצוות</a>
-          <a href="/contact/">יצירת קשר</a>
-        </div>
-      </nav>
-      <h1>הצוות</h1>
-      <div class="sub">אנחנו בונים מערכות שמחזיקות אמת — תשתיות, סייבר ואוטומציה. פחות מילים, יותר תוצאות.</div>
-    </div>
-  </header>
 
-  <main class="wrap">
-    <!-- תיאור כללי -->
-    <section class="card">
-      <h2>מי אנחנו</h2>
-      <p class="lead">CyJimm הוא צוות Hands‑On שמאחד תשתיות Windows & Linux, אבטחה ארגונית ו‑Automation. אנחנו מגדירים סטנדרטים, בונים תהליכים ומעלים את רמת היציבות והאבטחה מבלי לפגוע בקצב. הגישה שלנו: <b>Build · Measure · Secure</b>.</p>
-    </section>
+  <div class="cursor-ship">
+      <img src="assets/spaceship-icon.png" alt="spaceship cursor">
+  </div>
 
-    <!-- גריד הצוות -->
-    <section class="card" style="margin-top:14px">
-      <h2>המובילים</h2>
-      <div class="teamgrid">
-        <!-- חבר צוות: צ'יף -->
-        <article class="member">
-          <header>
-            <h3>צ'יף — Zero‑Day Tamer</h3>
-            <div class="role">Team Lead Hands‑On · System, Cyber & Automation</div>
-          </header>
-          <div class="tags">
-            <span class="tag">System & Infra</span>
-            <span class="tag">Linux (Kali · Parrot · Elementary)</span>
-            <span class="tag">Automation (PowerShell · Python)</span>
-            <span class="tag">SecOps · Hardening</span>
-            <span class="tag">CI/CD Basics</span>
-          </div>
-          <p class="lead">בונה מערכות אמיתיות—לא מצגות. מחבר IT קלאסי ל‑Cyber ואוטומציה עם דגש על סטנדרטיזציה, יציבות ו‑Hardening. הוביל ארסנל התקנות מותאם (Win11/Kali), יצר מערכות התרעות SLA ונהל AD/GPO מורכב ללא Intune.</p>
-          <div class="kpis">
-            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אוטומציה</span><span>88%</span></div><div class="bar"><span style="width:88%"></span></div></div>
-            <div class="meter"><div style="display:flex;justify-content:space-between"><span>יציבות מערכות</span><span>93%</span></div><div class="bar"><span style="width:93%"></span></div></div>
-            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אימפקט ארגוני</span><span>85%</span></div><div class="bar"><span style="width:85%"></span></div></div>
-          </div>
-          <h4 style="margin:6px 0 4px">Core Systems</h4>
-          <ul class="list">
-            <li>Windows Server (AD, DNS, DHCP, GPO), pfSense, VLANs</li>
-            <li>Linux: Kali, Parrot, Elementary — PrivEsc, Hardening</li>
-            <li>Automation: PowerShell 7+, Python 3.12, GitHub Actions</li>
-            <li>SIEM/Monitoring: Splunk, Wazuh, Grafana Integration</li>
-          </ul>
-          <h4 style="margin:6px 0 4px">סטטוס</h4>
-          <ul class="list">
-            <li>ChiefBot — <span class="pill stop">הוקפא לאחר POC</span></li>
-            <li>Chief Personal Lab — <span class="pill warn">בפיתוח פעיל</span></li>
-          </ul>
-          <div class="tags">
-            <a class="chip" href="mailto:madara@cyjimm.com">דבר איתנו>
-            <a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </article>
+  <header class="hero">
+    <div class="wrap">
+      <nav>
+        <div class="brand"><a href="/">CyJimm</a></div>
+        <div class="navlinks">
+          <a href="/">דף הבית</a>
+          <a href="/team/" aria-current="page">הצוות</a>
+          <a href="/contact/">יצירת קשר</a>
+        </div>
+      </nav>
+      <h1>הצוות</h1>
+      <div class="sub">אנחנו בונים מערכות שמחזיקות אמת — תשתיות, סייבר ואוטומציה. פחות מילים, יותר תוצאות.</div>
+    </div>
+  </header>
 
-        <!-- Placeholder לחבר צוות נוסף בעתיד -->
-        <article class="member" aria-disabled="true">
-          <header>
-            <h3>מצטרף בקרוב</h3>
-            <div class="role">SecOps / DevOps</div>
-          </header>
-          <p class="lead">מקום שמור לשותף הבא במסע — מישהו שאכפת לו מתוצאות, מאנשים ומקוד נקי.</p>
-          <div class="tags">
-            <span class="tag">Threat Hunting</span>
-            <span class="tag">Pipelines</span>
-            <span class="tag">Infra as Code</span>
-          </div>
-        </article>
-      </div>
-    </section>
+  <main class="wrap">
+        <section class="card">
+      <h2>מי אנחנו</h2>
+      <p class="lead">CyJimm הוא צוות Hands‑On שמאחד תשתיות Windows & Linux, אבטחה ארגונית ו‑Automation. אנחנו מגדירים סטנדרטים, בונים תהליכים ומעלים את רמת היציבות והאבטחה מבלי לפגוע בקצב. הגישה שלנו: <b>Build · Measure · Secure</b>.</p>
+    </section>
 
-    <!-- PROJECTS & DELIVERABLES -->
-    <section class="card" style="margin-top:14px">
-      <h2>Projects & Deliverables (Selected)</h2>
-      <div class="skillgrid">
-        <div class="skill">
-          <h4>Custom OS & Imaging</h4>
-          <ul>
-            <li>Windows 11 Custom ISO — OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li>
-            <li>Kali Linux ISO (GNOME) — Nvidia RTX 4050 drivers, full tooling, Hebrew+EN layouts.</li>
-            <li>Baseline hardening templates (CIS-inspired) עבור תחנות ושרתים.</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Enterprise Automation</h4>
-          <ul>
-            <li>SLA Alerts — Google Apps Script + Power Automate (Cross‑suite).</li>
-            <li>Auto‑Deploy via Winget + Post‑Install checks (PS7).</li>
-            <li>M365: EWS Backup jobs, mailbox/archive routines.</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Monitoring & SIEM</h4>
-          <ul>
-            <li>Splunk on Kali (POC→Dashboards) + Wazuh integration.</li>
-            <li>Proxmox/VMware lab telemetry, pfSense logs, VLAN segmentation.</li>
-            <li>Incident drill runbooks (IR, containment, comms).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <section class="card" style="margin-top:14px">
+      <h2>המובילים</h2>
+      <div class="teamgrid">
+                <article class="member">
+          <header>
+            <h3>צ'יף — Zero‑Day Tamer</h3>
+            <div class="role">Team Lead Hands‑On · System, Cyber & Automation</div>
+          </header>
+          <div class="tags">
+            <span class="tag">System & Infra</span>
+            <span class="tag">Linux (Kali · Parrot · Elementary)</span>
+            <span class="tag">Automation (PowerShell · Python)</span>
+            <span class="tag">SecOps · Hardening</span>
+            <span class="tag">CI/CD Basics</span>
+          </div>
+          <p class="lead">בונה מערכות אמיתיות—לא מצגות. מחבר IT קלאסי ל‑Cyber ואוטומציה עם דגש על סטנדרטיזציה, יציבות ו‑Hardening. הוביל ארסנל התקנות מותאם (Win11/Kali), יצר מערכות התרעות SLA ונהל AD/GPO מורכב ללא Intune.</p>
+          <div class="kpis">
+            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אוטומציה</span><span>88%</span></div><div class="bar"><span style="width:88%"></span></div></div>
+            <div class="meter"><div style="display:flex;justify-content:space-between"><span>יציבות מערכות</span><span>93%</span></div><div class="bar"><span style="width:93%"></span></div></div>
+            <div class="meter"><div style="display:flex;justify-content:space-between"><span>אימפקט ארגוני</span><span>85%</span></div><div class="bar"><span style="width:85%"></span></div></div>
+          </div>
+          <h4 style="margin:6px 0 4px">Core Systems</h4>
+          <ul class="list">
+            <li>Windows Server (AD, DNS, DHCP, GPO), pfSense, VLANs</li>
+            <li>Linux: Kali, Parrot, Elementary — PrivEsc, Hardening</li>
+            <li>Automation: PowerShell 7+, Python 3.12, GitHub Actions</li>
+            <li>SIEM/Monitoring: Splunk, Wazuh, Grafana Integration</li>
+          </ul>
+          <h4 style="margin:6px 0 4px">סטטוס</h4>
+          <ul class="list">
+          	<li>ChiefBot — <span class="pill stop">הוקפא לאחר POC</span></li>
+          	<li>Chief Personal Lab — <span class="pill warn">בפיתוח פעיל</span></li>
+          </ul>
+          <div class="tags">
+          	<a class="chip" href="mailto:madara@cyjimm.com">דבר איתנו>
+          	<a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
 
-    <!-- RUNBOOKS / PLAYBOOKS -->
-    <section class="card" style="margin-top:14px">
-      <h2>Runbooks & Playbooks</h2>
-      <div class="skillgrid">
-        <div class="skill">
-          <h4>Windows</h4>
-          <ul>
-            <li>Join‑Domain & GPO bootstrap (OU per dept).</li>
-            <li>Printer server & shares (permissions & recovery).</li>
-            <li>Endpoint Hardening, Defender tuning, CrowdStrike/WSS policy alignment.</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Linux</h4>
-          <ul>
-            <li>PrivEsc lab flow (enum → exploit → stabilize → persist).</li>
-            <li>Service hardening (SSH, sudoers, auditd, journald, fail2ban).</li>
-            <li>Backup & health jobs (systemd timers + scripts).</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Network / pfSense</h4>
-          <ul>
-            <li>VLAN design & rules per environment.</li>
-            <li>DHCP/DNS diagramming (offer/request/ack flow).</li>
-            <li>Captive Portal & policy exceptions.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+                <article class="member" aria-disabled="true">
+          <header>
+          	<h3>מצטרף בקרוב</h3>
+          	<div class="role">SecOps / DevOps</div>
+          </header>
+          <p class="lead">מקום שמור לשותף הבא במסע — מישהו שאכפת לו מתוצאות, מאנשים ומקוד נקי.</p>
+          <div class="tags">
+          	<span class="tag">Threat Hunting</span>
+          	<span class="tag">Pipelines</span>
+          	<span class="tag">Infra as Code</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <!-- TOOLBOX / SCRIPTS -->
-    <section class="card" style="margin-top:14px">
-      <h2>Toolbox & Scripts</h2>
-      <div class="skillgrid">
-        <div class="skill">
-          <h4>PowerShell Suite</h4>
-          <ul>
-            <li><b>Optimize‑System.ps1</b> — תחזוקת מערכת מרובת שלבים + דיווח.</li>
-            <li><b>FoldersPermissionV7.ps1</b> — GUI ל‑ACL עם Fallback IT Admin.</li>
-            <li><b>Browser‑RunAsAdmin.ps1</b> — אכיפת UAC לדפדפנים.</li>
-            <li><b>OutlookArchiveSync.ps1</b> — ניהול ארכיונים ב‑Exchange Online.</li>
-            <li><b>HealthReport.ps1</b> — בדיקות Battery/Disk/CPU.</li>
-            <li><b>AnyDesk‑AutoStart.ps1</b> — הפעלה ובקרה מרחוק.</li>
-            <li><b>EWS‑Backup.ps1</b> — גיבוי Online Archive (יעודי).</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Linux / Offensive</h4>
-          <ul>
-            <li>nmap / netcat workflows, metasploit, burp, wireshark.</li>
-            <li>THM: Linux Privilege Escalation (methodical enum & privesc).</li>
-            <li>Forensics בסיסי: לוגים, snapshots, triage.</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>M365 / Automation</h4>
-          <ul>
-            <li>Power Automate flows (SLA, notifications, routing).</li>
-            <li>Google Apps Script (sheets, webhooks, mail merge).</li>
-            <li>Graph/EWS API integrations.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <section class="card" style="margin-top:14px">
+      <h2>Projects & Deliverables (Selected)</h2>
+      <div class="skillgrid">
+        <div class="skill">
+          <h4>Custom OS & Imaging</h4>
+          <ul>
+          	<li>Windows 11 Custom ISO — OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li>
+          	<li>Kali Linux ISO (GNOME) — Nvidia RTX 4050 drivers, full tooling, Hebrew+EN layouts.</li>
+          	<li>Baseline hardening templates (CIS-inspired) עבור תחנות ושרתים.</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h4>Enterprise Automation</h4>
+          <ul>
+          	<li>SLA Alerts — Google Apps Script + Power Automate (Cross‑suite).</li>
+          	<li>Auto‑Deploy via Winget + Post‑Install checks (PS7).</li>
+          	<li>M365: EWS Backup jobs, mailbox/archive routines.</li>
+          </ul>
+        </div>
+      	<div class="skill">
+          <h4>Monitoring & SIEM</h4>
+          <ul>
+          	<li>Splunk on Kali (POC→Dashboards) + Wazuh integration.</li>
+          	<li>Proxmox/VMware lab telemetry, pfSense logs, VLAN segmentation.</li>
+          	<li>Incident drill runbooks (IR, containment, comms).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <!-- CASE STUDIES / IMPACT -->
-    <section class="card" style="margin-top:14px">
-      <h2>Impact Highlights</h2>
-      <ul class="list">
-        <li>הורדת MTTR בתקלות משתמשים בזכות סטנדרטיזציה ו‑PS automation.</li>
-        <li>הקמת ארסנל התקנות אחיד שהפחית זמן פריסה בתחנות ובמעבדה.</li>
-        <li>שיפור נראות הארגון (Dashboards ב‑Splunk/Wazuh) — איתור חריגות מוקדם.</li>
-      </ul>
-      <div class="kpis" style="margin-top:10px">
-        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Automation Footprint</span><span>90%</span></div><div class="bar"><span style="width:90%"></span></div></div>
-        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Deploy Time ↓</span><span>‑40%</span></div><div class="bar"><span style="width:40%"></span></div></div>
-        <div class="meter"><div style="display:flex;justify-content:space-between"><span>Visibility ↑</span><span>+60%</span></div><div class="bar"><span style="width:60%"></span></div></div>
-      </div>
-    </section>
+        <section class="card" style="margin-top:14px">
+      <h2>Runbooks & Playbooks</h2>
+      <div class="skillgrid">
+      	<div class="skill">
+          <h4>Windows</h4>
+          <ul>
+          	<li>Join‑Domain & GPO bootstrap (OU per dept).</li>
+          	<li>Printer server & shares (permissions & recovery).</li>
+          	<li>Endpoint Hardening, Defender tuning, CrowdStrike/WSS policy alignment.</li>
+          </ul>
+      	</div>
+      	<div class="skill">
+          <h4>Linux</h4>
+          <ul>
+          	<li>PrivEsc lab flow (enum → exploit → stabilize → persist).</li>
+          	<li>Service hardening (SSH, sudoers, auditd, journald, fail2ban).</li>
+          	<li>Backup & health jobs (systemd timers + scripts).</li>
+          </ul>
+      	</div>
+      	<div class="skill">
+          <h4>Network / pfSense</h4>
+          <ul>
+          	<li>VLAN design & rules per environment.</li>
+          	<li>DHCP/DNS diagramming (offer/request/ack flow).</li>
+          	<li>Captive Portal & policy exceptions.</li>
+          </ul>
+      	</div>
+      </div>
+    </section>
 
-    <!-- CTA -->
-    <section class="split" style="margin-top:14px">
-      <div class="card">
-        <h2>רוצה לשתף פעולה?</h2>
-        <p class="lead">פרויקטים, הקמות, הקשחות או טיוב תהליכים — נשב על הבעיה, נבנה פתרון, נריץ מדדים, ונמסור תוצאה.</p>
-        <div class="chips">
-          <a class="chip" href="mailto:madara@cyjimm.com">Hello@cyjimm.com</a>
-          <a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-      <div class="card">
-        <h2>מסמכי מדיניות/אבטחה</h2>
-        <p class="lead">אפשר להוסיף כאן לינקים/קבצים (PDF) ל‑Baseline, SOP, Runbooks ו‑Hardening Guides.</p>
-      </div>
-    </section>
+        <section class="card" style="margin-top:14px">
+      <h2>Toolbox & Scripts</h2>
+      <div class="skillgrid">
+      	<div class="skill">
+          <h4>PowerShell Suite</h4>
+          <ul>
+          	<li><b>Optimize‑System.ps1</b> — תחזוקת מערכת מרובת שלבים + דיווח.</li>
+          	<li><b>FoldersPermissionV7.ps1</b> — GUI ל‑ACL עם Fallback IT Admin.</li>
+          	<li><b>Browser‑RunAsAdmin.ps1</b> — אכיפת UAC לדפדפנים.</li>
+          	<li><b>OutlookArchiveSync.ps1</b> — ניהול ארכיונים ב‑Exchange Online.</li>
+          	<li><b>HealthReport.ps1</b> — בדיקות Battery/Disk/CPU.</li>
+          	<li><b>AnyDesk‑AutoStart.ps1</b> — הפעלה ובקרה מרחוק.</li>
+          	<li><b>EWS‑Backup.ps1</b> — גיבוי Online Archive (יעודי).</li>
+          </ul>
+      	</div>
+      	<div class="skill">
+          <h4>Linux / Offensive</h4>
+          <ul>
+        _ 	<li>nmap / netcat workflows, metasploit, burp, wireshark.</li>
+          	<li>THM: Linux Privilege Escalation (methodical enum & privesc).</li>
+          	<li>Forensics בסיסי: לוגים, snapshots, triage.</li>
+          </ul>
+      	</div>
+      	<div class="skill">
+          <h4>M365 / Automation</h4>
+          <ul>
+          	<li>Power Automate flows (SLA, notifications, routing).</li>
+          	<li>Google Apps Script (sheets, webhooks, mail merge).</li>
+          	<li>Graph/EWS API integrations.</li>
+          </ul>
+      	</div>
+      </div>
+    </section>
 
-  </main>
+        <section class="card" style="margin-top:14px">
+      <h2>Impact Highlights</h2>
+      <ul class="list">
+      	<li>הורדת MTTR בתקלות משתמשים בזכות סטנדרטיזציה ו‑PS automation.</li>
+      	<li>הקמת ארסנל התקנות אחיד שהפחית זמן פריסה בתחנות ובמעבדה.</li>
+      	<li>שיפור נראות הארגון (Dashboards ב‑Splunk/Wazuh) — איתור חריגות מוקדם.</li>
+      </ul>
+      <div class="kpis" style="margin-top:10px">
+      	<div class="meter"><div style="display:flex;justify-content:space-between"><span>Automation Footprint</span><span>90%</span></div><div class="bar"><span style="width:90%"></span></div></div>
+      	<div class="meter"><div style="display:flex;justify-content:space-between"><span>Deploy Time ↓</span><span>‑40%</span></div><div class="bar"><span style="width:40%"></span></div></div>
+      	<div class="meter"><div style="display:flex;justify-content:space-between"><span>Visibility ↑</span><span>+60%</span></div><div class="bar"><span style="width:60%"></span></div></div>
+      </div>
+    </section>
 
-  <footer class="wrap" style="padding:0">
-    <div class="muted">© <span id="year"></span> CyJimm — אבטחה • תשתיות • חדשנות</div>
-  </footer>
+        <section class="split" style="margin-top:14px">
+      <div class="card">
+      	<h2>רוצה לשתף פעולה?</h2>
+      	<p class="lead">פרויקטים, הקמות, הקשחות או טיוב תהליכים — נשב על הבעיה, נבנה פתרון, נריץ מדדים, ונמסור תוצאה.</p>
+      	<div class="chips">
+        	<a class="chip" href="mailto:madara@cyjimm.com">Hello@cyjimm.com</a>
+        	<a class="chip" href="https://github.com/CyJimm" target="_blank" rel="noopener">GitHub</a>
+      	</div>
+      </div>
+      <div class="card">
+      	<h2>מסמכי מדיניות/אבטחה</h2>
+      	<p class="lead">אפשר להוסיף כאן לינקים/קבצים (PDF) ל‑Baseline, SOP, Runbooks ו‑Hardening Guides.</p>
+      </div>
+  	</section>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </main>
+
+  <footer class="wrap" style="padding:0">
+    <div class="muted">© <span id="year"></span> CyJimm — אבטחה • תשתיות • חדשנות</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script>
+    const cursorShip = document.querySelector('.cursor-ship');
+    
+    document.addEventListener('mousemove', (e) => {
+        // עדכון המיקום של ה-div לפי מיקום העכבר
+        // אנו משתמשים ב-transform במקום ב-top/left לביצועים טובים יותר
+        cursorShip.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    });
+
+    // אופציונלי: להוסיף קלאס כשהעכבר לוחץ
+    document.addEventListener('mousedown', () => {
+        cursorShip.classList.add('clicking');
+    });
+    document.addEventListener('mouseup', () => {
+        cursorShip.classList.remove('clicking');
+    });
+
+    // אופציונלי: להוסיף קלאס כשהעכבר מעל לינק
+    document.querySelectorAll('a, button, .chip').forEach(el => {
+        el.addEventListener('mouseenter', () => cursorShip.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursorShip.classList.remove('hovering'));
+    });
+
+  </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyJimm | Phishing Awareness Training</title>
+  <title>Jimmi's Hub | Phishing Awareness Training</title>
   <meta name="description" content="הדרכת מודעות לפישינג – דף אינטראקטיבי לזיהוי מיילים חשודים, קישורים זדוניים וקבצים מסוכנים." />
   <style>
     :root {
@@ -84,19 +84,15 @@
       margin-bottom: 16px;
     }
 
-    .brand-badge {
-      min-width: 58px;
-      height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 12px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #ffffff, #e5e7eb);
-      color: #111827;
-      font-weight: 900;
-      letter-spacing: 1px;
+    .brand-logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.95);
+      padding: 4px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      flex-shrink: 0;
     }
 
     h1 {
@@ -385,8 +381,12 @@
     .hidden { display: none !important; }
 
     .mobile-topbar,
-    .mobile-bottom-nav,
-    .mobile-section-title { display: none; }
+    .mobile-section-title,
+    .mobile-menu-fab,
+    .mobile-drawer,
+    .mobile-drawer-backdrop {
+      display: none;
+    }
 
     .mobile-topbar {
       position: sticky;
@@ -434,32 +434,99 @@
       letter-spacing: .2px;
     }
 
-    .mobile-bottom-nav {
-      position: sticky;
-      bottom: 10px;
-      z-index: 45;
-      width: 100%;
-      margin-top: 16px;
-      padding: 10px;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      background: rgba(2, 6, 23, 0.9);
+    .mobile-menu-fab {
+      position: fixed;
+      left: 12px;
+      bottom: 16px;
+      z-index: 60;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: rgba(2, 6, 23, 0.92);
       border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      color: #fff;
+      font-size: 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 54;
+    }
+
+    .mobile-drawer-backdrop.open {
+      display: block;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      left: 10px;
+      bottom: 84px;
+      width: min(280px, calc(100vw - 20px));
+      z-index: 55;
+      padding: 12px;
       border-radius: 22px;
+      background: rgba(2, 6, 23, 0.94);
+      border: 1px solid var(--border);
       backdrop-filter: blur(14px);
       box-shadow: var(--shadow);
+      transform: translateY(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .mobile-drawer.open {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mobile-drawer-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      padding: 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .mobile-drawer-nav {
+      display: grid;
+      gap: 8px;
     }
 
     .mobile-nav-btn {
       border-radius: 16px;
-      padding: 10px 8px;
-      min-height: 62px;
-      font-size: 11px;
+      padding: 12px 12px;
+      min-height: 52px;
+      font-size: 14px;
       line-height: 1.2;
-      text-align: center;
+      text-align: right;
       background: rgba(255,255,255,0.04);
       color: var(--muted);
       border: 1px solid transparent;
+      justify-content: flex-start;
+      gap: 8px;
+      width: 100%;
     }
 
     .mobile-nav-btn.active {
@@ -469,9 +536,9 @@
     }
 
     .mobile-nav-btn span {
-      display: block;
+      display: inline-block;
       font-size: 18px;
-      margin-bottom: 4px;
+      margin-bottom: 0;
     }
 
     .mobile-only { display: none; }
@@ -489,12 +556,13 @@
 
     @media (max-width: 640px) {
       body { min-height: 100dvh; }
-      .app-shell { padding: 10px 10px 92px; }
+      .app-shell { padding: 10px 10px 28px; }
       .desktop-only { display: none !important; }
       .mobile-only,
       .mobile-topbar,
-      .mobile-bottom-nav,
+      .mobile-menu-fab,
       .mobile-section-title { display: block; }
+
       .hero { grid-template-columns: 1fr; gap: 12px; margin-bottom: 14px; }
       .hero-main,
       .section,
@@ -535,8 +603,8 @@
   <div class="app-shell">
     <div class="mobile-topbar mobile-only">
       <div class="mobile-topbar-title">
-        <div class="brand-badge" aria-hidden="true">CJ</div>
-        <div>CyJimm Mobile</div>
+        <img class="brand-logo-img" src="/logo-84.png" alt="Jimmi's Hub logo">
+        <div>Jimmi's Hub Mobile</div>
       </div>
       <div class="mobile-topbar-meta">
         <div class="mobile-chip">ניקוד: <span id="mobileScoreValue">0</span></div>
@@ -547,8 +615,8 @@
     <section class="hero">
       <div class="card hero-main">
         <div class="brand">
-          <div class="brand-badge" aria-label="CyJimm badge">CJ</div>
-          <div>CyJimm Security Awareness</div>
+          <img class="brand-logo-img" src="/logo-84.png" alt="Jimmi's Hub logo">
+          <div>Jimmi's Hub Security Awareness</div>
         </div>
         <h1>לומדים לזהות פישינג כמו מקצוענים</h1>
         <p class="subtitle">
@@ -738,15 +806,25 @@
       </main>
     </div>
 
-    <nav class="mobile-bottom-nav mobile-only">
-      <button class="mobile-nav-btn active" data-target="home" onclick="goToSection('home')"><span>🏠</span>ראשי</button>
-      <button class="mobile-nav-btn" data-target="learn" onclick="goToSection('learn')"><span>🧠</span>לימוד</button>
-      <button class="mobile-nav-btn" data-target="examples" onclick="goToSection('examples')"><span>📨</span>דוגמאות</button>
-      <button class="mobile-nav-btn" data-target="quiz" onclick="goToSection('quiz')"><span>🎯</span>Training</button>
-      <button class="mobile-nav-btn" data-target="report" onclick="goToSection('report')"><span>🚨</span>עזרה</button>
+    <button class="mobile-menu-fab mobile-only" id="mobileMenuFab" type="button" aria-label="פתח תפריט" aria-expanded="false" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="mobile-drawer-backdrop mobile-only" id="mobileDrawerBackdrop" onclick="closeMobileMenu()"></div>
+
+    <nav class="mobile-drawer mobile-only" id="mobileDrawer" aria-label="ניווט מובייל">
+      <div class="mobile-drawer-header">
+        <div>תפריט</div>
+        <button class="mobile-drawer-close" type="button" aria-label="סגור תפריט" onclick="closeMobileMenu()">×</button>
+      </div>
+      <div class="mobile-drawer-nav">
+        <button class="mobile-nav-btn active" data-target="home" onclick="goToSection('home')"><span>🏠</span>ראשי</button>
+        <button class="mobile-nav-btn" data-target="learn" onclick="goToSection('learn')"><span>🧠</span>לימוד</button>
+        <button class="mobile-nav-btn" data-target="examples" onclick="goToSection('examples')"><span>📨</span>דוגמאות</button>
+        <button class="mobile-nav-btn" data-target="quiz" onclick="goToSection('quiz')"><span>🎯</span>Training</button>
+        <button class="mobile-nav-btn" data-target="report" onclick="goToSection('report')"><span>🚨</span>עזרה</button>
+      </div>
     </nav>
 
-    <div class="footer-note">CyJimm Security Awareness • Public Training Page</div>
+    <div class="footer-note">Jimmi's Hub Security Awareness • Public Training Page</div>
   </div>
 
   <script>
@@ -755,7 +833,7 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/\"/g, '&quot;')
+        .replace(/\\"/g, '&quot;')
         .replace(/'/g, '&#39;');
     }
 
@@ -764,7 +842,7 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/\"/g, '&quot;')
+        .replace(/\\"/g, '&quot;')
         .replace(/'/g, '&apos;');
     }
 
@@ -1057,8 +1135,30 @@
       });
 
       if (window.innerWidth <= 640) {
+        closeMobileMenu();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
+      const fab = document.getElementById('mobileMenuFab');
+      const isOpen = drawer.classList.contains('open');
+
+      drawer.classList.toggle('open', !isOpen);
+      backdrop.classList.toggle('open', !isOpen);
+      fab.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
+      const fab = document.getElementById('mobileMenuFab');
+
+      if (drawer) drawer.classList.remove('open');
+      if (backdrop) backdrop.classList.remove('open');
+      if (fab) fab.setAttribute('aria-expanded', 'false');
     }
 
     function setLevel(level) {

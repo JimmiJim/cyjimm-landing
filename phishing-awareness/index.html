@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jimmi's Hub | Phishing Awareness Training</title>
-  <meta name="description" content="הדרכת מודעות לפישינג – דף אינטראקטיבי לזיהוי מיילים חשודים, קישורים זדוניים וקבצים מסוכנים." />
+  <title>ChiefBot - הדרכת זיהוי פישינג</title>
   <style>
     :root {
       --bg: #0b1020;
@@ -32,8 +31,6 @@
       min-height: 100vh;
     }
 
-    a { color: inherit; }
-
     .app-shell {
       max-width: 1180px;
       margin: 0 auto;
@@ -48,8 +45,8 @@
     }
 
     .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
+      background: rgba(10, 18, 38, 0.94);
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
@@ -84,15 +81,19 @@
       margin-bottom: 16px;
     }
 
-    .brand-logo-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.95);
-      padding: 4px;
+    .fox-logo {
+      min-width: 58px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffffff, #e5e7eb);
+      color: #111827;
+      font-weight: 900;
+      letter-spacing: 1px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-      flex-shrink: 0;
     }
 
     h1 {
@@ -102,22 +103,23 @@
     }
 
     .subtitle {
-      color: var(--muted);
+      color: #e5edf8;
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.75;
       max-width: 62ch;
       margin-bottom: 22px;
     }
 
     .hero-actions,
     .level-actions,
-    .footer-actions {
+    .report-actions,
+    .tests-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
     }
 
-    button, .button-link {
+    button {
       border: 0;
       cursor: pointer;
       border-radius: 16px;
@@ -125,14 +127,10 @@
       font-size: 15px;
       font-weight: 700;
       transition: transform .18s ease, opacity .18s ease, background .18s ease, border-color .18s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    button:hover, .button-link:hover { transform: translateY(-1px); }
-    button:active, .button-link:active { transform: translateY(0); }
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(0); }
     button:disabled { cursor: default; opacity: 0.85; }
 
     .primary {
@@ -161,8 +159,8 @@
     }
 
     .metric {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(26, 40, 68, 0.98), rgba(23, 35, 59, 0.96));
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 18px;
       padding: 16px;
       display: flex;
@@ -172,7 +170,7 @@
     }
 
     .metric-label {
-      color: var(--muted);
+      color: #cbd7ea;
       font-size: 14px;
     }
 
@@ -240,7 +238,7 @@
       gap: 14px;
     }
 
-    .info-box, .quiz-card, .mail-card, .tip, .result-box {
+    .info-box, .quiz-card, .mail-card, .tip, .result-box, .test-box {
       background: var(--panel-2);
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -258,13 +256,13 @@
       background: rgba(255,255,255,0.03);
     }
 
-    .info-box h3, .quiz-card h3, .mail-card h3, .tip h3, .result-box h3 {
+    .info-box h3, .quiz-card h3, .mail-card h3, .tip h3, .result-box h3, .test-box h3 {
       margin-top: 0;
       margin-bottom: 10px;
       font-size: 18px;
     }
 
-    .info-box p, .quiz-card p, .mail-card p, .tip p, .result-box p, li {
+    .info-box p, .quiz-card p, .mail-card p, .tip p, .result-box p, .test-box p, li {
       color: var(--muted);
       line-height: 1.7;
     }
@@ -285,7 +283,8 @@
     }
 
     .mail-field strong,
-    .result-box strong { color: #fff; }
+    .result-box strong,
+    .test-box strong { color: #fff; }
 
     .danger-list {
       display: grid;
@@ -378,9 +377,29 @@
       margin-top: 12px;
     }
 
+    .inline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+    }
+
     .hidden { display: none !important; }
 
     .mobile-topbar,
+    .mobile-bottom-nav,
     .mobile-section-title,
     .mobile-menu-fab,
     .mobile-drawer,
@@ -396,9 +415,9 @@
       padding: 12px 14px;
       align-items: center;
       justify-content: space-between;
-      background: rgba(2, 6, 23, 0.88);
+      background: linear-gradient(180deg, rgba(9, 18, 38, 0.98), rgba(8, 16, 32, 0.94));
       backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 18px;
       box-shadow: var(--shadow);
     }
@@ -422,9 +441,10 @@
     .mobile-chip {
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
       white-space: nowrap;
+      color: #f4f8ff;
     }
 
     .mobile-section-title {
@@ -432,6 +452,22 @@
       color: var(--muted);
       font-size: 13px;
       letter-spacing: .2px;
+    }
+
+    .mobile-bottom-nav {
+      position: sticky;
+      bottom: 10px;
+      z-index: 45;
+      width: 100%;
+      margin-top: 16px;
+      padding: 10px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      background: rgba(2, 6, 23, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
     }
 
     .mobile-menu-fab {
@@ -442,11 +478,11 @@
       width: 56px;
       height: 56px;
       border-radius: 18px;
-      background: rgba(2, 6, 23, 0.92);
-      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(12, 24, 48, 0.98), rgba(8, 17, 34, 0.95));
+      border: 1px solid rgba(255,255,255,0.14);
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
-      color: #fff;
+      color: #ffffff;
       font-size: 24px;
       align-items: center;
       justify-content: center;
@@ -526,7 +562,6 @@
       border: 1px solid transparent;
       justify-content: flex-start;
       gap: 8px;
-      width: 100%;
     }
 
     .mobile-nav-btn.active {
@@ -542,6 +577,7 @@
     }
 
     .mobile-only { display: none; }
+
     .desktop-only { display: block; }
 
     @media (max-width: 920px) {
@@ -563,39 +599,92 @@
       .mobile-menu-fab,
       .mobile-section-title { display: block; }
 
-      .hero { grid-template-columns: 1fr; gap: 12px; margin-bottom: 14px; }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
       .hero-main,
       .section,
-      .hero-side { padding: 16px; }
-      .hero-main { border-radius: 20px; }
-      .hero-main::after { width: 150px; height: 150px; inset: auto -40px -40px auto; }
-      .hero-side { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
-      .metric { min-height: 86px; padding: 12px; border-radius: 16px; }
-      .metric-value { font-size: 22px; }
+      .hero-side {
+        padding: 16px;
+      }
+
+      .hero-main {
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(7, 18, 40, 0.98), rgba(10, 27, 56, 0.96));
+      }
+
+      .hero-side {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .metric {
+        min-height: 86px;
+        padding: 12px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(29, 45, 74, 0.98), rgba(24, 36, 61, 0.97));
+      }
+
+      .metric-value {
+        font-size: 22px;
+        color: #ffffff;
+      }
+
       .content { gap: 12px; }
-      .section { border-radius: 20px; }
-      h1 { font-size: 28px; line-height: 1.15; }
-      h2 { font-size: 21px; }
-      .subtitle { font-size: 15px; line-height: 1.65; margin-bottom: 16px; }
-      .brand { width: 100%; justify-content: center; padding: 10px 12px; margin-bottom: 14px; }
+
+      .section {
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(7, 18, 40, 0.98), rgba(10, 24, 48, 0.96));
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 1.15;
+        color: #ffffff;
+      }
+
+      h2 {
+        font-size: 21px;
+        color: #f8fbff;
+      }
+
+      .subtitle {
+        font-size: 15px;
+        line-height: 1.75;
+        margin-bottom: 16px;
+        color: #e8f0fb;
+      }
+
+      .brand {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+        margin-bottom: 14px;
+        background: rgba(106, 22, 38, 0.32);
+      }
+
       .hero-actions,
       .level-actions,
-      .footer-actions { flex-direction: column; gap: 10px; }
-      button, .button-link { width: 100%; padding: 14px 14px; font-size: 14px; }
+      .footer-actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      button, .button-link {
+        width: 100%;
+        padding: 14px 14px;
+        font-size: 14px;
+      }
+
       .grid { grid-template-columns: 1fr; }
-      .info-box,
-      .quiz-card,
-      .mail-card,
-      .tip,
-      .result-box { padding: 14px; border-radius: 16px; }
-      .mail-field { font-size: 13px; }
-      .danger-item { padding: 12px; border-radius: 14px; }
-      .danger-item span { min-width: 20px; font-size: 20px; }
-      .choices { gap: 8px; }
-      .choice { min-height: 52px; }
-      .feedback { font-size: 14px; }
-      .quiz-image { border-radius: 10px; }
-      .footer-note { font-size: 12px; padding-bottom: 6px; }
+
+      .mail-field { font-size: 13px; color: #edf3ff; }
+      .feedback { font-size: 14px; color: #f2f7ff; }
+      .footer-note { font-size: 12px; padding-bottom: 6px; color: #c9d6ea; }
     }
   </style>
 </head>
@@ -603,30 +692,28 @@
   <div class="app-shell">
     <div class="mobile-topbar mobile-only">
       <div class="mobile-topbar-title">
-        <img class="brand-logo-img" src="/logo-84.png" alt="Jimmi's Hub logo">
-        <div>Jimmi's Hub Mobile</div>
+        <div class="fox-logo" aria-hidden="true">FOX</div>
+        <div>ChiefBot Mobile</div>
       </div>
       <div class="mobile-topbar-meta">
         <div class="mobile-chip">ניקוד: <span id="mobileScoreValue">0</span></div>
         <div class="mobile-chip">רמה: <span id="mobileLevelValue">Easy</span></div>
       </div>
     </div>
-
     <section class="hero">
       <div class="card hero-main">
         <div class="brand">
-          <img class="brand-logo-img" src="/logo-84.png" alt="Jimmi's Hub logo">
-          <div>Jimmi's Hub Security Awareness</div>
+          <div class="fox-logo" aria-label="FOX logo">FOX</div>
+          <div>🛡️ ChiefBot Security Awareness</div>
         </div>
         <h1>לומדים לזהות פישינג כמו מקצוענים</h1>
         <p class="subtitle">
-          הדרכה אינטראקטיבית לציבור הרחב: איך לזהות מייל חשוד, לעצור לפני לחיצה,
-          להבין מה מסוכן בקישורים ובקבצים, ולבנות הרגלי גלישה בטוחים יותר.
+          הדרכה אינטראקטיבית לעובדי הארגון: איך לזהות מייל חשוד, איך לעצור לפני לחיצה,
+          איך לזהות סימני אזהרה בתמונה ובטקסט, ואיך לדווח נכון ל-IT לפני שנגרם נזק.
         </p>
         <div class="hero-actions">
           <button class="primary" onclick="goToSection('learn')">התחל הדרכה</button>
           <button class="secondary" onclick="goToSection('quiz')">מעבר ישיר ל-Training</button>
-          <a class="button-link secondary" href="/" target="_self">חזרה לאתר הראשי</a>
         </div>
       </div>
 
@@ -658,7 +745,8 @@
           <button class="nav-btn" data-target="learn" onclick="goToSection('learn')">לימוד הסימנים</button>
           <button class="nav-btn" data-target="examples" onclick="goToSection('examples')">דוגמאות למיילים</button>
           <button class="nav-btn" data-target="quiz" onclick="goToSection('quiz')">Training אינטראקטיבי</button>
-          <button class="nav-btn" data-target="report" onclick="goToSection('report')">מה עושים אם נפלתי?</button>
+          <button class="nav-btn" data-target="report" onclick="goToSection('report')">איך מדווחים</button>
+          <button class="nav-btn" data-target="tests" onclick="goToSection('tests')">בדיקות מערכת</button>
         </div>
       </aside>
 
@@ -669,15 +757,15 @@
           <div class="grid">
             <div class="info-box">
               <h3>🎯 מה התוקף רוצה?</h3>
-              <p>לגנוב סיסמה, להדביק קובץ זדוני, לגשת למידע פרטי או לגרום לפעולה מתוך לחץ.</p>
+              <p>לגנוב סיסמה, לשתול קובץ זדוני, לגשת למידע פנימי או לגרום להעברת כספים בטעות.</p>
             </div>
             <div class="info-box">
               <h3>⚡ למה זה מצליח?</h3>
-              <p>כי מיילי פישינג נראים אמינים, משתמשים בדחיפות, ומתחזים לשירותים מוכרים כמו Microsoft, בנקים, הנהלה או משלוחים.</p>
+              <p>כי מיילי פישינג נראים לפעמים אמינים, דחופים, ומתחזים לגורמים מוכרים כמו Microsoft, הנהלה, ספקים או מערכות פנים-ארגוניות.</p>
             </div>
             <div class="info-box">
               <h3>🛡️ מה עוצר את זה?</h3>
-              <p>בדיקה קצרה לפני לחיצה: מי השולח, מה הדומיין, האם הקובץ צפוי, והאם הבקשה חריגה מהרגיל.</p>
+              <p>בדיקה קצרה לפני לחיצה: מי השולח, מה הדומיין, האם יש לחץ, האם הבקשה חריגה, ומה באמת עומד מאחורי הקישור או הקובץ.</p>
             </div>
           </div>
           <div class="progress-wrap">
@@ -693,7 +781,7 @@
               <span>1</span>
               <div>
                 <strong>השולח נראה מוכר — אבל הדומיין לא</strong>
-                <p>למשל: במקום אתר מוכר מופיע דומיין דומה או תוספת מיותרת בשם.</p>
+                <p>למשל: במקום company.com מופיע company-security-mail.com או דומיין חיצוני דומה.</p>
               </div>
             </div>
             <div class="danger-item">
@@ -707,21 +795,21 @@
               <span>3</span>
               <div>
                 <strong>קישור שלא מוביל ליעד הרשמי</strong>
-                <p>לפני לחיצה, מרחפים עם העכבר ובודקים אם הקישור באמת מוביל לאתר הרשמי.</p>
+                <p>לפני לחיצה, מרחפים עם העכבר ובודקים אם הקישור באמת מוביל לאתר הארגון או לשירות הרשמי.</p>
               </div>
             </div>
             <div class="danger-item">
               <span>4</span>
               <div>
                 <strong>קובץ מצורף לא צפוי</strong>
-                <p>במיוחד ZIP, HTML, EXE, DOCM או קובץ שהגיע ממקור לא צפוי ודורש פעולה חריגה.</p>
+                <p>במיוחד ZIP, HTML, EXE, DOCM או קובץ שהגיע ממקור לא צפוי ודורש הפעלת תוכן.</p>
               </div>
             </div>
             <div class="danger-item">
               <span>5</span>
               <div>
                 <strong>בקשה חריגה</strong>
-                <p>איפוס סיסמה, שיתוף קוד MFA, תשלום דחוף, או הזנת סיסמה מחדש – אלה נורות אזהרה.</p>
+                <p>איפוס סיסמה, שיתוף קוד MFA, תשלום דחוף, שינוי פרטי בנק, או בקשה בשם מנהל מחוץ לנוהל הרגיל.</p>
               </div>
             </div>
           </div>
@@ -734,24 +822,24 @@
             <div class="mail-card">
               <h3>דוגמה חשודה</h3>
               <div class="mail-header">
-                <div class="mail-field"><strong>מאת:</strong> Account Security &lt;alerts@secure-account-check.com&gt;</div>
-                <div class="mail-field"><strong>נושא:</strong> Verify your login immediately</div>
+                <div class="mail-field"><strong>מאת:</strong> IT Support &lt;support@company-security-alert.com&gt;</div>
+                <div class="mail-field"><strong>נושא:</strong> Immediate Password Reset Required</div>
               </div>
-              <p>Dear user,<br>We noticed suspicious access. Please verify your login now to avoid suspension.</p>
+              <p>Dear User,<br>Due to suspicious activity, your mailbox will be suspended unless you reset your password immediately.</p>
               <div class="report-box">
-                סימנים: דומיין חיצוני, לחץ מיידי, ניסוח כללי, וניסיון לדחוף אותך לפעולה מהירה.
+                סימנים: דומיין חיצוני, לחץ מיידי, ניסוח כללי, ניסיון לגרום לפעולה בלי בדיקה.
               </div>
             </div>
 
             <div class="mail-card">
               <h3>דוגמה שדורשת אימות</h3>
               <div class="mail-header">
-                <div class="mail-field"><strong>מאת:</strong> Delivery Update &lt;notice@parcel-track.info&gt;</div>
-                <div class="mail-field"><strong>נושא:</strong> Package delayed - open attachment</div>
+                <div class="mail-field"><strong>מאת:</strong> HR Department &lt;hr@yourcompany.com&gt;</div>
+                <div class="mail-field"><strong>נושא:</strong> Updated Payslip</div>
               </div>
-              <p>שלום,<br>יש עיכוב במשלוח שלך. פתח את הקובץ המצורף לקבלת פרטים.</p>
+              <p>שלום,<br>מצורף תלוש השכר המעודכן שלך.</p>
               <div class="report-box">
-                ייתכן שזו התחזות. קודם בודקים אם אתה בכלל מצפה לחבילה, ואם השולח אמיתי.
+                לא בהכרח זדוני — אבל עדיין צריך לבדוק: האם ציפית לזה, האם זה התזמון הרגיל, והאם הקובץ והכתובת תואמים.
               </div>
             </div>
           </div>
@@ -760,7 +848,7 @@
         <section id="quiz" class="card section">
           <div class="mobile-section-title mobile-only">Training במובייל</div>
           <h2>Training Mode</h2>
-          <p>בחר רמת קושי, התחל מבחן, ועבור על שאלות טקסט ותמונה עם תשובות מעורבבות.</p>
+          <p>בחר רמת קושי, התחל מבחן, ועבור על שאלות טקסט ותמונה כמו במציאות.</p>
 
           <div class="level-actions" style="margin-bottom: 14px;">
             <button id="levelEasy" class="secondary active-filter" onclick="setLevel('easy')">Easy</button>
@@ -778,29 +866,44 @@
         </section>
 
         <section id="report" class="card section">
-          <div class="mobile-section-title mobile-only">מה עושים אם נפלתי?</div>
-          <h2>מה עושים אם כבר לחצתי?</h2>
+          <div class="mobile-section-title mobile-only">דיווח מהיר</div>
+          <h2>איך מדווחים נכון בארגון</h2>
           <div class="grid">
             <div class="tip">
-              <h3>1. עצור מיד</h3>
-              <p>אל תמשיך ללחוץ, אל תפתח עוד קבצים, ואל תזין מידע נוסף.</p>
+              <h3>1. לא לוחצים</h3>
+              <p>אם משהו נראה חשוד, לא נכנסים לקישור, לא פותחים קובץ, ולא מזינים סיסמה.</p>
             </div>
             <div class="tip">
-              <h3>2. החלף סיסמה</h3>
-              <p>אם הזנת סיסמה בעמוד חשוד, שנה אותה מיד גם בשירותים אחרים שבהם השתמשת באותה סיסמה.</p>
+              <h3>2. שומרים ראיה</h3>
+              <p>אפשר לצלם מסך או להעביר את פרטי המייל ל-IT בלי לבצע פעולות מסוכנות.</p>
             </div>
             <div class="tip">
-              <h3>3. הפעל אימות דו-שלבי</h3>
-              <p>אם עדיין לא הפעלת MFA, זה הזמן. זה לא מושלם, אבל מקשה משמעותית על התוקף.</p>
+              <h3>3. מדווחים מיידית</h3>
+              <p>יש לשלוח לצוות ה-IT או דרך פורטל התמיכה עם כותרת: "חשד לפישינג".</p>
             </div>
           </div>
           <div class="report-box">
-            <strong>כלל אצבע:</strong><br>
-            אם משהו מרגיש דחוף מדי, מפחיד מדי, או טוב מדי — עוצרים ובודקים.
+            <strong>טקסט דיווח מומלץ:</strong><br>
+            שלום, התקבל אצלי מייל חשוד בנושא ______. לא לחצתי על קישורים ולא פתחתי קבצים. אשמח לבדיקה.<br><br>
+            <strong>כתובת דיווח:</strong> HelpDesk_FOX@fox.co.il
           </div>
-          <div class="footer-actions" style="margin-top: 14px;">
-            <a class="button-link primary" href="/" target="_self">חזרה לאתר הראשי</a>
-            <a class="button-link secondary" href="mailto:?subject=קח%20את%20מבחן%20הפישינג&body=מצאתי%20דף%20אינטראקטיבי%20ממש%20טוב%20ללימוד%20זיהוי%20פישינג:%20https://cyjimm.com/phishing-awareness/">שתף במייל</a>
+          <div class="report-actions" style="margin-top: 14px;">
+            <button class="primary" onclick="window.open('https://support.fox.co.il', '_blank', 'noopener')">דווח דרך פורטל התמיכה</button>
+            <button class="secondary" onclick="window.location.href='mailto:HelpDesk_FOX@fox.co.il?subject=%D7%97%D7%A9%D7%93%20%D7%9C%D7%A4%D7%99%D7%A9%D7%99%D7%A0%D7%92'">שלח מייל ל-HelpDesk</button>
+          </div>
+        </section>
+
+        <section id="tests" class="card section">
+          <div class="mobile-section-title mobile-only">בדיקות מערכת</div>
+          <h2>בדיקות מערכת</h2>
+          <div class="test-box">
+            <h3>בדיקות בסיס פנימיות</h3>
+            <p>המסך הזה עוזר לוודא שהלוגיקה המרכזית עובדת אחרי שינויים.</p>
+            <div class="tests-actions">
+              <button class="secondary" onclick="runSelfTests()">הרץ בדיקות</button>
+              <button class="secondary" onclick="startTraining(); setTimeout(runSelfTests, 50);">בדיקות אחרי התחלת מבחן</button>
+            </div>
+            <div id="testResults" class="inline-meta" style="margin-top: 14px;"></div>
           </div>
         </section>
       </main>
@@ -820,11 +923,11 @@
         <button class="mobile-nav-btn" data-target="learn" onclick="goToSection('learn')"><span>🧠</span>לימוד</button>
         <button class="mobile-nav-btn" data-target="examples" onclick="goToSection('examples')"><span>📨</span>דוגמאות</button>
         <button class="mobile-nav-btn" data-target="quiz" onclick="goToSection('quiz')"><span>🎯</span>Training</button>
-        <button class="mobile-nav-btn" data-target="report" onclick="goToSection('report')"><span>🚨</span>עזרה</button>
+        <button class="mobile-nav-btn" data-target="report" onclick="goToSection('report')"><span>🚨</span>דיווח</button>
       </div>
     </nav>
 
-    <div class="footer-note">Jimmi's Hub Security Awareness • Public Training Page</div>
+    <div class="footer-note">ChiefBot Interactive Security Awareness • HTML Training Prototype</div>
   </div>
 
   <script>
@@ -833,7 +936,7 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/\\"/g, '&quot;')
+        .replace(/\"/g, '&quot;')
         .replace(/'/g, '&#39;');
     }
 
@@ -842,7 +945,7 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/\\"/g, '&quot;')
+        .replace(/\"/g, '&quot;')
         .replace(/'/g, '&apos;');
     }
 
@@ -855,7 +958,7 @@
         '<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430">' +
           '<rect width="920" height="430" fill="#0f172a"/>' +
           '<rect x="120" y="60" width="680" height="300" rx="22" fill="#ffffff"/>' +
-          '<text x="170" y="120" font-size="28" font-family="Arial" fill="#111827">Secure Account Portal</text>' +
+          '<text x="170" y="120" font-size="28" font-family="Arial" fill="#111827">Microsoft 365</text>' +
           '<rect x="170" y="150" width="580" height="42" rx="10" fill="#fee2e2"/>' +
           '<text x="190" y="178" font-size="18" font-family="Arial" fill="#991b1b">' + escapeSvgText(domain) + '</text>' +
           '<text x="170" y="225" font-size="20" font-family="Arial" fill="#111827">' + escapeSvgText(message) + '</text>' +
@@ -906,7 +1009,7 @@
     }
 
     function withShuffledChoices(question) {
-      return {
+      const cloned = {
         id: question.id,
         type: question.type,
         title: question.title,
@@ -922,6 +1025,7 @@
           };
         }))
       };
+      return cloned;
     }
 
     const QUESTION_BANK = {
@@ -942,7 +1046,7 @@
           id: 2,
           type: 'text',
           title: 'מה עושים עם ZIP?',
-          prompt: 'הגיע קובץ ZIP מגורם שלא חיכית לו.',
+          prompt: 'הגיע קובץ ZIP מספק שלא חיכית לו.',
           choices: [
             { label: 'לא פותחים ומאמתים', correct: true },
             { label: 'פותחים רק כדי להציץ', correct: false },
@@ -967,7 +1071,7 @@
           type: 'image',
           title: 'בדיקת מסך התחברות',
           prompt: 'מה סימן האזהרה המרכזי בתמונה?',
-          imageAlt: 'תמונת דוגמה של מסך כניסה מזויף',
+          imageAlt: 'תמונת דוגמה של מסך כניסה מזויף ל-Microsoft',
           image: makeFakeLoginImage('login-microsoft-alert.xyz', 'Verify your account now'),
           choices: [
             { label: 'הדומיין חשוד', correct: true },
@@ -993,21 +1097,21 @@
         {
           id: 6,
           type: 'text',
-          title: 'בקשה דחופה',
-          prompt: 'הגיעה בקשה דחופה לתשלום או הזנת פרטים אישיים.',
+          title: 'בקשת מנהל',
+          prompt: 'הגיעה בקשה דחופה ממנהל להעברה כספית חריגה.',
           choices: [
-            { label: 'מאמתים בערוץ נוסף לפני כל פעולה', correct: true },
+            { label: 'מאמתים מולו טלפונית', correct: true },
             { label: 'מבצעים מיד בגלל הדחיפות', correct: false },
             { label: 'מחכים לעוד מייל ואז מחליטים', correct: false, distractor: true }
           ],
-          explanation: 'נכון. בקשות חריגות מאמתים בערוץ נוסף.'
+          explanation: 'נכון. בקשות תשלום חריגות מאמתים בערוץ נוסף.'
         }
       ],
       medium: [
         {
           id: 7,
           type: 'text',
-          title: 'קוד MFA',
+          title: 'דיווח חשוד',
           prompt: 'מייל מבקש שתשלח קוד MFA כדי לסיים התחברות.',
           choices: [
             { label: 'לא שולחים ומדווחים', correct: true },
@@ -1021,8 +1125,8 @@
           type: 'image',
           title: 'קישור בהודעת הנהלה',
           prompt: 'מה הבעיה העיקרית בהודעה שבתמונה?',
-          imageAlt: 'תמונת דוגמה של הודעה עם קישור חיצוני',
-          image: makeMailPreviewImage('CEO Office', 'Open payroll review now', 'hxxps://payroll-review-center.co/login'),
+          imageAlt: 'תמונת דוגמה של הודעת הנהלה עם קישור חיצוני',
+          image: makeMailPreviewImage('CEO Office', 'Open payroll review now', 'hxxps://fox-payroll-review.co/login'),
           choices: [
             { label: 'קישור חיצוני שלא תואם לארגון', correct: true },
             { label: 'השם CEO נשמע בכיר ולכן תקין', correct: false },
@@ -1076,7 +1180,7 @@
           title: 'עמוד אימות מזויף',
           prompt: 'מה הכי מחשיד בתמונה?',
           imageAlt: 'תמונת דוגמה של עמוד הזנת סיסמה מזויף',
-          image: makeFakeLoginImage('secure-login-gateway365.com', 'Session expired. Enter password again'),
+          image: makeFakeLoginImage('secure-fox365-login.com', 'Session expired. Enter password again'),
           choices: [
             { label: 'בקשה מיידית להזנת סיסמה בדומיין זר', correct: true },
             { label: 'השדה של הסיסמה נראה תקין בעיצוב', correct: false },
@@ -1116,6 +1220,7 @@
       } else {
         questions = QUESTION_BANK.easy.concat(QUESTION_BANK.medium, QUESTION_BANK.hard);
       }
+
       return questions.map(function(question) {
         return withShuffledChoices(question);
       });
@@ -1166,10 +1271,14 @@
       const levelLabel = LEVEL_CONFIG[level].label;
       document.getElementById('levelValue').textContent = levelLabel;
       const mobileLevel = document.getElementById('mobileLevelValue');
-      if (mobileLevel) mobileLevel.textContent = levelLabel;
+      if (mobileLevel) {
+        mobileLevel.textContent = levelLabel;
+      }
       ['easy', 'medium', 'hard'].forEach(function(key) {
         const btn = document.getElementById('level' + capitalize(key));
-        if (btn) btn.classList.toggle('active-filter', key === level);
+        if (btn) {
+          btn.classList.toggle('active-filter', key === level);
+        }
       });
       updateCountersPreview();
     }
@@ -1195,8 +1304,6 @@
       state.timeLeft = LEVEL_CONFIG[state.level].time;
 
       document.getElementById('scoreValue').textContent = '0';
-      const mobileScore = document.getElementById('mobileScoreValue');
-      if (mobileScore) mobileScore.textContent = '0';
       document.getElementById('answeredValue').textContent = '0';
       document.getElementById('totalQuestionsValue').textContent = String(state.currentQuestions.length);
       document.getElementById('statusValue').textContent = 'מתחיל';
@@ -1214,7 +1321,9 @@
       state.timer = setInterval(function() {
         state.timeLeft -= 1;
         document.getElementById('timerValue').textContent = String(Math.max(state.timeLeft, 0));
-        if (state.timeLeft <= 0) finishTraining('נגמר הזמן.');
+        if (state.timeLeft <= 0) {
+          finishTraining('נגמר הזמן.');
+        }
       }, 1000);
     }
 
@@ -1227,9 +1336,11 @@
         card.push('<div class="quiz-card" id="question-' + question.id + '">');
         card.push('<h3>' + escapeHtml(question.title) + '</h3>');
         card.push('<p>' + escapeHtml(question.prompt) + '</p>');
+
         if (question.type === 'image') {
           card.push('<img class="quiz-image" src="' + question.image + '" alt="' + escapeHtml(question.imageAlt) + '">');
         }
+
         card.push('<div class="choices">');
         question.choices.forEach(function(choice, index) {
           card.push(
@@ -1241,6 +1352,7 @@
         card.push('</div>');
         card.push('<div class="feedback" id="feedback-' + question.id + '"></div>');
         card.push('</div>');
+
         parts.push(card.join(''));
       });
 
@@ -1248,18 +1360,27 @@
     }
 
     function answerQuestion(questionId, choiceIndex, buttonEl) {
-      if (state.lockedQuestions.has(questionId)) return;
+      if (state.lockedQuestions.has(questionId)) {
+        return;
+      }
 
       const question = state.currentQuestions.find(function(item) {
         return item.id === questionId;
       });
-      if (!question) return;
+
+      if (!question) {
+        return;
+      }
 
       const selectedChoice = question.choices[choiceIndex];
-      if (!selectedChoice) return;
+      if (!selectedChoice) {
+        return;
+      }
 
       const container = document.getElementById('question-' + questionId);
-      if (!container) return;
+      if (!container) {
+        return;
+      }
 
       const buttons = container.querySelectorAll('.choice');
       const feedback = document.getElementById('feedback-' + questionId);
@@ -1267,7 +1388,10 @@
         return choice.correct;
       });
 
-      buttons.forEach(function(btn) { btn.disabled = true; });
+      buttons.forEach(function(btn) {
+        btn.disabled = true;
+      });
+
       state.lockedQuestions.add(questionId);
       state.answered.add(questionId);
 
@@ -1277,7 +1401,9 @@
         feedback.innerHTML = '✅ <strong>נכון.</strong> ' + escapeHtml(question.explanation);
       } else {
         buttonEl.classList.add('wrong');
-        if (buttons[correctIndex]) buttons[correctIndex].classList.add('correct');
+        if (buttons[correctIndex]) {
+          buttons[correctIndex].classList.add('correct');
+        }
         feedback.innerHTML = '❌ <strong>לא נכון.</strong> ' + escapeHtml(question.explanation);
       }
 
@@ -1289,7 +1415,9 @@
     function updateDashboard() {
       document.getElementById('scoreValue').textContent = String(state.score);
       const mobileScore = document.getElementById('mobileScoreValue');
-      if (mobileScore) mobileScore.textContent = String(state.score);
+      if (mobileScore) {
+        mobileScore.textContent = String(state.score);
+      }
       document.getElementById('answeredValue').textContent = String(state.answered.size);
       updateProgress(state.currentQuestions.length);
 
@@ -1309,6 +1437,7 @@
     function finishTraining(reason) {
       clearInterval(state.timer);
       state.timer = null;
+
       const total = state.currentQuestions.length || getQuestionsForLevel(state.level).length;
       const percentage = total ? Math.round((state.score / (total * 10)) * 100) : 0;
       const resultBox = document.getElementById('resultBox');
@@ -1322,8 +1451,66 @@
       ].join('');
     }
 
+    function runSelfTests() {
+      const results = [];
+
+      function assert(name, condition) {
+        results.push({ name: name, passed: Boolean(condition) });
+      }
+
+      assert('Easy כולל 6 שאלות', getQuestionsForLevel('easy').length === 6);
+      assert('Medium כולל 9 שאלות', getQuestionsForLevel('medium').length === 9);
+      assert('Hard כולל 12 שאלות', getQuestionsForLevel('hard').length === 12);
+      assert('לכל שאלה יש 3 תשובות', getQuestionsForLevel('easy').every(function(question) {
+        return question.choices.length === 3;
+      }));
+      assert('לכל שאלה יש תשובה נכונה אחת בלבד', getQuestionsForLevel('hard').every(function(question) {
+        return question.choices.filter(function(choice) { return choice.correct; }).length === 1;
+      }));
+      assert('LEVEL_CONFIG לזמן Easy תקין', LEVEL_CONFIG.easy.time === 90);
+      assert('escapeSvgText מקודד תווים', escapeSvgText('<test&>') === '&lt;test&amp;&gt;');
+      assert('escapeHtml מקודד תווים', escapeHtml('<b>x</b>') === '&lt;b&gt;x&lt;/b&gt;');
+      assert('Data SVG נוצר', makeAttachmentImage('a.pdf.exe', 'x').indexOf('data:image/svg+xml') === 0);
+      assert('התחלת מבחן Easy מציגה 6 שאלות', (function() {
+        state.level = 'easy';
+        startTraining();
+        return document.querySelectorAll('#quizContainer .quiz-card').length === 6;
+      })());
+      assert('answerQuestion נועל שאלה אחרי מענה', (function() {
+        const firstButton = document.querySelector('#question-1 .choice');
+        if (!firstButton) return false;
+        answerQuestion(1, 0, firstButton);
+        return state.lockedQuestions.has(1) && state.answered.has(1);
+      })());
+      assert('טיימר מתאפס לפי רמה', (function() {
+        state.level = 'hard';
+        startTraining();
+        return state.timeLeft === 60;
+      })());
+      assert('התשובה הנכונה לא מקובעת תמיד במקום הראשון', (function() {
+        const runs = [];
+        for (let i = 0; i < 8; i += 1) {
+          const sample = getQuestionsForLevel('easy')[0];
+          runs.push(sample.choices.findIndex(function(choice) { return choice.correct; }));
+        }
+        return new Set(runs).size > 1;
+      })());
+      assert('יש כפתור תפריט מובייל', Boolean(document.getElementById('mobileMenuFab')));
+      assert('יש drawer מובייל', Boolean(document.getElementById('mobileDrawer')));
+      assert('יש כותרת מובייל עליונה', Boolean(document.querySelector('.mobile-topbar')));
+      clearInterval(state.timer);
+      state.timer = null;
+
+      const target = document.getElementById('testResults');
+      target.innerHTML = results.map(function(item) {
+        const status = item.passed ? '✅' : '❌';
+        return '<span class="badge">' + status + ' ' + escapeHtml(item.name) + '</span>';
+      }).join('');
+    }
+
     setLevel('easy');
     updateCountersPreview();
+    runSelfTests();
   </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://mdm.cyjimm.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,6 +40,30 @@
     /* Remove the underline hover effect from nav links */
     .nav .links a::after {
       display: none;
+    }
+    .form-status {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      display: none;
+    }
+    .form-status.ok {
+      display: block;
+      border-color: rgba(72, 211, 138, .55);
+    }
+    .form-status.err {
+      display: block;
+      border-color: rgba(255, 95, 95, .6);
+    }
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -147,14 +171,17 @@
       <div class="wrap">
         <h2>יצירת קשר</h2>
         <p>השאירו פרטים ונחזור אליכם. שדות חובה מסומנים *.</p>
-        <form method="POST" action="https://formspree.io/f/your-id-here">
-          <input class="input" name="name" placeholder="שם מלא *" required>
-          <input class="input" type="email" name="email" placeholder="אימייל *" required>
-          <input class="input" name="company" placeholder="חברה / ארגון">
+        <form id="contactForm" method="POST" action="https://mdm.cyjimm.com/api/contact" data-contact-form novalidate>
+          <input class="input" name="name" placeholder="שם מלא *" autocomplete="name" required>
+          <input class="input" type="email" name="email" placeholder="אימייל *" autocomplete="email" required>
+          <input class="input" name="company" placeholder="חברה / ארגון" autocomplete="organization">
+          <input class="input" name="phone" placeholder="טלפון" autocomplete="tel">
           <textarea name="message" placeholder="איך נוכל לעזור? *" required></textarea>
-          <label class="notice"><input type="checkbox" required> מאשר/ת מדיניות פרטיות ותנאי שימוש.</label>
+          <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="notice"><input type="checkbox" name="privacy" value="accepted" required> מאשר/ת מדיניות פרטיות ותנאי שימוש.</label>
           <button class="btn btn-primary" type="submit">שליחה</button>
-          <div class="notice">אין פרסום. אין ספאם. לעדכוני השקה בלבד.</div>
+          <div class="form-status" id="contactStatus" role="status" aria-live="polite"></div>
+          <div class="notice">אין פרסום. אין ספאם. הפרטים נשלחים ישירות לצוות CyJimm.</div>
         </form>
       </div>
     </section>
@@ -168,8 +195,5 @@
   </footer>
 
   <script src="./assets/app.js" defer></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

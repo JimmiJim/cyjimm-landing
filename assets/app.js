@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // --- תפריט מובייל ---
   const btn = document.getElementById('menuBtn');
   const panel = document.getElementById('mobilePanel');
   if (btn && panel) {
@@ -10,19 +9,54 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- עדכון שנה בפוטר ---
   const yr = document.getElementById('year');
   if (yr) {
     yr.textContent = new Date().getFullYear();
   }
 
-  // === חללית שעוקבת אחרי הסמן ===
-  // נרוץ רק במכשירים עם מצביע "עדין" (דסקטופ/פד), כדי לא לשבור מובייל
+  // === Contact Form Logic ===
+  const form = document.querySelector('[data-contact-form]');
+  const statusBox = document.getElementById('contactStatus');
+
+  if (form && statusBox) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+
+      // Honeypot check
+      if (data.get('website')) return;
+
+      statusBox.className = 'form-status';
+      statusBox.textContent = 'שולח...';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: JSON.stringify(Object.fromEntries(data)),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (res.ok) {
+          statusBox.classList.add('ok');
+          statusBox.textContent = 'הפרטים נשלחו בהצלחה ✔️';
+          form.reset();
+        } else {
+          throw new Error('Request failed');
+        }
+      } catch (err) {
+        statusBox.classList.add('err');
+        statusBox.textContent = 'שגיאה בשליחה, נסה שוב או פנה במייל';
+      }
+    });
+  }
+
   const finePointer = window.matchMedia('(pointer: fine)').matches;
   const ship = document.querySelector('.cursor-ship');
 
   if (ship && finePointer) {
-    // מתחילים שקופים; נחשפים כשנכנסים לחלון
     ship.style.opacity = '0';
 
     document.addEventListener('mouseenter', () => {
@@ -33,11 +67,10 @@ document.addEventListener('DOMContentLoaded', function () {
       ship.style.opacity = '0';
     });
 
-    // תנועה "חלקה" עם easing בעזרת requestAnimationFrame
-    let x = 0, y = 0;   // מיקום נוכחי
-    let tx = 0, ty = 0; // מיקום יעד
+    let x = 0, y = 0;
+    let tx = 0, ty = 0;
     let rafId = null;
-    const speed = 0.22; // ככל שגדול יותר — פחות גרירה, תנועה חדה יותר
+    const speed = 0.22;
 
     function onMouseMove(e) {
       tx = e.clientX;

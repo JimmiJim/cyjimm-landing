@@ -22,33 +22,45 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
       const data = new FormData(form);
 
       // Honeypot check
       if (data.get('website')) return;
 
       statusBox.className = 'form-status';
+      statusBox.style.display = 'block';
       statusBox.textContent = 'שולח...';
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
 
       try {
         const res = await fetch(form.action, {
           method: 'POST',
           body: JSON.stringify(Object.fromEntries(data)),
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           }
         });
 
         if (res.ok) {
-          statusBox.classList.add('ok');
-          statusBox.textContent = 'הפרטים נשלחו בהצלחה ✔️';
+          statusBox.className = 'form-status ok';
+          statusBox.textContent = 'הפרטים נשלחו בהצלחה ✔️ נחזור אליך בהקדם.';
           form.reset();
         } else {
           throw new Error('Request failed');
         }
       } catch (err) {
-        statusBox.classList.add('err');
-        statusBox.textContent = 'שגיאה בשליחה, נסה שוב או פנה במייל';
+        statusBox.className = 'form-status err';
+        statusBox.textContent = 'שגיאה בשליחה. אפשר לפנות ישירות ל־madara@cyjimm.com';
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   }

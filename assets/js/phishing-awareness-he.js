@@ -9,7 +9,7 @@ const QUESTION_BANK = {
         { label: 'לא, זה תקין', correct: false },
         { label: 'להעביר לקבוצת הוואטסאפ כדי לשאול מי עוד קיבל', correct: false }
       ],
-      explanation: 'נכון. בקשת איפוס עם דומיין חיצוני היא סימן אזהרה קלאסי.'
+      explanation: 'בקשת איפוס עם דומיין חיצוני היא סימן אזהרה קלאסי.'
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const QUESTION_BANK = {
         { label: 'פותחים רק כדי להציץ', correct: false },
         { label: 'מורידים לשולחן העבודה ומחליטים אחר כך', correct: false }
       ],
-      explanation: 'נכון. קובץ לא צפוי, במיוחד ZIP, דורש עצירה ואימות.'
+      explanation: 'קובץ לא צפוי, במיוחד ZIP, דורש עצירה ואימות.'
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ const QUESTION_BANK = {
         { label: 'תקין', correct: false },
         { label: 'כנראה תקין כי יש בו את המילה microsoft', correct: false }
       ],
-      explanation: 'נכון. זה לא דומיין רשמי של Microsoft.'
+      explanation: 'זה לא דומיין רשמי של Microsoft.'
     }
   ],
   medium: [
@@ -44,7 +44,7 @@ const QUESTION_BANK = {
         { label: 'שולחים אם השולח נשמע לחוץ', correct: false },
         { label: 'שולחים רק את הספרות האחרונות כדי להיות בטוח', correct: false }
       ],
-      explanation: 'נכון. קוד MFA הוא אישי ואסור לשתף.'
+      explanation: 'קוד MFA הוא אישי ואסור לשתף.'
     }
   ],
   hard: [
@@ -57,7 +57,7 @@ const QUESTION_BANK = {
         { label: 'זה לא משנה כל עוד הנושא מוכר', correct: false },
         { label: 'Reply-To חשוב רק אם יש קובץ מצורף', correct: false }
       ],
-      explanation: 'נכון. כתובת Reply-To חריגה היא אינדיקציה חשובה.'
+      explanation: 'כתובת Reply-To חריגה היא אינדיקציה חשובה.'
     }
   ]
 };

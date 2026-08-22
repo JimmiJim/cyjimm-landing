@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Honeypot check
       if (data.get('website')) return;
 
-      statusBox.className = 'form-status';
-      statusBox.style.display = 'block';
+      statusBox.className = 'form-status is-visible';
       statusBox.textContent = isEnglish ? 'Sending...' : 'שולח...';
 
       const submitBtn = form.querySelector('button[type="submit"]');

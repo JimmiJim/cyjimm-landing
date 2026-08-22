@@ -1,4 +1,4 @@
-# CyJimm — Hardening Notes (GitHub Pages + Cloudflare)
+# CyJimm - Hardening Notes (GitHub Pages + Cloudflare)
 
 This site is static and served via GitHub Pages behind Cloudflare. For **professional-grade security & privacy**, set the following **HTTP Security Headers** in Cloudflare (Rules > Transform Rules > Modify Response Header):
 

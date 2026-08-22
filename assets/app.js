@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       } catch (err) {
         statusBox.className = 'form-status err';
-        statusBox.textContent = isEnglish ? 'There was an error sending the form. You can contact madara@cyjimm.com directly.' : 'שגיאה בשליחה. אפשר לפנות ישירות ל־madara@cyjimm.com';
+        statusBox.textContent = isEnglish ? 'There was an error sending the form. You can contact hello@cyjimm.com directly.' : 'שגיאה בשליחה. אפשר לפנות ישירות ל־hello@cyjimm.com';
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }

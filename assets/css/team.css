@@ -22,6 +22,7 @@ html[lang="he"] .team-page .navlinks a:hover { opacity: 1; }
 .team-page .member { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 10px; box-shadow: 0 6px 18px rgba(2,6,23,.05); }
 .team-page .member h3 { margin: 0; font-size: 20px; color: #0f172a; }
 .team-page .role { color: #334155; }
+.team-page .role-nick { color: var(--muted); font-weight: 400; font-size: 0.92em; }
 .team-page .tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .team-page .tag { display: inline-flex; align-items: center; gap: 8px; background: var(--chip); border: 1px solid #e5e7eb; color: #334155; padding: 6px 12px; border-radius: 999px; font-size: 12px; }
 .team-page .list { margin: 0; padding: 0 18px; }

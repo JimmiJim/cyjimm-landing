@@ -9,303 +9,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <style>
-    :root{
-      --bg1:#0b1730;
-      --bg2:#15305a;
-      --card:#12284a;
-      --card2:#1b3764;
-      --text:#f7fbff;
-      --muted:#d8e6fb;
-      --border:rgba(255,255,255,.14);
-      --accent:#ef4444;
-      --shadow:0 18px 45px rgba(0,0,0,.35)
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Segoe UI,Tahoma,Arial,sans-serif;
-      background:
-        radial-gradient(circle at top right,rgba(255,80,80,.18),transparent 28%),
-        radial-gradient(circle at bottom left,rgba(80,140,255,.12),transparent 30%),
-        linear-gradient(160deg,var(--bg1),#102447 48%,var(--bg2));
-      color:var(--text);
-      min-height:100vh
-    }
-    button{font:inherit}
-    a{color:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:18px}
-    .card{
-      background:linear-gradient(180deg,#102446f2,#17325bf0);
-      border:1px solid var(--border);
-      border-radius:24px;
-      box-shadow:var(--shadow)
-    }
-    .topbar{
-      display:none;
-      position:sticky;
-      top:0;
-      z-index:30;
-      margin-bottom:14px;
-      padding:12px 14px;
-      align-items:center;
-      justify-content:space-between;
-      background:linear-gradient(180deg,#102446fa,#0d1c35f5);
-      border:1px solid var(--border);
-      border-radius:18px
-    }
-    .brandrow{display:flex;align-items:center;gap:10px;font-weight:800}
-    .logo{
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      object-fit:contain;
-      background:#fff;
-      padding:4px;
-      box-shadow:0 8px 20px rgba(0,0,0,.2)
-    }
-    .chips{display:flex;gap:8px}
-    .chip{
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.09);
-      border:1px solid var(--border);
-      color:#f4f8ff;
-      font-size:12px;
-      white-space:nowrap
-    }
-    .hero{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
-    .hero-main{
-      padding:28px;
-      background:linear-gradient(180deg,#0d2141f7,#163462f2)
-    }
-    .brand{
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(128,26,44,.28);
-      border:1px solid rgba(239,68,68,.35);
-      color:#fecaca;
-      font-weight:700;
-      margin-bottom:16px
-    }
-    h1{
-      margin:0 0 12px;
-      font-size:clamp(30px,4vw,46px);
-      line-height:1.1;
-      color:#fff
-    }
-    .sub{
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.75;
-      max-width:62ch;
-      margin-bottom:22px
-    }
-    .actions{display:flex;flex-wrap:wrap;gap:12px}
-    .btn{
-      border:0;
-      cursor:pointer;
-      border-radius:16px;
-      padding:14px 18px;
-      font-weight:700;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center
-    }
-    .primary{background:linear-gradient(135deg,#ff4a4a,#c61d1d);color:#fff}
-    .secondary{background:rgba(255,255,255,.07);color:#fff;border:1px solid var(--border)}
-    .secondary.active-filter{
-      background:rgba(239,68,68,.15);
-      border-color:rgba(239,68,68,.35);
-      color:#fff
-    }
-    .stats{
-      padding:22px;
-      display:grid;
-      grid-template-rows:repeat(4,1fr);
-      gap:14px
-    }
-    .metric{
-      background:linear-gradient(180deg,#203b66fa,#192d4df7);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:18px;
-      padding:16px
-    }
-    .metric .l{color:#cbd7ea;font-size:14px}
-    .metric .v{font-size:28px;font-weight:800;color:#fff}
-    .layout{display:grid;grid-template-columns:280px 1fr;gap:20px;margin-top:20px}
-    .sidebar{padding:18px;height:fit-content;position:sticky;top:16px}
-    .navlist{display:grid;gap:10px;margin-top:14px}
-    .nav{
-      width:100%;
-      text-align:right;
-      background:rgba(255,255,255,.06);
-      color:#eef4ff;
-      border:1px solid transparent;
-      padding:14px 15px;
-      border-radius:16px
-    }
-    .nav.active{
-      background:rgba(239,68,68,.12);
-      border-color:rgba(239,68,68,.38);
-      color:#fecaca
-    }
-    .content{display:grid;gap:18px}
-    .section{
-      display:none;
-      padding:24px;
-      background:linear-gradient(180deg,#0e2241fa,#132b4ef5)
-    }
-    .section.active{display:block}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .box{
-      background:linear-gradient(180deg,#1a3358fa,#132847f7);
-      border:1px solid rgba(255,255,255,.11);
-      border-radius:18px;
-      padding:16px
-    }
-    .box h3{margin:0 0 10px;color:#fff}
-    .box p,.box li{color:#dce6f7;line-height:1.8}
-    .progress{
-      height:14px;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-      overflow:hidden;
-      margin-top:16px
-    }
-    .progress-fill{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg,#22c55e,#84cc16);
-      transition:width .25s ease
-    }
-    .danger-list{display:grid;gap:10px}
-    .danger-item{
-      background:rgba(239,68,68,.08);
-      border:1px solid rgba(239,68,68,.2);
-      border-radius:16px;
-      padding:12px
-    }
-    .feedback{
-      margin-top:12px;
-      padding:12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.12);
-      display:none
-    }
-    .feedback.show{display:block}
-    .menu-fab,.drawer,.backdrop{display:none}
-    .menu-fab{
-      position:fixed;
-      left:12px;
-      bottom:16px;
-      z-index:60;
-      width:56px;
-      height:56px;
-      border-radius:18px;
-      background:linear-gradient(180deg,#18335dfa,#0f213ff5);
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:var(--shadow);
-      color:#fff;
-      font-size:24px
-    }
-    .backdrop{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.45);
-      z-index:54
-    }
-    .backdrop.open{display:block}
-    .drawer{
-      position:fixed;
-      left:10px;
-      bottom:84px;
-      width:min(280px,calc(100vw - 20px));
-      z-index:55;
-      padding:12px;
-      border-radius:22px;
-      background:linear-gradient(180deg,#102446fa,#0d1c35f5);
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:var(--shadow);
-      transform:translateY(16px);
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .18s ease,transform .18s ease
-    }
-    .drawer.open{
-      display:block;
-      opacity:1;
-      transform:translateY(0);
-      pointer-events:auto
-    }
-    .drawerhead{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:10px;
-      color:#dce6f7;
-      font-size:13px
-    }
-    .close{
-      width:34px;
-      height:34px;
-      border-radius:12px;
-      padding:0;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      color:#fff
-    }
-    .drawernav{display:grid;gap:8px}
-    .mnav{
-      width:100%;
-      min-height:52px;
-      border-radius:16px;
-      padding:12px;
-      text-align:right;
-      background:rgba(255,255,255,.07);
-      color:#eef4ff;
-      border:1px solid transparent;
-      display:flex;
-      justify-content:flex-start;
-      gap:8px
-    }
-    .mnav.active{
-      background:rgba(239,68,68,.15);
-      border-color:rgba(239,68,68,.35);
-      color:#fff
-    }
-    .foot{text-align:center;color:#c9d6ea;font-size:12px;margin-top:18px;padding-bottom:8px}
-    .hidden{display:none !important}
-
-    @media (max-width:920px){
-      .hero,.layout{grid-template-columns:1fr}
-      .sidebar{position:static}
-      .stats{grid-template-columns:repeat(2,1fr);grid-template-rows:none}
-    }
-
-    @media (max-width:640px){
-      .wrap{padding:10px 10px 28px}
-      .topbar{display:flex}
-      .hero{grid-template-columns:1fr;gap:12px}
-      .hero-main,.section,.stats{padding:16px}
-      .stats{grid-template-columns:repeat(2,1fr);gap:10px}
-      .layout{grid-template-columns:1fr;gap:12px;margin-top:12px}
-      .sidebar{display:none}
-      .menu-fab{display:flex;align-items:center;justify-content:center;inset-inline-start:auto;inset-inline-end:12px}
-      .drawer{inset-inline-start:auto;inset-inline-end:10px}
-      .actions{flex-direction:column}
-      .btn{width:100%}
-      h1{font-size:28px}
-      .sub{font-size:15px}
-      .card,.section{border-radius:20px}
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/phishing-awareness.css">
+  <link rel="stylesheet" href="/assets/css/csp-compat.css">
   <link rel="stylesheet" href="/assets/css/global-navigation.css">
   <link rel="stylesheet" href="/assets/css/accessibility.css">
   <link rel="canonical" href="https://cyjimm.com/phishing-awareness/">
@@ -337,8 +42,8 @@
       <h1>לומדים לזהות פישינג כמו מקצוענים</h1>
       <p class="sub">הדרכה אינטראקטיבית לציבור הרחב: איך לזהות מייל חשוד, לעצור לפני לחיצה, להבין מה מסוכן בקישורים ובקבצים, ולבנות הרגלי גלישה בטוחים יותר.</p>
       <div class="actions">
-        <button class="btn primary" onclick="goToSection('learn')">התחל הדרכה</button>
-        <button class="btn secondary" onclick="goToSection('quiz')">מעבר ישיר ל-Training</button>
+        <button class="btn primary" data-section-target="learn">התחל הדרכה</button>
+        <button class="btn secondary" data-section-target="quiz">מעבר ישיר ל-Training</button>
         <a class="btn secondary" href="/">חזרה לאתר הראשי</a>
       </div>
     </div>
@@ -355,11 +60,11 @@
     <aside class="card sidebar">
       <h2>ניווט מהיר</h2>
       <nav class="navlist" aria-label="ניווט בהדרכה">
-        <button class="nav active" data-target="home" onclick="goToSection('home')">מסך ראשי</button>
-        <button class="nav" data-target="learn" onclick="goToSection('learn')">לימוד הסימנים</button>
-        <button class="nav" data-target="examples" onclick="goToSection('examples')">דוגמאות למיילים</button>
-        <button class="nav" data-target="quiz" onclick="goToSection('quiz')">Training אינטראקטיבי</button>
-        <button class="nav" data-target="report" onclick="goToSection('report')">מה עושים אם נפלתי?</button>
+        <button class="nav active" data-target="home" data-section-target="home">מסך ראשי</button>
+        <button class="nav" data-target="learn" data-section-target="learn">לימוד הסימנים</button>
+        <button class="nav" data-target="examples" data-section-target="examples">דוגמאות למיילים</button>
+        <button class="nav" data-target="quiz" data-section-target="quiz">Training אינטראקטיבי</button>
+        <button class="nav" data-target="report" data-section-target="report">מה עושים אם נפלתי?</button>
       </nav>
     </aside>
 
@@ -414,16 +119,16 @@
 
       <section id="quiz" class="card section">
         <h2>Training Mode</h2>
-        <p class="sub" style="margin-top:0">בחר רמת קושי, התחל מבחן, ועבור על שאלות טקסט ותמונה עם תשובות מעורבבות.</p>
-        <div class="actions" style="margin-bottom:14px">
-          <button id="levelEasy" class="btn secondary active-filter" onclick="setLevel('easy')">Easy</button>
-          <button id="levelMedium" class="btn secondary" onclick="setLevel('medium')">Medium</button>
-          <button id="levelHard" class="btn secondary" onclick="setLevel('hard')">Hard</button>
-          <button class="btn primary" onclick="startTraining()">התחל מבחן</button>
+        <p class="sub quiz-intro">בחר רמת קושי, התחל מבחן, ועבור על שאלות טקסט ותמונה עם תשובות מעורבבות.</p>
+        <div class="actions quiz-actions">
+          <button id="levelEasy" class="btn secondary active-filter" data-level="easy">Easy</button>
+          <button id="levelMedium" class="btn secondary" data-level="medium">Medium</button>
+          <button id="levelHard" class="btn secondary" data-level="hard">Hard</button>
+          <button class="btn primary" data-start-training>התחל מבחן</button>
         </div>
         <div class="box hidden" id="timerBox">⏱️ זמן שנותר: <strong><span id="timerValue">0</span></strong> שניות</div>
         <div id="quizContainer"></div>
-        <div id="resultBox" class="box hidden" style="margin-top:16px"></div>
+        <div id="resultBox" class="box hidden quiz-result"></div>
       </section>
 
       <section id="report" class="card section">
@@ -433,7 +138,7 @@
           <div class="box"><h3>2. החלף סיסמה</h3><p>אם הזנת סיסמה בעמוד חשוד, שנה אותה מיד גם בשירותים אחרים שבהם השתמשת באותה סיסמה.</p></div>
           <div class="box"><h3>3. הפעל אימות דו-שלבי</h3><p>אם עדיין לא הפעלת MFA, זה הזמן. זה לא מושלם, אבל מקשה משמעותית על התוקף.</p></div>
         </div>
-        <div class="box" style="margin-top:14px">
+        <div class="box quiz-report-note">
           <strong>כלל אצבע:</strong>
           <p>אם משהו מרגיש דחוף מדי, מפחיד מדי, או טוב מדי - עוצרים ובודקים.</p>
         </div>
@@ -441,294 +146,27 @@
     </div>
   </div>
 
-  <button class="menu-fab" id="mobileMenuFab" type="button" aria-label="פתח תפריט" aria-controls="mobileDrawer" aria-expanded="false" onclick="toggleMobileMenu()">☰</button>
-  <div class="backdrop" id="mobileDrawerBackdrop" onclick="closeMobileMenu()"></div>
+  <button class="menu-fab" id="mobileMenuFab" type="button" aria-label="פתח תפריט" aria-controls="mobileDrawer" aria-expanded="false" data-toggle-mobile-menu>☰</button>
+  <div class="backdrop" id="mobileDrawerBackdrop" data-close-mobile-menu></div>
 
   <nav class="drawer" id="mobileDrawer" aria-label="ניווט מובייל">
     <div class="drawerhead">
       <div>תפריט</div>
-      <button class="close" type="button" aria-label="סגור תפריט" onclick="closeMobileMenu()">×</button>
+      <button class="close" type="button" aria-label="סגור תפריט" data-close-mobile-menu>×</button>
     </div>
     <div class="drawernav">
-      <button class="mnav active" data-target="home" onclick="goToSection('home')"><span>🏠</span>ראשי</button>
-      <button class="mnav" data-target="learn" onclick="goToSection('learn')"><span>🧠</span>לימוד</button>
-      <button class="mnav" data-target="examples" onclick="goToSection('examples')"><span>📨</span>דוגמאות</button>
-      <button class="mnav" data-target="quiz" onclick="goToSection('quiz')"><span>🎯</span>Training</button>
-      <button class="mnav" data-target="report" onclick="goToSection('report')"><span>🚨</span>עזרה</button>
+      <button class="mnav active" data-target="home" data-section-target="home"><span>🏠</span>ראשי</button>
+      <button class="mnav" data-target="learn" data-section-target="learn"><span>🧠</span>לימוד</button>
+      <button class="mnav" data-target="examples" data-section-target="examples"><span>📨</span>דוגמאות</button>
+      <button class="mnav" data-target="quiz" data-section-target="quiz"><span>🎯</span>Training</button>
+      <button class="mnav" data-target="report" data-section-target="report"><span>🚨</span>עזרה</button>
     </div>
   </nav>
 
 </main>
 <footer class="foot wrap">Jimmi's Hub Security Awareness • Public Training Page · <a href="/">ראשי</a> · <a href="/privacy.html">מדיניות פרטיות</a> · <a href="/terms.html">תנאי שימוש</a> · <a href="/accessibility.html">הצהרת נגישות</a> · <a href="/en/phishing-awareness/" lang="en" dir="ltr">English</a></footer>
 
-<script>
-const QUESTION_BANK = {
-  easy: [
-    {
-      id: 1,
-      title: 'האם זה פישינג?',
-      prompt: 'מייל מבקש לאפס סיסמה עם קישור חיצוני ולא מזוהה.',
-      choices: [
-        { label: 'כן, זה חשוד', correct: true },
-        { label: 'לא, זה תקין', correct: false },
-        { label: 'להעביר לקבוצת הוואטסאפ כדי לשאול מי עוד קיבל', correct: false }
-      ],
-      explanation: 'נכון. בקשת איפוס עם דומיין חיצוני היא סימן אזהרה קלאסי.'
-    },
-    {
-      id: 2,
-      title: 'מה עושים עם ZIP?',
-      prompt: 'הגיע קובץ ZIP מגורם שלא חיכית לו.',
-      choices: [
-        { label: 'לא פותחים ומאמתים', correct: true },
-        { label: 'פותחים רק כדי להציץ', correct: false },
-        { label: 'מורידים לשולחן העבודה ומחליטים אחר כך', correct: false }
-      ],
-      explanation: 'נכון. קובץ לא צפוי, במיוחד ZIP, דורש עצירה ואימות.'
-    },
-    {
-      id: 3,
-      title: 'זיהוי דומיין',
-      prompt: 'הקישור הוא login-microsoft-secure.xyz',
-      choices: [
-        { label: 'חשוד', correct: true },
-        { label: 'תקין', correct: false },
-        { label: 'כנראה תקין כי יש בו את המילה microsoft', correct: false }
-      ],
-      explanation: 'נכון. זה לא דומיין רשמי של Microsoft.'
-    }
-  ],
-  medium: [
-    {
-      id: 4,
-      title: 'קוד MFA',
-      prompt: 'מייל מבקש שתשלח קוד MFA כדי לסיים התחברות.',
-      choices: [
-        { label: 'לא שולחים ומדווחים', correct: true },
-        { label: 'שולחים אם השולח נשמע לחוץ', correct: false },
-        { label: 'שולחים רק את הספרות האחרונות כדי להיות בטוח', correct: false }
-      ],
-      explanation: 'נכון. קוד MFA הוא אישי ואסור לשתף.'
-    }
-  ],
-  hard: [
-    {
-      id: 5,
-      title: 'Reply-To שונה',
-      prompt: 'השולח נראה תקין, אבל כתובת התשובה שונה לגמרי.',
-      choices: [
-        { label: 'זה סימן אזהרה', correct: true },
-        { label: 'זה לא משנה כל עוד הנושא מוכר', correct: false },
-        { label: 'Reply-To חשוב רק אם יש קובץ מצורף', correct: false }
-      ],
-      explanation: 'נכון. כתובת Reply-To חריגה היא אינדיקציה חשובה.'
-    }
-  ]
-};
-
-const LEVEL_CONFIG = {
-  easy: { label: 'Easy', time: 90 },
-  medium: { label: 'Medium', time: 75 },
-  hard: { label: 'Hard', time: 60 }
-};
-
-const state = {
-  score: 0,
-  answered: new Set(),
-  lockedQuestions: new Set(),
-  level: 'easy',
-  timeLeft: 0,
-  timer: null,
-  currentQuestions: []
-};
-
-function shuffleArray(items) {
-  const arr = items.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-function getQuestionsForLevel(level) {
-  let q = [];
-  if (level === 'easy') q = QUESTION_BANK.easy.slice();
-  else if (level === 'medium') q = QUESTION_BANK.easy.concat(QUESTION_BANK.medium);
-  else q = QUESTION_BANK.easy.concat(QUESTION_BANK.medium, QUESTION_BANK.hard);
-
-  return q.map(question => ({
-    ...question,
-    choices: shuffleArray(question.choices.slice())
-  }));
-}
-
-function capitalize(text) {
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
-
-function goToSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.toggle('active', s.id === id));
-  document.querySelectorAll('.nav').forEach(b => b.classList.toggle('active', b.dataset.target === id));
-  document.querySelectorAll('.mnav').forEach(b => b.classList.toggle('active', b.dataset.target === id));
-
-  if (window.innerWidth <= 640) {
-    closeMobileMenu();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}
-
-function toggleMobileMenu() {
-  const drawer = document.getElementById('mobileDrawer');
-  const backdrop = document.getElementById('mobileDrawerBackdrop');
-  const fab = document.getElementById('mobileMenuFab');
-  const isOpen = drawer.classList.contains('open');
-
-  drawer.classList.toggle('open', !isOpen);
-  backdrop.classList.toggle('open', !isOpen);
-  fab.setAttribute('aria-expanded', String(!isOpen));
-}
-
-function closeMobileMenu() {
-  document.getElementById('mobileDrawer').classList.remove('open');
-  document.getElementById('mobileDrawerBackdrop').classList.remove('open');
-  document.getElementById('mobileMenuFab').setAttribute('aria-expanded', 'false');
-}
-
-function setLevel(level) {
-  state.level = level;
-  const levelLabel = LEVEL_CONFIG[level].label;
-  document.getElementById('levelValue').textContent = levelLabel;
-  document.getElementById('mobileLevelValue').textContent = levelLabel;
-
-  ['easy', 'medium', 'hard'].forEach(function(key) {
-    const btn = document.getElementById('level' + capitalize(key));
-    if (btn) btn.classList.toggle('active-filter', key === level);
-  });
-
-  updateCountersPreview();
-}
-
-function updateCountersPreview() {
-  const total = getQuestionsForLevel(state.level).length;
-  document.getElementById('totalQuestionsValue').textContent = String(total);
-}
-
-function startTraining() {
-  clearInterval(state.timer);
-  state.score = 0;
-  state.answered.clear();
-  state.lockedQuestions.clear();
-  state.currentQuestions = getQuestionsForLevel(state.level);
-  state.timeLeft = LEVEL_CONFIG[state.level].time;
-
-  document.getElementById('scoreValue').textContent = '0';
-  document.getElementById('mobileScoreValue').textContent = '0';
-  document.getElementById('answeredValue').textContent = '0';
-  document.getElementById('totalQuestionsValue').textContent = String(state.currentQuestions.length);
-  document.getElementById('statusValue').textContent = 'מתחיל';
-  document.getElementById('timerValue').textContent = String(state.timeLeft);
-  document.getElementById('timerBox').classList.remove('hidden');
-  document.getElementById('resultBox').classList.add('hidden');
-
-  renderQuestions();
-  goToSection('quiz');
-
-  state.timer = setInterval(function() {
-    state.timeLeft -= 1;
-    document.getElementById('timerValue').textContent = String(Math.max(state.timeLeft, 0));
-    if (state.timeLeft <= 0) finishTraining('נגמר הזמן.');
-  }, 1000);
-}
-
-function renderQuestions() {
-  const c = document.getElementById('quizContainer');
-  c.innerHTML = state.currentQuestions.map(function(q) {
-    return `
-      <div class="box" id="question-${q.id}">
-        <h3>${q.title}</h3>
-        <p>${q.prompt}</p>
-        <div style="display:grid;gap:10px;margin-top:14px">
-          ${q.choices.map((choice, index) => `<button class="btn secondary" onclick="answerQuestion(${q.id},${index},this)">${choice.label}</button>`).join('')}
-        </div>
-        <div class="feedback" id="feedback-${q.id}"></div>
-      </div>
-    `;
-  }).join('');
-}
-
-function answerQuestion(questionId, choiceIndex, buttonEl) {
-  if (state.lockedQuestions.has(questionId)) return;
-
-  const q = state.currentQuestions.find(x => x.id === questionId);
-  if (!q) return;
-
-  const selected = q.choices[choiceIndex];
-  const box = document.getElementById('question-' + questionId);
-  const buttons = box.querySelectorAll('button');
-  const feedback = document.getElementById('feedback-' + questionId);
-  const correctIndex = q.choices.findIndex(c => c.correct);
-
-  buttons.forEach(btn => btn.disabled = true);
-  state.lockedQuestions.add(questionId);
-  state.answered.add(questionId);
-
-  if (selected.correct) {
-    state.score += 10;
-    buttonEl.style.background = 'rgba(34,197,94,.16)';
-    buttonEl.style.border = '1px solid rgba(34,197,94,.38)';
-    feedback.innerHTML = '✅ <strong>נכון.</strong> ' + q.explanation;
-  } else {
-    buttonEl.style.background = 'rgba(239,68,68,.16)';
-    buttonEl.style.border = '1px solid rgba(239,68,68,.38)';
-    if (buttons[correctIndex]) {
-      buttons[correctIndex].style.background = 'rgba(34,197,94,.16)';
-      buttons[correctIndex].style.border = '1px solid rgba(34,197,94,.38)';
-    }
-    feedback.innerHTML = '❌ <strong>לא נכון.</strong> ' + q.explanation;
-  }
-
-  feedback.classList.add('show');
-  updateDashboard();
-
-  if (state.answered.size >= state.currentQuestions.length) {
-    finishTraining('ענית על כל השאלות.');
-  }
-}
-
-function updateDashboard() {
-  document.getElementById('scoreValue').textContent = String(state.score);
-  document.getElementById('mobileScoreValue').textContent = String(state.score);
-  document.getElementById('answeredValue').textContent = String(state.answered.size);
-
-  let status = 'מתחיל';
-  if (state.score >= 30) status = 'מתקדם';
-  if (state.score >= 60) status = 'חד עין';
-  if (state.score >= 90) status = 'Security Aware';
-  document.getElementById('statusValue').textContent = status;
-}
-
-function finishTraining(reason) {
-  clearInterval(state.timer);
-  state.timer = null;
-
-  const total = state.currentQuestions.length || getQuestionsForLevel(state.level).length;
-  const percentage = total ? Math.round((state.score / (total * 10)) * 100) : 0;
-  const resultBox = document.getElementById('resultBox');
-
-  resultBox.classList.remove('hidden');
-  resultBox.innerHTML = `
-    <h3>🏁 סיום Training</h3>
-    <p><strong>סטטוס:</strong> ${reason}</p>
-    <p><strong>ציון:</strong> ${state.score} מתוך ${total * 10}</p>
-    <p><strong>אחוז הצלחה:</strong> ${percentage}%</p>
-    <p><strong>רמת קושי:</strong> ${LEVEL_CONFIG[state.level].label}</p>
-  `;
-}
-
-setLevel('easy');
-updateCountersPreview();
-</script>
+<script src="/assets/js/phishing-awareness-he.js" defer></script>
 <script src="/assets/js/global-navigation.js" defer></script>
 <script src="/assets/js/accessibility.js" defer></script>
 </body>

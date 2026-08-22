@@ -1,0 +1,5 @@
+body.legal-page { margin: 0; background: #0b0b10; color: #e7e9ee; }
+html[lang="he"] body.legal-page { font-family: "Noto Sans Hebrew", Arial, sans-serif; }
+html[lang="en"] body.legal-page { font-family: Inter, Arial, sans-serif; }
+.legal-page .wrap { max-width: 860px; margin: 0 auto; padding: 40px 20px; }
+.legal-page a { color: #e7e9ee; }

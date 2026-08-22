@@ -14,72 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/global-navigation.css">
   <link rel="stylesheet" href="/assets/css/accessibility.css">
-  <style>
-    body{
-      margin:0;
-      background:#0b0b0e;
-      color:#f2f2f7;
-      font-family:'Noto Sans Hebrew',sans-serif;
-      overflow-x:hidden;
-      text-align:right;         /* יישור לימין לכל הטקסט */
-    }
-    main{max-width:1100px;margin:auto;padding:28px}
-    .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.35);padding:24px;transition:transform .25s ease,box-shadow .25s ease}
-    .card:hover{transform:translateY(-3px);box-shadow:0 25px 40px rgba(0,0,0,.4)}
-    h1,h2{margin-top:0}
-    h1 span.role{font-size:smaller;color:#b3b7c0}
-
-    /* ריווח לטקסטים */
-    p{line-height:1.6;margin-bottom:0.8em}
-    li{margin-bottom:0.5em;line-height:1.6}
-
-    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(90deg,#d61f26,#e94057);color:#fff;transition:transform .3s ease,box-shadow .3s ease;text-decoration:none;font-size:1.05rem}
-    .btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 20px rgba(233,64,87,.3)}
-
-    /* מיכל כפתורים בשורה אחת – הכפתור מתאים עצמו לטקסט */
-    .btn-group{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-    .btn-group .btn{
-      flex:0 0 auto;           /* רוחב טבעי ללא מתיחה */
-      text-align:center;
-      box-shadow:0 6px 12px rgba(0,0,0,.3);
-      /* אין הגדרת min-width – הרוחב ייקבע לפי התוכן והפדינג */
-    }
-
-    .avatar{width:min(100%,340px);border-radius:24px;border:1px solid rgba(255,255,255,.06);background:conic-gradient(from 220deg,rgba(214,31,38,.15),rgba(233,64,87,.05));transition:transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
-    .avatar:hover{transform:rotate(-1.5deg) scale(1.05);filter:drop-shadow(0 0 15px rgba(214,31,38,.3))}
-
-    .logos{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;align-items:center}
-    /* מילוי בהיר יותר לבועות הלוגואים עם רקע לבן שקוף לקבלת ניגודיות */
-    .logos div{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      font-size:12px;
-      color:#b3b7c0;
-      transition:transform .3s ease,filter .3s ease;
-      background:rgba(255,255,255,0.28);
-      padding:6px 8px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.4);
-    }
-    .logos div:hover{
-      transform:translateY(-3px) scale(1.05);
-      filter:drop-shadow(0 0 10px rgba(214,31,38,.4));
-    }
-    .logos img{
-      height:40px;
-      width:40px;
-      object-fit:contain;
-      /*
-       * Keep the icons legible on the light bubbles without washing them out. A moderate
-       * brightness boost ensures dark logos remain visible while preserving midtones.
-       */
-      filter:brightness(1.3) contrast(1.1);
-    }
-
-    /* הדגשת ציטוט */
-    .quote{font-size:1.1rem;font-weight:600;color:#e94057;margin-bottom:0.8rem}
-  </style>
+  <link rel="stylesheet" href="/assets/css/about.css">
   <link rel="canonical" href="https://cyjimm.com/about/">
   <link rel="alternate" hreflang="he" href="https://cyjimm.com/about/">
   <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/about/">
@@ -98,8 +33,8 @@
   </header>
   <main id="main-content">
     <header class="card">
-      <div style="display:flex;align-items:center;gap:.5rem">
-        <div style="width:.65rem;height:.65rem;border-radius:50%;background:#d61f26"></div>
+      <div class="about-status">
+        <div class="about-status-dot"></div>
         <span>CyJimm - אבטחה • תשתיות • חדשנות</span>
       </div>
       <h1> מתן ג'מיל <span class="role">System Administrator & Security Engineer</span></h1>
@@ -121,7 +56,7 @@
     </header>
 
     <!-- About -->
-    <section class="card" style="margin-top:28px">
+    <section class="card about-section">
       <h2>עליי בקצרה</h2>
       <p>SysAdmin ו‑Security Engineer עם ניסיון של מעל 5 שנים בסביבה הארגונית. מתמחה בהקמה, תחזוקה והקשחה של מערכות Windows Server (מ‑2008 ועד 2022), תוך ניהול Active Directory, GPO, DNS, DHCP ו‑Baseline מאובטח. מנהל שרתי הדפסה ארגוניים ופריסת מדפסות לפי מחלקות דרך GPO.</p>
       <p>אני עובד בגישה פרואקטיבית שממוקדת במדדים אמיתיים: זמינות שירות, זמן תגובה ותיעוד מתמשך. בשנים האחרונות שיפרתי זמינות רשתות ~20%, הפחתתי קריסות שרתים 40%+, והטמעתי תהליכי בקרה שמאפשרים טיפול מהיר יותר בתקלות.</p>
@@ -129,9 +64,9 @@
     </section>
 
     <!-- Expertise -->
-    <section class="card" style="margin-top:28px">
+    <section class="card about-section">
       <h2>תחומי מומחיות</h2>
-      <ul style="padding:0;list-style:none">
+      <ul class="about-list">
         <li>PowerShell Automation - פריסות, הקשחות, Health Checks, ניהול Outlook Archives ו‑ACLs</li>
         <li>Active Directory / Group Policy / DNS / DHCP - OU לפי מחלקות, Baseline קשיח, מדיניות אבטחה</li>
         <li>Microsoft 365 & Entra ID - ניהול, הקמה והגדרת משתמשים, רישוי והרשאות, סנכרון עם AD</li>
@@ -143,10 +78,10 @@
     </section>
 
     <!-- Cyber Labs -->
-    <section class="card" style="margin-top:28px">
+    <section class="card about-section">
       <h2>Cyber Labs & Hands‑On Experience</h2>
       <p class="meta">למידה ותרגול מעשי לחיזוק מיומנויות התקפה והגנה.</p>
-      <ul style="padding:0;list-style:none">
+      <ul class="about-list">
         <li>TryHackMe - חדרים: <b>Linux Privilege Escalation</b>, <b>Blue/Red Team</b>, <b>Network Exploitation</b></li>
         <li>כלים: <b>Metasploit</b>, <b>Nikto</b>, <b>dirb</b>, <b>Nmap</b>, <b>Burp Suite</b></li>
         <li>הקמה וניהול מעבדות Red/Blue/Purple לצורכי אימון ו‑PT.</li>
@@ -154,7 +89,7 @@
     </section>
 
     <!-- Philosophy -->
-    <section class="card" style="margin-top:28px">
+    <section class="card about-section">
       <h2>פילוסופיית עבודה</h2>
       <p class="quote">IT הוא מערכת חיה: אם היא לא נמדדת - היא לא מנוהלת.</p>
       <p>Ownership מלא מקצה לקצה, תיעוד חי ו‑DevOps לתצורה ותהליכים.</p>
@@ -162,21 +97,21 @@
     </section>
 
     <!-- Quick Stats -->
-    <section class="card" style="margin-top:28px">
+    <section class="card about-section">
       <h2>נתונים מהירים</h2>
-      <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
-        <div style="background:#121217;border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:12px"><b>5+</b><br>שנות ניסיון ארגוני</div>
-        <div style="background:#121217;border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:12px"><b>20%</b><br>שיפור בזמינות רשתות</div>
-        <div style="background:#121217;border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:12px"><b>350+</b><br>מחשבים שהורכבו לפי דרישת משתמש</div>
-        <div style="background:#121217;border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:12px"><b>99%</b><br>יציבות מערכת בפרויקטים מנוהלים</div>
+      <div class="about-stats">
+        <div class="about-stat"><b>5+</b><br>שנות ניסיון ארגוני</div>
+        <div class="about-stat"><b>20%</b><br>שיפור בזמינות רשתות</div>
+        <div class="about-stat"><b>350+</b><br>מחשבים שהורכבו לפי דרישת משתמש</div>
+        <div class="about-stat"><b>99%</b><br>יציבות מערכת בפרויקטים מנוהלים</div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section class="card" id="contact" style="margin-top:28px">
+    <section class="card about-section" id="contact">
       <h2>יצירת קשר</h2>
       <p>פתוח לשיתופי פעולה, פרויקטים ותפקידים שמשלבים אבטחה, תשתיות ואוטומציה.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+      <div class="about-contact-actions">
         <a class="btn" href="mailto:madara@cyjimm.com">hello@cyjimm.com</a>
         <a class="btn" href="https://t.me/hofuckitsyou">Telegram</a>
         <a class="btn" href="https://www.linkedin.com/in/matan-jimmi-jamil-a09aa2154/">LinkedIn</a>
@@ -186,12 +121,7 @@
 
   <footer class="cyjimm-a11y-footer">© CyJimm · <a href="/">ראשי</a> · <a href="/privacy.html">מדיניות פרטיות</a> · <a href="/terms.html">תנאי שימוש</a> · <a href="/accessibility.html">הצהרת נגישות</a> · <a href="/en/about/" lang="en" dir="ltr">English</a></footer>
 
-  <script>
-    // Hide broken icons if asset missing
-    document.querySelectorAll('.logos img').forEach(img=>{
-      img.onerror = ()=>{ img.style.display='none'; };
-    });
-  </script>
+  <script src="/assets/js/page-helpers.js" defer></script>
   <script src="/assets/js/global-navigation.js" defer></script>
   <script src="/assets/js/accessibility.js" defer></script>
 </body>

@@ -1,0 +1,50 @@
+:root { --bg:#f6f7fb; --card:#fff; --ink:#0f172a; --muted:#64748b; --line:#e5e7eb; --accent:#e11d48; --ok:#19c37d; --warn:#f5a524; --chip:#f8fafc; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body.team-page { margin: 0; background: radial-gradient(1200px 700px at 70% -10%,#fff 0%,#f6f7fb 55%) fixed, linear-gradient(180deg,#fff 0%,#eef2ff 100%) fixed; color: var(--ink); }
+html[lang="he"] body.team-page { font-family: "Noto Sans Hebrew",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif; }
+html[lang="en"] body.team-page { font-family: Inter,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif; }
+.team-page a { color: #0f172a; text-decoration: none; }
+.team-page a:hover { text-decoration: underline; }
+.team-page .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+html[lang="he"] .team-page nav { display: flex; gap: 14px; align-items: center; justify-content: space-between; padding: 12px 0; }
+html[lang="he"] .team-page .brand { font-weight: 900; letter-spacing: .5px; color: #0f172a; }
+html[lang="he"] .team-page .brand a { color: #0f172a; }
+html[lang="he"] .team-page .navlinks { display: flex; gap: 12px; flex-wrap: wrap; }
+html[lang="he"] .team-page .navlinks a { color: #0f172a; opacity: .9; }
+html[lang="he"] .team-page .navlinks a:hover { opacity: 1; }
+.team-page header.hero { position: relative; border-bottom: 1px solid var(--line); background: linear-gradient(180deg,rgba(255,255,255,.85) 0%,rgba(255,255,255,.55) 60%); backdrop-filter: saturate(1.1) blur(6px); }
+.team-page .hero h1 { margin: 8px 0 0; font-size: 40px; color: #0f172a; }
+.team-page .hero .sub { color: var(--muted); margin-top: 6px; font-size: 16px; }
+.team-page .grid { display: grid; gap: 14px; }
+.team-page .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; box-shadow: 0 10px 30px rgba(2,6,23,.06); color: #0f172a; }
+.team-page .teamgrid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 14px; margin-top: 16px; }
+.team-page .member { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 10px; box-shadow: 0 6px 18px rgba(2,6,23,.05); }
+.team-page .member h3 { margin: 0; font-size: 20px; color: #0f172a; }
+.team-page .role { color: #334155; }
+.team-page .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.team-page .tag { display: inline-flex; align-items: center; gap: 8px; background: var(--chip); border: 1px solid #e5e7eb; color: #334155; padding: 6px 12px; border-radius: 999px; font-size: 12px; }
+.team-page .list { margin: 0; padding: 0 18px; }
+.team-page .meter { flex: 1 1 160px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+.team-page .bar { height: 8px; background: #e5e7eb; border-radius: 6px; overflow: hidden; margin-top: 6px; }
+.team-page .bar > span { display: block; height: 100%; background: linear-gradient(90deg,var(--accent),#ff7a7a); }
+.team-page .kpis { display: flex; gap: 10px; flex-wrap: wrap; }
+.team-page .chip { background: #fff; color: #0f172a; border: 1px solid #e5e7eb; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
+.team-page .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; font-size: 12px; }
+.team-page .pill.ok { background: rgba(25,195,125,.12); color: #065f46; border: 1px solid rgba(25,195,125,.35); }
+.team-page .pill.warn { background: rgba(245,165,36,.12); color: #92400e; border: 1px solid rgba(245,165,36,.35); }
+.team-page .pill.stop { background: rgba(229,9,20,.12); color: #991b1b; border: 1px solid rgba(229,9,20,.35); }
+.team-page footer { color: #475569; font-size: 12px; margin: 24px auto 40px; }
+.team-page .lead { font-size: 15px; line-height: 1.6; color: #0f172a; }
+.team-page .member h3.subheading, .team-page .skill h3.subheading { font-size: 1em; }
+.team-section { margin-top: 14px; }
+.team-meter-heading { display: flex; justify-content: space-between; }
+.team-bar-88 { width: 88%; }
+.team-bar-93 { width: 93%; }
+.team-bar-85 { width: 85%; }
+.team-bar-90 { width: 90%; }
+.team-bar-40 { width: 40%; }
+.team-bar-60 { width: 60%; }
+.team-subheading-spaced { margin: 6px 0 4px !important; }
+.team-kpis-spaced { margin-top: 10px; }
+.team-footer { padding: 0 !important; }

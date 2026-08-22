@@ -240,6 +240,11 @@ html[data-cyjimm-text-scale] body.guide-page main .section h2 {
   text-align: center;
 }
 
+footer a {
+  display: inline-block;
+  margin-inline: 0.35rem;
+}
+
 @media (max-width: 420px) {
   .cyjimm-accessibility-root {
     inset-inline-start: 0.65rem;

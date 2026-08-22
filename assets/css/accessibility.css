@@ -55,6 +55,74 @@ html[data-cyjimm-text-scale] body#top .hero h1 {
   font-size: calc(40px * var(--cyjimm-a11y-text-scale));
 }
 
+html[data-cyjimm-text-scale] body#top .notice {
+  font-size: calc(12px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.about-page .btn {
+  font-size: calc(1.05rem * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.about-page .quote {
+  font-size: calc(1.1rem * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.about-page .logos div {
+  font-size: calc(12px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.team-page .hero h1 {
+  font-size: calc(40px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.team-page .hero .sub {
+  font-size: calc(16px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.team-page .member h3 {
+  font-size: calc(20px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.team-page :where(.tag, .chip, .pill, footer) {
+  font-size: calc(12px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.team-page .lead {
+  font-size: calc(15px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.phishing-page .chip {
+  font-size: calc(12px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.phishing-page .hero h1 {
+  font-size: clamp(
+    calc(30px * var(--cyjimm-a11y-text-scale)),
+    calc(4vw * var(--cyjimm-a11y-text-scale)),
+    calc(46px * var(--cyjimm-a11y-text-scale))
+  );
+}
+
+html[data-cyjimm-text-scale] body.phishing-page .sub {
+  font-size: calc(18px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.phishing-page .metric .l {
+  font-size: calc(14px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.phishing-page .metric .v {
+  font-size: calc(28px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.phishing-page .drawerhead {
+  font-size: calc(13px * var(--cyjimm-a11y-text-scale));
+}
+
+html[data-cyjimm-text-scale] body.phishing-page .foot {
+  font-size: calc(12px * var(--cyjimm-a11y-text-scale));
+}
+
 html[data-cyjimm-text-scale] body button.btn {
   font-size: calc(13.3333px * var(--cyjimm-a11y-text-scale));
 }
@@ -222,6 +290,16 @@ footer a {
   .cyjimm-accessibility-root {
     inset-inline-start: 0.65rem;
     inset-block-end: 0.65rem;
+  }
+}
+
+@media (max-width: 640px) {
+  html[data-cyjimm-text-scale] body.phishing-page .hero h1 {
+    font-size: calc(28px * var(--cyjimm-a11y-text-scale));
+  }
+
+  html[data-cyjimm-text-scale] body.phishing-page .sub {
+    font-size: calc(15px * var(--cyjimm-a11y-text-scale));
   }
 }
 

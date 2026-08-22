@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.cyjimm.com/</loc><lastmod>2025-10-18</lastmod><priority>1.00</priority></url>
-  <url><loc>https://www.cyjimm.com/en/</loc><lastmod>2025-10-18</lastmod><priority>0.80</priority></url>
-  <url><loc>https://www.cyjimm.com/privacy.html</loc><lastmod>2025-10-18</lastmod><priority>0.50</priority></url>
-  <url><loc>https://www.cyjimm.com/terms.html</loc><lastmod>2025-10-18</lastmod><priority>0.50</priority></url>
+  <url><loc>https://cyjimm.com/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/about/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/guides/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/guides/windows-update/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/guides/vendor-updates/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/guides/scheduled-restart/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/phishing-awareness/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/privacy.html</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/terms.html</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/team/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/accessibility.html</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/jimmis-hub/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/about/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/guides/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/guides/windows-update/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/guides/vendor-updates/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/guides/scheduled-restart/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/phishing-awareness/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/privacy.html</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/terms.html</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/team/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/accessibility.html</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://cyjimm.com/en/jimmis-hub/</loc><lastmod>2026-08-22</lastmod></url>
 </urlset>

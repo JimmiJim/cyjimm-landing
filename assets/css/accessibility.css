@@ -2,6 +2,25 @@
   --cyjimm-a11y-focus: #ffd43b;
 }
 
+body {
+  cursor: none;
+}
+
+.cursor-ship {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.08s ease-out;
+}
+
+.cursor-ship img {
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+}
+
 *:focus-visible {
   outline: 3px solid var(--cyjimm-a11y-focus) !important;
   outline-offset: 3px !important;
@@ -212,6 +231,10 @@ html[data-cyjimm-text-scale] body.guide-page main .section h2 {
   display: none !important;
 }
 
+.cyjimm-a11y-stop-animations body {
+  cursor: auto;
+}
+
 .cyjimm-a11y-footer {
   padding: 1.5rem 1.25rem;
   text-align: center;
@@ -236,5 +259,9 @@ html[data-cyjimm-text-scale] body.guide-page main .section h2 {
 
   .cursor-ship {
     display: none !important;
+  }
+
+  body {
+    cursor: auto;
   }
 }

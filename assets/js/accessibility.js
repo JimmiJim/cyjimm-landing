@@ -115,62 +115,6 @@
     if (returnFocus) trigger.focus();
   }
 
-  function buildCursor() {
-    let ship = document.querySelector('.cursor-ship');
-
-    if (!ship) {
-      ship = document.createElement('div');
-      ship.className = 'cursor-ship';
-
-      const image = document.createElement('img');
-      image.src = '/assets/spaceship-icon.png';
-      image.alt = '';
-      ship.appendChild(image);
-      document.body.appendChild(ship);
-    }
-
-    const finePointer = window.matchMedia('(pointer: fine)').matches;
-
-    if (finePointer) {
-      ship.style.opacity = '0';
-
-      document.addEventListener('mouseenter', function () {
-        ship.style.opacity = '1';
-      });
-
-      document.addEventListener('mouseleave', function () {
-        ship.style.opacity = '0';
-      });
-
-      let x = 0;
-      let y = 0;
-      let tx = 0;
-      let ty = 0;
-      let rafId = null;
-      const speed = 0.22;
-
-      function onMouseMove(event) {
-        tx = event.clientX;
-        ty = event.clientY;
-        if (!rafId) rafId = window.requestAnimationFrame(update);
-      }
-
-      function update() {
-        x += (tx - x) * speed;
-        y += (ty - y) * speed;
-        ship.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-
-        if (Math.abs(tx - x) > 0.1 || Math.abs(ty - y) > 0.1) {
-          rafId = window.requestAnimationFrame(update);
-        } else {
-          rafId = null;
-        }
-      }
-
-      document.addEventListener('mousemove', onMouseMove);
-    }
-  }
-
   function buildWidget() {
     const root = document.createElement('div');
     root.className = 'cyjimm-accessibility-root';
@@ -262,7 +206,6 @@
   }
 
   function init() {
-    buildCursor();
     buildWidget();
     applyState();
   }

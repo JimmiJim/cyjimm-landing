@@ -301,8 +301,10 @@
       .card,.section{border-radius:20px}
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/accessibility.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
 <div class="wrap">
   <div class="topbar card">
     <div class="brandrow">
@@ -341,16 +343,16 @@
   <div class="layout">
     <aside class="card sidebar">
       <h2>ניווט מהיר</h2>
-      <div class="navlist">
+      <nav class="navlist" aria-label="ניווט בהדרכה">
         <button class="nav active" data-target="home" onclick="goToSection('home')">מסך ראשי</button>
         <button class="nav" data-target="learn" onclick="goToSection('learn')">לימוד הסימנים</button>
         <button class="nav" data-target="examples" onclick="goToSection('examples')">דוגמאות למיילים</button>
         <button class="nav" data-target="quiz" onclick="goToSection('quiz')">Training אינטראקטיבי</button>
         <button class="nav" data-target="report" onclick="goToSection('report')">מה עושים אם נפלתי?</button>
-      </div>
+      </nav>
     </aside>
 
-    <main class="content">
+    <main id="main-content" class="content">
       <section id="home" class="card section active">
         <h2>למה זה חשוב?</h2>
         <div class="grid">
@@ -428,7 +430,7 @@
     </main>
   </div>
 
-  <button class="menu-fab" id="mobileMenuFab" type="button" aria-label="פתח תפריט" aria-expanded="false" onclick="toggleMobileMenu()">☰</button>
+  <button class="menu-fab" id="mobileMenuFab" type="button" aria-label="פתח תפריט" aria-controls="mobileDrawer" aria-expanded="false" onclick="toggleMobileMenu()">☰</button>
   <div class="backdrop" id="mobileDrawerBackdrop" onclick="closeMobileMenu()"></div>
 
   <nav class="drawer" id="mobileDrawer" aria-label="ניווט מובייל">
@@ -445,7 +447,7 @@
     </div>
   </nav>
 
-  <div class="foot">Jimmi's Hub Security Awareness • Public Training Page</div>
+  <footer class="foot">Jimmi's Hub Security Awareness • Public Training Page · <a href="/accessibility.html">הצהרת נגישות</a></footer>
 </div>
 
 <script>
@@ -716,5 +718,6 @@ function finishTraining(reason) {
 setLevel('easy');
 updateCountersPreview();
 </script>
+<script src="/assets/js/accessibility.js" defer></script>
 </body>
 </html>

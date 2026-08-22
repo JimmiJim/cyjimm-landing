@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/accessibility.css">
   <style>
     body{
       margin:0;
@@ -75,7 +76,8 @@
   </style>
 </head>
 <body>
-  <main>
+  <a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
+  <main id="main-content">
     <header class="card">
       <div style="display:flex;align-items:center;gap:.5rem">
         <div style="width:.65rem;height:.65rem;border-radius:50%;background:#d61f26"></div>
@@ -164,11 +166,14 @@
     </section>
   </main>
 
+  <footer class="cyjimm-a11y-footer">© CyJimm · <a href="/accessibility.html">הצהרת נגישות</a></footer>
+
   <script>
     // Hide broken icons if asset missing
     document.querySelectorAll('.logos img').forEach(img=>{
       img.onerror = ()=>{ img.style.display='none'; };
     });
   </script>
+  <script src="/assets/js/accessibility.js" defer></script>
 </body>
 </html>

@@ -51,7 +51,7 @@
     .org-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
     .org-grid .unit{grid-column:span 2}
     .unit{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px}
-    .unit h4{margin:4px 0 6px}
+    .unit h3{margin:4px 0 6px}
     .unit small{color:var(--muted)}
     .footer{padding:28px 0;border-top:1px solid rgba(255,255,255,.08);color:#b9c2cf}
     .contact form{display:grid;gap:12px}

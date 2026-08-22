@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/accessibility.css">
   <style>
     /* ===== Light Theme ===== */
     :root{
@@ -116,16 +117,18 @@
     footer{color:#475569;font-size:12px;margin:24px auto 40px}
 
     .lead{font-size:15px;line-height:1.6;color:#0f172a}
+    .member h3.subheading,.skill h3.subheading{font-size:1em}
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
   <!-- סמן חללית -->
 <div class="cursor-ship">
-  <img src="/assets/spaceship-icon.png" alt="חללית הסמן">
+  <img src="/assets/spaceship-icon.png" alt="">
 </div>
   <header class="hero">
     <div class="wrap">
-      <nav>
+      <nav aria-label="ניווט ראשי">
         <div class="brand"><a href="/">CyJimm</a></div>
         <div class="navlinks">
           <a href="/">דף הבית</a>
@@ -138,7 +141,7 @@
     </div>
   </header>
 
-  <main class="wrap">
+  <main id="main-content" class="wrap">
     <!-- תיאור כללי -->
     <section class="card">
       <h2>מי אנחנו</h2>
@@ -177,14 +180,14 @@
               <div class="bar"><span style="width:85%"></span></div>
             </div>
           </div>
-          <h4 style="margin:6px 0 4px">Core Systems</h4>
+          <h3 class="subheading" style="margin:6px 0 4px">Core Systems</h3>
           <ul class="list">
             <li>Windows Server (AD, DNS, DHCP, GPO), pfSense, VLANs</li>
             <li>Linux: Kali, Parrot, Elementary — PrivEsc, Hardening</li>
             <li>Automation: PowerShell 7+, Python 3.12, GitHub Actions</li>
             <li>SIEM/Monitoring: Splunk, Wazuh, Grafana Integration</li>
           </ul>
-          <h4 style="margin:6px 0 4px">סטטוס</h4>
+          <h3 class="subheading" style="margin:6px 0 4px">סטטוס</h3>
           <ul class="list">
             <li>ChiefBot — <span class="pill stop">הוקפא לאחר POC</span></li>
             <li>Chief Personal Lab — <span class="pill warn">בפיתוח פעיל</span></li>
@@ -216,7 +219,7 @@
       <h2>Projects & Deliverables (Selected)</h2>
       <div class="skillgrid">
         <div class="skill">
-          <h4>Custom OS & Imaging</h4>
+          <h3 class="subheading">Custom OS & Imaging</h3>
           <ul>
             <li>Windows 11 Custom ISO — OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li>
             <li>Kali Linux ISO (GNOME) — Nvidia + AMD drivers, full tooling, Hebrew+EN layouts.</li>
@@ -224,7 +227,7 @@
           </ul>
         </div>
         <div class="skill">
-          <h4>Enterprise Automation</h4>
+          <h3 class="subheading">Enterprise Automation</h3>
           <ul>
             <li>SLA Alerts — Google Apps Script + Power Automate (Cross-suite).</li>
             <li>Auto-Deploy via Winget + Post-Install checks (PS7).</li>
@@ -232,7 +235,7 @@
           </ul>
         </div>
         <div class="skill">
-          <h4>Monitoring & SIEM</h4>
+          <h3 class="subheading">Monitoring & SIEM</h3>
           <ul>
             <li>Splunk on Kali (POC→Dashboards) + Wazuh integration.</li>
             <li>Proxmox/VMware lab telemetry, pfSense logs, VLAN segmentation.</li>
@@ -247,7 +250,7 @@
       <h2>Runbooks & Playbooks</h2>
       <div class="skillgrid">
         <div class="skill">
-          <h4>Windows</h4>
+          <h3 class="subheading">Windows</h3>
           <ul>
             <li>Join-Domain & GPO bootstrap (OU per dept).</li>
             <li>Printer server & shares (permissions & recovery).</li>
@@ -255,7 +258,7 @@
           </ul>
         </div>
         <div class="skill">
-          <h4>Linux</h4>
+          <h3 class="subheading">Linux</h3>
           <ul>
             <li>PrivEsc lab flow (enum → exploit → stabilize → persist).</li>
             <li>Service hardening (SSH, sudoers, auditd, journald, fail2ban).</li>
@@ -263,7 +266,7 @@
           </ul>
         </div>
         <div class="skill">
-          <h4>Network / pfSense</h4>
+          <h3 class="subheading">Network / pfSense</h3>
           <ul>
             <li>VLAN design & rules per environment.</li>
             <li>DHCP/DNS diagramming (offer/request/ack flow).</li>
@@ -278,7 +281,7 @@
       <h2>Toolbox & Scripts</h2>
       <div class="skillgrid">
         <div class="skill">
-          <h4>PowerShell Suite</h4>
+          <h3 class="subheading">PowerShell Suite</h3>
           <ul>
             <li><b>Optimize-System.ps1</b> — תחזוקת מערכת מרובת שלבים + דיווח.</li>
             <li><b>FoldersPermissionV7.ps1</b> — GUI ל-ACL עם Fallback IT Admin.</li>
@@ -290,7 +293,7 @@
           </ul>
         </div>
         <div class="skill">
-          <h4>Linux / Offensive</h4>
+          <h3 class="subheading">Linux / Offensive</h3>
           <ul>
             <li>nmap / netcat workflows, metasploit, burp, wireshark.</li>
             <li>THM: Linux Privilege Escalation (methodical enum & privesc).</li>
@@ -298,7 +301,7 @@
           </ul>
         </div>
         <div class="skill">
-          <h4>M365 / Automation</h4>
+          <h3 class="subheading">M365 / Automation</h3>
           <ul>
             <li>Power Automate flows (SLA, notifications, routing).</li>
             <li>Google Apps Script (sheets, webhooks, mail merge).</li>
@@ -342,9 +345,10 @@
   </main>
 
   <footer class="wrap" style="padding:0">
-    <div class="muted">© <span id="year"></span> CyJimm — אבטחה • תשתיות • חדשנות</div>
+    <div class="muted">© <span id="year"></span> CyJimm — אבטחה • תשתיות • חדשנות · <a href="/accessibility.html">הצהרת נגישות</a></div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="/assets/js/accessibility.js" defer></script>
 </body>
 </html>

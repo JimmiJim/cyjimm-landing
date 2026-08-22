@@ -9,18 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/guides.css">
+  <link rel="stylesheet" href="/assets/css/accessibility.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
 <header class="topnav"><div class="wrap navinner"><a class="brand" href="/"><img src="/logo-84.png" alt="CyJimm"><span>CyJimm</span></a><nav class="navlinks"><a href="/">ראשי</a><a href="/guides/">מדריכים</a><a href="/#services">שירותים</a><a href="/#contact">צור קשר</a></nav></div></header>
-<main>
+<main id="main-content">
 <section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Knowledge Base</span><h1>מדריכי תחזוקת מחשב לעסקים ומשתמשים</h1><p class="lead">עמודי ידע קצרים, ויזואליים ופרקטיים שמסבירים איך לשמור על מחשב Windows יציב, מעודכן ומוכן לעבודה. בלי עומס טכני מיותר ובלי קסמים.</p><div class="cta"><a class="btn btn-primary" href="/guides/windows-update/">להתחיל מעדכוני Windows</a><a class="btn btn-ghost" href="/#contact">צריכים עזרה?</a></div></div><div class="visual-card"><div class="browser"><div class="browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address">cyjimm.com/guides</span></div><div class="screenbody"><div class="ui-row"><strong>Windows Update</strong><span class="chip">Security</span></div><div class="ui-row"><strong>HP / Lenovo / Dell</strong><span class="chip">Drivers</span></div><div class="ui-row"><strong>Scheduled Restart</strong><span class="chip">Stability</span></div></div></div></div></div></section>
-<section class="section"><div class="wrap grid cols-3">
+<section class="section"><h2 class="visually-hidden">רשימת מדריכים</h2><div class="wrap grid cols-3">
 <a class="card" href="/guides/windows-update/"><span class="number">1</span><h3>איך לעדכן את Windows נכון</h3><p>בדיקת עדכונים, Optional Updates, Active Hours, היסטוריית עדכונים ותקלות נפוצות.</p></a>
 <a class="card" href="/guides/vendor-updates/"><span class="number">2</span><h3>עדכוני יצרן HP / Lenovo / Dell</h3><p>מתי משתמשים בכלי היצרן, למה BIOS ו-Firmware חשובים, ומה לבדוק לפני התקנה.</p></a>
 <a class="card" href="/guides/scheduled-restart/"><span class="number">3</span><h3>למה ריסטרט חשוב ואיך מתזמנים</h3><p>הסבר פשוט על יציבות, עדכונים, שירותים תקועים ויצירת משימת Restart אוטומטית.</p></a>
 </div></section>
 <section class="section"><div class="wrap grid cols-2"><div class="card"><h2>למי זה מתאים?</h2><p>למשתמשים ביתיים, עסקים קטנים, צוותים שעובדים עם מחשבי Windows, ומנהלים שרוצים לצמצם תקלות חוזרות בלי להיכנס לכל עומק עולם ה-IT.</p></div><div class="card"><h2>מה הערך העסקי?</h2><p>תחזוקה בסיסית טובה מורידה קריאות מיותרות, מפחיתה זמני השבתה, משפרת אבטחה ומונעת מצבים שבהם מחשב לא יציב עוצר יום עבודה שלם.</p></div></div></section>
 </main>
-<footer class="footer"><div class="wrap">© <span id="year"></span> CyJimm · <a href="/">חזרה לאתר הראשי</a></div></footer><script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+<footer class="footer"><div class="wrap">© <span id="year"></span> CyJimm · <a href="/">חזרה לאתר הראשי</a> · <a href="/accessibility.html">הצהרת נגישות</a></div></footer><script>document.getElementById('year').textContent=new Date().getFullYear()</script><script src="/assets/js/accessibility.js" defer></script>
 </body>
 </html>

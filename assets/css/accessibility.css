@@ -59,12 +59,11 @@ html[data-cyjimm-text-scale] body button.btn {
   font-size: calc(13.3333px * var(--cyjimm-a11y-text-scale));
 }
 
-html[data-cyjimm-text-scale] body .topnav .navlinks a,
-html[data-cyjimm-text-scale] body .topnav ~ main .chip {
+html[data-cyjimm-text-scale] body.guide-page main .chip {
   font-size: calc(14px * var(--cyjimm-a11y-text-scale));
 }
 
-html[data-cyjimm-text-scale] body .topnav ~ main .hero h1 {
+html[data-cyjimm-text-scale] body.guide-page main .hero h1 {
   font-size: clamp(
     calc(34px * var(--cyjimm-a11y-text-scale)),
     calc(5vw * var(--cyjimm-a11y-text-scale)),
@@ -72,11 +71,11 @@ html[data-cyjimm-text-scale] body .topnav ~ main .hero h1 {
   );
 }
 
-html[data-cyjimm-text-scale] body .topnav ~ main .lead {
+html[data-cyjimm-text-scale] body.guide-page main .lead {
   font-size: calc(18px * var(--cyjimm-a11y-text-scale));
 }
 
-html[data-cyjimm-text-scale] body .topnav ~ main .section h2 {
+html[data-cyjimm-text-scale] body.guide-page main .section h2 {
   font-size: clamp(
     calc(26px * var(--cyjimm-a11y-text-scale)),
     calc(3vw * var(--cyjimm-a11y-text-scale)),

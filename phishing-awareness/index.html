@@ -293,7 +293,8 @@
       .stats{grid-template-columns:repeat(2,1fr);gap:10px}
       .layout{grid-template-columns:1fr;gap:12px;margin-top:12px}
       .sidebar{display:none}
-      .menu-fab{display:flex;align-items:center;justify-content:center}
+      .menu-fab{display:flex;align-items:center;justify-content:center;inset-inline-start:auto;inset-inline-end:12px}
+      .drawer{inset-inline-start:auto;inset-inline-end:10px}
       .actions{flex-direction:column}
       .btn{width:100%}
       h1{font-size:28px}
@@ -301,10 +302,16 @@
       .card,.section{border-radius:20px}
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/global-navigation.css">
   <link rel="stylesheet" href="/assets/css/accessibility.css">
+  <link rel="canonical" href="https://cyjimm.com/phishing-awareness/">
+  <link rel="alternate" hreflang="he" href="https://cyjimm.com/phishing-awareness/">
+  <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/phishing-awareness/">
+  <link rel="alternate" hreflang="x-default" href="https://cyjimm.com/phishing-awareness/">
 </head>
 <body>
 <a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
+<header class="cyjimm-global-header" data-global-nav><div class="cyjimm-global-nav-wrap"><a class="cyjimm-global-brand" href="/" aria-label="CyJimm — דף הבית"><img src="/logo-84.png" alt=""><span>CyJimm</span></a><button class="cyjimm-global-menu" type="button" aria-controls="globalNavLinks" aria-expanded="false" data-global-nav-toggle>תפריט אתר</button><nav class="cyjimm-global-links" id="globalNavLinks" aria-label="ניווט ראשי באתר" data-global-nav-links><a href="/">ראשי</a><a href="/about/">אודות</a><a href="/#services">שירותים</a><a href="/guides/">מדריכי IT</a><a href="/team/">צוות</a><a href="/#contact">צור קשר</a><a href="/en/phishing-awareness/" lang="en" dir="ltr">English</a></nav></div></header>
 <div class="wrap">
   <div class="topbar card">
     <div class="brandrow">
@@ -447,7 +454,7 @@
     </div>
   </nav>
 
-  <footer class="foot">Jimmi's Hub Security Awareness • Public Training Page · <a href="/accessibility.html">הצהרת נגישות</a></footer>
+  <footer class="foot">Jimmi's Hub Security Awareness • Public Training Page · <a href="/">ראשי</a> · <a href="/privacy.html">מדיניות פרטיות</a> · <a href="/terms.html">תנאי שימוש</a> · <a href="/accessibility.html">הצהרת נגישות</a> · <a href="/en/phishing-awareness/" lang="en" dir="ltr">English</a></footer>
 </div>
 
 <script>
@@ -718,6 +725,7 @@ function finishTraining(reason) {
 setLevel('easy');
 updateCountersPreview();
 </script>
+<script src="/assets/js/global-navigation.js" defer></script>
 <script src="/assets/js/accessibility.js" defer></script>
 </body>
 </html>

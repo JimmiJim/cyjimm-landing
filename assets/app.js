@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const isEnglish = document.documentElement.lang.toLowerCase().startsWith('en');
   const btn = document.getElementById('menuBtn');
   const panel = document.getElementById('mobilePanel');
   if (btn && panel) {
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       statusBox.className = 'form-status';
       statusBox.style.display = 'block';
-      statusBox.textContent = 'שולח...';
+      statusBox.textContent = isEnglish ? 'Sending...' : 'שולח...';
 
       const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
@@ -51,14 +52,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (res.ok) {
           statusBox.className = 'form-status ok';
-          statusBox.textContent = 'הפרטים נשלחו בהצלחה ✔️ נחזור אליך בהקדם.';
+          statusBox.textContent = isEnglish ? 'Your details were sent successfully ✔️ We will get back to you soon.' : 'הפרטים נשלחו בהצלחה ✔️ נחזור אליך בהקדם.';
           form.reset();
         } else {
           throw new Error('Request failed');
         }
       } catch (err) {
         statusBox.className = 'form-status err';
-        statusBox.textContent = 'שגיאה בשליחה. אפשר לפנות ישירות ל־madara@cyjimm.com';
+        statusBox.textContent = isEnglish ? 'There was an error sending the form. You can contact madara@cyjimm.com directly.' : 'שגיאה בשליחה. אפשר לפנות ישירות ל־madara@cyjimm.com';
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }

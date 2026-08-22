@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/site.css">
+  <link rel="stylesheet" href="/assets/css/global-navigation.css">
   <link rel="stylesheet" href="/assets/css/accessibility.css">
   <style>
     .nav { flex-direction: row; gap: 28px; }
@@ -25,19 +26,20 @@
     .form-status.err { display: block; border-color: rgba(255, 95, 95, .6); }
     .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
   </style>
+  <link rel="canonical" href="https://cyjimm.com/">
+  <link rel="alternate" hreflang="he" href="https://cyjimm.com/">
+  <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://cyjimm.com/">
 </head>
 <body id="top">
 <a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
 <div class="cursor-ship"><img src="/assets/spaceship-icon.png" alt=""></div>
-<header role="banner">
-  <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="CyJimm"><img class="brand-logo" src="/logo-84.png" srcset="/logo-84.png 1x, /logo-168.png 2x" alt="CyJimm" width="36" height="36"><span>CyJimm</span></a>
-    <nav class="links" aria-label="ניווט ראשי">
-      <a href="about/">עלינו</a><a href="#services">שירותים</a><a class="nav-guides" href="/guides/">מדריכי IT</a><a href="#org">מבנה ארגוני</a><a href="team/">הצוות</a><a href="#contact">צור קשר</a>
-    </nav>
-    <button class="mobile-menu btn btn-ghost" id="menuBtn" aria-haspopup="true" aria-controls="mobilePanel" aria-expanded="false">תפריט</button>
-    <nav id="mobilePanel" class="mobile-panel" aria-label="ניווט מובייל">
-      <a href="about/">עלינו</a><a href="#services">שירותים</a><a href="/guides/">מדריכי IT</a><a href="#org">מבנה ארגוני</a><a href="team/">הצוות</a><a href="#contact">צור קשר</a>
+<header class="cyjimm-global-header" data-global-nav>
+  <div class="cyjimm-global-nav-wrap">
+    <a class="cyjimm-global-brand" href="/" aria-label="CyJimm — דף הבית"><img src="/logo-84.png" srcset="/logo-84.png 1x, /logo-168.png 2x" alt="" width="36" height="36"><span>CyJimm</span></a>
+    <button class="cyjimm-global-menu" type="button" aria-controls="globalNavLinks" aria-expanded="false" data-global-nav-toggle>תפריט</button>
+    <nav class="cyjimm-global-links" id="globalNavLinks" aria-label="ניווט ראשי" data-global-nav-links>
+      <a href="/" aria-current="page">ראשי</a><a href="/about/">אודות</a><a href="/#services">שירותים</a><a href="/guides/">מדריכי IT</a><a href="/team/">צוות</a><a href="/#contact">צור קשר</a><a href="/en/" lang="en" dir="ltr">English</a>
     </nav>
   </div>
 </header>
@@ -49,7 +51,8 @@
   <section id="org"><div class="wrap"><h2>מבנה ארגוני</h2><p class="muted">יחידות ליבה - כל יחידה עם מנדט ברור ומדדים.</p><div class="org-grid" style="margin-top:14px"><div class="unit"><span class="pill">1</span><h3>Executive</h3><small>אסטרטגיה, שותפויות, תקנים</small></div><div class="unit"><span class="pill">2</span><h3>Operations</h3><small>PMO, SLA, רכש</small></div><div class="unit"><span class="pill">3</span><h3>Blue Team</h3><small>IR, SIEM, הקשחות</small></div><div class="unit"><span class="pill">4</span><h3>Red Team</h3><small>PT, Adversary Sim</small></div><div class="unit"><span class="pill">5</span><h3>Infra</h3><small>AD, רשת, ענן</small></div><div class="unit"><span class="pill">6</span><h3>DevSecOps</h3><small>CI/CD, Cloud-Native</small></div></div></div></section>
   <section id="contact" class="contact"><div class="wrap"><h2>יצירת קשר</h2><p>השאירו פרטים ונחזור אליכם. שדות חובה מסומנים *.</p><form id="contactForm" method="POST" action="https://formsubmit.co/ajax/madara@cyjimm.com" data-contact-form novalidate><label class="visually-hidden" for="contact-name">שם מלא</label><input class="input" id="contact-name" name="name" placeholder="שם מלא *" autocomplete="name" required><label class="visually-hidden" for="contact-email">אימייל</label><input class="input" id="contact-email" type="email" name="email" placeholder="אימייל *" autocomplete="email" required><label class="visually-hidden" for="contact-company">חברה או ארגון</label><input class="input" id="contact-company" name="company" placeholder="חברה / ארגון" autocomplete="organization"><label class="visually-hidden" for="contact-phone">טלפון</label><input class="input" id="contact-phone" name="phone" placeholder="טלפון" autocomplete="tel"><label class="visually-hidden" for="contact-message">איך נוכל לעזור?</label><textarea id="contact-message" name="message" placeholder="איך נוכל לעזור? *" required></textarea><input type="hidden" name="_subject" value="New Lead from CyJimm"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><label class="notice"><input type="checkbox" name="privacy" value="accepted" required> מאשר/ת מדיניות פרטיות ותנאי שימוש.</label><button class="btn btn-primary" type="submit">שליחה</button><div class="form-status" id="contactStatus" role="status" aria-live="polite"></div><div class="notice">אין פרסום. אין ספאם. הפרטים נשלחים ישירות לצוות CyJimm.</div></form></div></section>
 </main>
-<footer class="footer"><div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><div>© <span id="year"></span> CyJimm. כל הזכויות שמורות.</div><div style="display:flex;gap:12px"><a href="#">מדיניות פרטיות</a><span>•</span><a href="#">תנאים</a><span>•</span><a href="/accessibility.html">הצהרת נגישות</a></div></div></footer>
+<footer class="footer"><div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><div>© <span id="year"></span> CyJimm. כל הזכויות שמורות.</div><div style="display:flex;gap:12px;flex-wrap:wrap"><a href="/">ראשי</a><a href="/privacy.html">מדיניות פרטיות</a><a href="/terms.html">תנאי שימוש</a><a href="/accessibility.html">הצהרת נגישות</a><a href="/en/" lang="en" dir="ltr">English</a></div></div></footer>
 <script src="./assets/app.js" defer></script>
+<script src="/assets/js/global-navigation.js" defer></script>
 <script src="/assets/js/accessibility.js" defer></script>
 </body></html>

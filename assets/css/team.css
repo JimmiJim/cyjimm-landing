@@ -4,7 +4,7 @@ html, body { height: 100%; }
 body.team-page { margin: 0; background: radial-gradient(1200px 700px at 70% -10%,#fff 0%,#f6f7fb 55%) fixed, linear-gradient(180deg,#fff 0%,#eef2ff 100%) fixed; color: var(--ink); }
 html[lang="he"] body.team-page { font-family: "Noto Sans Hebrew",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif; }
 html[lang="en"] body.team-page { font-family: Inter,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif; }
-/* Content links only — do not override global header / mobile nav colors */
+/* Content links only - do not override global header / mobile nav colors */
 .team-page main a,
 .team-page footer a {
   color: #0f172a;

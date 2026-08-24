@@ -160,9 +160,13 @@ html[data-cyjimm-text-scale] body.guide-page main .section h2 {
   font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.4;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
 }
 
-.cyjimm-accessibility-trigger {
+.cyjimm-accessibility-trigger,
+.cyjimm-theme-trigger {
   width: 3.5rem;
   height: 3.5rem;
   padding: 0;
@@ -173,6 +177,13 @@ html[data-cyjimm-text-scale] body.guide-page main .section h2 {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   font: 700 1.55rem/1 Arial, sans-serif;
+}
+
+.cyjimm-theme-trigger {
+  background: #f8fafc;
+  color: #111827;
+  cursor: pointer;
+  font-size: 1.35rem;
 }
 
 .cyjimm-accessibility-panel {
@@ -229,6 +240,280 @@ html[data-cyjimm-text-scale] body.guide-page main .section h2 {
   margin: 0.7rem 0 0;
   color: #e5e7eb;
   font-size: 0.9rem;
+}
+
+html[data-cyjimm-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-cyjimm-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --bg-soft: #eef1f7;
+  --card: #fff;
+  --text: #172033;
+  --muted: #526078;
+  --line: rgba(15, 23, 42, 0.14);
+  --pc-bg: #f5f7fb;
+  --pc-panel: #fff;
+  --pc-text: #172033;
+  --pc-muted: #526078;
+  --pc-line: rgba(15, 23, 42, 0.14);
+}
+
+html[data-cyjimm-theme="light"] body {
+  background: linear-gradient(180deg, #fff, #f4f6fb 46%, #eef2f8) fixed;
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body a {
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body .skip-link {
+  border-color: #fff;
+  background: #111;
+  color: #fff;
+}
+
+html[data-cyjimm-theme="light"] .cyjimm-global-header {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.94);
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] :where(.cyjimm-global-brand, .cyjimm-global-links a, .cyjimm-global-menu) {
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] .cyjimm-global-links a,
+html[data-cyjimm-theme="light"] .cyjimm-global-menu {
+  border-color: rgba(15, 23, 42, 0.16);
+  background: rgba(15, 23, 42, 0.045);
+}
+
+html[data-cyjimm-theme="light"] .cyjimm-global-links a:hover,
+html[data-cyjimm-theme="light"] .cyjimm-global-links a[aria-current="page"] {
+  border-color: rgba(15, 23, 42, 0.28);
+  background: rgba(225, 29, 72, 0.09);
+}
+
+html[data-cyjimm-theme="light"] body#top :where(header, .hero) {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+html[data-cyjimm-theme="light"] body#top :where(.card, .unit) {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+}
+
+html[data-cyjimm-theme="light"] body:not([class]) :where(.hero, .card, .unit) {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.84);
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body:not([class]) .footer {
+  color: #475569;
+}
+
+html[data-cyjimm-theme="light"] body#top :where(.stack span, .input, textarea) {
+  border-color: rgba(15, 23, 42, 0.16);
+  background: #fff;
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body#top :where(.services-group-title, .stack span, .pill, .footer) {
+  color: #526078;
+}
+
+html[data-cyjimm-theme="light"] body#top .hero-accent {
+  color: #be123c;
+}
+
+html[data-cyjimm-theme="light"] body#top .notice {
+  color: #475569;
+}
+
+html[data-cyjimm-theme="light"] body.guide-page {
+  background: linear-gradient(180deg, #fff, #f3f6fb 42%, #eef2f8);
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body.guide-page :where(.topnav, .card, .visual-card, .browser, .ui-row, .toc a, .btn-ghost) {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.88);
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body.guide-page :where(.navlinks a, .chip) {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: rgba(15, 23, 42, 0.045);
+  color: #273449;
+}
+
+html[data-cyjimm-theme="light"] body.guide-page :where(.lead, .card p, .muted, .footer) {
+  color: #526078;
+}
+
+html[data-cyjimm-theme="light"] body.guide-page .eyebrow {
+  border-color: rgba(190, 18, 60, 0.35);
+  background: #fff1f2;
+  color: #9f1239;
+}
+
+html[data-cyjimm-theme="light"] body.guide-page :where(.browserbar, .address, .code) {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: #e9edf5;
+  color: #334155;
+}
+
+html[data-cyjimm-theme="light"] body.about-page {
+  background: #f5f7fb;
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body.about-page :where(.card, .about-stat, .portfolio-card, .portfolio-project, .portfolio-timeline li, .portfolio-training article, .portfolio-script-list article, .portfolio-process li) {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: #fff;
+  color: #172033;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+html[data-cyjimm-theme="light"] body.about-page :where(h1 span.role, .portfolio-projects p, .portfolio-card p, .portfolio-project p, .portfolio-timeline p, .portfolio-training p, .portfolio-script-list p, .portfolio-process p) {
+  color: #526078;
+}
+
+html[data-cyjimm-theme="light"] body.about-page h1 span.role {
+  color: #526078;
+}
+
+html[data-cyjimm-theme="light"] body.about-page .logos div {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: #f8fafc;
+  color: #334155;
+}
+
+html[data-cyjimm-theme="light"] body.about-page :where(.portfolio-period, .portfolio-context, .portfolio-script-list code, .quote) {
+  color: #9f1239;
+}
+
+html[data-cyjimm-theme="light"] body.about-page :where(.portfolio-projects h3, .portfolio-card h3) {
+  color: #172033;
+}
+
+html[data-cyjimm-theme="dark"] body.team-page {
+  background: radial-gradient(1200px 700px at 70% -10%, #1b1b27 0%, #0b0b10 55%) fixed, linear-gradient(180deg, #0b0b10, #12121a) fixed;
+  color: #e7e9ee;
+}
+
+html[data-cyjimm-theme="dark"] body.team-page :where(.brand, .brand a, .navlinks a, .hero h1, .member h3, .lead) {
+  color: #e7e9ee;
+}
+
+html[data-cyjimm-theme="dark"] body.team-page header.hero {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(11, 11, 16, 0.72);
+}
+
+html[data-cyjimm-theme="dark"] body.team-page :where(.card, .member, .chip) {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: #15161f;
+  color: #e7e9ee;
+}
+
+html[data-cyjimm-theme="dark"] body.team-page :where(.role, .tag, footer) {
+  color: #b9c2cf;
+}
+
+html[data-cyjimm-theme="dark"] body.team-page .tag {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #1a1b25;
+}
+
+html[data-cyjimm-theme="light"] body.legal-page,
+html[data-cyjimm-theme="light"] body.legal-page a {
+  background: #f5f7fb;
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body.phishing-page {
+  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.1), transparent 28%), linear-gradient(160deg, #fff, #f1f5fb 52%, #e7edf7);
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body.phishing-page :where(.card, .hero-main, .stats, .metric, .sidebar, .section, .box, .topbar, .drawer) {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  color: #172033;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+}
+
+html[data-cyjimm-theme="light"] body.phishing-page :where(h1, .metric .v, .box h3, .nav, .mnav, .secondary, .close) {
+  color: #172033;
+}
+
+html[data-cyjimm-theme="light"] body.phishing-page :where(.sub, .metric .l, .box p, .box li, .foot, .drawerhead) {
+  color: #526078;
+}
+
+html[data-cyjimm-theme="light"] body.phishing-page :where(.chip, .brand) {
+  border-color: rgba(190, 18, 60, 0.28);
+  background: #fff1f2;
+  color: #7f1d1d;
+}
+
+html[data-cyjimm-theme="light"] body.phishing-page :where(.nav, .mnav, .secondary, .close, .feedback) {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: rgba(15, 23, 42, 0.045);
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page {
+  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.13), transparent 32%), linear-gradient(180deg, #fff, #f1f4f9 48%, #e8edf5);
+  color: var(--pc-text);
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page :where(.pc-card, .pc-values-card, .pc-step) {
+  border-color: rgba(30, 41, 59, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--pc-text);
+  box-shadow: 0 16px 38px rgba(30, 41, 59, 0.1);
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page .pc-eyebrow {
+  border-color: rgba(190, 18, 60, 0.35);
+  background: #fff1f2;
+  color: #9f1239;
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page .pc-subtitle {
+  color: #9f1239;
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page :where(.pc-lead, .pc-section-intro, .pc-values-card p, .pc-footer) {
+  color: #3f4d63;
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page :where(.pc-card li, .pc-step p) {
+  color: #243147;
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page .pc-principle-strip div {
+  border-color: rgba(30, 41, 59, 0.16);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 10px 24px rgba(30, 41, 59, 0.06);
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page .pc-cta-box {
+  border-color: rgba(190, 18, 60, 0.28);
+  background: linear-gradient(135deg, rgba(255, 228, 230, 0.9), rgba(255, 255, 255, 0.96));
+  box-shadow: 0 18px 42px rgba(159, 18, 57, 0.1);
+}
+
+html[data-cyjimm-theme="light"] body.personal-services-page .pc-section-alt {
+  background: rgba(15, 23, 42, 0.025);
 }
 
 .cyjimm-a11y-high-contrast body {
@@ -300,6 +585,14 @@ footer a {
 
   html[data-cyjimm-text-scale] body.phishing-page .sub {
     font-size: calc(15px * var(--cyjimm-a11y-text-scale));
+  }
+}
+
+@media (max-width: 900px) {
+  html[data-cyjimm-theme="light"] .cyjimm-global-links {
+    border-color: rgba(15, 23, 42, 0.14);
+    background: #fff;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
   }
 }
 

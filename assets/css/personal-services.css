@@ -142,35 +142,80 @@ body.personal-services-page {
 }
 
 .pc-process {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 30px;
 }
 
 .pc-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  flex: 0 1 calc(25% - 14px);
+  max-width: calc(25% - 14px);
   min-width: 0;
-  padding: 16px 14px;
+  min-height: 132px;
+  padding: 22px 20px;
+  overflow: hidden;
   border: 1px solid var(--pc-line);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 22px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pc-step::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pc-accent), var(--pc-accent-light));
+}
+
+.pc-step::after {
+  content: "";
+  position: absolute;
+  inset-block-start: -3.5rem;
+  inset-inline-end: -3rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: rgba(225, 29, 72, 0.1);
+  pointer-events: none;
+}
+
+.pc-step:hover {
+  border-color: rgba(255, 70, 100, 0.42);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.26);
 }
 
 .pc-step span {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
-  width: 2em;
-  height: 2em;
+  width: 2.5em;
+  height: 2.5em;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.65em;
-  border: 1px solid rgba(225, 29, 72, 0.4);
-  border-radius: 0.7em;
-  background: rgba(225, 29, 72, 0.17);
+  border: 1px solid rgba(255, 70, 100, 0.5);
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 70, 100, 0.26), rgba(225, 29, 72, 0.13));
+  box-shadow: 0 8px 22px rgba(225, 29, 72, 0.16);
   font-weight: 900;
 }
 
 .pc-step p {
+  position: relative;
+  z-index: 1;
   margin: 0;
+  color: #f2f4f8;
+  font-weight: 750;
+  line-height: 1.55;
 }
 
 .pc-values-card {
@@ -231,8 +276,9 @@ body.personal-services-page {
 }
 
 @media (max-width: 1000px) {
-  .pc-process {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .pc-step {
+    flex-basis: calc(50% - 9px);
+    max-width: calc(50% - 9px);
   }
 }
 
@@ -248,7 +294,13 @@ body.personal-services-page {
   }
 
   .pc-process {
-    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .pc-step {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-height: 0;
   }
 
   .pc-card {

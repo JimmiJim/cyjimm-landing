@@ -2,6 +2,7 @@
   'use strict';
 
   const STORAGE_KEY = 'cyjimm_accessibility_settings';
+  const THEME_STORAGE_KEY = 'cyjimm_theme_preference';
   const defaults = {
     textScale: 1,
     highContrast: false,
@@ -23,6 +24,8 @@
     font: 'Readable font',
     motion: 'Stop non-essential animations',
     reset: 'Reset accessibility settings',
+    themeLight: 'Switch to light mode',
+    themeDark: 'Switch to dark mode',
     updated: 'Accessibility settings updated',
     resetDone: 'Accessibility settings reset'
   } : {
@@ -36,15 +39,51 @@
     font: 'גופן קריא',
     motion: 'עצירת הנפשות לא חיוניות',
     reset: 'איפוס הגדרות נגישות',
+    themeLight: 'מעבר למצב בהיר',
+    themeDark: 'מעבר למצב כהה',
     updated: 'הגדרות הנגישות עודכנו',
     resetDone: 'הגדרות הנגישות אופסו'
   };
 
   let state = loadState();
   let trigger;
+  let themeTrigger;
   let panel;
   let status;
   const toggleButtons = {};
+
+  function loadTheme() {
+    try {
+      const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+      if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
+    } catch (error) {
+      // Fall back to the site's established dark appearance when storage is unavailable.
+    }
+    return 'dark';
+  }
+
+  let theme = loadTheme();
+
+  function applyTheme() {
+    const lightMode = theme === 'light';
+    document.documentElement.setAttribute('data-cyjimm-theme', theme);
+    if (!themeTrigger) return;
+    const label = lightMode ? text.themeDark : text.themeLight;
+    themeTrigger.setAttribute('aria-label', label);
+    themeTrigger.setAttribute('title', label);
+    themeTrigger.setAttribute('aria-pressed', String(lightMode));
+    themeTrigger.textContent = lightMode ? '☾' : '☀';
+  }
+
+  function toggleTheme() {
+    theme = theme === 'light' ? 'dark' : 'light';
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (error) {
+      // The theme switch remains usable when storage is unavailable.
+    }
+    applyTheme();
+  }
 
   function loadState() {
     try {
@@ -119,6 +158,11 @@
     const root = document.createElement('div');
     root.className = 'cyjimm-accessibility-root';
 
+    themeTrigger = document.createElement('button');
+    themeTrigger.type = 'button';
+    themeTrigger.className = 'cyjimm-theme-trigger';
+    themeTrigger.addEventListener('click', toggleTheme);
+
     trigger = document.createElement('button');
     trigger.type = 'button';
     trigger.className = 'cyjimm-accessibility-trigger';
@@ -180,8 +224,10 @@
     panel.appendChild(controls);
     panel.appendChild(status);
     root.appendChild(panel);
+    root.appendChild(themeTrigger);
     root.appendChild(trigger);
     document.body.appendChild(root);
+    applyTheme();
 
     trigger.addEventListener('click', function () {
       const willOpen = panel.hidden;
@@ -206,6 +252,7 @@
   }
 
   function init() {
+    applyTheme();
     buildWidget();
     applyState();
   }

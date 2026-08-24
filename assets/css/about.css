@@ -52,6 +52,18 @@ html[lang="en"] body.about-page {
 .portfolio-project p { color: #c7cbd3; }
 .portfolio-project ul { margin: .75rem 0 0; padding-inline-start: 1.25rem; }
 .portfolio-context { color: #ff8f98; font-size: .88rem; font-weight: 700; }
+.portfolio-timeline { display: grid; gap: 16px; list-style: none; margin: 1.25rem 0 0; padding: 0; }
+.portfolio-timeline li, .portfolio-training article { display: grid; grid-template-columns: minmax(9rem,.28fr) 1fr; gap: 20px; padding: 20px; background: #121217; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; }
+.portfolio-timeline h3, .portfolio-training h3 { margin: 0 0 .55rem; }
+.portfolio-timeline p, .portfolio-training p { margin: 0 0 .65rem; color: #c7cbd3; }
+.portfolio-timeline p:last-child, .portfolio-training p:last-child { margin-bottom: 0; }
+.portfolio-period { color: #ff8f98; font-weight: 700; }
+.portfolio-script-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,19rem),1fr)); gap: 14px; margin-top: 1rem; }
+.portfolio-script-list article { padding: 18px; background: #121217; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; }
+.portfolio-script-list h3 { margin: 0 0 .55rem; }
+.portfolio-script-list code { color: #ffb0b6; overflow-wrap: anywhere; }
+.portfolio-script-list p { margin: 0; color: #c7cbd3; }
+.portfolio-training { display: grid; gap: 14px; margin-top: 1rem; }
 .portfolio-details { margin-bottom: 0; }
 .portfolio-process { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; list-style: none; margin: 1rem 0 0; padding: 0; }
 .portfolio-process li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; background: #121217; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 16px; }
@@ -63,5 +75,6 @@ html[lang="en"] body.about-page {
 @media (max-width: 640px) {
   .about-page main { padding: 18px; }
   .portfolio-process { grid-template-columns: 1fr; }
+  .portfolio-timeline li, .portfolio-training article { grid-template-columns: 1fr; gap: 8px; }
   .portfolio-project, .portfolio-card { padding: 16px; }
 }

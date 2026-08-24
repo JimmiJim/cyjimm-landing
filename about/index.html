@@ -38,7 +38,7 @@
         <span>Portfolio מקצועי - תשתיות • אבטחה • אוטומציה</span>
       </div>
       <h1> מתן ג'מיל <span class="role">System Administrator & Security Engineer</span></h1>
-      <p>זהו תיק העבודות המקצועי שלי. אני עובד ביום-יום עם שרתי Windows, Active Directory, Microsoft 365, רשתות וכלי אבטחה, ומשלב הקמה, תחזוקה, הקשחה, תיעוד ואוטומציה.</p>
+      <p>אני מתן ג'מיל. ביום-יום אני פותר תקלות, מקים ומתחזק מערכות, כותב אוטומציות ומחפש דרך להשאיר את הסביבה יציבה וברורה יותר ממה שקיבלתי.</p>
       <p class="meta">מייסד ומוביל CyJimm.</p>
       <img class="avatar" src="assets/chief-avatar.png" alt="איור של צ׳יף"/>
       <div class="btn-group">
@@ -56,81 +56,109 @@
       </div>
     </header>
 
-    <!-- Professional profile -->
     <section class="card about-section">
-      <h2>פרופיל מקצועי</h2>
-      <p>SysAdmin ו‑Security Engineer עם מעל 4 שנות ניסיון בסביבה הארגונית. מתמחה בהקמה, תחזוקה והקשחה של מערכות Windows Server (מ‑2008 ועד 2022), תוך ניהול Active Directory, GPO, DNS, DHCP ו‑Baseline מאובטח. מנהל שרתי הדפסה ארגוניים ופריסת מדפסות לפי מחלקות דרך GPO.</p>
-      <p>אני עובד בגישה פרואקטיבית שממוקדת במדדים אמיתיים: זמינות שירות, זמן תגובה ותיעוד מתמשך. בשנים האחרונות שדרגתי תשתית רשת מקישוריות של כ־32Mbps ל־300/300Mbps, לצד שדרוג נקודות גישה ובדיקות כיסוי אלחוטי; וחיזקתי יציבות שרתים באמצעות תחזוקה, ניטור והקשחת תשתיות, תוך הטמעת תהליכי בקרה שמאפשרים טיפול מהיר יותר בתקלות.</p>
-      <p>בנוסף, מתמחה בהרכבת מחשבים לפי דרישות משתמש קצה - אפיון, בחירת חלקים, איזון תקציב/ביצועים, בדיקות מאמץ וכיול תרמי. מעל 350 מחשבים שהורכבו בעבודתי, עם תיעוד ובדיקות עומס מלאות.</p>
+      <h2>קצת עליי</h2>
+      <p>אני איש סיסטם ואבטחת מידע עם מעל 4 שנות ניסיון בסביבות ארגוניות. רוב העבודה שלי נמצאת בחיבור שבין Windows ו-Linux, זהויות, Microsoft 365, תקשורת, תחנות קצה וכלי אבטחה.</p>
+      <p>אני אוהב להבין איך המערכת בנויה לפני שאני נוגע בה. לפעמים זה אומר לעבור על GPO והרשאות, לפעמים לבדוק לוגים ותקשורת, ולפעמים לפתוח תחנה ולגלות שהבעיה בכלל בחומרה. כשפעולה חוזרת על עצמה מספיק פעמים, אני בודק אם PowerShell יכול לחסוך אותה.</p>
+      <p>חשוב לי לא להשאיר מאחור פתרון שאף אחד אחר לא מבין. לכן אני בודק את התוצאה, מתעד את השינוי ומשאיר דרך ברורה לחזור אחורה אם יהיה צורך.</p>
     </section>
 
-    <!-- Selected projects -->
+    <section class="card about-section">
+      <h2>מה אני עושה בפועל</h2>
+      <div class="portfolio-grid">
+        <article class="portfolio-card"><h3>תשתיות וזהויות</h3><p>Windows Server, Active Directory, GPO, DNS, DHCP, OU, הרשאות, file services ושרתי הדפסה.</p></article>
+        <article class="portfolio-card"><h3>Microsoft Cloud</h3><p>Microsoft 365, Entra ID, Exchange Online, משתמשים, רישוי, הרשאות וסנכרון עם Active Directory.</p></article>
+        <article class="portfolio-card"><h3>אוטומציה</h3><p>PowerShell לתהליכי onboarding, תחזוקה, Health Checks, ניהול ACL, archives, גיבוי ואכיפת תצורה.</p></article>
+        <article class="portfolio-card"><h3>Endpoints ו-Imaging</h3><p>אבחון חומרה, שיקום תחנות, התקנות, images מותאמים, דרייברים, עדכוני יצרן והחזרה מבוקרת לייצור.</p></article>
+        <article class="portfolio-card"><h3>אבטחה ונראות</h3><p>הקשחת תצורה, Defender, כלי endpoint security, Splunk, Wazuh, לוגים, dashboards ותהליכי triage.</p></article>
+        <article class="portfolio-card"><h3>רשתות ווירטואליזציה</h3><p>VLANs, pfSense, נקודות גישה, בדיקות כיסוי, VMware, Proxmox ומעבדות מבודדות לתרגול ובדיקה.</p></article>
+      </div>
+    </section>
+
     <section class="card about-section" id="projects">
-      <h2>פרויקטים נבחרים</h2>
-      <div class="about-stats portfolio-projects">
-        <article class="about-stat">
-          <h3>שדרוג תשתית רשת</h3>
-          <p>שדרוג קישוריות מכ-32Mbps ל-300/300Mbps, לצד החלפת נקודות גישה ובדיקת הכיסוי האלחוטי בסביבה.</p>
+      <h2>עבודות ופרויקטים ששווה להכיר</h2>
+      <div class="portfolio-project-list">
+        <article class="portfolio-project">
+          <div><span class="portfolio-context">תשתיות ארגוניות</span><h3>שדרוג רשת וכיסוי אלחוטי</h3></div>
+          <p>שדרוג קישוריות מכ-32Mbps ל-300/300Mbps, החלפת נקודות גישה ובדיקת הכיסוי האלחוטי לאחר השינוי.</p>
+          <ul><li>בדיקת המצב הקיים והגורמים המגבילים</li><li>תיאום השדרוג והחלפת רכיבי הגישה</li><li>אימות קישוריות, ביצועים וכיסוי לאחר ההטמעה</li></ul>
         </article>
-        <article class="about-stat">
-          <h3>מערכות ואוטומציה</h3>
-          <p>ניהול Active Directory ו-GPO, שרתי הדפסה ופריסות לפי מחלקות, יחד עם כלי PowerShell למשימות תחזוקה ובקרה חוזרות.</p>
+        <article class="portfolio-project">
+          <div><span class="portfolio-context">מערכות ארגוניות</span><h3>ניהול זהויות, מדיניות והדפסה</h3></div>
+          <p>ניהול Active Directory ו-GPO בסביבה מחולקת למחלקות, לצד שרתי הדפסה ופריסת מדפסות לפי קבוצות וצרכים.</p>
+          <ul><li>מבנה OU והרשאות לפי תפקיד</li><li>מדיניות תחנות ו-baseline תפעולי</li><li>מיפוי מדפסות, דרייברים ותהליך שחזור מתועד</li></ul>
         </article>
-        <article class="about-stat">
-          <h3>אבטחה ונראות</h3>
-          <p>הקשחת סביבות, עבודה עם Splunk ו-Wazuh, בניית Dashboards ותרגול מעשי במעבדות Red, Blue ו-Purple.</p>
+        <article class="portfolio-project">
+          <div><span class="portfolio-context">Automation Toolkit</span><h3>כלי PowerShell לתפעול חוזר</h3></div>
+          <p>פיתוח כלי עזר למשימות שחוזרות על עצמן, עם דגש על תוצאה צפויה, בדיקות ותיעוד.</p>
+          <ul><li>Health Reports למצב סוללה, דיסק ו-CPU</li><li>ניהול ACL, Outlook Archives ו-EWS backup</li><li>התקנות, post-install checks ואבחון מרחוק</li></ul>
+        </article>
+        <article class="portfolio-project">
+          <div><span class="portfolio-context">Endpoint Engineering</span><h3>Imaging ושיקום תחנות</h3></div>
+          <p>אבחון תחנות שנכשלו, החלפת רכיבים לפי צורך, imaging מלא והחזרה מבוקרת לסביבת העבודה.</p>
+          <ul><li>Windows 11 images ותהליכי התקנה חוזרים</li><li>סביבות Windows/Linux ו-dual boot</li><li>דרייברים, עדכונים, בדיקות עומס ואימות תרמי</li></ul>
+        </article>
+        <article class="portfolio-project">
+          <div><span class="portfolio-context">Security Practice</span><h3>נראות, הקשחה ותרגול תגובה</h3></div>
+          <p>עבודה עם כלי ניטור ואבטחה לצד מעבדות ייעודיות שמאפשרות לתרגל זיהוי, triage, containment ותיעוד.</p>
+          <ul><li>Splunk ו-Wazuh עבור לוגים ו-dashboards</li><li>הקשחת Windows ו-Linux ובדיקת תצורה</li><li>מעבדות Red, Blue ו-Purple לתרגול מבוקר</li></ul>
+        </article>
+        <article class="portfolio-project">
+          <div><span class="portfolio-context">Public Web Project</span><h3>CYJIMM.COM</h3></div>
+          <p>הקמה והקשחה של אתר סטטי דו-לשוני עם דגש על נגישות, אבטחה, SEO ותחזוקה פשוטה.</p>
+          <ul><li>RTL/LTR, ניווט מקלדת, הגדלת טקסט ו-reduced motion</li><li>CSP תואם, HTTP security headers ושילוב Cloudflare</li><li>Canonical, hreflang, sitemap, social metadata וטופס FormSubmit</li></ul>
         </article>
       </div>
     </section>
 
-    <!-- Expertise -->
     <section class="card about-section">
-      <h2>טכנולוגיות ותחומי עבודה</h2>
-      <ul class="about-list">
-        <li>PowerShell Automation - פריסות, הקשחות, Health Checks, ניהול Outlook Archives ו‑ACLs</li>
-        <li>Active Directory / Group Policy / DNS / DHCP - OU לפי מחלקות, Baseline קשיח, מדיניות אבטחה</li>
-        <li>Microsoft 365 & Entra ID - ניהול, הקמה והגדרת משתמשים, רישוי והרשאות, סנכרון עם AD</li>
-        <li>Print Servers - ניהול שרתי הדפסה ופריסת מדפסות דרך GPO לפי מחלקות</li>
-        <li>SecOps & SIEM - Splunk, Wazuh, CrowdStrike, נראות ובקרה</li>
-        <li>Virtualization - Proxmox, VMware, VLAN Segmentation, מעבדות Red/Blue/Purple</li>
-        <li>Hardware & PC Builds - BIOS/UEFI, XMP/EXPO, ולידציה תרמית</li>
+      <h2>מה נמצא אצלי בארגז הכלים</h2>
+      <div class="portfolio-grid portfolio-toolbox">
+        <article class="portfolio-card"><h3>Systems</h3><p>Windows Server 2008-2022, Windows 10/11, Linux, macOS, Active Directory, GPO, DNS, DHCP.</p></article>
+        <article class="portfolio-card"><h3>Cloud & Identity</h3><p>Microsoft 365, Entra ID, Exchange Online, EWS, Graph integrations, licensing ו-permissions.</p></article>
+        <article class="portfolio-card"><h3>Automation</h3><p>PowerShell 7+, Python, Winget, GitHub Actions, Google Apps Script ו-Power Automate.</p></article>
+        <article class="portfolio-card"><h3>Security</h3><p>Defender, CrowdStrike, Wazuh, Splunk, Burp Suite, Nmap, Wireshark, Metasploit ו-hardening.</p></article>
+        <article class="portfolio-card"><h3>Infrastructure</h3><p>pfSense, VLAN segmentation, VMware, Proxmox, print servers, endpoint deployment ו-remote support.</p></article>
+        <article class="portfolio-card"><h3>Hardware</h3><p>PC builds, BIOS/UEFI, SSD/NVMe, memory, SMART, stress testing, thermal validation ו-troubleshooting.</p></article>
+      </div>
+    </section>
+
+    <section class="card about-section">
+      <h2>הצד המעבדתי</h2>
+      <p>מעבר לעבודה בסביבות אמיתיות, אני מתחזק מעבדות מבודדות כדי לפרק תרחישים, לנסות כלים ולהבין טוב יותר מה קורה בצד ההתקפי ובצד ההגנתי. זה תרגול, לא תחליף לניסיון בסביבת ייצור.</p>
+      <ul class="about-list portfolio-details">
+        <li><b>TryHackMe:</b> Linux Privilege Escalation, Blue/Red Team ו-Network Exploitation</li>
+        <li><b>Offensive tooling:</b> Nmap, Burp Suite, Metasploit, Nikto, dirb ו-Wireshark</li>
+        <li><b>Defensive practice:</b> איסוף לוגים, triage, dashboards, הקשחה ותרגילי containment</li>
+        <li><b>Lab infrastructure:</b> Proxmox, VMware, pfSense, VLANs וסביבות Red/Blue/Purple</li>
       </ul>
     </section>
 
-    <!-- Cyber Labs -->
     <section class="card about-section">
-      <h2>מעבדות ותרגול מעשי</h2>
-      <p class="meta">למידה ותרגול מעשי לחיזוק מיומנויות התקפה והגנה.</p>
-      <ul class="about-list">
-        <li>TryHackMe - חדרים: <b>Linux Privilege Escalation</b>, <b>Blue/Red Team</b>, <b>Network Exploitation</b></li>
-        <li>כלים: <b>Metasploit</b>, <b>Nikto</b>, <b>dirb</b>, <b>Nmap</b>, <b>Burp Suite</b></li>
-        <li>הקמה וניהול מעבדות Red/Blue/Purple לצורכי אימון ו‑PT.</li>
-      </ul>
-    </section>
-
-    <!-- Philosophy -->
-    <section class="card about-section">
-      <h2>איך אני עובד</h2>
+      <h2>איך אני ניגש לתקלה או לשינוי</h2>
       <p class="quote">IT הוא מערכת חיה: אם היא לא נמדדת - היא לא מנוהלת.</p>
-      <p>חשוב לי שהאחריות על התהליך תהיה ברורה, שהתיעוד יישאר שימושי גם אחרי המסירה, ושאוטומציה תפתור עבודה חוזרת במקום להוסיף מורכבות.</p>
-      <p><b>משימה שחוזרת על עצמה היא מקום טוב לבדוק אם אוטומציה באמת תעזור.</b></p>
+      <ol class="portfolio-process">
+        <li><span>1</span><div><h3>קודם מבינים</h3><p>מה קרה, למי זה מפריע, מה השתנה לאחרונה ואילו מערכות תלויות זו בזו.</p></div></li>
+        <li><span>2</span><div><h3>בודקים לפני שמשנים</h3><p>לוגים, תצורה, הרשאות, תקשורת וחומרה. המטרה היא לא לנחש ולא להחליף משהו רק כדי לראות אם יעזור.</p></div></li>
+        <li><span>3</span><div><h3>משנים בצורה שאפשר לשלוט בה</h3><p>מגבים כשצריך, עובדים בשלבים ושומרים אפשרות חזרה לאחור.</p></div></li>
+        <li><span>4</span><div><h3>מוודאים ומשאירים סדר</h3><p>בודקים שהבעיה באמת נפתרה, מסכמים מה נעשה ומתעדים את מה שיהיה חשוב בפעם הבאה.</p></div></li>
+      </ol>
     </section>
 
-    <!-- Quick Stats -->
     <section class="card about-section">
-      <h2>ניסיון במספרים</h2>
+      <h2>כמה נתונים בקצרה</h2>
       <div class="about-stats">
         <div class="about-stat"><b>4+</b><br>שנות ניסיון ארגוני</div>
         <div class="about-stat"><b>300/300</b><br>Mbps אחרי שדרוג תשתית רשת</div>
         <div class="about-stat"><b>350+</b><br>מחשבים שהורכבו לפי דרישת משתמש</div>
-        <div class="about-stat"><b>יציבות</b><br>בסביבות ותשתיות מנוהלות</div>
+        <div class="about-stat"><b>אבחון עד תיעוד</b><br>לא עוצר ברגע שהתקלה נעלמת</div>
       </div>
     </section>
 
     <!-- Contact -->
     <section class="card about-section" id="contact">
-      <h2>עבודה משותפת</h2>
-      <p>אפשר לפנות אליי לגבי פרויקטים, שיתופי פעולה ותפקידים שמשלבים אבטחה, תשתיות ואוטומציה.</p>
+      <h2>אפשר לדבר</h2>
+      <p>אם יש פרויקט, תפקיד או שיתוף פעולה שנוגע לתשתיות, אבטחה או אוטומציה, אפשר לפנות אליי ולספר מה צריך.</p>
       <div class="about-contact-actions">
         <a class="btn" href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>
         <a class="btn" href="https://www.linkedin.com/in/matan-jimmi-jamil-a09aa2154/">LinkedIn</a>

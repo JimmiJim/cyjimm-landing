@@ -101,8 +101,11 @@ const LEVEL_CONFIG = {
   hard: { label: 'Hard', time: 60 }
 };
 
+const MAX_SCORE = 1000;
+
 const state = {
   score: 0,
+  correctAnswers: 0,
   answered: new Set(),
   lockedQuestions: new Set(),
   level: 'easy',
@@ -186,13 +189,14 @@ function updateCountersPreview() {
 function startTraining() {
   clearInterval(state.timer);
   state.score = 0;
+  state.correctAnswers = 0;
   state.answered.clear();
   state.lockedQuestions.clear();
   state.currentQuestions = getQuestionsForLevel(state.level);
   state.timeLeft = LEVEL_CONFIG[state.level].time;
 
-  document.getElementById('scoreValue').textContent = '0';
-  document.getElementById('mobileScoreValue').textContent = '0';
+  document.getElementById('scoreValue').textContent = `0/${MAX_SCORE}`;
+  document.getElementById('mobileScoreValue').textContent = `0/${MAX_SCORE}`;
   document.getElementById('answeredValue').textContent = '0';
   document.getElementById('totalQuestionsValue').textContent = String(state.currentQuestions.length);
   document.getElementById('statusValue').textContent = 'מתחיל';
@@ -243,7 +247,8 @@ function answerQuestion(questionId, choiceIndex, buttonEl) {
   state.answered.add(questionId);
 
   if (selected.correct) {
-    state.score += 10;
+    state.correctAnswers += 1;
+    state.score = Math.round((state.correctAnswers / state.currentQuestions.length) * MAX_SCORE);
     buttonEl.classList.add('answer-correct');
     feedback.innerHTML = '✅ <strong>נכון.</strong> ' + q.explanation;
   } else {
@@ -263,14 +268,14 @@ function answerQuestion(questionId, choiceIndex, buttonEl) {
 }
 
 function updateDashboard() {
-  document.getElementById('scoreValue').textContent = String(state.score);
-  document.getElementById('mobileScoreValue').textContent = String(state.score);
+  document.getElementById('scoreValue').textContent = `${state.score}/${MAX_SCORE}`;
+  document.getElementById('mobileScoreValue').textContent = `${state.score}/${MAX_SCORE}`;
   document.getElementById('answeredValue').textContent = String(state.answered.size);
 
   let status = 'מתחיל';
-  if (state.score >= 30) status = 'מתקדם';
-  if (state.score >= 60) status = 'חד עין';
-  if (state.score >= 90) status = 'Security Aware';
+  if (state.score >= 300) status = 'מתקדם';
+  if (state.score >= 600) status = 'חד עין';
+  if (state.score >= 900) status = 'Security Aware';
   document.getElementById('statusValue').textContent = status;
 }
 
@@ -279,15 +284,14 @@ function finishTraining(reason) {
   state.timer = null;
 
   const total = state.currentQuestions.length || getQuestionsForLevel(state.level).length;
-  const percentage = total ? Math.round((state.score / (total * 10)) * 100) : 0;
   const resultBox = document.getElementById('resultBox');
 
   resultBox.classList.remove('hidden');
   resultBox.innerHTML = `
     <h3>🏁 סיום Training</h3>
     <p><strong>סטטוס:</strong> ${reason}</p>
-    <p><strong>ציון:</strong> ${state.score} מתוך ${total * 10}</p>
-    <p><strong>אחוז הצלחה:</strong> ${percentage}%</p>
+    <p><strong>ציון:</strong> ${state.score} מתוך ${MAX_SCORE}</p>
+    <p><strong>תשובות נכונות:</strong> ${state.correctAnswers} מתוך ${total}</p>
     <p><strong>רמת קושי:</strong> ${LEVEL_CONFIG[state.level].label}</p>
   `;
 }

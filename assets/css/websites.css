@@ -30,7 +30,7 @@ body.websites-page {
     radial-gradient(900px 520px at 78% -6%, rgba(225, 29, 72, 0.18), transparent 65%),
     linear-gradient(180deg, #08080d 0, #10111a 38%, var(--web-bg) 100%);
   color: var(--web-text);
-  font-family: "Noto Sans Hebrew", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-family: "Noto Sans Hebrew", Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   line-height: 1.7;
 }
 

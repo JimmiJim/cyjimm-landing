@@ -26,6 +26,7 @@
 
 .cyjimm-global-brand {
   display: inline-flex;
+  min-height: 44px;
   align-items: center;
   gap: 0.6rem;
   color: #fff;
@@ -88,7 +89,7 @@
 }
 
 /* Desktop: keep a single nav row, including at 140% text scale */
-@media (min-width: 901px) {
+@media (min-width: 1081px) {
   .cyjimm-global-links {
     flex-wrap: nowrap;
     gap: 0.3rem;
@@ -100,7 +101,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .cyjimm-global-menu {
     display: inline-flex;
   }

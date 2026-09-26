@@ -42,8 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (res.ok) {
           statusBox.className = 'form-status ok';
-          statusBox.textContent = isEnglish ? 'Your details were sent successfully ✔️ We will get back to you soon.' : 'הפרטים נשלחו בהצלחה ✔️ נחזור אליך בהקדם.';
+          statusBox.textContent = isEnglish ? 'Your inquiry was sent successfully.' : 'הפנייה נשלחה בהצלחה.';
           form.reset();
+          document.dispatchEvent(new CustomEvent('cyjimm:contact-sent', {
+            detail: { service: form.dataset.serviceContext || 'general' }
+          }));
         } else {
           throw new Error('Request failed');
         }

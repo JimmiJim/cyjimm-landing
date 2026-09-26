@@ -588,7 +588,7 @@ footer a {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   html[data-cyjimm-theme="light"] .cyjimm-global-links {
     border-color: rgba(15, 23, 42, 0.14);
     background: #fff;

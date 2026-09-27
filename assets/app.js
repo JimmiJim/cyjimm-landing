@@ -40,19 +40,31 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         });
 
-        if (res.ok) {
-          statusBox.className = 'form-status ok';
-          statusBox.textContent = isEnglish ? 'Your inquiry was sent successfully.' : 'הפנייה נשלחה בהצלחה.';
-          form.reset();
-          document.dispatchEvent(new CustomEvent('cyjimm:contact-sent', {
-            detail: { service: form.dataset.serviceContext || 'general' }
-          }));
-        } else {
-          throw new Error('Request failed');
+        let payload = {};
+        try {
+          payload = await res.json();
+        } catch (_) {
+          // Never treat an unparseable response as confirmed email delivery.
         }
+
+        const formSubmitSuccess = payload && (payload.success === true || payload.success === 'true');
+        if (!res.ok || !formSubmitSuccess) {
+          const serviceMessage = payload && typeof payload.message === 'string' ? payload.message : 'Request failed';
+          throw new Error(serviceMessage);
+        }
+
+        statusBox.className = 'form-status ok';
+        statusBox.textContent = isEnglish ? 'Your inquiry was sent successfully.' : 'הפנייה נשלחה בהצלחה.';
+        form.reset();
+        document.dispatchEvent(new CustomEvent('cyjimm:contact-sent', {
+          detail: { service: form.dataset.serviceContext || 'general' }
+        }));
       } catch (err) {
+        console.error('CyJimm contact submission failed:', err);
         statusBox.className = 'form-status err';
-        statusBox.textContent = isEnglish ? 'There was an error sending the form. You can contact hello@cyjimm.com directly.' : 'שגיאה בשליחה. אפשר לפנות ישירות ל־hello@cyjimm.com';
+        statusBox.textContent = isEnglish
+          ? 'The form could not confirm email delivery. Please contact hello@cyjimm.com directly.'
+          : 'לא התקבל אישור שהפנייה נמסרה למייל. אפשר לפנות ישירות ל־hello@cyjimm.com';
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }

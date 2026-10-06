@@ -24,6 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
       // Honeypot check
       if (data.get('website')) return;
 
+      if (!data.get('cf-turnstile-response')) {
+        statusBox.className = 'form-status err';
+        statusBox.textContent = isEnglish
+          ? 'Please complete the human verification before sending.'
+          : 'יש להשלים את האימות לפני שליחת הפנייה.';
+        return;
+      }
+
       statusBox.className = 'form-status is-visible';
       statusBox.textContent = isEnglish ? 'Sending...' : 'שולח...';
 
@@ -47,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
           // Never treat an unparseable response as confirmed email delivery.
         }
 
-        const formSubmitSuccess = payload && (payload.success === true || payload.success === 'true');
-        if (!res.ok || !formSubmitSuccess) {
+        const deliveryConfirmed = payload && payload.success === true;
+        if (!res.ok || !deliveryConfirmed) {
           const serviceMessage = payload && typeof payload.message === 'string' ? payload.message : 'Request failed';
           throw new Error(serviceMessage);
         }
@@ -56,11 +64,13 @@ document.addEventListener('DOMContentLoaded', function () {
         statusBox.className = 'form-status ok';
         statusBox.textContent = isEnglish ? 'Your inquiry was sent successfully.' : 'הפנייה נשלחה בהצלחה.';
         form.reset();
+        if (window.turnstile) window.turnstile.reset();
         document.dispatchEvent(new CustomEvent('cyjimm:contact-sent', {
           detail: { service: form.dataset.serviceContext || 'general' }
         }));
       } catch (err) {
         console.error('CyJimm contact submission failed:', err);
+        if (window.turnstile) window.turnstile.reset();
         statusBox.className = 'form-status err';
         statusBox.textContent = isEnglish
           ? 'The form could not confirm email delivery. Please contact hello@cyjimm.com directly.'

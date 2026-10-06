@@ -23,6 +23,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://challenges.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/global-navigation.css">
   <link rel="stylesheet" href="/assets/css/contact.css">
@@ -59,7 +60,7 @@
 
       <section class="contact-form-card" aria-labelledby="form-title">
         <div class="contact-form-heading"><h2 id="form-title">Inquiry details</h2><span>SECURE START</span></div>
-        <form class="contact-form" id="contactForm" method="POST" action="https://formsubmit.co/ajax/madara@cyjimm.com" data-contact-form data-service-context="general">
+        <form class="contact-form" id="contactForm" method="POST" action="/api/contact" data-contact-form data-service-context="general">
           <div class="contact-field">
             <label class="contact-label" for="contact-service">What can I help you with?</label>
             <select class="contact-select" id="contact-service" name="service" required>
@@ -101,11 +102,14 @@
           </div>
 
           <input type="hidden" name="_subject" value="CyJimm Contact — General Inquiry" data-contact-subject>
-          <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
           <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <label class="contact-consent" for="contact-privacy"><input id="contact-privacy" type="checkbox" name="privacy" value="accepted" required><span>I accept the <a href="/en/privacy.html">Privacy Policy</a> and <a href="/en/terms.html">Terms of Use</a>.</span></label>
+          <div class="contact-turnstile">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAFPRtPD-H7akniKv" data-action="contact" data-theme="auto" data-language="en"></div>
+            <p>Verification is provided by Cloudflare Turnstile.</p>
+          </div>
           <button class="contact-submit" type="submit">Send inquiry</button>
           <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
           <p class="contact-fallback">If the form does not work, email <a href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>.</p>
@@ -118,6 +122,7 @@
     <div class="contact-wrap contact-footer-layout"><div>© <span id="year"></span> CyJimm. All rights reserved.</div><div class="contact-footer-links"><a href="/en/">Home</a><a href="/en/privacy.html">Privacy Policy</a><a href="/en/terms.html">Terms of Use</a><a href="/en/accessibility.html">Accessibility</a><a href="/contact/" lang="he" dir="rtl" data-contact-language-switch>עברית</a></div></div>
   </footer>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="/assets/js/contact-context.js" defer></script>
   <script src="/assets/app.js" defer></script>
   <script src="/assets/js/global-navigation.js" defer></script>

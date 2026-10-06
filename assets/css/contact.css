@@ -266,6 +266,19 @@ body.contact-page {
 .contact-consent a:hover,
 .contact-fallback a:hover { text-decoration: underline; }
 
+.contact-turnstile {
+  display: grid;
+  gap: 7px;
+  justify-items: start;
+  overflow: hidden;
+}
+
+.contact-turnstile p {
+  margin: 0;
+  color: var(--contact-muted);
+  font-size: 0.75rem;
+}
+
 .contact-submit {
   display: inline-flex;
   min-height: 50px;

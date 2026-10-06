@@ -23,6 +23,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://challenges.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/global-navigation.css">
   <link rel="stylesheet" href="/assets/css/contact.css">
@@ -59,7 +60,7 @@
 
       <section class="contact-form-card" aria-labelledby="form-title">
         <div class="contact-form-heading"><h2 id="form-title">פרטי הפנייה</h2><span lang="en" dir="ltr">SECURE START</span></div>
-        <form class="contact-form" id="contactForm" method="POST" action="https://formsubmit.co/ajax/madara@cyjimm.com" data-contact-form data-service-context="general">
+        <form class="contact-form" id="contactForm" method="POST" action="/api/contact" data-contact-form data-service-context="general">
           <div class="contact-field">
             <label class="contact-label" for="contact-service">במה אפשר לעזור?</label>
             <select class="contact-select" id="contact-service" name="service" required>
@@ -101,11 +102,14 @@
           </div>
 
           <input type="hidden" name="_subject" value="CyJimm Contact — פנייה כללית" data-contact-subject>
-          <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
           <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <label class="contact-consent" for="contact-privacy"><input id="contact-privacy" type="checkbox" name="privacy" value="accepted" required><span>מאשר/ת את <a href="/privacy.html">מדיניות הפרטיות</a> ואת <a href="/terms.html">תנאי השימוש</a>.</span></label>
+          <div class="contact-turnstile">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAFPRtPD-H7akniKv" data-action="contact" data-theme="auto" data-language="he"></div>
+            <p>האימות מופעל באמצעות Cloudflare Turnstile.</p>
+          </div>
           <button class="contact-submit" type="submit">שליחת הפנייה</button>
           <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
           <p class="contact-fallback">אם הטופס לא עובד, אפשר לפנות אל <a href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>.</p>
@@ -118,6 +122,7 @@
     <div class="contact-wrap contact-footer-layout"><div>© <span id="year"></span> CyJimm. כל הזכויות שמורות.</div><div class="contact-footer-links"><a href="/">ראשי</a><a href="/privacy.html">מדיניות פרטיות</a><a href="/terms.html">תנאי שימוש</a><a href="/accessibility.html">הצהרת נגישות</a><a href="/en/contact/" lang="en" dir="ltr" data-contact-language-switch>English</a></div></div>
   </footer>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="/assets/js/contact-context.js" defer></script>
   <script src="/assets/app.js" defer></script>
   <script src="/assets/js/global-navigation.js" defer></script>

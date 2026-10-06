@@ -1,0 +1,11 @@
+name = "cyjimm-contact-form"
+main = "contact-form.mjs"
+compatibility_date = "2026-10-06"
+workers_dev = false
+
+[[routes]]
+pattern = "cyjimm.com/api/contact*"
+zone_name = "cyjimm.com"
+
+[secrets]
+required = ["TURNSTILE_SECRET_KEY"]

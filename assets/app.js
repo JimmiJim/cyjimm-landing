@@ -1,3 +1,15 @@
+window.cyjimmTurnstileVerified = function () {
+  document.dispatchEvent(new CustomEvent('cyjimm:turnstile-verified'));
+};
+
+window.cyjimmTurnstileExpired = function () {
+  document.dispatchEvent(new CustomEvent('cyjimm:turnstile-expired'));
+};
+
+window.cyjimmTurnstileError = function () {
+  document.dispatchEvent(new CustomEvent('cyjimm:turnstile-error'));
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   const isEnglish = document.documentElement.lang.toLowerCase().startsWith('en');
 
@@ -11,6 +23,73 @@ document.addEventListener('DOMContentLoaded', function () {
   const statusBox = document.getElementById('contactStatus');
 
   if (form && statusBox) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const verifyBtn = form.querySelector('[data-turnstile-verify]');
+    const turnstileWidget = form.querySelector('#contact-turnstile-widget');
+    const verifyLabel = isEnglish ? 'Verify I am human' : 'אמתו שאני אנושי';
+    const verifiedLabel = isEnglish ? 'Verified successfully' : 'האימות הושלם בהצלחה';
+
+    const requireVerification = (message) => {
+      if (submitBtn) submitBtn.disabled = true;
+      if (verifyBtn) {
+        verifyBtn.disabled = false;
+        verifyBtn.classList.remove('is-verified');
+        verifyBtn.textContent = verifyLabel;
+      }
+      if (message) {
+        statusBox.className = 'form-status err';
+        statusBox.textContent = message;
+      }
+    };
+
+    const handleVerified = () => {
+      if (submitBtn) submitBtn.disabled = false;
+      if (verifyBtn) {
+        verifyBtn.disabled = true;
+        verifyBtn.classList.add('is-verified');
+        verifyBtn.textContent = verifiedLabel;
+      }
+      statusBox.className = 'form-status ok';
+      statusBox.textContent = isEnglish
+        ? 'Human verification completed. You can now send the inquiry.'
+        : 'האימות הושלם. כעת ניתן לשלוח את הפנייה.';
+    };
+
+    const handleExpired = () => {
+      requireVerification(isEnglish
+        ? 'The verification expired. Please verify again.'
+        : 'תוקף האימות פג. יש לבצע אימות מחדש.');
+    };
+
+    const handleError = () => {
+      requireVerification(isEnglish
+        ? 'Verification failed to load. Please try again.'
+        : 'האימות לא הצליח להיטען. יש לנסות שוב.');
+    };
+
+    document.addEventListener('cyjimm:turnstile-verified', handleVerified);
+    document.addEventListener('cyjimm:turnstile-expired', handleExpired);
+    document.addEventListener('cyjimm:turnstile-error', handleError);
+
+    if (submitBtn) submitBtn.disabled = true;
+
+    if (verifyBtn && turnstileWidget) {
+      verifyBtn.addEventListener('click', () => {
+        if (!window.turnstile) {
+          handleError();
+          return;
+        }
+
+        verifyBtn.disabled = true;
+        verifyBtn.textContent = isEnglish ? 'Verifying...' : 'מבצע אימות...';
+        statusBox.className = 'form-status is-visible';
+        statusBox.textContent = isEnglish
+          ? 'Complete the verification to continue.'
+          : 'יש להשלים את האימות כדי להמשיך.';
+        window.turnstile.execute('#contact-turnstile-widget');
+      });
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -35,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
       statusBox.className = 'form-status is-visible';
       statusBox.textContent = isEnglish ? 'Sending...' : 'שולח...';
 
-      const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
 
       try {
@@ -65,18 +143,20 @@ document.addEventListener('DOMContentLoaded', function () {
         statusBox.textContent = isEnglish ? 'Your inquiry was sent successfully.' : 'הפנייה נשלחה בהצלחה.';
         form.reset();
         if (window.turnstile) window.turnstile.reset();
+        requireVerification();
         document.dispatchEvent(new CustomEvent('cyjimm:contact-sent', {
           detail: { service: form.dataset.serviceContext || 'general' }
         }));
       } catch (err) {
         console.error('CyJimm contact submission failed:', err);
         if (window.turnstile) window.turnstile.reset();
-        statusBox.className = 'form-status err';
-        statusBox.textContent = isEnglish
+        requireVerification(isEnglish
           ? 'The form could not confirm email delivery. Please contact hello@cyjimm.com directly.'
-          : 'לא התקבל אישור שהפנייה נמסרה למייל. אפשר לפנות ישירות ל־hello@cyjimm.com';
+          : 'לא התקבל אישור שהפנייה נמסרה למייל. אפשר לפנות ישירות ל־hello@cyjimm.com');
       } finally {
-        if (submitBtn) submitBtn.disabled = false;
+        if (submitBtn && form.querySelector('[name="cf-turnstile-response"]')?.value) {
+          submitBtn.disabled = false;
+        }
       }
     });
   }

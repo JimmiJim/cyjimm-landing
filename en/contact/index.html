@@ -107,10 +107,11 @@
 
           <label class="contact-consent" for="contact-privacy"><input id="contact-privacy" type="checkbox" name="privacy" value="accepted" required><span>I accept the <a href="/en/privacy.html">Privacy Policy</a> and <a href="/en/terms.html">Terms of Use</a>.</span></label>
           <div class="contact-turnstile">
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAFPRtPD-H7akniKv" data-action="contact" data-theme="auto" data-language="en"></div>
-            <p>Verification is provided by Cloudflare Turnstile.</p>
+            <button class="contact-verify" type="button" data-turnstile-verify aria-controls="contact-turnstile-widget">Verify I am human</button>
+            <div id="contact-turnstile-widget" class="cf-turnstile" data-sitekey="0x4AAAAAAFPRtPD-H7akniKv" data-action="contact" data-theme="auto" data-language="en" data-execution="execute" data-appearance="always" data-callback="cyjimmTurnstileVerified" data-expired-callback="cyjimmTurnstileExpired" data-error-callback="cyjimmTurnstileError"></div>
+            <p>Verification starts only after a click and is provided by Cloudflare Turnstile.</p>
           </div>
-          <button class="contact-submit" type="submit">Send inquiry</button>
+          <button class="contact-submit" type="submit" disabled>Send inquiry</button>
           <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
           <p class="contact-fallback">If the form does not work, email <a href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>.</p>
         </form>
@@ -122,9 +123,9 @@
     <div class="contact-wrap contact-footer-layout"><div>© <span id="year"></span> CyJimm. All rights reserved.</div><div class="contact-footer-links"><a href="/en/">Home</a><a href="/en/privacy.html">Privacy Policy</a><a href="/en/terms.html">Terms of Use</a><a href="/en/accessibility.html">Accessibility</a><a href="/contact/" lang="he" dir="rtl" data-contact-language-switch>עברית</a></div></div>
   </footer>
 
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="/assets/js/contact-context.js" defer></script>
   <script src="/assets/app.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
   <script src="/assets/js/global-navigation.js" defer></script>
   <script src="/assets/js/accessibility.js" defer></script>
 </body>

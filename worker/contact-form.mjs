@@ -56,9 +56,17 @@ async function verifyTurnstile(token, request, secret) {
   if (!response.ok) return false;
 
   const result = await response.json();
-  return result.success === true &&
+  const passed = result.success === true &&
     ALLOWED_HOSTNAMES.has(result.hostname) &&
     result.action === 'contact';
+  if (!passed) {
+    console.error('Turnstile verification failed.', {
+      errorCodes: Array.isArray(result['error-codes']) ? result['error-codes'] : [],
+      hostname: result.hostname || null,
+      action: result.action || null
+    });
+  }
+  return passed;
 }
 
 function escapeHtml(value) {

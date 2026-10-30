@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import worker from './contact-form.mjs';
 
-const env = { TURNSTILE_SECRET_KEY: 'test-secret' };
+const env = { TURNSTILE_SECRET_KEY: 'test-secret', RESEND_API_KEY: 're_test_secret' };
 
 function request(body, origin = 'https://cyjimm.com') {
   return new Request('https://cyjimm.com/api/contact', {
@@ -31,7 +31,7 @@ test('contact Worker validates Turnstile before forwarding a sanitized submissio
     if (String(url).includes('/siteverify')) {
       return Response.json({ success: true, hostname: 'cyjimm.com', action: 'contact' });
     }
-    return Response.json({ success: 'true' });
+    return Response.json({ id: 'email_123' });
   };
 
   const response = await worker.fetch(request(validBody), env);
@@ -39,10 +39,14 @@ test('contact Worker validates Turnstile before forwarding a sanitized submissio
   assert.deepEqual(await response.json(), { success: true });
   assert.equal(calls.length, 2);
 
+  assert.equal(calls[1].url, 'https://api.resend.com/emails');
+  assert.equal(calls[1].options.headers.Authorization, 'Bearer re_test_secret');
   const forwarded = JSON.parse(calls[1].options.body);
-  assert.equal(forwarded.email, validBody.email);
-  assert.equal(forwarded._captcha, 'false');
-  assert.equal(forwarded['cf-turnstile-response'], undefined);
+  assert.equal(forwarded.from, 'CyJimm Contact <contact@send.cyjimm.com>');
+  assert.deepEqual(forwarded.to, ['madara@cyjimm.com']);
+  assert.equal(forwarded.reply_to, validBody.email);
+  assert.match(forwarded.subject, /General Inquiry/);
+  assert.match(forwarded.text, /Please contact me\./);
 });
 
 test('contact Worker rejects missing verification tokens', async () => {
@@ -68,4 +72,25 @@ test('contact Worker rejects cross-origin submissions', async () => {
   };
   const response = await worker.fetch(request(validBody, 'https://example.net'), env);
   assert.equal(response.status, 403);
+});
+
+test('contact Worker reports provider rejection without exposing provider details', async () => {
+  globalThis.fetch = async (url, options) => {
+    if (String(url).includes('/siteverify')) {
+      return Response.json({ success: true, hostname: 'cyjimm.com', action: 'contact' });
+    }
+    return Response.json({ name: 'validation_error', message: 'Rejected' }, { status: 422 });
+  };
+
+  const response = await worker.fetch(request(validBody), env);
+  assert.equal(response.status, 502);
+  assert.deepEqual(await response.json(), { success: false, message: 'Delivery could not be confirmed.' });
+});
+
+test('contact Worker requires a Resend API key', async () => {
+  globalThis.fetch = async () => {
+    throw new Error('fetch should not be called');
+  };
+  const response = await worker.fetch(request(validBody), { TURNSTILE_SECRET_KEY: 'test-secret' });
+  assert.equal(response.status, 503);
 });

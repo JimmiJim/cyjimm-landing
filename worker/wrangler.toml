@@ -3,9 +3,15 @@ main = "contact-form.mjs"
 compatibility_date = "2026-10-06"
 workers_dev = false
 
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+
 [[routes]]
 pattern = "cyjimm.com/api/contact*"
 zone_name = "cyjimm.com"
 
 [secrets]
-required = ["TURNSTILE_SECRET_KEY"]
+required = ["TURNSTILE_SECRET_KEY", "RESEND_API_KEY"]

@@ -1,5 +1,7 @@
 const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/madara@cyjimm.com';
+const RESEND_EMAIL_URL = 'https://api.resend.com/emails';
+const CONTACT_RECIPIENT = 'madara@cyjimm.com';
+const CONTACT_SENDER = 'CyJimm Contact <contact@send.cyjimm.com>';
 const ALLOWED_ORIGINS = new Set(['https://cyjimm.com', 'https://www.cyjimm.com']);
 const ALLOWED_HOSTNAMES = new Set(['cyjimm.com', 'www.cyjimm.com']);
 const MAX_BODY_BYTES = 24_000;
@@ -59,23 +61,78 @@ async function verifyTurnstile(token, request, secret) {
     result.action === 'contact';
 }
 
-async function forwardSubmission(payload) {
-  const response = await fetch(FORMSUBMIT_URL, {
+function escapeHtml(value) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function formatText(payload) {
+  return [
+    `Service: ${payload.service}`,
+    `Name: ${payload.name}`,
+    `Company: ${payload.company || 'Not provided'}`,
+    `Email: ${payload.email}`,
+    `Phone: ${payload.phone || 'Not provided'}`,
+    '',
+    'Message:',
+    payload.message
+  ].join('\n');
+}
+
+function formatHtml(payload) {
+  const rows = [
+    ['Service', payload.service],
+    ['Name', payload.name],
+    ['Company', payload.company || 'Not provided'],
+    ['Email', payload.email],
+    ['Phone', payload.phone || 'Not provided']
+  ].map(([label, value]) =>
+    `<tr><th align="left" style="padding:8px;border:1px solid #ddd">${label}</th>` +
+    `<td style="padding:8px;border:1px solid #ddd">${escapeHtml(value)}</td></tr>`
+  ).join('');
+
+  return `<h2>New CyJimm contact request</h2>` +
+    `<table style="border-collapse:collapse">${rows}</table>` +
+    `<h3>Message</h3><p style="white-space:pre-wrap">${escapeHtml(payload.message)}</p>`;
+}
+
+async function forwardSubmission(payload, apiKey) {
+  const response = await fetch(RESEND_EMAIL_URL, {
     method: 'POST',
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      from: CONTACT_SENDER,
+      to: [CONTACT_RECIPIENT],
+      reply_to: payload.email,
+      subject: `CyJimm Contact: ${payload.service}`,
+      text: formatText(payload),
+      html: formatHtml(payload)
+    }),
     headers: {
-      Accept: 'application/json',
+      Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json'
     }
   });
 
-  let result = null;
+  let result;
   try {
     result = await response.json();
   } catch (_) {
+    console.error('Resend returned a non-JSON response.', { status: response.status });
     return false;
   }
-  return response.ok && (result.success === true || result.success === 'true');
+
+  const delivered = response.ok && typeof result.id === 'string' && result.id.length > 0;
+  if (!delivered) {
+    console.error('Resend rejected the submission.', {
+      status: response.status,
+      error: result && typeof result.name === 'string' ? result.name : 'Unknown provider error'
+    });
+  }
+  return delivered;
 }
 
 export default {
@@ -95,6 +152,9 @@ export default {
     }
     if (!env.TURNSTILE_SECRET_KEY) {
       return json({ success: false, message: 'Verification service is not configured.' }, 503);
+    }
+    if (!env.RESEND_API_KEY) {
+      return json({ success: false, message: 'Delivery service is not configured.' }, 503);
     }
 
     let body;
@@ -134,15 +194,11 @@ export default {
       company,
       email,
       phone,
-      message,
-      privacy: 'accepted',
-      _subject: `CyJimm Contact — ${service}`,
-      _template: 'table',
-      _captcha: 'false'
+      message
     };
 
     try {
-      const delivered = await forwardSubmission(formPayload);
+      const delivered = await forwardSubmission(formPayload, env.RESEND_API_KEY);
       if (!delivered) return json({ success: false, message: 'Delivery could not be confirmed.' }, 502);
       return json({ success: true });
     } catch (_) {

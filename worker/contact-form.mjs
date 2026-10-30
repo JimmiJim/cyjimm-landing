@@ -54,7 +54,14 @@ async function verifyTurnstile(token, request, secret) {
     body: verificationBody,
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   });
-  if (!response.ok) return false;
+  if (!response.ok) {
+    const failure = await response.json().catch(() => ({}));
+    console.error('Turnstile siteverify returned an error.', {
+      status: response.status,
+      errorCodes: Array.isArray(failure['error-codes']) ? failure['error-codes'] : []
+    });
+    return false;
+  }
 
   const result = await response.json();
   const passed = result.success === true &&

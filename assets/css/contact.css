@@ -313,7 +313,7 @@ body.contact-page {
   padding: 0.8rem 1.3rem;
   border: 0;
   border-radius: 14px;
-  background: linear-gradient(180deg, var(--contact-accent-light), #b8103a);
+  background: linear-gradient(180deg, var(--contact-accent), #b8103a);
   box-shadow: 0 14px 34px rgba(225, 29, 72, 0.28);
   color: #fff;
   font: inherit;

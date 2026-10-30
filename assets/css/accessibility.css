@@ -333,6 +333,18 @@ html[data-cyjimm-theme="light"] body#top .hero-accent {
   color: #be123c;
 }
 
+html[data-cyjimm-theme="light"] body#top :where(.path-go, .text-link) {
+  color: #9f1239;
+}
+
+html[data-cyjimm-theme="light"] body#top :where(.path-card p) {
+  color: #526078;
+}
+
+html[data-cyjimm-theme="light"] body#top .btn-primary {
+  color: #fff;
+}
+
 html[data-cyjimm-theme="light"] body#top .notice {
   color: #475569;
 }
@@ -424,8 +436,16 @@ html[data-cyjimm-theme="dark"] body.team-page :where(.card, .member, .chip) {
   color: #e7e9ee;
 }
 
-html[data-cyjimm-theme="dark"] body.team-page :where(.role, .tag, footer) {
+html[data-cyjimm-theme="dark"] body.team-page :where(.role, .tag, footer, footer a, .role-nick) {
   color: #b9c2cf;
+}
+
+html[data-cyjimm-theme="dark"] body.team-page .hero .sub {
+  color: #b9c2cf;
+}
+
+html[data-cyjimm-theme="dark"] body.team-page .pill.stop {
+  color: #fca5a5;
 }
 
 html[data-cyjimm-theme="dark"] body.team-page .tag {

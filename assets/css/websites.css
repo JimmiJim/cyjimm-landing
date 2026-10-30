@@ -161,8 +161,13 @@ body.websites-page {
 }
 
 .web-button-primary {
-  background: linear-gradient(180deg, var(--web-accent-strong), var(--web-accent-dark));
+  background: linear-gradient(180deg, var(--web-accent), var(--web-accent-dark));
   box-shadow: 0 14px 34px rgba(225, 29, 72, 0.28);
+  color: #fff;
+}
+
+/* Page-scoped link color would otherwise override the button text. */
+.websites-page .web-button-primary {
   color: #fff;
 }
 
@@ -637,7 +642,7 @@ body.websites-page {
   position: absolute;
   inset-block-start: 22px;
   inset-inline-end: 22px;
-  color: #666d7c;
+  color: #8b93a3;
   font: 800 0.72rem/1 system-ui, sans-serif;
   letter-spacing: 0.12em;
 }

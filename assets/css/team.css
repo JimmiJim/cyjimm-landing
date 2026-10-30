@@ -1,4 +1,4 @@
-:root { --bg:#f6f7fb; --card:#fff; --ink:#0f172a; --muted:#64748b; --line:#e5e7eb; --accent:#e11d48; --ok:#19c37d; --warn:#f5a524; --chip:#f8fafc; }
+:root { --bg:#f6f7fb; --card:#fff; --ink:#0f172a; --muted:#556274; --line:#e5e7eb; --accent:#e11d48; --ok:#19c37d; --warn:#f5a524; --chip:#f8fafc; }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body.team-page { margin: 0; background: radial-gradient(1200px 700px at 70% -10%,#fff 0%,#f6f7fb 55%) fixed, linear-gradient(180deg,#fff 0%,#eef2ff 100%) fixed; color: var(--ink); }

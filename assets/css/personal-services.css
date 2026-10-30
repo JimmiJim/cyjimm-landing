@@ -252,10 +252,15 @@ body.personal-services-page {
   margin-top: 18px;
   padding: 0.8em 1.25em;
   border-radius: 16px;
-  background: linear-gradient(180deg, var(--pc-accent-light), var(--pc-accent));
+  background: linear-gradient(180deg, var(--pc-accent), #be123c);
   color: #fff;
   font-weight: 900;
   text-decoration: none;
+}
+
+/* Page-scoped link color would otherwise override the button text. */
+.personal-services-page .pc-button {
+  color: #fff;
 }
 
 .pc-footer {

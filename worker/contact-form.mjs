@@ -14,6 +14,7 @@ const RESPONSE_HEADERS = {
 };
 
 function json(payload, status = 200) {
+  if (status >= 400) console.warn('Contact request ended.', { status, message: payload.message });
   return new Response(JSON.stringify(payload), { status, headers: RESPONSE_HEADERS });
 }
 
@@ -196,7 +197,8 @@ export default {
     let verified = false;
     try {
       verified = await verifyTurnstile(token, request, env.TURNSTILE_SECRET_KEY);
-    } catch (_) {
+    } catch (error) {
+      console.error('Turnstile request threw.', { error: String(error && error.message || error).slice(0, 200) });
       return json({ success: false, message: 'Verification service is temporarily unavailable.' }, 502);
     }
     if (!verified) return json({ success: false, message: 'Human verification failed. Please try again.' }, 403);
@@ -214,7 +216,8 @@ export default {
       const delivered = await forwardSubmission(formPayload, env.RESEND_API_KEY);
       if (!delivered) return json({ success: false, message: 'Delivery could not be confirmed.' }, 502);
       return json({ success: true });
-    } catch (_) {
+    } catch (error) {
+      console.error('Resend request threw.', { error: String(error && error.message || error).slice(0, 200) });
       return json({ success: false, message: 'Delivery service is temporarily unavailable.' }, 502);
     }
   }

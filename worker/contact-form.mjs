@@ -113,7 +113,8 @@ async function forwardSubmission(payload, apiKey) {
     }),
     headers: {
       Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'User-Agent': 'cyjimm-contact-form/1.0'
     }
   });
 
@@ -129,7 +130,11 @@ async function forwardSubmission(payload, apiKey) {
   if (!delivered) {
     console.error('Resend rejected the submission.', {
       status: response.status,
-      error: result && typeof result.name === 'string' ? result.name : 'Unknown provider error'
+      error: result && typeof result.name === 'string' ? result.name : 'Unknown provider error',
+      // Provider explanation, with any email address masked so visitor details stay out of logs.
+      message: result && typeof result.message === 'string'
+        ? result.message.replace(/[^\s@<>"']+@[^\s@<>"']+/g, '<email>').slice(0, 300)
+        : 'No provider message'
     });
   }
   return delivered;

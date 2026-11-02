@@ -1,0 +1,222 @@
+/* Home page (he + en). Loaded after accessibility.css so it can follow the theme and text-scale settings. */
+:root {
+  --h-text: #e7e9ee;
+  --h-muted: #aab2bf;
+  --h-line: rgba(255, 255, 255, 0.11);
+  --h-line-strong: rgba(255, 255, 255, 0.24);
+  --h-surface: #12131b;
+  --h-tech: #5cc8f5;
+  --h-ok: #50d890;
+  --h-link: #ff8fa3;
+  --h-mono: ui-monospace, "Cascadia Code", Consolas, Menlo, monospace;
+}
+
+html[data-cyjimm-theme="light"] {
+  --h-text: #172033;
+  --h-muted: #526078;
+  --h-line: rgba(15, 23, 42, 0.14);
+  --h-line-strong: rgba(15, 23, 42, 0.3);
+  --h-surface: #fff;
+  --h-tech: #0369a1;
+  --h-ok: #15803d;
+  --h-link: #9f1239;
+}
+
+html { scroll-padding-block-start: 84px; }
+
+main section { padding-block: clamp(40px, 5.5vw, 64px); }
+/* First layout was the main cost of first paint on phones; off-screen sections are laid out when they near the viewport. */
+main section:not(.hero) { content-visibility: auto; contain-intrinsic-size: auto 560px; }
+
+/* Shared section header */
+.sec-head { max-width: 46rem; margin-block-end: 28px; }
+.sec-head h2,
+.cta-panel h2 { margin: 0 0 10px; font-size: clamp(1.55em, 1.3em + 1vw, 2.1em); line-height: 1.2; }
+.sec-head p { margin: 0; color: var(--h-muted); }
+
+.eyebrow {
+  width: fit-content;
+  margin: 0 0 12px;
+  color: var(--h-tech);
+  font-family: var(--h-mono);
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.text-link,
+.svc-cta { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Hero */
+.hero { padding-block: clamp(48px, 7vw, 88px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); align-items: center; gap: clamp(28px, 5vw, 64px); }
+
+.hero h1,
+html[data-cyjimm-text-scale] body#top .hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2em, 1.35em + 2.6vw, 3.25em);
+  font-weight: 900;
+  line-height: 1.12;
+  overflow-wrap: normal;
+}
+
+.hero h1 span { display: block; }
+.hero .hero-lead { max-width: 38rem; color: var(--h-muted); font-size: 1.08em; line-height: 1.7; }
+.hero .cta { margin-top: 26px; }
+.hero .btn,
+.cta-panel .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; }
+
+.hero-labels { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 26px 0 0; padding: 0; list-style: none; color: var(--h-muted); font-family: var(--h-mono); font-size: 0.8em; }
+.hero-labels li:not(:last-child)::after { content: "/"; margin-inline-start: 14px; color: var(--h-muted); }
+
+.hero-visual { margin: 0; }
+.hero-visual figcaption { margin-top: 10px; color: var(--h-muted); font-size: 0.82em; text-align: center; }
+
+.hd { display: block; width: 100%; height: auto; aspect-ratio: 460 / 380; direction: ltr; font-family: inherit; }
+.hd-box { fill: var(--h-surface); stroke: var(--h-line-strong); }
+.hd-box-core { stroke: var(--h-tech); }
+.hd-label { fill: var(--h-text); font-size: 17px; font-weight: 700; }
+.hd-state { fill: var(--h-muted); font-family: var(--h-mono); font-size: 13px; }
+.hd-dot { fill: var(--h-ok); }
+.hd-link { fill: none; stroke: var(--h-line-strong); stroke-width: 1.5; }
+.hd-flow { fill: none; stroke: var(--h-tech); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 3 15; }
+
+/* The default state is the finished diagram; every animation below only plays over it. */
+@media (prefers-reduced-motion: no-preference) {
+  .hd-node { animation: hd-in 0.45s ease-out backwards; }
+  .hd-n2 { animation-delay: 0.12s; }
+  .hd-n3 { animation-delay: 0.24s; }
+  .hd-n4 { animation-delay: 0.36s; }
+  .hd-n5 { animation-delay: 0.48s; }
+  .hd-flow { animation: hd-flow 2.4s linear infinite; }
+  .hd-dot { animation: hd-status 6s ease-in-out infinite; }
+  .hd-n2 .hd-dot { animation-delay: 1.2s; }
+  .hd-n3 .hd-dot { animation-delay: 2.4s; }
+  .hd-n4 .hd-dot { animation-delay: 3.6s; }
+  .hd-n5 .hd-dot { animation-delay: 4.8s; }
+
+  .pipe-mark { animation: pipe-tick 9s ease-out infinite backwards; }
+  .pipe-s2 .pipe-mark { animation-delay: 1.1s; }
+  .pipe-s3 .pipe-mark { animation-delay: 2.2s; }
+  .pipe-s4 .pipe-mark { animation-delay: 3.3s; }
+}
+
+[data-motion-zone].is-paused * { animation-play-state: paused !important; }
+
+@keyframes hd-in { from { opacity: 0; } }
+@keyframes hd-flow { to { stroke-dashoffset: -36; } }
+@keyframes hd-status { 50% { opacity: 0.35; } }
+@keyframes pipe-tick {
+  0% { opacity: 0.25; }
+  6%, 86% { opacity: 1; }
+  100% { opacity: 0.25; }
+}
+
+/* Service cards */
+.svc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.svc { display: flex; flex-direction: column; padding: 24px; transition: border-color 0.18s ease, background-color 0.18s ease, translate 0.18s ease; }
+.svc:hover,
+.svc:focus-within { border-color: var(--h-line-strong); }
+.svc-icon { width: 32px; height: 32px; margin-block-end: 14px; fill: none; stroke: var(--h-tech); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.svc h3 { margin: 0 0 6px; font-size: 1.25em; }
+.svc-outcome { margin: 0 0 12px; color: var(--h-text); font-weight: 500; }
+.svc ul { margin: 0 0 14px; padding-inline-start: 1.1em; color: var(--h-muted); }
+.svc li + li { margin-block-start: 4px; }
+.svc-cta { margin-block-start: auto; color: var(--h-link); font-weight: 700; text-underline-offset: 3px; }
+.svc-cta:hover { text-decoration: underline; }
+.svc-note { margin: 18px 0 0; color: var(--h-muted); font-size: 0.92em; }
+
+@media (hover: hover) and (pointer: fine) {
+  .svc:hover { translate: 0 -2px; }
+}
+
+/* Why CyJimm */
+.why-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.why-grid h3 { margin: 0 0 8px; font-size: 1.05em; }
+.why-grid p { margin: 0; color: var(--h-muted); }
+.why-links { display: flex; flex-wrap: wrap; gap: 0 24px; margin-block-start: 14px; }
+
+/* Delivery pipeline demonstration */
+.pipe-panel { padding: 24px; border: 1px solid var(--h-line); border-radius: 18px; background: var(--h-surface); }
+.pipe-note { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0 0 20px; color: var(--h-muted); font-size: 0.92em; }
+.pipe-note strong { color: var(--h-tech); font-family: var(--h-mono); font-size: 0.88em; letter-spacing: 0.06em; }
+.pipe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.pipe li { position: relative; }
+.pipe strong { display: block; margin-block: 10px 4px; font-family: var(--h-mono); font-size: 0.95em; }
+.pipe li > span:last-child { color: var(--h-muted); font-size: 0.92em; }
+.pipe-mark { display: grid; place-items: center; width: 30px; height: 30px; border: 1.5px solid var(--h-ok); border-radius: 50%; color: var(--h-ok); font-size: 15px; font-weight: 700; }
+.pipe-mark::before { content: "✓"; }
+.pipe li:not(:last-child)::after { content: ""; position: absolute; inset-block-start: 15px; inset-inline: 40px -8px; height: 1px; background: var(--h-line-strong); }
+.stack { margin-block-start: 20px; }
+
+/* Selected work */
+.work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.work-tag { margin: 0 0 8px; color: var(--h-tech); font-family: var(--h-mono); font-size: 0.78em; }
+.work-grid h3 { margin: 0 0 8px; font-size: 1.1em; }
+.work-grid p:not(.work-tag) { margin: 0; color: var(--h-muted); }
+.work-more { margin: 14px 0 0; }
+
+/* Engagement process */
+.proc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; counter-reset: proc; }
+.proc li { padding-block-start: 14px; border-block-start: 2px solid var(--h-line-strong); counter-increment: proc; }
+.proc li::before { content: "0" counter(proc); color: var(--h-tech); font-family: var(--h-mono); font-size: 0.85em; }
+.proc h3 { margin: 6px 0; font-size: 1.05em; }
+.proc p { margin: 0; color: var(--h-muted); }
+
+/* FAQ */
+.faq { max-width: 52rem; border-block-start: 1px solid var(--h-line); }
+.faq details { border-block-end: 1px solid var(--h-line); }
+.faq summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 52px; padding-block: 10px; cursor: pointer; font-weight: 700; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; color: var(--h-tech); font-size: 1.3em; line-height: 1; transition: rotate 0.18s ease; }
+.faq details[open] summary::after { rotate: 45deg; }
+.faq p { margin: 0 0 16px; color: var(--h-muted); }
+.faq a { color: var(--h-link); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Secondary paths: consumer services, training, guides */
+.more-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.more-grid h3 { margin: 0 0 6px; font-size: 1.05em; }
+.more-grid p { margin: 0; color: var(--h-muted); }
+.guide-links { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 14px 0 0; padding: 0; list-style: none; }
+
+/* Closing CTA */
+.cta-panel { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px; padding: clamp(24px, 4vw, 40px); }
+.cta-panel p { margin: 0; color: var(--h-muted); }
+.cta-panel > div:first-child { flex: 1 1 22rem; }
+.cta-panel .cta { margin-top: 0; }
+
+/* Theme: accessibility.css forces all links on the page to the body colour in light mode. */
+html[data-cyjimm-theme="light"] body#top .svc-cta { color: #9f1239; }
+html[data-cyjimm-theme="light"] body#top .faq a { color: #9f1239; }
+html[data-cyjimm-theme="light"] .btn-ghost { border-color: var(--h-line-strong); }
+html[data-cyjimm-theme="light"] .pipe-panel { box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07); }
+
+@media (max-width: 1080px) {
+  .why-grid,
+  .proc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-visual { width: min(100%, 520px); margin-inline: auto; }
+  .work-grid,
+  .more-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .svc-grid,
+  .why-grid,
+  .proc { grid-template-columns: minmax(0, 1fr); }
+
+  .pipe { grid-template-columns: minmax(0, 1fr); }
+  .pipe li { display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 12px; }
+  .pipe-mark { grid-row: span 2; }
+  .pipe strong { margin-block: 0 2px; }
+  .pipe li:not(:last-child)::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc { transition: none; }
+  .svc:hover { translate: none; }
+  .faq summary::after { transition: none; }
+}

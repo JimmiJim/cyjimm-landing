@@ -75,6 +75,22 @@
   background: rgba(255, 255, 255, 0.14);
 }
 
+/* Contact is the site's main conversion, so it is the one highlighted link. [lang] marks the language switch. */
+.cyjimm-global-links a[href$="/contact/"]:not([lang]) {
+  border-color: #be123c;
+  background: #be123c;
+  color: #fff;
+}
+
+.cyjimm-global-links a[href$="/contact/"]:not([lang]):hover {
+  border-color: #9f1239;
+  background: #9f1239;
+}
+
+html[data-cyjimm-theme="light"] .cyjimm-global-links a[href$="/contact/"]:not([lang]) {
+  color: #fff;
+}
+
 .cyjimm-global-menu {
   display: none;
   margin-inline-start: auto;
@@ -88,10 +104,9 @@
   cursor: pointer;
 }
 
-/* Desktop: keep a single nav row, including at 140% text scale */
+/* Desktop: one row while it fits; long labels and 140% text scale wrap instead of forcing horizontal scroll */
 @media (min-width: 1081px) {
   .cyjimm-global-links {
-    flex-wrap: nowrap;
     gap: 0.3rem;
   }
 

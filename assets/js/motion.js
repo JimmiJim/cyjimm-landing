@@ -23,6 +23,14 @@
 
   if (!main) return;
 
+  /* Decorative loops stop while their section is off screen. */
+  if ('IntersectionObserver' in window) {
+    var zones = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { entry.target.classList.toggle('is-paused', !entry.isIntersecting); });
+    });
+    main.querySelectorAll('[data-motion-zone]').forEach(function (el) { zones.observe(el); });
+  }
+
   /* Pointer-following light on cards. */
   main.querySelectorAll(CARDS).forEach(function (el) {
     if (el.matches(NO_SPOT) || el.closest('[aria-hidden="true"]')) return;
@@ -50,15 +58,11 @@
   /* Scroll reveal. Pages may mark [data-reveal] themselves; otherwise the hero and cards are tagged here. */
   if (reduceMotion || interactiveApp || !('IntersectionObserver' in window)) return;
 
+  // The h1 and its surroundings are never hidden: they carry the page's largest paint and must not wait for JS.
   var targets = [];
-  var h1 = main.querySelector('h1');
-  if (h1 && !h1.closest('[data-reveal]')) {
-    Array.prototype.forEach.call(h1.parentElement.children, function (child) {
-      if (child.getAttribute('aria-hidden') === 'true' || child.querySelector(CARDS)) return;
-      targets.push(child);
-    });
-  }
-  main.querySelectorAll(CARDS + ', section h2').forEach(function (el) { targets.push(el); });
+  main.querySelectorAll(CARDS + ', section h2').forEach(function (el) {
+    if (!el.querySelector('h1')) targets.push(el);
+  });
   targets.forEach(function (el) {
     var nested = el.parentElement && el.parentElement.closest('[data-reveal]');
     if (!nested && !el.closest('[aria-hidden="true"], .visually-hidden, .sr-only')) el.setAttribute('data-reveal', '');
@@ -68,7 +72,7 @@
   items.forEach(function (el) {
     var i = 0, sib = el.previousElementSibling;
     while (sib) { if (sib.hasAttribute('data-reveal')) i++; sib = sib.previousElementSibling; }
-    if (i) el.style.setProperty('--mo-delay', Math.min(i, 8) * 70 + 'ms');
+    if (i) el.style.setProperty('--mo-delay', Math.min(i, 6) * 50 + 'ms');
   });
 
   function finish(el) {

@@ -25,10 +25,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://challenges.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/global-navigation.css">
+  <link rel="stylesheet" href="/assets/css/global-navigation.css?v=20261102">
   <link rel="stylesheet" href="/assets/css/contact.css?v=20261030">
   <link rel="stylesheet" href="/assets/css/accessibility.css?v=20261030">
-  <link rel="stylesheet" href="/assets/css/motion.css?v=20261030b">
+  <link rel="stylesheet" href="/assets/css/motion.css?v=20261102">
   <link rel="canonical" href="https://cyjimm.com/contact/">
   <link rel="alternate" hreflang="he" href="https://cyjimm.com/contact/">
   <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/contact/">
@@ -88,11 +88,11 @@
           <div class="contact-field-row">
             <div class="contact-field">
               <label class="contact-label" for="contact-email">אימייל</label>
-              <input class="contact-input" id="contact-email" type="email" name="email" autocomplete="email" inputmode="email" required>
+              <input class="contact-input" id="contact-email" dir="ltr" type="email" name="email" autocomplete="email" inputmode="email" required>
             </div>
             <div class="contact-field">
               <label class="contact-label" for="contact-phone">טלפון <span class="contact-optional">(לא חובה)</span></label>
-              <input class="contact-input" id="contact-phone" name="phone" autocomplete="tel" inputmode="tel">
+              <input class="contact-input" id="contact-phone" dir="ltr" type="tel" name="phone" autocomplete="tel" inputmode="tel">
             </div>
           </div>
 
@@ -114,7 +114,7 @@
           </div>
           <button class="contact-submit" type="submit" disabled>שליחת הפנייה</button>
           <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
-          <p class="contact-fallback">אם הטופס לא עובד, אפשר לפנות אל <a href="mailto:hello@cyjimm.com">hello@cyjimm.com</a>.</p>
+          <p class="contact-fallback">אם הטופס לא עובד, אפשר לפנות אל <a href="mailto:hello@cyjimm.com" dir="ltr">hello@cyjimm.com</a>.</p>
         </form>
       </section>
     </div>
@@ -125,10 +125,10 @@
   </footer>
 
   <script src="/assets/js/contact-context.js" defer></script>
-  <script src="/assets/app.js?v=20261006-2" defer></script>
+  <script src="/assets/app.js?v=20261102" defer></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
   <script src="/assets/js/global-navigation.js" defer></script>
-  <script src="/assets/js/motion.js?v=20261030b" defer></script>
+  <script src="/assets/js/motion.js?v=20261102" defer></script>
   <script src="/assets/js/accessibility.js" defer></script>
 </body>
 </html>

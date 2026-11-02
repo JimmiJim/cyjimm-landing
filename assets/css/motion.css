@@ -26,25 +26,19 @@ main p { text-wrap: pretty; }
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
 }
 
-/* Scroll reveal: content materializes (opacity, lift, blur) with a stagger. */
+/* Scroll reveal: content fades in with a small lift and a short stagger. */
 .mo-reveal [data-reveal]:not(.mo-done) {
   opacity: 0;
-  translate: 0 26px;
-  scale: 0.985;
-  filter: blur(6px);
+  translate: 0 10px;
   transition:
-    opacity 0.7s var(--mo-ease-out),
-    translate 0.9s var(--mo-spring),
-    scale 0.9s var(--mo-spring),
-    filter 0.7s var(--mo-ease-out);
+    opacity 0.42s var(--mo-ease-out),
+    translate 0.42s var(--mo-ease-out);
   transition-delay: var(--mo-delay, 0s);
 }
 
 .mo-reveal [data-reveal].mo-in:not(.mo-done) {
   opacity: 1;
   translate: none;
-  scale: none;
-  filter: none;
 }
 
 /* Pointer-following light on cards. ::before sits between the card background and its content. */
@@ -104,8 +98,6 @@ a.mo-spot:active { scale: 0.985; }
   .mo-reveal [data-reveal]:not(.mo-done) {
     opacity: 1;
     translate: none;
-    scale: none;
-    filter: none;
     transition: none;
   }
 

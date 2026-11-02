@@ -75,6 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (verifyBtn && turnstileWidget) {
       verifyBtn.addEventListener('click', () => {
+        // Surface field errors now: the Turnstile token is short-lived and submit stays disabled until it exists.
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
         if (!window.turnstile) {
           handleError();
           return;
@@ -140,7 +146,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         statusBox.className = 'form-status ok';
-        statusBox.textContent = isEnglish ? 'Your inquiry was sent successfully.' : 'הפנייה נשלחה בהצלחה.';
+        statusBox.textContent = isEnglish
+          ? 'Your inquiry was sent successfully. The reply will go to the email address you entered.'
+          : 'הפנייה נשלחה בהצלחה. התשובה תישלח לכתובת האימייל שהזנת.';
         form.reset();
         if (window.turnstile) window.turnstile.reset();
         requireVerification();

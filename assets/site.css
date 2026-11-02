@@ -10,7 +10,7 @@
       color:#e7e9ee;
     }
     a{color:#e7e9ee;text-decoration:none}
-    .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+    .wrap{box-sizing:border-box;max-width:var(--cyjimm-page-width);margin:0 auto;padding:0 var(--cyjimm-gutter)}
 
     /* ===== HEADER נקי עם מותג יחיד מימין ===== */
     header{position:sticky;top:0;background:rgba(11,11,16,.7);backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}

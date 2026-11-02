@@ -22,8 +22,6 @@ html[data-cyjimm-theme="light"] {
   --h-link: #9f1239;
 }
 
-html { scroll-padding-block-start: 84px; }
-
 main section { padding-block: clamp(40px, 5.5vw, 64px); }
 /* First layout was the main cost of first paint on phones; off-screen sections are laid out when they near the viewport. */
 main section:not(.hero) { content-visibility: auto; contain-intrinsic-size: auto 560px; }
@@ -54,7 +52,7 @@ main section:not(.hero) { content-visibility: auto; contain-intrinsic-size: auto
 .hero h1,
 html[data-cyjimm-text-scale] body#top .hero h1 {
   margin: 0 0 18px;
-  font-size: clamp(2em, 1.35em + 2.6vw, 3.25em);
+  font-size: clamp(2em, 1.35em + 2.6vw, 4.25em);
   font-weight: 900;
   line-height: 1.12;
   overflow-wrap: normal;
@@ -164,8 +162,8 @@ html[data-cyjimm-text-scale] body#top .hero h1 {
 .proc p { margin: 0; color: var(--h-muted); }
 
 /* FAQ */
-.faq { max-width: 52rem; border-block-start: 1px solid var(--h-line); }
-.faq details { border-block-end: 1px solid var(--h-line); }
+.faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; column-gap: clamp(2rem, 5vw, 5rem); }
+.faq details { border-block-start: 1px solid var(--h-line); }
 .faq summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 52px; padding-block: 10px; cursor: pointer; font-weight: 700; list-style: none; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; flex: none; color: var(--h-tech); font-size: 1.3em; line-height: 1; transition: rotate 0.18s ease; }
@@ -191,6 +189,10 @@ html[data-cyjimm-theme="light"] body#top .faq a { color: #9f1239; }
 html[data-cyjimm-theme="light"] .btn-ghost { border-color: var(--h-line-strong); }
 html[data-cyjimm-theme="light"] .pipe-panel { box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07); }
 
+@media (min-width: 1280px) {
+  .svc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
 @media (max-width: 1080px) {
   .why-grid,
   .proc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -200,7 +202,8 @@ html[data-cyjimm-theme="light"] .pipe-panel { box-shadow: 0 14px 34px rgba(15, 2
   .hero-grid { grid-template-columns: minmax(0, 1fr); }
   .hero-visual { width: min(100%, 520px); margin-inline: auto; }
   .work-grid,
-  .more-grid { grid-template-columns: minmax(0, 1fr); }
+  .more-grid,
+  .faq { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 720px) {

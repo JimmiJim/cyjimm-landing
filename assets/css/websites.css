@@ -39,9 +39,9 @@ body.websites-page {
 }
 
 .web-wrap {
-  width: min(100%, 1160px);
+  width: min(100%, var(--cyjimm-page-width));
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: var(--cyjimm-gutter);
 }
 
 .web-hero {
@@ -115,7 +115,7 @@ body.websites-page {
 }
 
 .web-hero h1 {
-  max-width: 14ch;
+  max-width: 22ch;
   margin: 10px 0 22px;
   font-size: clamp(2.65rem, 5.2vw, 4.65rem);
   font-weight: 900;

@@ -1,4 +1,10 @@
 /* Shared motion and depth layer, loaded on every page. Driven by /assets/js/motion.js. */
+/* Shared page frame: every page container uses these, except long-text pages that keep a reading width. */
+:root {
+  --cyjimm-page-width: 1560px;
+  --cyjimm-gutter: clamp(20px, 3.5vw, 56px);
+}
+
 :root {
   /* Critically damped, spring-like curves (no overshoot). */
   --mo-spring: cubic-bezier(0.16, 1, 0.3, 1);

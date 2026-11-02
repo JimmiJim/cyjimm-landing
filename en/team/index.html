@@ -18,9 +18,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/css/global-navigation.css?v=20261102"><link rel="stylesheet" href="/assets/css/accessibility.css?v=20261030">
-  <link rel="stylesheet" href="/assets/css/motion.css?v=20261102">
-  <link rel="stylesheet" href="/assets/css/team.css?v=20261030">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/css/global-navigation.css?v=20261103b"><link rel="stylesheet" href="/assets/css/accessibility.css?v=20261030">
+  <link rel="stylesheet" href="/assets/css/motion.css?v=20261103">
+  <link rel="stylesheet" href="/assets/css/team.css?v=20261103">
   <link rel="canonical" href="https://cyjimm.com/en/team/">
   <link rel="alternate" hreflang="he" href="https://cyjimm.com/team/">
   <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/team/">
@@ -29,22 +29,160 @@
 <body class="team-page"><a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="cyjimm-global-header" data-global-nav><div class="cyjimm-global-nav-wrap"><a class="cyjimm-global-brand" href="/en/" aria-label="CyJimm - Home"><img src="/logo-84.png" alt=""><span>CyJimm</span></a><button class="cyjimm-global-menu" type="button" aria-controls="globalNavLinks" aria-expanded="false" data-global-nav-toggle>Menu</button><nav class="cyjimm-global-links" id="globalNavLinks" aria-label="Main navigation" data-global-nav-links><a href="/en/">Home</a><a href="/en/#services">Services</a><a href="/en/websites/">Website Development</a><a href="/en/jimmis-hub/">Jimmi's Hub - Home & SMB IT</a><a href="/en/guides/">IT Guides</a><a href="/en/team/" aria-current="page">Founder</a><a href="/en/contact/">Contact</a><a href="/team/" lang="he" dir="rtl">עברית</a></nav></div></header>
 <main id="main-content">
-<header class="hero"><div class="wrap"><h1>Matan Jamil</h1><div class="sub">Founder and lead of CyJimm, working directly across infrastructure, cybersecurity, and automation.</div></div></header>
-<div class="wrap">
-  <section class="card"><h2>Who is behind CyJimm</h2><p class="lead">CyJimm is a practice focused on Windows and Linux infrastructure, enterprise security, and automation. The work includes defining standards, building repeatable processes, and improving stability and security in the existing environment.</p><p class="lead">CyJimm engagements are led and delivered directly by Matan Jamil.</p></section>
-  <section class="card team-section"><h2>Founder &amp; Lead</h2><div class="teamgrid">
-    <article class="member"><header><h3>Matan Jamil</h3><div class="role">Systems, Infrastructure &amp; Security <span class="role-nick">· also known as Chief</span></div></header><div class="tags"><span class="tag">Systems &amp; Infrastructure</span><span class="tag">Linux (Kali · Parrot · Elementary)</span><span class="tag">Automation (PowerShell · Python)</span><span class="tag">SecOps · Hardening</span><span class="tag">CI/CD Basics</span></div><p class="lead">Works across IT infrastructure, security, and automation, with an emphasis on standardization, stability, and hardening. Projects include a tailored installation toolkit for Windows 11 and Kali, SLA-based alerting, and complex AD/GPO administration without Intune.</p>
-      <h3 class="subheading team-subheading-spaced">Core Systems</h3><ul class="list"><li>Windows Server (AD, DNS, DHCP, GPO), pfSense, VLANs</li><li>Linux: Kali, Parrot, Elementary - PrivEsc, Hardening</li><li>Automation: PowerShell 7+, Python 3.12, GitHub Actions</li><li>SIEM/Monitoring: Splunk, Wazuh, Grafana Integration</li></ul>
-      <h3 class="subheading team-subheading-spaced">Status</h3><ul class="list"><li>ChiefBot - <span class="pill stop">Paused after POC</span></li><li>Chief Personal Lab</li></ul><div class="tags"><a class="chip" href="/en/contact/?service=general">Contact</a></div>
-    </article>
-  </div></section>
-  <section class="card team-section"><h2>Projects &amp; Deliverables (Selected)</h2><div class="skillgrid"><div class="skill"><h3 class="subheading">Custom OS &amp; Imaging</h3><ul><li>Windows 11 Custom ISO - OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li><li>Kali Linux ISO (GNOME) - Nvidia + AMD drivers, full tooling, Hebrew and English layouts.</li><li>CIS-inspired baseline hardening templates for workstations and servers.</li></ul></div><div class="skill"><h3 class="subheading">Enterprise Automation</h3><ul><li>SLA Alerts - Google Apps Script + Power Automate (cross-suite).</li><li>Automatic deployment through Winget with post-install checks in PowerShell 7.</li><li>M365: EWS Backup jobs and mailbox/archive routines.</li></ul></div><div class="skill"><h3 class="subheading">Monitoring &amp; SIEM</h3><ul><li>Splunk on Kali, from POC to dashboards, with Wazuh integration.</li><li>Proxmox/VMware lab telemetry, pfSense logs, and VLAN segmentation.</li><li>Incident drill runbooks for IR, containment, and communications.</li></ul></div></div></section>
-  <section class="card team-section"><h2>Runbooks &amp; Playbooks</h2><div class="skillgrid"><div class="skill"><h3 class="subheading">Windows</h3><ul><li>Join-Domain and GPO bootstrap with an OU per department.</li><li>Printer server and shares, including permissions and recovery.</li><li>Endpoint hardening, Defender tuning, and CrowdStrike/WSS policy alignment.</li></ul></div><div class="skill"><h3 class="subheading">Linux</h3><ul><li>PrivEsc lab flow: enumerate, exploit, stabilize, and persist.</li><li>Service hardening for SSH, sudoers, auditd, journald, and fail2ban.</li><li>Backup and health jobs using systemd timers and scripts.</li></ul></div><div class="skill"><h3 class="subheading">Network / pfSense</h3><ul><li>VLAN design and rules for each environment.</li><li>DHCP/DNS diagramming, including offer/request/ack flow.</li><li>Captive Portal and policy exceptions.</li></ul></div></div></section>
-  <section class="card team-section"><h2>Toolbox &amp; Scripts</h2><div class="skillgrid"><div class="skill"><h3 class="subheading">PowerShell Suite</h3><ul><li><b>Optimize-System.ps1</b> - multi-stage system maintenance and reporting.</li><li><b>FoldersPermissionV7.ps1</b> - ACL GUI with IT Admin fallback.</li><li><b>Browser-RunAsAdmin.ps1</b> - UAC enforcement for browsers.</li><li><b>OutlookArchiveSync.ps1</b> - Exchange Online archive management.</li><li><b>HealthReport.ps1</b> - Battery, Disk, and CPU checks.</li><li><b>AnyDesk-AutoStart.ps1</b> - remote startup and management.</li><li><b>EWS-Backup.ps1</b> - dedicated Online Archive backup.</li></ul></div><div class="skill"><h3 class="subheading">Linux / Offensive</h3><ul><li>nmap / netcat workflows, Metasploit, Burp Suite, and Wireshark.</li><li>TryHackMe: Linux Privilege Escalation with methodical enumeration and PrivEsc.</li><li>Basic forensics: logs, snapshots, and triage.</li></ul></div><div class="skill"><h3 class="subheading">M365 / Automation</h3><ul><li>Power Automate flows for SLA, notifications, and routing.</li><li>Google Apps Script for sheets, webhooks, and mail merge.</li><li>Graph/EWS API integrations.</li></ul></div></div></section>
-  <section class="card team-section"><h2>Selected Work</h2><ul class="list"><li>Standardized and automated recurring support tasks with PowerShell.</li><li>Built a consistent installation toolkit for workstations and lab environments.</li><li>Built Splunk and Wazuh dashboards for infrastructure and security visibility.</li></ul></section>
-  <section class="split team-section"><div class="card"><h2>Want to Collaborate?</h2><p class="lead">If you have an infrastructure project, hardening task, or process that needs improvement, we can start with a short conversation about the current environment and what is actually needed.</p><div class="chips"><a class="chip" href="/en/contact/?service=general">Contact</a></div></div></section>
-</div>
+    <section class="tm-hero">
+      <div class="tm-frame">
+        <p class="tm-eyebrow">Founder and lead of CyJimm</p>
+        <h1>Matan Jamil</h1>
+        <p class="tm-tagline">Working directly across infrastructure, cybersecurity, and automation.</p>
+        <p class="tm-role">Systems, Infrastructure &amp; Security · also known as Chief</p>
+        <div class="tm-actions"><a class="tm-btn" href="/en/contact/?service=general">Contact</a><a class="tm-more" href="/en/about/">Full professional profile</a></div>
+      </div>
+    </section>
+
+    <div class="tm-frame">
+      <section class="tm-row">
+        <h2>Who is behind CyJimm</h2>
+        <div>
+          <p class="tm-statement">CyJimm is a practice focused on Windows and Linux infrastructure, enterprise security, and automation. The work includes defining standards, building repeatable processes, and improving stability and security in the existing environment.</p>
+          <p class="tm-statement">CyJimm engagements are led and delivered directly by Matan Jamil.</p>
+          <p class="tm-body">Works across IT infrastructure, security, and automation, with an emphasis on standardization, stability, and hardening. Projects include a tailored installation toolkit for Windows 11 and Kali, SLA-based alerting, and complex AD/GPO administration without Intune.</p>
+        </div>
+      </section>
+
+      <section class="tm-row">
+        <h2>Core systems</h2>
+        <div class="tm-groups">
+          <ul class="tm-list">
+            <li>Windows Server (AD, DNS, DHCP, GPO), pfSense, VLANs</li>
+            <li>Linux: Kali, Parrot, Elementary - PrivEsc, Hardening</li>
+          </ul>
+          <ul class="tm-list">
+            <li>Automation: PowerShell 7+, Python 3.12, GitHub Actions</li>
+            <li>SIEM/Monitoring: Splunk, Wazuh, Grafana Integration</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tm-row">
+        <h2>Selected work</h2>
+        <div class="tm-groups">
+          <p class="tm-list">Standardized and automated recurring support tasks with PowerShell.</p>
+          <p class="tm-list">Built a consistent installation toolkit for workstations and lab environments.</p>
+          <p class="tm-list">Built Splunk and Wazuh dashboards for infrastructure and security visibility.</p>
+        </div>
+      </section>
+
+      <section class="tm-row">
+        <h2>Projects and deliverables</h2>
+        <div class="tm-groups">
+          <div>
+            <h3>Custom OS &amp; Imaging</h3>
+            <ul class="tm-list">
+              <li>Windows 11 Custom ISO - OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li>
+              <li>Kali Linux ISO (GNOME) - Nvidia + AMD drivers, full tooling, Hebrew and English layouts.</li>
+              <li>CIS-inspired baseline hardening templates for workstations and servers.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Enterprise Automation</h3>
+            <ul class="tm-list">
+              <li>SLA Alerts - Google Apps Script + Power Automate (cross-suite).</li>
+              <li>Automatic deployment through Winget with post-install checks in PowerShell 7.</li>
+              <li>M365: EWS Backup jobs and mailbox/archive routines.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Monitoring &amp; SIEM</h3>
+            <ul class="tm-list">
+              <li>Splunk on Kali, from POC to dashboards, with Wazuh integration.</li>
+              <li>Proxmox/VMware lab telemetry, pfSense logs, and VLAN segmentation.</li>
+              <li>Incident drill runbooks for IR, containment, and communications.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <details class="tm-disclosure">
+        <summary>Runbooks and playbooks</summary>
+        <div class="tm-groups">
+          <div>
+            <h3>Windows</h3>
+            <ul class="tm-list">
+              <li>Join-Domain and GPO bootstrap with an OU per department.</li>
+              <li>Printer server and shares, including permissions and recovery.</li>
+              <li>Endpoint hardening, Defender tuning, and CrowdStrike/WSS policy alignment.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Linux</h3>
+            <ul class="tm-list">
+              <li>PrivEsc lab flow: enumerate, exploit, stabilize, and persist.</li>
+              <li>Service hardening for SSH, sudoers, auditd, journald, and fail2ban.</li>
+              <li>Backup and health jobs using systemd timers and scripts.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Network / pfSense</h3>
+            <ul class="tm-list">
+              <li>VLAN design and rules for each environment.</li>
+              <li>DHCP/DNS diagramming, including offer/request/ack flow.</li>
+              <li>Captive Portal and policy exceptions.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="tm-disclosure">
+        <summary>Toolbox and scripts</summary>
+        <div class="tm-groups">
+          <div>
+            <h3>PowerShell Suite</h3>
+            <ul class="tm-list">
+              <li><b>Optimize-System.ps1</b> - multi-stage system maintenance and reporting.</li>
+              <li><b>FoldersPermissionV7.ps1</b> - ACL GUI with IT Admin fallback.</li>
+              <li><b>Browser-RunAsAdmin.ps1</b> - UAC enforcement for browsers.</li>
+              <li><b>OutlookArchiveSync.ps1</b> - Exchange Online archive management.</li>
+              <li><b>HealthReport.ps1</b> - Battery, Disk, and CPU checks.</li>
+              <li><b>AnyDesk-AutoStart.ps1</b> - remote startup and management.</li>
+              <li><b>EWS-Backup.ps1</b> - dedicated Online Archive backup.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Linux / Offensive</h3>
+            <ul class="tm-list">
+              <li>nmap / netcat workflows, Metasploit, Burp Suite, and Wireshark.</li>
+              <li>TryHackMe: Linux Privilege Escalation with methodical enumeration and PrivEsc.</li>
+              <li>Basic forensics: logs, snapshots, and triage.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>M365 / Automation</h3>
+            <ul class="tm-list">
+              <li>Power Automate flows for SLA, notifications, and routing.</li>
+              <li>Google Apps Script for sheets, webhooks, and mail merge.</li>
+              <li>Graph/EWS API integrations.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="tm-disclosure">
+        <summary>Status and lab</summary>
+        <div class="tm-groups">
+          <ul class="tm-list">
+            <li>ChiefBot - paused after POC</li>
+            <li>Chief Personal Lab</li>
+          </ul>
+        </div>
+      </details>
+
+      <section class="tm-close">
+        <h2>Want to collaborate?</h2>
+        <p>If you have an infrastructure project, hardening task, or process that needs improvement, we can start with a short conversation about the current environment and what is actually needed.</p>
+        <div class="tm-actions"><a class="tm-btn" href="/en/contact/?service=general">Contact</a></div>
+      </section>
+    </div>
 </main>
-<footer class="wrap team-footer"><div class="muted">© <span id="year"></span> CyJimm - Security • Infrastructure • Innovation · <a href="/en/">Home</a> · <a href="/en/privacy.html">Privacy</a> · <a href="/en/terms.html">Terms</a> · <a href="/en/accessibility.html">Accessibility Statement</a> · <a href="/team/" lang="he" dir="rtl">עברית</a></div></footer>
+<footer class="tm-frame team-footer"><div class="muted">© <span id="year"></span> CyJimm - Security • Infrastructure • Innovation · <a href="/en/">Home</a> · <a href="/en/privacy.html">Privacy</a> · <a href="/en/terms.html">Terms</a> · <a href="/en/accessibility.html">Accessibility Statement</a> · <a href="/team/" lang="he" dir="rtl">עברית</a></div></footer>
 <script src="/assets/js/page-helpers.js" defer></script><script src="/assets/js/global-navigation.js" defer></script><script src="/assets/js/motion.js?v=20261102" defer></script><script src="/assets/js/accessibility.js" defer></script>
 </body></html>

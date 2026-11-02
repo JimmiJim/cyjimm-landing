@@ -25,7 +25,7 @@ body.contact-page {
 .contact-page a { color: inherit; }
 
 .contact-wrap {
-  width: min(100%, 1120px);
+  width: min(100%, var(--cyjimm-page-width));
   margin-inline: auto;
   padding-inline: 20px;
 }
@@ -100,7 +100,7 @@ body.contact-page {
 }
 
 .contact-copy h1 {
-  max-width: 12ch;
+  max-width: 18ch;
   margin: 0 0 18px;
   font-size: clamp(2.55rem, 5vw, 4.5rem);
   line-height: 1.04;

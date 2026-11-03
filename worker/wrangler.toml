@@ -16,6 +16,3 @@ zone_name = "cyjimm.com"
 [[routes]]
 pattern = "www.cyjimm.com/api/contact*"
 zone_name = "cyjimm.com"
-
-[secrets]
-required = ["TURNSTILE_SECRET_KEY", "RESEND_API_KEY"]

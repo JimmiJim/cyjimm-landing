@@ -9,7 +9,7 @@
   // The phishing trainer swaps sections in place; animating them would fight its own UI.
   var interactiveApp = document.body.classList.contains('phishing-page');
 
-  var CARDS = '.card, .path-card, .pc-card, .pc-values-card, .portfolio-card, .about-stat, .skill, .visual-card, .step, .vendor, .box, .danger-item, .contact-form-card, .web-service-card, .web-quality-card, .web-needs-column, .web-scope-card, .web-process-list li';
+  var CARDS = '.card, .path-card, .pc-card, .pc-values-card, .portfolio-card, .about-stat, .skill, .visual-card, .step, .vendor, .box, .danger-item, .contact-form-card, .web-service-card, .web-quality-card, .web-needs-column, .web-scope-card, .web-process-list li, .tm-card, .tm-disclosure';
   var NO_SPOT = '.pc-step';
 
   /* Header edge: a shadow appears only once content scrolls under it. */

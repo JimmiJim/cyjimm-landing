@@ -1,4 +1,4 @@
-/* Founder page. One level of surface only: type, space and hairlines carry the hierarchy, not boxes. */
+/* Founder page. Rounded bubbles carry the content; type and space carry the hierarchy. */
 :root {
   --tm-ink: #f5f5f7;
   --tm-muted: #a1a1a6;
@@ -7,6 +7,10 @@
   --tm-accent-press: #9f1239;
   --tm-link: #ff8fa3;
   --tm-bg: #0b0b10;
+  --tm-surface: rgba(255, 255, 255, 0.045);
+  --tm-card-line: rgba(255, 255, 255, 0.1);
+  --tm-card-hover: rgba(255, 143, 163, 0.45);
+  --tm-depth: 0 18px 48px rgba(0, 0, 0, 0.28);
 }
 
 html[data-cyjimm-theme="light"] {
@@ -15,6 +19,21 @@ html[data-cyjimm-theme="light"] {
   --tm-line: rgba(0, 0, 0, 0.14);
   --tm-link: #9f1239;
   --tm-bg: #f5f7fb;
+  --tm-surface: #fff;
+  --tm-card-line: rgba(0, 0, 0, 0.09);
+  --tm-card-hover: rgba(159, 18, 57, 0.4);
+  --tm-depth: 0 14px 36px rgba(15, 23, 42, 0.08);
+}
+
+html.cyjimm-a11y-high-contrast {
+  --tm-ink: #fff;
+  --tm-muted: #fff;
+  --tm-line: #fff;
+  --tm-link: #ffe066;
+  --tm-bg: #000;
+  --tm-surface: #000;
+  --tm-card-line: #fff;
+  --tm-card-hover: #ffe066;
 }
 
 * { box-sizing: border-box; }
@@ -37,30 +56,43 @@ html[data-cyjimm-theme="dark"] body.team-page { background: var(--tm-bg); color:
 
 .tm-frame { width: min(100%, var(--cyjimm-page-width)); margin-inline: auto; padding-inline: var(--cyjimm-gutter); }
 
-/* Hero */
-.tm-hero { padding-block: clamp(4.5rem, 11vw, 9.5rem) clamp(3.5rem, 8vw, 7rem); text-align: center; }
-.tm-eyebrow { margin: 0 0 1rem; color: var(--tm-muted); font-size: 1.05em; font-weight: 500; }
-.tm-hero h1 { margin: 0; font-size: clamp(3.25em, 1.6em + 7vw, 7em); font-weight: 700; line-height: 1.04; letter-spacing: -0.015em; }
-html[lang="en"] .tm-hero h1 { letter-spacing: -0.03em; }
-.tm-tagline { max-width: 34em; margin: 1.25rem auto 0; font-size: clamp(1.2em, 1em + 0.8vw, 1.6em); font-weight: 500; line-height: 1.35; }
-.tm-role { margin: 1rem 0 0; color: var(--tm-muted); }
-.tm-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem 1.75rem; margin-block-start: 2.25rem; }
+/* Hero: shown immediately, never part of the scroll reveal. Modest on purpose: the skills carry this page. */
+.tm-hero { padding-block: clamp(2.5rem, 4.5vw, 4rem) clamp(1.5rem, 3vw, 2.5rem); }
+.tm-hero-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 1.25rem clamp(1.25rem, 2.5vw, 2rem); }
+body.team-page:not(#_) main .tm-hero h1 { margin: 0; font-size: clamp(2em, 1.6em + 1.6vw, 3em); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+.tm-role { margin: 0.25rem 0 0; color: var(--tm-muted); }
+.tm-tagline { max-width: 40em; margin: 0.6rem 0 0; font-size: 1.1em; line-height: 1.5; }
+.tm-portrait { display: block; width: clamp(84px, 8vw, 124px); height: auto; border-radius: 50%; background: var(--tm-surface); }
 
 .team-page main a.tm-btn { display: inline-flex; align-items: center; min-height: 48px; padding-inline: 1.5em; border-radius: 999px; background: var(--tm-accent); color: #fff; font-weight: 600; text-decoration: none; transition: background-color 0.15s ease-out; }
 .team-page main a.tm-btn:hover { background: var(--tm-accent-press); }
 .team-page main a.tm-btn:active { scale: 0.97; transition: scale 0.1s ease-out; }
 .team-page main a.tm-more { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
 
+/* Bubbles: one surface level. The pointer light comes from the shared .mo-spot rules in motion.css. */
+.tm-card { position: relative; padding: 1.5rem; border: 1px solid var(--tm-card-line); border-radius: 22px; background: var(--tm-surface); }
+.tm-card { transition: translate 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out; }
+.tm-card h3 { margin: 0 0 0.6rem; font-size: 1.1em; font-weight: 600; }
+.tm-card p { margin: 0; color: var(--tm-muted); line-height: 1.55; }
+html[dir="rtl"] .tm-card h3[dir="ltr"] { text-align: right; }
+
+/* Only a real pointer lifts a card; touch keeps the static layout. */
+@media (hover: hover) and (pointer: fine) {
+  .tm-card:hover { translate: 0 -3px; border-color: var(--tm-card-hover); box-shadow: var(--tm-depth); }
+}
+
+/* design.css turns the pointer light off for the flat pages; this page keeps it. */
+body.team-page:not(#_) .mo-spot::before { display: block; }
+
 /* Rows: the heading holds one column, its content the rest */
-.tm-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 1.5rem clamp(2rem, 5vw, 5rem); padding-block: clamp(2.75rem, 5vw, 4.5rem); border-block-start: 1px solid var(--tm-line); }
+.tm-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 4fr); gap: 1.5rem clamp(2rem, 4vw, 4.5rem); padding-block: clamp(2.5rem, 4.5vw, 4rem); border-block-start: 1px solid var(--tm-line); }
 .tm-row h2 { margin: 0; font-size: clamp(1.4em, 1.15em + 0.8vw, 1.9em); font-weight: 700; line-height: 1.15; letter-spacing: -0.005em; }
+.tm-body { max-width: 46em; margin: 0; color: var(--tm-muted); font-size: 1.05em; line-height: 1.6; }
 
-.tm-statement { margin: 0; max-width: 36em; font-size: clamp(1.25em, 1.05em + 0.9vw, 1.75em); font-weight: 500; line-height: 1.35; }
-.tm-statement + .tm-statement { margin-block-start: 1em; }
-.tm-body { max-width: 44em; margin: 1.25em 0 0; color: var(--tm-muted); font-size: 1.05em; line-height: 1.6; }
-
-.tm-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 2.5rem clamp(2rem, 4vw, 4rem); }
-.tm-groups h3 { margin: 0 0 0.75rem; font-size: 1.05em; font-weight: 600; }
+.tm-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem; }
+.tm-path { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.tm-card .tm-period { margin-block-end: 0.5rem; color: var(--tm-link); font-size: 0.9em; font-weight: 500; }
+.tm-after { margin: 0.75rem 0 0; }
 
 .tm-list { margin: 0; padding: 0; list-style: none; color: var(--tm-muted); }
 .tm-list li { padding-block: 0.45em; line-height: 1.5; }
@@ -69,29 +101,42 @@ html[lang="en"] .tm-hero h1 { letter-spacing: -0.03em; }
 /* Items set their own direction so punctuation lands correctly; the column edge stays aligned. */
 html[dir="rtl"] .tm-list li { text-align: right; }
 
-/* Disclosure: the detail stays one level deeper than the main story */
-.tm-disclosure summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; cursor: pointer; font-size: clamp(1.4em, 1.15em + 0.8vw, 1.9em); font-weight: 700; line-height: 1.15; list-style: none; }
+.tm-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+html[dir="rtl"] .tm-tags { justify-content: flex-end; }
+.tm-tags li { padding: 0.28em 0.8em; border: 1px solid var(--tm-card-line); border-radius: 999px; color: var(--tm-muted); font-size: 0.88em; transition: border-color 0.15s ease-out, color 0.15s ease-out; }
+.tm-tags li:hover { border-color: var(--tm-card-hover); color: var(--tm-ink); }
+
+/* Disclosure: detail stays one level deeper than the main story */
+.tm-disclosure { position: relative; margin-block-end: 1rem; padding: 0.5rem 1.5rem; border: 1px solid var(--tm-card-line); border-radius: 22px; background: var(--tm-surface); transition: border-color 0.2s ease-out; }
+.tm-disclosure:hover { border-color: var(--tm-card-hover); }
+.tm-disclosure summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 56px; cursor: pointer; font-size: 1.2em; font-weight: 600; list-style: none; }
 .tm-disclosure summary::-webkit-details-marker { display: none; }
-.tm-disclosure summary::after { content: ""; flex: none; width: 0.42em; height: 0.42em; margin-inline-end: 0.2em; border-block-end: 2px solid var(--tm-muted); border-inline-end: 2px solid var(--tm-muted); rotate: 45deg; transition: rotate 0.2s ease-out; }
+.tm-disclosure summary::after { content: ""; flex: none; width: 0.5em; height: 0.5em; margin-inline-end: 0.2em; border-block-end: 2px solid var(--tm-muted); border-inline-end: 2px solid var(--tm-muted); rotate: 45deg; transition: rotate 0.2s ease-out; }
 .tm-disclosure[open] summary::after { rotate: 225deg; }
-.tm-disclosure { padding-block: clamp(1.75rem, 3vw, 2.5rem); border-block-start: 1px solid var(--tm-line); }
-.tm-disclosure .tm-groups { margin-block-start: 2rem; }
+.tm-disclosure .tm-groups { padding-block: 0.5rem 1.25rem; }
+.tm-card.tm-card-flat { padding: 0; border: 0; background: none; box-shadow: none; translate: none; }
 
 /* Closing */
-.tm-close { padding-block: clamp(4rem, 9vw, 8rem); border-block-start: 1px solid var(--tm-line); text-align: center; }
-.tm-close h2 { margin: 0; font-size: clamp(2em, 1.3em + 2.6vw, 3.5em); font-weight: 700; line-height: 1.08; letter-spacing: -0.01em; }
-.tm-close p { max-width: 40em; margin: 1rem auto 0; color: var(--tm-muted); font-size: 1.1em; }
+.tm-close { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; margin-block-start: clamp(1.5rem, 3vw, 2.5rem); padding-block: clamp(2rem, 4vw, 3rem); border-block-start: 1px solid var(--tm-line); }
+.tm-close p { margin: 0; font-size: 1.2em; font-weight: 500; }
 
 .team-footer { padding-block: 1.5rem 2.5rem; border-block-start: 1px solid var(--tm-line); color: var(--tm-muted); font-size: 0.82em; }
 .team-footer a { color: inherit; }
 .team-footer a:hover { text-decoration: underline; }
 
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
   .tm-row { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tm-card,
+  .tm-disclosure,
+  .tm-tags li,
   .tm-disclosure summary::after,
   .team-page main a.tm-btn { transition: none; }
+  .tm-card:hover { translate: none; }
   .team-page main a.tm-btn:active { scale: none; }
 }
+
+/* accessibility.css forces every link to the body colour in light mode. */
+html[data-cyjimm-theme="light"] .team-page main a:not(.tm-btn) { color: var(--tm-link); }

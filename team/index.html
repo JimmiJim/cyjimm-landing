@@ -24,12 +24,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/global-navigation.css?v=20261103b">
   <link rel="stylesheet" href="/assets/css/accessibility.css?v=20261030">
-  <link rel="stylesheet" href="/assets/css/motion.css?v=20261103c">
-  <link rel="stylesheet" href="/assets/css/team.css?v=20261103">
+  <link rel="stylesheet" href="/assets/css/motion.css?v=20261105">
+  <link rel="stylesheet" href="/assets/css/team.css?v=20261105">
   <link rel="canonical" href="https://cyjimm.com/team/">
   <link rel="alternate" hreflang="he" href="https://cyjimm.com/team/">
   <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/team/">
   <link rel="alternate" hreflang="x-default" href="https://cyjimm.com/team/">
+  <link rel="stylesheet" href="/assets/css/design.css?v=20261106">
 </head>
 <body class="team-page">
   <a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
@@ -44,52 +45,70 @@
   </header>
   <main id="main-content">
     <section class="tm-hero">
-      <div class="tm-frame">
-        <p class="tm-eyebrow">מייסד ומוביל CyJimm</p>
-        <h1>מתן ג'מיל</h1>
-        <p class="tm-tagline">עבודה מעשית בתשתיות, אבטחה ואוטומציה.</p>
-        <p class="tm-role"><span lang="en" dir="ltr">Systems, Infrastructure &amp; Security</span> · ידוע גם כ־צ'יף</p>
-        <div class="tm-actions"><a class="tm-btn" href="/contact/?service=general">צור קשר</a><a class="tm-more" href="/about/">לפרופיל המקצועי המלא</a></div>
+      <div class="tm-frame tm-hero-grid">
+        <img class="tm-portrait" src="/about/assets/chief-avatar.webp" width="840" height="840" alt="איור של צ׳יף">
+        <div>
+          <h1>מתן ג'מיל</h1>
+          <p class="tm-role"><span lang="en" dir="ltr">Systems, Infrastructure &amp; Security</span></p>
+          <p class="tm-tagline">מייסד CyJimm ו-<a href="/jimmis-hub/">Jimmi's Hub</a>. עובד בתשתיות, רשתות, אבטחה ואוטומציה.</p>
+        </div>
       </div>
     </section>
 
     <div class="tm-frame">
+      <section class="tm-row tm-row-first">
+        <h2>CyJimm</h2>
+        <p class="tm-body">CyJimm היא פרקטיקה לתשתיות Windows ו-Linux, אבטחה ארגונית ואוטומציה. העבודה כוללת הגדרת סטנדרטים, בניית תהליכים ושיפור היציבות והאבטחה בסביבה הקיימת, והיא מתבצעת ישירות על ידי מתן.</p>
+      </section>
+
       <section class="tm-row">
-        <h2>מי עומד מאחורי CyJimm</h2>
-        <div>
-          <p class="tm-statement">CyJimm היא פרקטיקה לתשתיות Windows ו-Linux, אבטחה ארגונית ואוטומציה. העבודה כוללת הגדרת סטנדרטים, בניית תהליכים ושיפור היציבות והאבטחה בסביבה הקיימת.</p>
-          <p class="tm-statement">העבודה ב-CyJimm מובלת ומבוצעת ישירות על ידי מתן ג'מיל.</p>
-          <p class="tm-body">עובד עם תשתיות IT, אבטחה ואוטומציה, בדגש על סטנדרטיזציה, יציבות והקשחה. בין הפרויקטים: ערכת התקנות מותאמת ל-Windows 11 ול-Kali, מערכות התרעה מבוססות SLA וניהול סביבות AD/GPO מורכבות ללא Intune.</p>
+        <h2>מה אני עושה בפועל</h2>
+        <div class="tm-groups">
+          <article class="tm-card"><h3>חומות אש ו-WAN</h3><p>FortiGate: מעבר קו סיב, routing ו-failover, כללי Firewall ו-NAT, DHCP ו-DNS, הפרדת רשתות ו-VPN.</p></article>
+          <article class="tm-card"><h3>מיתוג ו-Wi-Fi</h3><p>Aruba 2930F ו-VSF, VLANs, MSTP ו-LACP, הפרדת רשת אורחים, בדיקות כיסוי ואבחון איטיות בלי לגעת בייצור.</p></article>
+          <article class="tm-card"><h3>זהויות והרשאות</h3><p>הקמת דומיין, Active Directory, GPO, Entra ID, ניהול קבוצות, מתן והסרת הרשאות, SharePoint ושיתופי קבצים. הקמת סביבת Google Workspace ו-GCP.</p></article>
+          <article class="tm-card"><h3>דואר, דומיין ו-DNS</h3><p>Exchange Online, ארכיון מקוון ו-RCA לתקלות דואר, בדיקת פעילות בתיבות עם Purview Audit ו-Message Trace. שחזור שירות בתקלות דומיין ו-DNS, כולל עבודה מול Registrar.</p></article>
+          <article class="tm-card"><h3>תחנות קצה בהיקף</h3><p>טיפול בתקלות חוזרות על פני תחנות רבות עם PowerShell ו-Endpoint Central, imaging, התקנות autounattend ובידוד תקלות חומרה.</p></article>
+          <article class="tm-card"><h3>אבטחה ותגובה</h3><p>Triage להתראות EDR, חסימת IOCs ותיאום מול SOC, הקשחת תצורה, Splunk ו-Wazuh. ידע מעשי ב-OSINT, כולל Sherlock ו-Google Dorking.</p></article>
+          <article class="tm-card"><h3>גישה מרחוק</h3><p>התקנה ותמיכה ב-Harmony ו-FortiClient, כולל משתמשים בנסיעות ומכשירים ניידים.</p></article>
+          <article class="tm-card"><h3>אוטומציה</h3><p>PowerShell לניהול הרשאות, קבוצות, תחזוקה ו-Health Checks. Python, Power Automate ו-Google Apps Script לפי הצורך.</p></article>
+          <article class="tm-card"><h3>כלי AI</h3><p>ניהול והטמעה של כלי AI לארגונים ולאנשים פרטיים: בחירת כלים, הרשאות, חיבור מקורות ידע וסוכנים, ותכנון הטמעה בענן עם בקרה ואישור אנושי.</p></article>
+          <article class="tm-card"><h3>תיעוד ו-RCA</h3><p>ניתוח סיבת שורש, Runbooks וסיכומי טיפול, כדי שהפעם הבאה תהיה קצרה יותר.</p></article>
+          <article class="tm-card"><h3>Web ו-Cloudflare</h3><p>אתרים סטטיים, Cloudflare Workers, Turnstile, CSP וכותרות אבטחה. האתר הזה בנוי כך.</p></article>
+          <article class="tm-card"><h3>מעבדה</h3><p>ניטור אבטחה מקומי ל-Windows עם Sysmon, YARA ו-PowerShell, רשתות ב-GNS3, Proxmox ו-VMware, ומערכת ידע אישית מבוססת RAG ו-MCP.</p></article>
         </div>
       </section>
 
       <section class="tm-row">
-        <h2>מערכות ליבה</h2>
-        <div class="tm-groups">
-          <ul class="tm-list">
-            <li dir="auto">Windows Server (AD, DNS, DHCP, GPO), pfSense, VLANs</li>
-            <li dir="auto">Linux: Kali, Parrot, Elementary - PrivEsc, Hardening</li>
-          </ul>
-          <ul class="tm-list">
-            <li dir="auto">Automation: PowerShell 7+, Python 3.12, GitHub Actions</li>
-            <li dir="auto">SIEM/Monitoring: Splunk, Wazuh, Grafana Integration</li>
-          </ul>
-        </div>
+        <h2>ניסיון</h2>
+        <ol class="tm-path">
+          <li class="tm-card"><p class="tm-period">נובמבר 2024 - היום</p><h3>מנהל תשתיות</h3><p>חברת אינטגרציה גדולה, בהצבה בארגון E-Commerce מהגדולים בישראל. תשתיות, מערכות, תקשורת, ניהול גישה, אבטחת מידע ותפעול IT.</p></li>
+          <li class="tm-card"><p class="tm-period">עד נובמבר 2024</p><h3>System &amp; Security</h3><p>חברה ביטחונית. תשתיות IT ותפעול בסביבות מרובות אתרים: Windows Server 2019/2022, Active Directory, GPO, DHCP/DNS, Microsoft 365, Entra ID, Exchange Online ואבטחת endpoints.</p></li>
+          <li class="tm-card"><p class="tm-period">נובמבר 2022 - אפריל 2024</p><h3>Senior Technical Support</h3><p>חברת שירותי IT ואינטגרציה גדולה. סביבת Microsoft ארגונית ותחזוקה של יותר מ-30 שרתים, כולל מערכות legacy, ואוטומציות ל-Active Directory, מחזור חיי משתמשים והרשאות.</p></li>
+          <li class="tm-card"><p class="tm-period">דצמבר 2021 - יוני 2022</p><h3>IT Support Technician</h3><p>מוסד אקדמי להנדסה. התקנת מערכות הפעלה, הקמת חשבונות, ציוד Zoom ו-AV, בדיקות כיתות היברידיות והכנת סביבות לשיעורים חיים.</p></li>
+          <li class="tm-card"><p class="tm-period">2025</p><h3>Cyber Security Expert, מסלול של 600 שעות</h3><p>מסלול בשיתוף אלתא והתעשייה האווירית, שכלל תרגול מעשי בסימולטור סייבר.</p></li>
+          <li class="tm-card"><p class="tm-period">2017</p><h3>Cybersecurity &amp; Network Infrastructure</h3><p>מרכז הכשרה לסייבר. הקמת מערכות עם scripting, זיהוי ומניעת חדירות, תגובה לאיומים והערכת חולשות.</p></li>
+        </ol>
       </section>
 
       <section class="tm-row">
-        <h2>עבודות נבחרות</h2>
+        <h2>כלים</h2>
         <div class="tm-groups">
-          <p class="tm-list">סטנדרטיזציה ואוטומציה של משימות תמיכה חוזרות באמצעות PowerShell.</p>
-          <p class="tm-list">בניית ערכת התקנות אחידה לתחנות עבודה ולסביבת המעבדה.</p>
-          <p class="tm-list">בניית Dashboards ב-Splunk וב-Wazuh לצורך נראות תשתית ואבטחה.</p>
+          <article class="tm-card"><h3 lang="en" dir="ltr">Network</h3><ul class="tm-tags" lang="en" dir="ltr"><li>FortiGate</li><li>FortiClient</li><li>Aruba 2930F / VSF</li><li>VLANs</li><li>MSTP</li><li>LACP</li><li>pfSense</li><li>GNS3</li></ul></article>
+          <article class="tm-card"><h3 lang="en" dir="ltr">Identity &amp; Cloud</h3><ul class="tm-tags" lang="en" dir="ltr"><li>Active Directory</li><li>GPO</li><li>Entra ID</li><li>Microsoft 365</li><li>Exchange Online</li><li>SharePoint</li><li>Microsoft Graph</li><li>Purview</li><li>Google Workspace</li><li>GCP</li></ul></article>
+          <article class="tm-card"><h3 lang="en" dir="ltr">Endpoint</h3><ul class="tm-tags" lang="en" dir="ltr"><li>Windows 10/11</li><li>Windows Server</li><li>Linux</li><li>macOS</li><li>Endpoint Central</li><li>Winget</li><li>autounattend</li></ul></article>
+          <article class="tm-card"><h3 lang="en" dir="ltr">Security</h3><ul class="tm-tags" lang="en" dir="ltr"><li>SentinelOne</li><li>Defender</li><li>CrowdStrike</li><li>Check Point</li><li>Harmony</li><li>Splunk</li><li>Wazuh</li><li>Sysmon</li><li>YARA</li><li>Burp Suite</li><li>Nmap</li><li>Wireshark</li><li>Sherlock</li><li>OSINT</li><li>Google Dorking</li></ul></article>
+          <article class="tm-card"><h3 lang="en" dir="ltr">Automation &amp; Web</h3><ul class="tm-tags" lang="en" dir="ltr"><li>PowerShell 7+</li><li>Python</li><li>GitHub Actions</li><li>Power Automate</li><li>Google Apps Script</li><li>Cloudflare Workers</li><li>Turnstile</li></ul></article>
+          <article class="tm-card"><h3 lang="en" dir="ltr">AI</h3><ul class="tm-tags" lang="en" dir="ltr"><li>Claude</li><li>Claude Code</li><li>ChatGPT</li><li>Codex</li><li>Cursor</li><li>Gemini</li><li>MCP</li><li>RAG</li><li>Obsidian</li></ul></article>
+          <article class="tm-card"><h3 lang="en" dir="ltr">Virtualization &amp; Hardware</h3><ul class="tm-tags" lang="en" dir="ltr"><li>VMware</li><li>Proxmox</li><li>PC builds</li><li>BIOS/UEFI</li><li>SSD/NVMe</li><li>SMART</li><li>Stress testing</li></ul></article>
         </div>
       </section>
 
       <section class="tm-row">
         <h2>פרויקטים ותוצרים</h2>
-        <div class="tm-groups">
-          <div>
+        <div>
+          <div class="tm-groups">
+          <div class="tm-card">
             <h3 lang="en" dir="ltr">Custom OS &amp; Imaging</h3>
             <ul class="tm-list">
               <li dir="auto">Windows 11 Custom ISO - OOBE/TPM/Account Bypass, <b>autounattend.xml</b>, Winget bundle, Tools folder.</li>
@@ -97,7 +116,7 @@
               <li dir="rtl">Baseline hardening templates (CIS-inspired) עבור תחנות ושרתים.</li>
             </ul>
           </div>
-          <div>
+          <div class="tm-card">
             <h3 lang="en" dir="ltr">Enterprise Automation</h3>
             <ul class="tm-list">
               <li dir="auto">SLA Alerts - Google Apps Script + Power Automate (Cross-suite).</li>
@@ -105,7 +124,7 @@
               <li dir="auto">M365: EWS Backup jobs, mailbox/archive routines.</li>
             </ul>
           </div>
-          <div>
+          <div class="tm-card">
             <h3 lang="en" dir="ltr">Monitoring &amp; SIEM</h3>
             <ul class="tm-list">
               <li dir="auto">Splunk on Kali (POC→Dashboards) + Wazuh integration.</li>
@@ -113,29 +132,36 @@
               <li dir="auto">Incident drill runbooks (IR, containment, comms).</li>
             </ul>
           </div>
+        
+            <article class="tm-card"><h3>עבודות נבחרות</h3><ul class="tm-list"><li dir="auto">סטנדרטיזציה ואוטומציה של משימות תמיכה חוזרות באמצעות PowerShell.</li><li dir="auto">בניית ערכת התקנות אחידה לתחנות עבודה ולסביבת המעבדה.</li><li dir="auto">בניית Dashboards ב-Splunk וב-Wazuh לצורך נראות תשתית ואבטחה.</li></ul></article>
+          </div>
+          <p class="tm-after"><a class="tm-more" href="/about/#projects">עוד בפרופיל המקצועי</a></p>
         </div>
       </section>
 
       <details class="tm-disclosure">
         <summary>Runbooks ו-Playbooks</summary>
         <div class="tm-groups">
-          <div>
-            <h3 lang="en" dir="ltr">Windows</h3>
+          <div class="tm-card tm-card-flat">
+            <h3 lang="en" dir="ltr">Windows / Google Cloud</h3>
             <ul class="tm-list">
+              <li dir="auto">Domain setup from scratch: DC, AD, DNS &amp; GPO.</li>
               <li dir="auto">Join-Domain &amp; GPO bootstrap (OU per dept).</li>
               <li dir="auto">Printer server &amp; shares (permissions &amp; recovery).</li>
               <li dir="auto">Endpoint Hardening, Defender tuning, CrowdStrike/WSS policy alignment.</li>
+              <li dir="auto">Google Workspace &amp; GCP environment setup.</li>
             </ul>
           </div>
-          <div>
+          <div class="tm-card tm-card-flat">
             <h3 lang="en" dir="ltr">Linux</h3>
             <ul class="tm-list">
               <li dir="auto">PrivEsc lab flow (enum → exploit → stabilize → persist).</li>
               <li dir="auto">Service hardening (SSH, sudoers, auditd, journald, fail2ban).</li>
               <li dir="auto">Backup &amp; health jobs (systemd timers + scripts).</li>
+              <li dir="auto">OSINT: Sherlock &amp; Google Dorking (hands-on).</li>
             </ul>
           </div>
-          <div>
+          <div class="tm-card tm-card-flat">
             <h3 lang="en" dir="ltr">Network / pfSense</h3>
             <ul class="tm-list">
               <li dir="auto">VLAN design &amp; rules per environment.</li>
@@ -149,7 +175,7 @@
       <details class="tm-disclosure">
         <summary>כלים וסקריפטים</summary>
         <div class="tm-groups">
-          <div>
+          <div class="tm-card tm-card-flat">
             <h3 lang="en" dir="ltr">PowerShell Suite</h3>
             <ul class="tm-list">
               <li dir="rtl"><b>Optimize-System.ps1</b> - תחזוקת מערכת מרובת שלבים + דיווח.</li>
@@ -161,7 +187,7 @@
               <li dir="rtl"><b>EWS-Backup.ps1</b> - גיבוי Online Archive (יעודי).</li>
             </ul>
           </div>
-          <div>
+          <div class="tm-card tm-card-flat">
             <h3 lang="en" dir="ltr">Linux / Offensive</h3>
             <ul class="tm-list">
               <li dir="auto">nmap / netcat workflows, metasploit, burp, wireshark.</li>
@@ -169,31 +195,26 @@
               <li dir="rtl">Forensics בסיסי: לוגים, snapshots, triage.</li>
             </ul>
           </div>
-          <div>
+          <div class="tm-card tm-card-flat">
             <h3 lang="en" dir="ltr">M365 / Automation</h3>
             <ul class="tm-list">
               <li dir="auto">Power Automate flows (SLA, notifications, routing).</li>
               <li dir="auto">Google Apps Script (sheets, webhooks, mail merge).</li>
-              <li dir="auto">Graph/EWS API integrations.</li>
+              <li dir="auto">Graph/EWS API integrations, including Microsoft Graph PowerShell.</li>
+              <li dir="auto">Purview Audit, Message Trace and Exchange Online PowerShell.</li>
             </ul>
           </div>
         </div>
       </details>
 
       <details class="tm-disclosure">
-        <summary>סטטוס ומעבדה</summary>
-        <div class="tm-groups">
-          <ul class="tm-list">
-            <li dir="rtl">ChiefBot - הוקפא לאחר POC</li>
-            <li dir="auto">Chief Personal Lab</li>
-          </ul>
-        </div>
+        <summary>מעבדה וסטטוס</summary>
+        <div class="tm-groups"><ul class="tm-list"><li dir="auto"><b>TryHackMe:</b> Linux Privilege Escalation, Blue/Red Team ו-Network Exploitation</li><li dir="auto"><b>Offensive tooling:</b> Nmap, Burp Suite, Metasploit, Nikto, dirb ו-Wireshark</li><li dir="auto"><b>Defensive practice:</b> איסוף לוגים, triage, dashboards, הקשחה ותרגילי containment</li><li dir="auto"><b>Lab infrastructure:</b> Proxmox, VMware, pfSense, VLANs וסביבות Red/Blue/Purple</li><li dir="auto">ChiefBot - הוקפא לאחר POC</li><li dir="auto">Chief Personal Lab</li></ul></div>
       </details>
 
       <section class="tm-close">
-        <h2>רוצה לשתף פעולה?</h2>
-        <p>אם יש לכם פרויקט תשתיות, הקשחה או תהליך שדורש שיפור, אפשר להתחיל בשיחה קצרה על המצב הקיים ומה נדרש בפועל.</p>
-        <div class="tm-actions"><a class="tm-btn" href="/contact/?service=general">צור קשר</a></div>
+        <p>פרויקט, הקשחה או תהליך שדורש שיפור?</p>
+        <a class="tm-btn" href="/contact/?service=general">יצירת קשר</a>
       </section>
     </div>
   </main>
@@ -204,7 +225,7 @@
 
   <script src="/assets/js/page-helpers.js" defer></script>
   <script src="/assets/js/global-navigation.js" defer></script>
-  <script src="/assets/js/motion.js?v=20261102" defer></script>
+  <script src="/assets/js/motion.js?v=20261104" defer></script>
   <script src="/assets/js/accessibility.js" defer></script>
 </body>
 </html>

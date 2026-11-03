@@ -1,0 +1,276 @@
+/*
+  Site-wide design layer, loaded last on every page. It carries the founder page's rules to the rest of the site:
+  rounded bubbles at one level of surface, hierarchy from type and space, one accent colour.
+
+  body:not(#_) raises specificity above the page stylesheets and the theme rules in accessibility.css,
+  which avoids !important and keeps those files untouched as a fallback.
+*/
+:root {
+  --d-bg: #0b0b10;
+  --d-surface: #16161c;
+  --d-ink: #f5f5f7;
+  --d-muted: #a1a1a6;
+  --d-line: rgba(255, 255, 255, 0.14);
+  --d-line-strong: rgba(255, 255, 255, 0.28);
+  --d-accent: #be123c;
+  --d-accent-press: #9f1239;
+  --d-link: #ff8fa3;
+  --d-space: clamp(3.5rem, 7vw, 6.5rem);
+  --d-card: rgba(255, 255, 255, 0.045);
+  --d-card-line: rgba(255, 255, 255, 0.1);
+  --d-card-hover: rgba(255, 143, 163, 0.45);
+  --d-depth: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+html[data-cyjimm-theme="light"] {
+  --d-bg: #f5f7fb;
+  --d-surface: #fff;
+  --d-ink: #1d1d1f;
+  --d-muted: #5f6470;
+  --d-line: rgba(0, 0, 0, 0.14);
+  --d-line-strong: rgba(0, 0, 0, 0.3);
+  --d-link: #9f1239;
+  --d-card: #fff;
+  --d-card-line: rgba(0, 0, 0, 0.09);
+  --d-card-hover: rgba(159, 18, 57, 0.4);
+  --d-depth: 0 14px 36px rgba(15, 23, 42, 0.08);
+}
+
+html.cyjimm-a11y-high-contrast {
+  --d-bg: #000;
+  --d-surface: #000;
+  --d-ink: #fff;
+  --d-muted: #fff;
+  --d-line: #fff;
+  --d-line-strong: #fff;
+  --d-link: #ffe066;
+  --d-card: #000;
+  --d-card-line: #fff;
+  --d-card-hover: #ffe066;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --d-line: rgba(255, 255, 255, 0.5);
+    --d-line-strong: rgba(255, 255, 255, 0.8);
+    --d-muted: #d1d1d6;
+  }
+
+  html[data-cyjimm-theme="light"] {
+    --d-line: rgba(0, 0, 0, 0.5);
+    --d-line-strong: rgba(0, 0, 0, 0.8);
+    --d-muted: #3a3a40;
+  }
+}
+
+/* Type grows gently past 1920px so wide screens read in proportion; below that it stays at the browser default. */
+html { font-size: clamp(100%, 62.5% + 0.3125vw, 150%); }
+
+/* ---- Page ground: flat, no decorative gradients or grids ---- */
+body:not(#_) { background: var(--d-bg); color: var(--d-ink); }
+html[lang="he"] body:not(#_) { font-family: "Noto Sans Hebrew", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+html[lang="en"] body:not(#_) { font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+
+body:not(#_) :is(.hero, .web-hero, .pc-hero, header.hero) { background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+body:not(#_) :is(.web-hero, .web-final-box, .web-transparency, .web-wire-visual, .contact-main, .contact-page, .web-eyebrow, .web-kicker, .contact-eyebrow, .web-service-card, .web-hero-note)::before,
+body:not(#_) :is(.web-hero, .web-final-box, .web-transparency, .web-wire-visual, .contact-main, .contact-page, .web-service-card)::after { display: none; }
+
+/* ---- Navigation: words, not a row of buttons. The one filled item is the main action. ---- */
+body:not(#_) .cyjimm-global-header { border-block-end: 1px solid var(--d-line); box-shadow: none; }
+body:not(#_) .cyjimm-global-brand img { box-shadow: none; }
+body:not(#_) .cyjimm-global-brand { color: var(--d-ink); }
+body:not(#_) .cyjimm-global-links { gap: 0.15rem; }
+body:not(#_) .cyjimm-global-links a { border: 0; border-radius: 999px; background: none; color: var(--d-muted); font-weight: 500; transition: color 0.15s ease-out; }
+body:not(#_) .cyjimm-global-links a:hover,
+body:not(#_) .cyjimm-global-links a[aria-current="page"] { background: none; color: var(--d-ink); }
+body:not(#_) .cyjimm-global-links a[aria-current="page"] { font-weight: 600; }
+body:not(#_) .cyjimm-global-links a[href$="/contact/"]:not([lang]) { padding-inline: 1em; background: var(--d-accent); color: #fff; font-weight: 600; transition: background-color 0.15s ease-out; }
+body:not(#_) .cyjimm-global-links a[href$="/contact/"]:not([lang]):hover { background: var(--d-accent-press); }
+body:not(#_) .cyjimm-global-menu { border: 0; background: none; color: var(--d-ink); font-weight: 600; }
+
+@media (max-width: 1080px) {
+  body:not(#_) .cyjimm-global-links { background: var(--d-surface); border: 1px solid var(--d-line); box-shadow: none; }
+}
+
+/* ---- Type: size, weight and tight leading carry the hierarchy ---- */
+body:not(#_) main h1 { font-size: clamp(2.5em, 1.5em + 3.6vw, 5em); font-weight: 700; line-height: 1.07; letter-spacing: -0.015em; }
+html[lang="en"] body:not(#_) main h1 { letter-spacing: -0.03em; }
+body:not(#_) main h1 :is(span, em) { background: none; -webkit-text-fill-color: currentcolor; }
+body:not(#_) main h1 :is(.hero-accent) { color: var(--d-link); }
+body:not(.phishing-page):not(#_) main section > * h2,
+body:not(.phishing-page):not(#_) main .card > h2,
+body:not(.phishing-page):not(#_) main .section h2 { font-size: clamp(1.7em, 1.3em + 1.5vw, 2.75em); font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; }
+body:not(#_) main :is(h3) { font-weight: 600; letter-spacing: 0; }
+
+/* Eyebrows become quiet labels instead of pills. */
+body:not(#_) :is(.eyebrow, .web-kicker, .web-eyebrow, .pc-eyebrow, .contact-eyebrow, .about-status, .work-tag, .portfolio-context, .contact-form-heading > span) { display: block; width: fit-content; padding: 0; border: 0; border-radius: 0; background: none; color: var(--d-muted); font-family: inherit; font-size: 0.9em; font-weight: 500; letter-spacing: 0; text-transform: none; }
+body:not(#_) .about-status-dot { display: none; }
+
+/* ---- Surfaces: bubbles, one level only; the same treatment as the founder page's cards ---- */
+body:not(.phishing-page):not(#_) main :is(.card, .pc-card, .pc-values-card, .pc-cta-box, .web-service-card, .web-quality-card, .web-needs-column, .web-scope-card, .web-process-list li, .portfolio-card, .portfolio-project, .portfolio-timeline li, .portfolio-script-list article, .portfolio-training article, .portfolio-process li, .about-stat, .visual-card:not(:has(.browser)), .step, .pc-step, .proc li, .faq details) {
+  border: 1px solid var(--d-card-line);
+  border-radius: 22px;
+  background: var(--d-card);
+  box-shadow: none;
+  padding: 1.5rem;
+  transition: translate 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+/* Only a real pointer lifts a bubble; touch keeps the static layout. */
+@media (hover: hover) and (pointer: fine) {
+  body:not(.phishing-page):not(#_) main :is(.card, .pc-card, .pc-values-card, .pc-cta-box, .web-service-card, .web-quality-card, .web-needs-column, .web-scope-card, .web-process-list li, .portfolio-card, .portfolio-project, .portfolio-timeline li, .portfolio-script-list article, .portfolio-training article, .portfolio-process li, .about-stat, .visual-card:not(:has(.browser)), .step, .pc-step, .proc li, .faq details):hover {
+    translate: 0 -3px;
+    border-color: var(--d-card-hover);
+    box-shadow: var(--d-depth);
+  }
+}
+
+/* A section that holds bubbles is not a bubble itself, and a bubble's inner steps stay hairline rows. */
+body:not(.phishing-page):not(#_) main .card.about-section {
+  margin-block: 0;
+  padding: var(--d-space) 0 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  translate: none;
+}
+body:not(.phishing-page):not(#_) main .card .step {
+  padding: 1rem 0 0;
+  border: 0;
+  border-block-start: 1px solid var(--d-line);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  translate: none;
+}
+body:not(#_) main .wrap.card { padding: clamp(1.5rem, 3vw, 2.5rem); }
+body:not(#_) main a:is(.card, .pc-card):hover h3 { color: var(--d-link); }
+
+/* Section rhythm */
+body:not(.phishing-page):not(#_) main :is(.web-section, .pc-section, .section) { padding-block: var(--d-space); }
+body:not(.team-page):not(#_) main > section:not(.hero, .web-hero, .pc-hero) { padding-block: var(--d-space); }
+body:not(#_) :is(.hero, .web-hero, .pc-hero) { padding-block: clamp(3.5rem, 8vw, 7.5rem); }
+
+/* ---- Buttons: one filled action, one quiet alternative, feedback on press ---- */
+body:not(#_) :is(.btn-primary, .web-button-primary, .pc-button, .contact-submit) {
+  border: 0;
+  border-radius: 999px;
+  background: var(--d-accent);
+  box-shadow: none;
+  color: #fff;
+  transition: background-color 0.15s ease-out;
+}
+body:not(#_) :is(.btn-primary, .web-button-primary, .pc-button, .contact-submit):hover:not(:disabled) { background: var(--d-accent-press); filter: none; transform: none; }
+body:not(#_) :is(.btn-primary, .web-button-primary, .pc-button, .contact-submit)::before { display: none; }
+body.about-page:not(#_) main .btn { border: 0; border-radius: 999px; background: var(--d-accent); box-shadow: none; color: #fff; transition: background-color 0.15s ease-out; }
+body.about-page:not(#_) main .btn:hover { background: var(--d-accent-press); transform: none; }
+body:not(#_) :is(.btn-ghost, .web-button:not(.web-button-primary), .contact-verify) { border: 1px solid var(--d-line-strong); border-radius: 999px; background: none; box-shadow: none; color: var(--d-ink); }
+
+/* ---- Links and small marks use the single accent ---- */
+body:not(#_) main :is(.text-link, .svc-cta, .path-go, .web-text-link) { color: var(--d-link); }
+body:not(#_) :is(.svc-icon) { stroke: var(--d-ink); }
+body:not(#_) :is(.web-card-icon, .web-card-index, .web-step-number, .number, .contact-principles span, .portfolio-process span) { border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--d-muted); }
+body:not(#_) :is(.stack span, .chip) { border: 0; border-radius: 0; background: none; padding: 0; color: var(--d-muted); }
+body:not(#_) .stack { gap: 0.4rem 1.5rem; }
+
+/* ---- Home ---- */
+body:not(#_) .sec-head { max-width: 52rem; margin-block-end: 2.5rem; }
+body:not(#_) .pipe-panel { padding: 1.5rem; border: 1px solid var(--d-card-line); border-radius: 22px; background: var(--d-card); box-shadow: none; }
+body:not(#_) .pipe-note strong { color: var(--d-muted); font-family: inherit; }
+body:not(#_) .proc li::before { color: var(--d-muted); font-family: inherit; }
+body:not(#_) .proc { gap: 1rem; }
+body:not(#_) .hero-labels,
+body:not(#_) .pipe strong { font-family: inherit; }
+body:not(#_) .faq { row-gap: 0.75rem; column-gap: 0.75rem; }
+body:not(.phishing-page):not(#_) main .faq details { padding-block: 0.25rem; padding-inline: 1.25rem; }
+body:not(#_) .faq summary::after { color: var(--d-muted); }
+body:not(#_) .cta-panel { display: block; text-align: center; }
+body:not(#_) main .cta-panel h2 { font-size: clamp(2em, 1.3em + 2.6vw, 3.5em); }
+body:not(#_) .cta-panel p { max-width: 40em; margin: 1rem auto 0; }
+body:not(#_) .cta-panel .cta { justify-content: center; margin-top: 2rem; }
+
+/* ---- Contact: the form is the one surface on the page ---- */
+body:not(#_) .contact-wrap { padding-inline: var(--cyjimm-gutter); }
+body:not(.phishing-page):not(#_) main section .contact-form-heading h2 { font-size: 1.35em; }
+body:not(#_) .contact-form-card { border: 0; border-radius: 20px; background: var(--d-surface); box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+body:not(#_) .contact-form-heading { border: 0; }
+body:not(#_) :is(.contact-input, .contact-select, .contact-textarea) { border-color: var(--d-line); border-radius: 12px; background: var(--d-bg); box-shadow: none; color: var(--d-ink); }
+body:not(#_) .contact-principles li { border: 0; background: none; }
+
+/* ---- About ---- */
+body:not(#_) main h1 .role { display: block; margin-block-start: 0.5rem; font-size: 0.42em; font-weight: 500; letter-spacing: 0; line-height: 1.25; color: var(--d-muted); }
+body.about-page:not(#_) .avatar { border: 0; border-radius: 24px; background: none; }
+body.about-page:not(#_) .avatar:hover { transform: none; filter: none; }
+body.about-page:not(#_) .logos div { border: 0; border-radius: 12px; background: var(--d-surface); color: var(--d-muted); }
+body.about-page:not(#_) .logos div:hover { transform: none; filter: none; }
+body.about-page:not(#_) .logos img { filter: none; }
+body.about-page:not(#_) :is(.portfolio-period, .portfolio-script-list code, .quote) { color: var(--d-muted); }
+
+/* ---- Guides: the browser mockups stay, as the one illustration on the page ---- */
+body:not(#_) :is(.browser, .visual-card:has(.browser)) { box-shadow: none; }
+body:not(#_) .ui-row .chip { padding: 0.2em 0.7em; border: 1px solid var(--d-line); border-radius: 999px; }
+body:not(#_) .toc a { border: 1px solid var(--d-line); border-radius: 999px; background: none; }
+body:not(#_) .source-list a { display: block; padding-block: 0.3em; color: var(--d-link); }
+
+/* ---- Websites and Jimmi's Hub ---- */
+body:not(#_) .web-transparency { border: 0; border-radius: 0; background: none; box-shadow: none; }
+body:not(#_) .pc-principle-strip { border: 0; background: none; box-shadow: none; }
+body:not(#_) .pc-principle-strip > *,
+body:not(#_) .web-faq-list details { border: 1px solid var(--d-card-line); border-radius: 22px; background: var(--d-card); box-shadow: none; }
+body:not(#_) .pc-principle-strip > * { padding: 1rem 1.5rem; }
+body:not(#_) .web-faq-list { display: grid; gap: 0.75rem; border: 0; }
+body:not(#_) .web-faq-list details { padding-inline: 1.25rem; }
+body:not(#_) .web-final-box { padding: clamp(2rem, 5vw, 4rem); border: 1px solid var(--d-card-line); border-radius: 22px; background: var(--d-card); text-align: center; }
+body:not(#_) .web-needs-core { border: 0; background: none; box-shadow: none; }
+body:not(#_) .web-needs-core::before,
+body:not(#_) .web-needs-core::after { display: none; }
+body:not(#_) .web-card-icon { width: auto; height: auto; }
+body:not(#_) .web-card-index { inset-inline-end: 0; }
+body:not(#_) .web-card-use { margin-inline: 0; padding-inline: 0; color: var(--d-muted); }
+body:not(#_) .web-needs-board::before { display: none; }
+body:not(#_) .web-quality-seal { border-color: var(--d-line-strong); background: none; box-shadow: none; }
+
+body:not(#_) :is(.web-standard, .web-section, .web-price, .web-transparency) { background: none; }
+body:not(#_) .web-transparency-grid { border: 0; background: none; box-shadow: none; }
+body:not(#_) .pc-step::before,
+body:not(#_) .pc-step::after { display: none; }
+body:not(#_) .pc-step:hover { border-color: var(--d-line); transform: none; }
+body:not(#_) .pc-step span { border: 0; background: none; box-shadow: none; color: var(--d-muted); }
+body:not(#_) main .pc-values-card { width: calc(min(100%, var(--cyjimm-page-width)) - 2 * var(--cyjimm-gutter)); margin-inline: auto; }
+body:not(#_) :is(.pc-card, .pc-values) li::marker { color: var(--d-muted); }
+body:not(#_) :is(.pc-card, .pc-values) li::before { background: var(--d-muted); box-shadow: none; }
+
+/* ---- Phishing trainer: a working tool keeps tiles, on the flat page ground and without its own blue palette ---- */
+body.phishing-page:not(#_) :is(.hero-main, .stats, .sidebar, .section, .hero > .card, .layout .card:has(.card, .box)) { border: 0; border-radius: 0; background: none; box-shadow: none; padding-inline: 0; }
+body.phishing-page:not(#_) :is(.metric, .box, .danger-item, .card:not(:has(.card, .box)):not(.hero-main):not(.stats):not(.sidebar):not(.section), .drawer, .topbar) { border: 0; border-radius: 16px; background: var(--d-surface); box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+body.phishing-page:not(#_) .brand { padding: 0; border: 0; background: none; color: var(--d-muted); }
+body.phishing-page:not(#_) .btn { border-radius: 999px; box-shadow: none; }
+body.phishing-page:not(#_) .btn.primary { border: 0; background: var(--d-accent); color: #fff; }
+body.phishing-page:not(#_) .btn.primary:hover { background: var(--d-accent-press); }
+body.phishing-page:not(#_) .btn.secondary { border: 1px solid var(--d-line-strong); background: none; color: var(--d-ink); }
+body.phishing-page:not(#_) :is(.nav, .mnav) { border: 0; border-radius: 12px; background: none; box-shadow: none; color: var(--d-muted); }
+body.phishing-page:not(#_) :is(.nav, .mnav).active { background: var(--d-surface); color: var(--d-ink); }
+body.phishing-page:not(#_) .progress { border: 0; background: var(--d-line); }
+body.phishing-page:not(#_) .progress-fill { background: var(--d-accent); box-shadow: none; }
+body.phishing-page:not(#_) .chip { padding: 0.25em 0.8em; border: 1px solid var(--d-line); border-radius: 999px; }
+
+@media (min-width: 1280px) {
+  body:not(#_) .pc-service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(#_) :is(.cyjimm-global-links a, .btn-primary, .web-button-primary, .pc-button, .contact-submit) { transition: none; }
+  body:not(.phishing-page):not(#_) main :is(.card, .pc-card, .pc-values-card, .pc-cta-box, .web-service-card, .web-quality-card, .web-needs-column, .web-scope-card, .web-process-list li, .portfolio-card, .portfolio-project, .portfolio-timeline li, .portfolio-script-list article, .portfolio-training article, .portfolio-process li, .about-stat, .visual-card:not(:has(.browser)), .step, .pc-step, .proc li, .faq details) { transition: none; }
+  body:not(.phishing-page):not(#_) main :is(.card, .pc-card, .pc-values-card, .pc-cta-box, .web-service-card, .web-quality-card, .web-needs-column, .web-scope-card, .web-process-list li, .portfolio-card, .portfolio-project, .portfolio-timeline li, .portfolio-script-list article, .portfolio-training article, .portfolio-process li, .about-stat, .visual-card:not(:has(.browser)), .step, .pc-step, .proc li, .faq details):hover { translate: none; }
+}
+
+/* Marks hard-coded for the dark theme in websites.css */
+html[data-cyjimm-theme="light"] body:not(#_) :is(.web-scope-title span, .web-needs-core small, .web-quality-seal span, .web-quality-seal small, .web-truth-list span, .web-step-number, .web-needs-no .web-column-label span) { color: var(--d-link); }
+html[data-cyjimm-theme="light"] body:not(#_) .web-needs-yes .web-column-label span { color: #166534; }
+
+/* The frame fills the screen; hero illustrations stay in proportion to the text beside them. */
+body:not(#_) .hero-visual { width: min(100%, 44rem); justify-self: center; }
+body:not(#_) .web-wire-visual { max-width: 52rem; margin-inline: auto; }
+body:not(#_) main .hero h1 { font-size: clamp(2.5em, 1.5em + 3.6vw, 5.5em); }

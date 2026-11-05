@@ -171,7 +171,7 @@ body:not(#_) :is(.btn-ghost, .web-button:not(.web-button-primary), .contact-veri
 /* ---- Links and small marks use the single accent ---- */
 body:not(#_) main :is(.text-link, .svc-cta, .path-go, .web-text-link) { color: var(--d-link); }
 body:not(#_) :is(.svc-icon) { stroke: var(--d-ink); }
-body:not(#_) :is(.web-card-icon, .web-card-index, .web-step-number, .number, .contact-principles span, .portfolio-process span) { border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--d-muted); }
+body:not(#_) :is(.web-card-index, .web-step-number, .number, .contact-principles span, .portfolio-process span) { border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--d-muted); }
 body:not(#_) :is(.stack span, .chip) { border: 0; border-radius: 0; background: none; padding: 0; color: var(--d-muted); }
 body:not(#_) .stack { gap: 0.4rem 1.5rem; }
 
@@ -226,7 +226,6 @@ body:not(#_) .web-final-box { padding: clamp(2rem, 5vw, 4rem); border: 1px solid
 body:not(#_) .web-needs-core { border: 0; background: none; box-shadow: none; }
 body:not(#_) .web-needs-core::before,
 body:not(#_) .web-needs-core::after { display: none; }
-body:not(#_) .web-card-icon { width: auto; height: auto; }
 body:not(#_) .web-card-index { inset-inline-end: 0; }
 body:not(#_) .web-card-use { margin-inline: 0; padding-inline: 0; color: var(--d-muted); }
 body:not(#_) .web-needs-board::before { display: none; }

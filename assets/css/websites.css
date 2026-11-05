@@ -675,10 +675,18 @@ body.websites-page {
   color: var(--web-muted);
 }
 
+/* In the flow, pinned low by auto margin, so long text pushes it down instead of running under it. */
+.web-service-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.web-service-card p {
+  margin-block-end: 20px;
+}
+
 .web-card-use {
-  position: absolute;
-  inset-inline: 25px;
-  inset-block-end: 22px;
+  margin-block-start: auto;
   padding-block-start: 12px;
   border-block-start: 1px solid rgba(255, 255, 255, 0.07);
   color: #cbd2dc;
@@ -1225,12 +1233,14 @@ body.websites-page {
 
 /* Icons: lit tiles that lift on hover. */
 .web-card-icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 16px;
-  background: linear-gradient(145deg, rgba(255, 49, 86, 0.28), rgba(225, 29, 72, 0.06));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 26px rgba(225, 29, 72, 0.18);
-  font-size: 1.4rem;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255, 49, 86, 0.22), rgba(225, 29, 72, 0.04));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-size: 1.45rem;
   transition: translate 0.5s var(--mo-spring), rotate 0.5s var(--mo-spring), box-shadow 0.4s ease;
 }
 

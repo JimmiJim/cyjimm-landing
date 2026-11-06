@@ -1264,14 +1264,19 @@ body.websites-page {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
+/* Filled icons share one warm gradient, defined once per page in .cy-icon-defs. */
+.web-card-icon svg,
 .web-quality-card > span svg {
-  width: 22px;
-  height: 22px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 24px;
+  height: 24px;
+  fill: url(#cy-icon-grad);
+}
+
+.cy-icon-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 /* Needs board: the connector draws outward and the core ring sweeps closed. */

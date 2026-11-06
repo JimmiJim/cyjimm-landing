@@ -1,0 +1,5 @@
+.game-complete{display:flex;align-items:center;gap:20px;min-height:190px;padding:28px;border:1px solid rgba(74,222,128,.3);border-radius:22px;background:rgba(74,222,128,.07)}
+.game-complete>span{display:grid;place-items:center;flex:0 0 auto;width:70px;height:70px;border-radius:50%;background:rgba(74,222,128,.14);border:1px solid rgba(74,222,128,.45);color:var(--lab-green);font-size:34px;font-weight:900}
+.game-complete h3{margin:4px 0}
+.game-complete p{margin:0;color:#b8c2d0}
+@media(max-width:600px){.game-complete{align-items:flex-start;padding:20px}.game-complete>span{width:54px;height:54px;font-size:27px}}

@@ -101,7 +101,7 @@ const LEVEL_CONFIG = {
   hard: { label: 'Hard', time: 60 }
 };
 
-const MAX_SCORE = 1000;
+const MAX_SCORE = 100;
 
 const state = {
   score: 0,
@@ -273,9 +273,9 @@ function updateDashboard() {
   document.getElementById('answeredValue').textContent = String(state.answered.size);
 
   let status = 'מתחיל';
-  if (state.score >= 300) status = 'מתקדם';
-  if (state.score >= 600) status = 'חד עין';
-  if (state.score >= 900) status = 'Security Aware';
+  if (state.score >= 30) status = 'מתקדם';
+  if (state.score >= 60) status = 'חד עין';
+  if (state.score >= 90) status = 'Security Aware';
   document.getElementById('statusValue').textContent = status;
 }
 

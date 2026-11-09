@@ -1,0 +1,37 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#0b1730;font-family:Arial,"Segoe UI",sans-serif;color:#fff}
+.s{display:none;position:relative;width:1080px;height:1350px;padding:110px 100px;background:radial-gradient(900px 700px at 85% 10%,#15305a 0%,transparent 70%),linear-gradient(160deg,#0b1730,#0e2142 60%,#0b1730)}
+.s.on{display:flex;flex-direction:column;justify-content:center;padding-bottom:190px}
+.num{font-size:200px;font-weight:700;color:#2dd4bf;line-height:1}
+.ico{width:220px;height:220px;margin:30px 0 20px}
+h1{font-size:104px;line-height:1.12;font-weight:700}
+h2{font-size:88px;line-height:1.15;font-weight:700;margin-top:10px}
+p{font-size:52px;line-height:1.4;color:#d6e2f5;margin-top:36px}
+.hl{color:#2dd4bf}.red{color:#ff4664}
+.ft{position:absolute;bottom:70px;left:100px;right:100px;display:flex;justify-content:space-between;align-items:center;font-size:34px;color:#9fb3d1}
+.ft img{height:56px}
+.ft .d{direction:ltr}
+.dots{display:flex;gap:12px}.dots i{width:14px;height:14px;border-radius:50%;background:#2a4670}.dots i.a{background:#2dd4bf}
+.pill{display:inline-block;margin-top:44px;padding:24px 44px;border-radius:60px;background:#2dd4bf;color:#0b1730;font-size:44px;font-weight:700;white-space:nowrap}
+.row{font-size:52px;line-height:1.4;margin-top:34px;color:#d6e2f5}.row b{color:#fff}
+.tag{font-size:40px;color:#2dd4bf;margin-bottom:10px}
+</style></head><body>
+<script>
+const I={
+ mag:'<svg class="ico" viewBox="0 0 120 120" fill="none" stroke="#2dd4bf" stroke-width="7" stroke-linecap="round"><circle cx="52" cy="52" r="34"/><path d="M78 78l28 28"/><text x="52" y="64" font-size="36" fill="#2dd4bf" stroke="none" text-anchor="middle" font-family="Arial">@</text></svg>',
+ link:'<svg class="ico" viewBox="0 0 120 120" fill="none" stroke="#2dd4bf" stroke-width="9" stroke-linecap="round"><path d="M50 70a18 18 0 0 0 26 0l16-16a18 18 0 0 0-26-26l-6 6"/><path d="M70 50a18 18 0 0 0-26 0L28 66a18 18 0 0 0 26 26l6-6"/></svg>',
+ clock:'<svg class="ico" viewBox="0 0 120 120" fill="none" stroke="#ff4664" stroke-width="8" stroke-linecap="round"><circle cx="60" cy="60" r="44"/><path d="M60 32v30l20 12"/></svg>',
+ shield:'<svg class="ico" viewBox="0 0 120 120" fill="none" stroke="#2dd4bf" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M60 14l38 14v28c0 26-17 42-38 50-21-8-38-24-38-50V28z"/><path d="M42 60l13 13 24-26"/></svg>'};
+const D=(n)=>'<div class="dots">'+[1,2,3,4,5].map(i=>'<i class="'+(i==n?'a':'')+'"></i>').join('')+'</div>';
+const F=(n)=>'<div class="ft"><b style="color:#fff;font-size:40px;letter-spacing:1px">CyJimm</b><span class="d">cyjimm.com</span>'+D(n)+'</div>';
+const S=[
+ '<div class="tag">CyJimm · אבטחת מידע</div><h1>פישינג טוב לא נראה <span class="red">חשוד</span></h1><p>5 בדיקות לפני שלוחצים</p><p class="hl">החליקו ←</p>',
+ I.mag+'<div class="num">1</div><h2>מי באמת שלח?</h2><p>בודקים את הדומיין של השולח, לא רק את השם שמוצג.</p>',
+ I.link+'<div class="num">2</div><h2>לאן הקישור מוביל?</h2><p>לפני לחיצה בודקים אם הדומיין באמת שייך לארגון.</p>',
+ I.clock+'<div class="num red">3</div><h2>למה ממהרים אותי?</h2><p>"החשבון ייחסם", "נדרש אישור מיידי". דחיפות היא לא הוכחה.</p>',
+ I.shield+'<h2><span class="hl">4.</span> הבקשה צפויה?</h2><div class="row">סיסמה, קוד MFA או תשלום דחוף? חשד.</div><h2 style="margin-top:44px"><span class="hl">5.</span> מאמתים בנפרד</h2><div class="row">פותחים לבד את האתר או האפליקציה.</div><div><span class="pill">תרגלו ב‑IT Lab · קישור בביו</span></div>'
+];
+const n=+(new URLSearchParams(location.search).get('s')||1);
+document.body.innerHTML='<div class="s on">'+S[n-1]+F(n)+'</div>';
+</script></body></html>

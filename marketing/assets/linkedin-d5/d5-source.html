@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1200, initial-scale=1">
+  <title>תיעוד הוא חלק מאבטחת התשתית — CyJimm</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 1200px;
+      height: 627px;
+      margin: 0;
+      overflow: hidden;
+      background: #0b1730;
+      color: #fff;
+      font-family: Arial, "Segoe UI", sans-serif;
+    }
+
+    .canvas {
+      position: relative;
+      width: 1200px;
+      height: 627px;
+      padding: 60px;
+      background:
+        radial-gradient(760px 440px at 86% 2%, #15305a 0%, transparent 70%),
+        linear-gradient(160deg, #0b1730, #0e2142 62%, #0b1730);
+    }
+
+    .eyebrow {
+      color: #2dd4bf;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 1080px;
+      font-size: 54px;
+      line-height: 1.08;
+      font-weight: 700;
+    }
+
+    .flow {
+      direction: rtl;
+      display: flex;
+      align-items: stretch;
+      gap: 60px;
+      position: absolute;
+      top: 218px;
+      right: 60px;
+      left: 60px;
+      height: 236px;
+    }
+
+    .node {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 30px 28px 27px;
+      border: 2px solid #2a4670;
+      border-radius: 22px;
+      background: rgba(11, 23, 48, .78);
+      box-shadow: 0 18px 38px rgba(2, 9, 22, .24);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .node::after {
+      content: "←";
+      position: absolute;
+      left: -49px;
+      top: 88px;
+      color: #2dd4bf;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .node:last-child::after { content: none; }
+
+    .step {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #2dd4bf;
+      color: #0b1730;
+      font-size: 27px;
+      font-weight: 700;
+    }
+
+    .question {
+      font-size: 35px;
+      line-height: 1.18;
+      font-weight: 700;
+      color: #fff;
+      text-wrap: balance;
+    }
+
+    .warning {
+      border-color: rgba(255, 70, 100, .85);
+    }
+
+    .warning .step {
+      background: #ff4664;
+      color: #fff;
+    }
+
+    .footer {
+      direction: ltr;
+      position: absolute;
+      right: 60px;
+      bottom: 45px;
+      left: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #9fb3d1;
+      font-size: 23px;
+    }
+
+    .brand {
+      color: #fff;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas" aria-label="תרשים: תיעוד הוא חלק מאבטחת התשתית">
+    <div class="eyebrow">אבטחת תשתיות מתחילה בבהירות</div>
+    <h1>תיעוד הוא חלק מאבטחת התשתית</h1>
+
+    <section class="flow" aria-label="שלוש שאלות שמסמך עדכני צריך לענות עליהן">
+      <article class="node">
+        <div class="step">1</div>
+        <div class="question">מה קיים ומי אחראי?</div>
+      </article>
+      <article class="node">
+        <div class="step">2</div>
+        <div class="question">איך מקבלים ומבטלים גישה?</div>
+      </article>
+      <article class="node warning">
+        <div class="step">3</div>
+        <div class="question">מה עושים כשמשהו קורס?</div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span class="brand">CyJimm</span>
+      <span>cyjimm.com</span>
+    </footer>
+  </main>
+</body>
+</html>

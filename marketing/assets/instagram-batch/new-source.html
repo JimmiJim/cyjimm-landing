@@ -1,0 +1,28 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#0b1730;font-family:Arial,"Segoe UI",sans-serif;color:#fff}
+.s{width:1080px;height:1350px;padding:100px 90px 170px;display:flex;flex-direction:column;background:radial-gradient(900px 700px at 85% 5%,#15305a 0%,transparent 70%),linear-gradient(160deg,#0b1730,#0e2142 60%,#0b1730)}
+.k{font-size:38px;color:#2dd4bf;margin-bottom:18px}
+h1{font-size:84px;line-height:1.12;font-weight:700}
+.list{margin-top:40px;display:flex;flex-direction:column;gap:22px;flex:1;justify-content:center}
+.it{display:flex;align-items:center;gap:26px;background:#12284a;border:3px solid #2a4670;border-radius:28px;padding:26px 30px}
+.n{flex:0 0 74px;height:74px;border-radius:50%;background:#2dd4bf;color:#0b1730;font-weight:700;font-size:40px;display:flex;align-items:center;justify-content:center}
+.it span{line-height:1.3}
+.take{margin-top:34px;background:#0f3b44;border:3px solid #2dd4bf;border-radius:28px;padding:28px 34px;font-size:44px;font-weight:700;line-height:1.3}
+.take.w{background:#43360f;border-color:#fbbf24}
+.ft{position:absolute;bottom:62px;left:90px;right:90px;display:flex;justify-content:space-between;align-items:center;font-size:32px;color:#9fb3d1}
+.ft b{color:#fff;font-size:40px}.d{direction:ltr}
+.warn .n{background:#ff4664;color:#fff}.warn .it{border-color:#5a2a3a}
+.big .list{gap:14px;margin-top:28px}.big .it{padding:14px 26px;gap:22px}.big .n{flex:0 0 58px;height:58px;font-size:32px}.big .take{font-size:38px;padding:22px 30px;margin-top:22px}.big h1{font-size:76px}
+</style></head><body><script>
+const P=[
+{k:'גיבוי · כלל 3-2-1',t:'איך מגבים נכון?',i:['3 עותקים של המידע החשוב','2 סוגי אחסון שונים','1 עותק מחוץ למקום'],take:'מדי פעם בודקים שאפשר באמת לשחזר',f:'cyjimm.com'},
+{k:'אבטחה · חשבונות',t:'4 הרגלים שמגינים על החשבונות',i:['סיסמה ייחודית לכל שירות','מנהל סיסמאות במקום לזכור הכול','אימות דו-שלבי בכל מקום שאפשר','לא משתפים קודי אימות עם אף אחד'],take:'סיסמה אחת לכל השירותים היא סיכון',f:'cyjimm.com',warn:1},
+{k:'מחשב איטי · בדיקות ראשונות',t:'המחשב איטי? בודקים קודם',i:['יש מקום פנוי בדיסק','אילו תוכנות עולות עם ההפעלה','יש עדכון ממתין או Restart שנדחה','איזו תוכנה תופסת הכי הרבה משאבים','המחשב לא מתחמם'],take:'קודם מאבחנים, אחר כך מחליטים',f:'cyjimm.com/jimmis-hub',w:1},
+{k:'לפני תיקון · רשימת בדיקה',t:'לפני שמוסרים מחשב לתיקון',i:['מגבים קבצים חשובים','מתארים מה קרה ומתי התחיל','רושמים הודעות שגיאה, אפשר בצילום מסך','שואלים מה ייעשה ומה העלות לפני התחלת עבודה'],take:'הסבר ברור ואישור לפני עבודה משמעותית',f:'cyjimm.com/jimmis-hub'}
+];
+const n=+(new URLSearchParams(location.search).get('p')||1),p=P[n-1];
+const B=s=>s.replace(/[A-Za-z0-9][A-Za-z0-9\-\.]*(?: [A-Za-z0-9][A-Za-z0-9\-\.]*)*/g,m=>'<bdi dir="ltr">'+m+'</bdi>');
+const big=p.i.length>=5, short=Math.max(...p.i.map(x=>x.length))<26, fs=big?(short?44:38):p.i.length==4?46:50;
+document.body.innerHTML='<div class="s'+(big?' big':'')+'"><div class="k">'+B(p.k)+'</div><h1>'+B(p.t)+'</h1><div class="list '+(p.warn?'warn':'')+'" style="font-size:'+fs+'px">'+p.i.map((x,j)=>'<div class="it"><div class="n">'+(j+1)+'</div><span>'+B(x)+'</span></div>').join('')+'</div><div class="take '+(p.w?'w':'')+'">'+B(p.take)+'</div><div class="ft"><b>CyJimm</b><span class="d">'+p.f+'</span></div></div>';
+</script></body></html>

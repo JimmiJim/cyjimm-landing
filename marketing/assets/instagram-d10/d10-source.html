@@ -1,0 +1,30 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#0b1730;font-family:Arial,"Segoe UI",sans-serif;color:#fff}
+.s{width:1080px;height:1350px;padding:100px 90px 170px;display:flex;flex-direction:column;background:radial-gradient(900px 700px at 15% 5%,#3a2a12 0%,transparent 70%),linear-gradient(160deg,#0b1730,#0e2142 60%,#0b1730)}
+.k{font-size:38px;color:#fbbf24;margin-bottom:18px}
+h1{font-size:84px;line-height:1.12;font-weight:700}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:28px;margin-top:30px}
+.box{border-radius:28px;padding:34px 40px;font-size:50px;line-height:1.3}
+.myth{background:#3a1522;border:3px solid #ff4664}
+.real{background:#0f3b44;border:3px solid #2dd4bf}
+.lab{display:block;font-size:34px;margin-bottom:10px;opacity:.85}
+.it{display:flex;align-items:center;gap:26px;background:#12284a;border:3px solid #2a4670;border-radius:28px;padding:26px 30px;font-size:46px;line-height:1.3}
+.n{flex:0 0 74px;height:74px;border-radius:50%;background:#fbbf24;color:#0b1730;font-weight:700;font-size:40px;display:flex;align-items:center;justify-content:center}
+.take{margin-top:30px;background:#43360f;border:3px solid #fbbf24;border-radius:28px;padding:28px 34px;font-size:44px;font-weight:700;line-height:1.3}
+.ft{position:absolute;bottom:62px;left:90px;right:90px;display:flex;justify-content:space-between;align-items:center;font-size:32px;color:#9fb3d1}
+.ft b{color:#fff;font-size:40px}.d{direction:ltr}
+</style></head><body><script>
+const P=[
+{k:'מיתוס מול מציאות · 1 מתוך 4',t:'מחשב איטי?',m:'"מחשב איטי = צריך מחשב חדש"',r:'קודם מאבחנים: דיסק, SMART, התחממות ותוכנות מיותרות',take:'קודם אבחון, אחר כך החלטה'},
+{k:'מיתוס מול מציאות · 2 מתוך 4',t:'החלפת חלקים',m:'"חייבים להחליף חלקים"',r:'לא מחליפים חומרה ללא צורך אמיתי',take:'אם אין סיבה, אין החלפה'},
+{k:'מיתוס מול מציאות · 3 מתוך 4',t:'עבודה בלי הסבר',m:'"טכנאי יטפל בלי לספר לי"',r:'הסבר ברור ואישור לפני עבודה משמעותית',take:'אתם מחליטים לפני עבודה משמעותית'},
+{k:'מיתוס מול מציאות · 4 מתוך 4',t:'מי זה בשבילו?',list:['לקוחות פרטיים','משתמשים ביתיים','עצמאים','עסקים קטנים'],take:'מחשבים, Windows, שדרוגים, גיבוי ורשת'},
+{k:"Jimmi's Hub",t:'איך זה עובד?',list:['תיאור התקלה','אבחון ראשוני','הסבר מה נמצא ומה נדרש','אישור לפני עבודה משמעותית'],take:'ואז תיקון, בדיקה והסבר קצר'}
+];
+const n=+(new URLSearchParams(location.search).get('p')||1),p=P[n-1];
+const B=s=>s.replace(/[A-Za-z0-9][A-Za-z0-9\-\.']*(?: [A-Za-z0-9][A-Za-z0-9\-\.']*)*/g,m=>'<bdi dir="ltr">'+m+'</bdi>');
+let mid=p.list?p.list.map((x,j)=>'<div class="it"><div class="n">'+(j+1)+'</div><span>'+B(x)+'</span></div>').join(''):
+'<div class="box myth"><span class="lab">מיתוס</span>'+B(p.m)+'</div><div class="box real"><span class="lab">במציאות</span>'+B(p.r)+'</div>';
+document.body.innerHTML='<div class="s"><div class="k">'+B(p.k)+'</div><h1>'+B(p.t)+'</h1><div class="mid">'+mid+'</div><div class="take">'+B(p.take)+'</div><div class="ft"><b>'+B("Jimmi's Hub")+'</b><span class="d">cyjimm.com/jimmis-hub</span></div></div>';
+</script></body></html>

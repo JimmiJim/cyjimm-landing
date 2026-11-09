@@ -1,0 +1,36 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#0b1730;font-family:Arial,"Segoe UI",sans-serif;color:#fff}
+.s{width:1080px;height:1350px;padding:100px 90px 170px;display:flex;flex-direction:column;background:radial-gradient(900px 700px at 85% 5%,#15305a 0%,transparent 70%),linear-gradient(160deg,#0b1730,#0e2142 60%,#0b1730)}
+.k{font-size:38px;color:#2dd4bf;margin-bottom:18px}
+h1{font-size:84px;line-height:1.12;font-weight:700}
+.list{margin-top:40px;display:flex;flex-direction:column;gap:22px;flex:1;justify-content:center}
+.it{display:flex;align-items:center;gap:26px;background:#12284a;border:3px solid #2a4670;border-radius:28px;padding:26px 30px}
+.n{flex:0 0 74px;height:74px;border-radius:50%;background:#2dd4bf;color:#0b1730;font-weight:700;font-size:40px;display:flex;align-items:center;justify-content:center}
+.it span{line-height:1.3}
+.take{margin-top:34px;background:#0f3b44;border:3px solid #2dd4bf;border-radius:28px;padding:28px 34px;font-size:44px;font-weight:700;line-height:1.3}
+.take.w{background:#43360f;border-color:#fbbf24}
+.ft{position:absolute;bottom:62px;left:90px;right:90px;display:flex;justify-content:space-between;align-items:center;font-size:32px;color:#9fb3d1}
+.ft b{color:#fff;font-size:40px}.d{direction:ltr}
+.warn .n{background:#ff4664;color:#fff}.warn .it{border-color:#5a2a3a}
+.big .list{gap:14px;margin-top:28px}.big .it{padding:14px 26px;gap:22px}.big .n{flex:0 0 58px;height:58px;font-size:32px}.big .take{font-size:38px;padding:22px 30px;margin-top:22px}.big h1{font-size:76px}
+</style></head><body><script>
+const P=[
+{k:'פישינג · סימן 1 מתוך 9',t:'השולח נראה מוכר, אבל הדומיין לא',i:['מופיע דומיין דומה לאתר המוכר','תוספת מיותרת בשם','סיומת שאינה שייכת לגוף האמיתי'],take:'בודקים את הדומיין, לא רק את השם שמוצג',f:'cyjimm.com/phishing-awareness'},
+{k:'פישינג · סימן 2 מתוך 9',t:'ניסוח מלחיץ או דחוף',i:['"החשבון ייחסם"','"קיים חוב פתוח"','"נדרש אישור מיידי"','"לחץ כאן עכשיו"'],take:'לחץ הוא כלי קלאסי של תוקפים',f:'cyjimm.com/phishing-awareness',warn:1},
+{k:'פישינג · סימן 4 מתוך 9',t:'קישור מקוצר מסתיר את היעד',i:['TinyURL, Bitly ושירותים דומים אינם זדוניים בפני עצמם','אבל הם מסתירים את הדומיין הסופי','בהודעת תשלום, בנק או ממשלה: חובה אימות נוסף'],take:'לא רואים לאן הקישור מוביל? מאמתים לפני לחיצה',f:'cyjimm.com/phishing-awareness'},
+{k:'פישינג · סימן 5 מתוך 9',t:'קובץ מצורף לא צפוי',i:['ZIP','HTML','EXE','DOCM','או כל קובץ ממקור לא צפוי שדורש פעולה חריגה'],take:'לא ציפיתם לקובץ? עוצרים ובודקים',f:'cyjimm.com/phishing-awareness',warn:1},
+{k:'פישינג · סימן 7 מתוך 9',t:'מידע אישי לא מוכיח שההודעה אמיתית',i:['שם, מספר טלפון או תעודת זהות יכולים להגיע ממאגר שדלף','התאמה לפרטים שלכם אינה הוכחת לגיטימיות'],take:'הודעה שמכירה אתכם יכולה עדיין להיות מתחזה',f:'cyjimm.com/phishing-awareness'},
+{k:'פישינג · סימנים 8 ו-9',t:'מאמתים בערוץ נפרד',i:['מספר ישראלי או שם שולח אינם הוכחה','ההודעה טוענת לחוב, חסימה או בעיה בחשבון?','לא משתמשים בקישור שבהודעה'],take:'פותחים לבד את האתר או האפליקציה הרשמית ובודקים שם',f:'cyjimm.com/phishing-awareness'},
+{k:'עדכוני יצרן · BIOS',t:'לפני עדכון BIOS',i:['מחברים מטען (חובה)','מוודאים שמפתח BitLocker Recovery זמין','מגבים מידע חשוב (מומלץ)','לא מפסיקים את העדכון באמצע'],take:'במחשב עבודה: עדיף לבצע בחלון תחזוקה',f:'cyjimm.com/guides/vendor-updates',w:1},
+{k:'עדכוני יצרן',t:'איזה כלי יצרן בודקים?',i:['HP: HP Support Assistant','Lenovo: Lenovo Vantage, בדיקת System Update','Dell עסקי: Dell Command Update','Dell למשתמש קצה: SupportAssist'],take:'במחשבים עסקיים צריך לפעמים גם עדכונים דרך כלי היצרן',f:'cyjimm.com/guides/vendor-updates'},
+{k:'תחזוקה · Restart',t:'סימנים שהמחשב צריך Restart',i:['Outlook תקוע','Teams לא נפתח','VPN לא מתחבר','מדפסת נעלמה','עדכון ממתין'],take:'לפעמים Restart הוא כל התיקון',f:'cyjimm.com/guides/scheduled-restart',warn:1},
+{k:'תחזוקה · Restart',t:'כל כמה זמן עושים Restart?',i:['מחשב אישי: פעם בשבוע הוא בסיס טוב','מחשב עבודה: פעם עד פעמיים בשבוע, בהתאם לאופי העבודה והעדכונים','מחשב קריטי: רק בחלון תחזוקה מוגדר, בתיאום מראש'],take:'ריסטרט קבוע מונע הרבה קריאות מיותרות',f:'cyjimm.com/guides/scheduled-restart'},
+{k:'עדכונים · תהליך מומלץ',t:'סדר עדכון מומלץ',i:['Windows Update וריסטרט','כלי יצרן: HP, Lenovo או Dell','בהדרגה: קריטי קודם, BIOS רק אחרי בדיקה','בדיקת תקינות: אינטרנט, קול, מצלמה, מסכים, VPN, מדפסות'],take:'בארגון: Pilot קטן, ואז פריסה מדורגת',f:'cyjimm.com/guides/vendor-updates'},
+{k:'עדכונים · מה לא עושים',t:'5 כללי אצבע בעדכונים',i:['לא מכבים את המחשב באמצע התקנה','לא מתעלמים מריסטרט במשך שבועות','לא משתמשים ב-Pause updates כפתרון קבוע','במחשבים עסקיים: משווים דרייברים גם מול כלי היצרן','לא מריצים הכול בארגון בבת אחת בלי Pilot'],take:'השהיית עדכונים מיועדת למצבים חריגים בלבד',f:'cyjimm.com/guides/windows-update',w:1,warn:1}
+];
+const n=+(new URLSearchParams(location.search).get('p')||1),p=P[n-1];
+const B=s=>s.replace(/[A-Za-z0-9][A-Za-z0-9\-\.]*(?: [A-Za-z0-9][A-Za-z0-9\-\.]*)*/g,m=>'<bdi dir="ltr">'+m+'</bdi>');
+const big=p.i.length>=5, short=Math.max(...p.i.map(x=>x.length))<26, fs=big?(short?44:38):p.i.length==4?46:50;
+document.body.innerHTML='<div class="s'+(big?' big':'')+'"><div class="k">'+B(p.k)+'</div><h1>'+B(p.t)+'</h1><div class="list '+(p.warn?'warn':'')+'" style="font-size:'+fs+'px">'+p.i.map((x,j)=>'<div class="it"><div class="n">'+(j+1)+'</div><span>'+B(x)+'</span></div>').join('')+'</div><div class="take '+(p.w?'w':'')+'">'+B(p.take)+'</div><div class="ft"><b>CyJimm</b><span class="d">'+p.f+'</span></div></div>';
+</script></body></html>

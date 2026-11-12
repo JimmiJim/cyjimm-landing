@@ -16,3 +16,7 @@ zone_name = "cyjimm.com"
 [[routes]]
 pattern = "www.cyjimm.com/api/contact*"
 zone_name = "cyjimm.com"
+
+[build]
+# Keep production deployment coupled to the forwarding + acknowledgement tests.
+command = "node --test"

@@ -1,4 +1,5 @@
 import { EMAIL_LOGO_BASE64 } from './email-logo.mjs';
+import { CYJIMM_EMAIL_LOGO_BASE64 } from './cyjimm-email-logo.mjs';
 
 const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const RESEND_EMAIL_URL = 'https://api.resend.com/emails';
@@ -109,6 +110,15 @@ function formatHtml(payload) {
     `<h3>Message</h3><p style="white-space:pre-wrap">${escapeHtml(payload.message)}</p>`;
 }
 
+// Match only the existing private-it option values submitted by the Hebrew and
+// English forms. Do not infer branding from visitor text, referrers, or URLs.
+function acknowledgementBrand(payload) {
+  return new Set([
+    'שירותי מחשוב לבית ולעסק קטן',
+    'Home and Small Business IT Services'
+  ]).has(payload.service) ? "Jimmi's Hub" : 'CyJimm';
+}
+
 function formatAcknowledgementText(payload) {
   return [
     `היי ${payload.name},`,
@@ -117,13 +127,19 @@ function formatAcknowledgementText(payload) {
     'תודה שפנית אלינו. נעבור על הפרטים ונחזור אליך בהקדם.',
     '',
     'בברכה,',
-    'צוות CyJimm'
+    `צוות ${acknowledgementBrand(payload)}`,
+    ...(acknowledgementBrand(payload) === 'CyJimm' ? ['From Chaos to Code'] : [])
   ].join('\n');
 }
 
 function formatAcknowledgementHtml(payload) {
   const name = escapeHtml(payload.name);
   const service = escapeHtml(payload.service);
+  const brand = acknowledgementBrand(payload);
+  const brandHeader = brand === "Jimmi's Hub"
+    ? `<img src="cid:${BRAND_LOGO_CID}" width="140" height="140" alt="Jimmi's Hub" style="display:block;width:140px;height:140px;margin:0 auto;border:0;">`
+    : `<img src="cid:cyjimm-brand-logo" width="210" height="210" alt="CyJimm" style="display:block;width:100%;max-width:210px;height:auto;margin:0 auto;border:0;">` +
+      `<div dir="ltr" style="margin-top:12px;text-align:center;font-size:15px;line-height:23px;font-weight:600;color:#ffffff;">From Chaos to Code</div>`;
 
   return `<!doctype html>` +
     `<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">` +
@@ -134,7 +150,7 @@ function formatAcknowledgementHtml(payload) {
     `<tr><td align="center" style="padding:32px 12px;">` +
     `<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:600px;background-color:#ffffff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 8px 28px rgba(15,23,42,0.08);">` +
     `<tr><td align="center" bgcolor="#0b0b10" style="padding:22px 24px;background-color:#0b0b10;border-bottom:4px solid #e11d48;">` +
-    `<img src="cid:${BRAND_LOGO_CID}" width="140" height="140" alt="Jimmi's Hub" style="display:block;width:140px;height:140px;margin:0 auto;border:0;">` +
+    brandHeader +
     `</td></tr>` +
     `<tr><td align="right" style="padding:32px 36px 12px;text-align:right;direction:rtl;">` +
     `<div style="font-size:20px;line-height:30px;font-weight:700;color:#172033;">היי ${name},</div>` +
@@ -149,7 +165,7 @@ function formatAcknowledgementHtml(payload) {
     `<tr><td style="padding:0 36px;"><div style="height:1px;line-height:1px;background-color:#e5e7eb;">&nbsp;</div></td></tr>` +
     `<tr><td align="right" style="padding:24px 36px 28px;text-align:right;direction:rtl;">` +
     `<div style="font-size:14px;line-height:23px;color:#64748b;">בברכה,</div>` +
-    `<div style="font-size:18px;line-height:27px;font-weight:700;color:#172033;">צוות CyJimm</div>` +
+    `<div style="font-size:18px;line-height:27px;font-weight:700;color:#172033;">צוות ${escapeHtml(brand)}</div>` +
     `<div dir="ltr" style="padding-top:7px;text-align:right;font-size:13px;line-height:21px;color:#64748b;">` +
     `<a href="https://cyjimm.com" style="color:#be123c;text-decoration:none;">cyjimm.com</a>` +
     `<span style="color:#cbd5e1;"> &nbsp;|&nbsp; </span>` +
@@ -157,7 +173,7 @@ function formatAcknowledgementHtml(payload) {
     `</div>` +
     `</td></tr>` +
     `</table>` +
-    `<div style="padding-top:14px;font-size:11px;line-height:18px;color:#94a3b8;text-align:center;direction:rtl;">הודעה זו נשלחה אוטומטית לאחר קבלת פנייתך באתר CyJimm.</div>` +
+    `<div style="padding-top:14px;font-size:11px;line-height:18px;color:#94a3b8;text-align:center;direction:rtl;">הודעה זו נשלחה אוטומטית לאחר קבלת פנייתך באתר ${escapeHtml(brand)}.</div>` +
     `</td></tr></table></body></html>`;
 }
 
@@ -202,19 +218,25 @@ async function forwardSubmission(payload, apiKey) {
 }
 
 async function sendAcknowledgement(payload, apiKey) {
+  const brand = acknowledgementBrand(payload);
   return sendEmail({
-    from: CONTACT_SENDER,
+    from: `${brand} Contact <contact@send.cyjimm.com>`,
     to: [payload.email],
     reply_to: PUBLIC_CONTACT_EMAIL,
-    subject: 'קיבלנו את פנייתך – CyJimm',
+    subject: `קיבלנו את פנייתך – ${brand}`,
     text: formatAcknowledgementText(payload),
     html: formatAcknowledgementHtml(payload),
-    attachments: [{
+    ...(brand === "Jimmi's Hub" ? { attachments: [{
       content: EMAIL_LOGO_BASE64,
       filename: 'cyjimm-logo.png',
       content_type: 'image/png',
       content_id: BRAND_LOGO_CID
-    }]
+    }] } : { attachments: [{
+      content: CYJIMM_EMAIL_LOGO_BASE64,
+      filename: 'cyjimm-brand-logo.png',
+      content_type: 'image/png',
+      content_id: 'cyjimm-brand-logo'
+    }] })
   }, apiKey, 'contact-acknowledgement');
 }
 
@@ -299,3 +321,4 @@ export default {
     }
   }
 };
+

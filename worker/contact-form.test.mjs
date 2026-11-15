@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { createHash } from 'node:crypto';
 import worker from './contact-form.mjs';
+import { EMAIL_LOGO_BASE64 } from './email-logo.mjs';
+import { CYJIMM_EMAIL_LOGO_BASE64 } from './cyjimm-email-logo.mjs';
 
 const env = { TURNSTILE_SECRET_KEY: 'test-secret', RESEND_API_KEY: 're_test_secret' };
 
@@ -66,16 +69,14 @@ test('contact Worker validates Turnstile before forwarding a sanitized submissio
   assert.match(acknowledgement.text, /היי Test User,/);
   assert.match(acknowledgement.text, /General Inquiry/);
   assert.match(acknowledgement.html, /dir="rtl"/);
-  assert.match(acknowledgement.html, /cid:cyjimm-logo/);
+  assert.doesNotMatch(acknowledgement.html, /cid:cyjimm-logo|Jimmi/);
+  assert.match(acknowledgement.html, /cid:cyjimm-brand-logo/);
   assert.match(acknowledgement.html, /צוות CyJimm/);
   assert.match(acknowledgement.html, /cyjimm\.com/);
   assert.match(acknowledgement.html, /mailto:hello@cyjimm\.com/);
   assert.doesNotMatch(acknowledgement.html, /madara@cyjimm\.com/);
-  assert.equal(acknowledgement.attachments.length, 1);
-  assert.equal(acknowledgement.attachments[0].filename, 'cyjimm-logo.png');
-  assert.equal(acknowledgement.attachments[0].content_type, 'image/png');
-  assert.equal(acknowledgement.attachments[0].content_id, 'cyjimm-logo');
-  assert.ok(acknowledgement.attachments[0].content.length > 100_000);
+  assert.equal(acknowledgement.attachments[0].content, CYJIMM_EMAIL_LOGO_BASE64);
+  assert.equal(acknowledgement.attachments[0].content_id, 'cyjimm-brand-logo');
 });
 
 test('contact Worker accepts the inquiry when only the acknowledgement is rejected', async () => {
@@ -240,4 +241,73 @@ test('honeypot submissions send no messages', async () => {
   globalThis.fetch = async () => { throw new Error('fetch must not be called'); };
   const response = await worker.fetch(request({ ...validBody, website: 'spam' }), env);
   assert.equal(response.status, 200);
+});
+
+
+for (const service of ['שירותי מחשוב לבית ולעסק קטן', 'Home and Small Business IT Services']) {
+  test(`Hub acknowledgement for exact private-it option: ${service}`, async () => {
+    const messages = [];
+    globalThis.fetch = async (url, options) => {
+      if (String(url).includes('/siteverify')) return Response.json({ success: true, hostname: 'cyjimm.com', action: 'contact' });
+      assert.equal(String(url), 'https://api.resend.com/emails');
+      messages.push(JSON.parse(options.body));
+      return Response.json({ id: 'mock_only' });
+    };
+    assert.equal((await worker.fetch(request({ ...validBody, service }), env)).status, 200);
+    const [forwarded, ack] = messages;
+    assert.equal(forwarded.from, 'CyJimm Contact <contact@send.cyjimm.com>');
+    assert.deepEqual(forwarded.to, ['madara@cyjimm.com']);
+    assert.equal(ack.from, "Jimmi's Hub Contact <contact@send.cyjimm.com>");
+    assert.equal(ack.subject, "קיבלנו את פנייתך – Jimmi's Hub");
+    assert.match(ack.text, /צוות Jimmi's Hub/);
+    assert.doesNotMatch(ack.html, /From Chaos to Code/);
+    assert.match(ack.html, /צוות Jimmi&#39;s Hub/);
+    assert.match(ack.html, /cid:cyjimm-logo/);
+    assert.equal(ack.attachments.length, 1);
+    assert.equal(ack.attachments[0].content_id, 'cyjimm-logo');
+    assert.equal(ack.attachments[0].content, EMAIL_LOGO_BASE64);
+    assert.notEqual(ack.attachments[0].content, CYJIMM_EMAIL_LOGO_BASE64);
+    assert.doesNotMatch(ack.html, /cid:cyjimm-brand-logo/);
+    assert.deepEqual(ack.to, [validBody.email]);
+    assert.equal(ack.reply_to, 'hello@cyjimm.com');
+  });
+}
+
+for (const service of ['פנייה כללית', 'General Inquiry', 'פנייה בנושא בניית אתרים', 'Website Development Inquiry', 'IT מנוהל ותשתיות', 'Managed IT and Infrastructure', 'אבטחת מידע ובדיקות', 'Cybersecurity and Assessments', 'אוטומציה ו־DevSecOps', 'Automation and DevSecOps', 'unknown', "Jimmi's Hub", 'private-it']) {
+  test(`Non-Hub/default branding: ${service}`, async () => {
+    const messages = [];
+    globalThis.fetch = async (url, options) => {
+      if (String(url).includes('/siteverify')) return Response.json({ success: true, hostname: 'cyjimm.com', action: 'contact' });
+      assert.equal(String(url), 'https://api.resend.com/emails');
+      messages.push(JSON.parse(options.body));
+      return Response.json({ id: 'mock_only' });
+    };
+    assert.equal((await worker.fetch(request({ ...validBody, service, message: "Jimmi's Hub", source: 'private-it', brand: "Jimmi's Hub" }), env)).status, 200);
+    assert.deepEqual(messages[0].to, ['madara@cyjimm.com']);
+    assert.equal(messages[0].reply_to, validBody.email);
+    const ack = messages[1];
+    assert.equal(ack.from, 'CyJimm Contact <contact@send.cyjimm.com>');
+    assert.equal(ack.subject, 'קיבלנו את פנייתך – CyJimm');
+    assert.match(ack.text, /צוות CyJimm/);
+    assert.match(ack.text, /From Chaos to Code/);
+    assert.match(ack.html, /dir="ltr"[^>]*>From Chaos to Code<\/div>/);
+    assert.equal(ack.html.split('From Chaos to Code').length - 1, 1);
+    assert.match(ack.html, /צוות CyJimm/);
+    assert.match(ack.html, /cid:cyjimm-brand-logo/);
+    assert.doesNotMatch(ack.html, /cid:cyjimm-logo/);
+    assert.equal(ack.attachments.length, 1);
+    assert.equal(ack.attachments[0].content, CYJIMM_EMAIL_LOGO_BASE64);
+    assert.notEqual(ack.attachments[0].content, EMAIL_LOGO_BASE64);
+    assert.equal(ack.attachments[0].content_type, 'image/png');
+    assert.equal(ack.attachments[0].content_id, 'cyjimm-brand-logo');
+  });
+}
+
+// Lock the visually verified owner artwork, not merely a distinct CID.
+test('general logo is the reviewed 420px CyJimm PNG derivative', () => {
+  const png = Buffer.from(CYJIMM_EMAIL_LOGO_BASE64, 'base64');
+  assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+  assert.equal(png.readUInt32BE(16), 420);
+  assert.equal(png.readUInt32BE(20), 420);
+  assert.equal(createHash('sha256').update(png).digest('hex'), 'f4e030b2f752668396e5775423491db5c369e35f4d84a01ca91119e4d2371ef8');
 });

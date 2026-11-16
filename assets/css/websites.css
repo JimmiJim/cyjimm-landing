@@ -1520,7 +1520,11 @@ html[data-cyjimm-theme="light"] body.websites-page .web-scope-card li { border-c
   .web-actions { display: grid; }
   .web-button { width: 100%; }
   .web-browser-stage { min-height: 350px; }
-  .web-browser { inset-block-start: 26px; inset-inline: 0 20px; transform: none; }
+  .web-browser {
+    inset-block-start: 26px;
+    inset-inline: 0 20px;
+    transform: perspective(1000px) rotateY(var(--tilt-y, 0deg)) rotateX(var(--tilt-x, 0deg));
+  }
   .web-browser-body { min-height: 255px; padding: 14px; }
   .web-wire-hero { min-height: 145px; gap: 12px; }
   .web-device { width: 90px; height: 176px; border-width: 4px; border-radius: 20px; }

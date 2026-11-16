@@ -3,8 +3,9 @@
 
   // Reveal timing is shared (motion.js); this file adds the page's own motion.
   var root = document.documentElement;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   function motionOff() {
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    return reducedMotion.matches ||
       root.classList.contains('cyjimm-a11y-stop-animations');
   }
 
@@ -43,11 +44,9 @@
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 
-  if (motionOff()) return;
-
   /* Address bar types itself once. */
   var address = document.querySelector('.web-address');
-  if (address) {
+  if (address && !motionOff()) {
     var textNode = Array.prototype.filter.call(address.childNodes, function (n) { return n.nodeType === 3 && n.textContent.trim(); })[0];
     if (textNode) {
       var full = textNode.textContent.trim();
@@ -69,14 +68,32 @@
   /* Pointer tilt on the hero mockup: a critically damped spring per axis (response 0.4s), so it
      always moves from its current value and settles without overshoot. */
   var stage = document.querySelector('.web-browser-stage');
-  var canTilt = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1025px)');
   if (!stage || !hero) return;
 
   var omega = 2 * Math.PI / 0.4;
   var axes = { x: { v: 0, x: 0, t: 0 }, y: { v: 0, x: 0, t: 0 } };
-  var running = false, last = 0;
+  var frame = null, last = 0;
+
+  function clearTilt() {
+    if (frame !== null) window.cancelAnimationFrame(frame);
+    frame = null;
+    ['x', 'y'].forEach(function (k) { axes[k].v = axes[k].x = axes[k].t = 0; });
+    ['--tilt-y', '--tilt-x', '--px', '--py'].forEach(function (name) {
+      stage.style.removeProperty(name);
+    });
+  }
+
+  function onMotionPreferenceChange() {
+    if (motionOff()) clearTilt();
+  }
+
+  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', onMotionPreferenceChange);
+  else if (reducedMotion.addListener) reducedMotion.addListener(onMotionPreferenceChange);
+  document.addEventListener('cyjimm:accessibility-change', onMotionPreferenceChange);
 
   function step(now) {
+    frame = null;
+    if (motionOff()) { clearTilt(); return; }
     var dt = Math.min(0.032, (now - last) / 1000 || 0.016);
     last = now;
     var settled = true;
@@ -91,26 +108,28 @@
     stage.style.setProperty('--tilt-x', (axes.y.x * -5).toFixed(3) + 'deg');
     stage.style.setProperty('--px', axes.x.x.toFixed(4));
     stage.style.setProperty('--py', axes.y.x.toFixed(4));
-    if (settled) { running = false; return; }
-    window.requestAnimationFrame(step);
+    if (!settled) frame = window.requestAnimationFrame(step);
   }
 
   function kick() {
-    if (running) return;
-    running = true;
+    if (frame !== null) return;
     last = performance.now();
-    window.requestAnimationFrame(step);
+    frame = window.requestAnimationFrame(step);
   }
 
   hero.addEventListener('pointermove', function (e) {
-    if (!canTilt.matches || motionOff()) return;
+    // A mouse event is better evidence than viewport width or the reported primary pointer
+    // (which may still be touch on a hybrid device).
+    if (e.pointerType !== 'mouse' || motionOff()) return;
     var r = stage.getBoundingClientRect();
     axes.x.t = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2)));
     axes.y.t = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2)));
     kick();
   }, { passive: true });
 
-  hero.addEventListener('pointerleave', function () {
+  hero.addEventListener('pointerleave', function (e) {
+    if (e.pointerType !== 'mouse' || motionOff() ||
+      (frame === null && !stage.style.getPropertyValue('--px'))) return;
     axes.x.t = 0;
     axes.y.t = 0;
     kick();

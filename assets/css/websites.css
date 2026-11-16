@@ -823,6 +823,16 @@ body.websites-page {
   justify-self: center;
 }
 
+/* Keep both timeline rails between the paired rows, above the final card. */
+@media (width > 640px) {
+  .web-process-list::before,
+  .web-process-list::after {
+    grid-column: 1 / -1;
+    grid-row: 1 / 4;
+    inset-block: 25px 0;
+  }
+}
+
 .web-step-number {
   display: inline-flex;
   width: 42px;

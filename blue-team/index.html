@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CyJimm | Blue Team - תרגולי הגנה</title>
+  <meta name="description" content="שני תרגולי Blue Team אינטראקטיביים עם נתונים בדויים בלבד: מיון התחברויות חשודות וקבלת החלטות בציר זמן של אירוע.">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://cyjimm.com/blue-team/">
+  <link rel="alternate" hreflang="he" href="https://cyjimm.com/blue-team/">
+  <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/blue-team/">
+  <link rel="alternate" hreflang="x-default" href="https://cyjimm.com/blue-team/">
+  <link rel="stylesheet" href="/assets/css/blue-team-game.css">
+  <script src="/assets/js/blue-team-game.js" defer></script>
+</head>
+<body class="bt-page">
+<a class="bt-skip" href="#bt-main">דלג לתוכן הראשי</a>
+<header class="bt-header">
+  <a class="bt-home" href="/">CyJimm</a>
+  <a class="bt-lang" id="bt-lang-switch" href="/en/blue-team/" lang="en" dir="ltr" hreflang="en">English</a>
+</header>
+<main id="bt-main" class="bt-main">
+  <section class="bt-hero" aria-labelledby="bt-page-title">
+    <h1 id="bt-page-title">Blue Team: תרגולי הגנה</h1>
+    <p class="bt-lead">שני תרגילים קצרים לחשיבה של צוות הגנה: לזהות התחברויות שמצדיקות בדיקה, ולבחור את הצעד הנכון בכל שלב של אירוע.</p>
+    <p class="bt-note">כל הנתונים בעמוד בדויים לחלוטין ונועדו ללימוד בלבד. אין כאן מערכות אמיתיות, ולא נשמר או נשלח שום מידע.</p>
+  </section>
+
+  <section id="bt-triage" class="bt-exercise" data-exercise="triage" aria-labelledby="bt-triage-title">
+    <h2 id="bt-triage-title">תרגיל 1: מיון התחברויות</h2>
+    <p class="bt-desc">ארבע רשומות התחברות בדויות. לכל רשומה החליטו: האם היא דורשת בדיקה או שאין חשש מיידי. הבחירה הראשונה ננעלת. כל תשובה נכונה מזכה ב-250 נקודות.</p>
+    <button type="button" class="bt-btn bt-btn-primary" id="bt-triage-start" data-action="start">התחלת התרגיל</button>
+
+    <div id="bt-triage-play" class="bt-play" hidden>
+      <div class="bt-status">
+        <h3 id="bt-triage-progress" tabindex="-1"></h3>
+        <span id="bt-triage-score" class="bt-score"></span>
+      </div>
+      <div id="bt-triage-item" class="bt-item"></div>
+      <p id="bt-triage-choices-label" class="bt-choices-label">איך לסווג את הרשומה?</p>
+      <div class="bt-choices" role="group" aria-labelledby="bt-triage-choices-label">
+        <button type="button" class="bt-btn bt-choice" id="bt-triage-choice-review" data-choice="review">דורש בדיקה</button>
+        <button type="button" class="bt-btn bt-choice" id="bt-triage-choice-ok" data-choice="ok">אין חשש מיידי</button>
+      </div>
+      <p id="bt-triage-feedback" class="bt-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="bt-controls">
+        <button type="button" class="bt-btn bt-btn-primary" id="bt-triage-next" data-action="next" hidden></button>
+        <button type="button" class="bt-btn bt-btn-ghost" id="bt-triage-reset" data-action="reset">איפוס התרגיל</button>
+      </div>
+    </div>
+
+    <div id="bt-triage-summary" class="bt-summary" hidden>
+      <h3 id="bt-triage-summary-title" tabindex="-1">סיכום תרגיל 1</h3>
+      <p id="bt-triage-summary-text"></p>
+      <button type="button" class="bt-btn bt-btn-primary" id="bt-triage-restart" data-action="restart">לשחק שוב</button>
+    </div>
+  </section>
+
+  <section id="bt-incident" class="bt-exercise" data-exercise="incident" aria-labelledby="bt-incident-title">
+    <h2 id="bt-incident-title">תרגיל 2: ציר זמן של אירוע</h2>
+    <p class="bt-desc">שלושה שלבים באירוע בדוי. בכל שלב בחרו את הצעד המתאים ביותר: לבודד את המחשב הבדוי, לשמר ראיות או ליידע את צוות התגובה. הבחירה הראשונה ננעלת. כל שלב נכון מזכה בנקודה אחת.</p>
+    <button type="button" class="bt-btn bt-btn-primary" id="bt-incident-start" data-action="start">התחלת התרגיל</button>
+
+    <div id="bt-incident-play" class="bt-play" hidden>
+      <div class="bt-status">
+        <h3 id="bt-incident-progress" tabindex="-1"></h3>
+        <span id="bt-incident-score" class="bt-score"></span>
+      </div>
+      <div id="bt-incident-item" class="bt-item"></div>
+      <p id="bt-incident-choices-label" class="bt-choices-label">מה הצעד הנכון עכשיו?</p>
+      <div class="bt-choices" role="group" aria-labelledby="bt-incident-choices-label">
+        <button type="button" class="bt-btn bt-choice" id="bt-incident-choice-isolate" data-choice="isolate">לבודד את המחשב הבדוי</button>
+        <button type="button" class="bt-btn bt-choice" id="bt-incident-choice-preserve" data-choice="preserve">לשמר ראיות</button>
+        <button type="button" class="bt-btn bt-choice" id="bt-incident-choice-notify" data-choice="notify">ליידע את צוות התגובה</button>
+      </div>
+      <p id="bt-incident-feedback" class="bt-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="bt-controls">
+        <button type="button" class="bt-btn bt-btn-primary" id="bt-incident-next" data-action="next" hidden></button>
+        <button type="button" class="bt-btn bt-btn-ghost" id="bt-incident-reset" data-action="reset">איפוס התרגיל</button>
+      </div>
+    </div>
+
+    <div id="bt-incident-summary" class="bt-summary" hidden>
+      <h3 id="bt-incident-summary-title" tabindex="-1">סיכום תרגיל 2</h3>
+      <p id="bt-incident-summary-text"></p>
+      <button type="button" class="bt-btn bt-btn-primary" id="bt-incident-restart" data-action="restart">לשחק שוב</button>
+    </div>
+  </section>
+
+  <noscript><p class="bt-note">התרגילים דורשים JavaScript מופעל בדפדפן.</p></noscript>
+</main>
+<footer class="bt-footer">
+  <p>תרגול לימודי בלבד. כל השמות, המכשירים והאירועים בדויים.</p>
+</footer>
+</body>
+</html>

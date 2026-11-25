@@ -120,8 +120,100 @@
           symptom: 'blurry'
         }
       }
+    },
+    slow: {
+      "title": "מחשב איטי",
+      "ticket": "״המחשב מגיב לאט. אפשר לבדוק מה גורם לזה לפני שמעדכנים הכול?״",
+      "screen": "slow",
+      "checks": {
+        "task": {
+          "icon": "📊",
+          "label": "מנהל המשימות: עומס וביצועים"
+        },
+        "update": {
+          "icon": "🔄",
+          "label": "Windows Update והיסטוריית עדכונים"
+        },
+        "apps": {
+          "icon": "🚀",
+          "label": "יישומים שעולים עם הכניסה"
+        },
+        "devices": {
+          "icon": "🧩",
+          "label": "מנהל ההתקנים ודרייברים"
+        },
+        "bios": {
+          "icon": "💻",
+          "label": "דגם, גרסת BIOS והערות היצרן"
+        },
+        "timing": {
+          "icon": "⏱️",
+          "label": "מתי האיטיות מופיעה?"
+        }
+      },
+      "faults": {
+        "startup": {
+          "name": "תוכנות כבדות מופעלות עם הכניסה",
+          "action": "startup",
+          "fix": "משביתים בהפעלה אוטומטית רק יישומים לא חיוניים שזוהו, מאתחלים ומודדים שוב. לא מכבים תוכנות אבטחה.",
+          "clues": {
+            "task": "שני יישומים לא חיוניים משתמשים ברוב משאבי המחשב בדקות הראשונות אחרי הכניסה.",
+            "update": "אין התקנה או אתחול ממתינים.",
+            "apps": "שני יישומים לא חיוניים מסומנים כבעלי השפעה גבוהה על האתחול.",
+            "devices": "הדרייבר תואם לדגם ואין התראות.",
+            "bios": "אין עדכון קושחה שמטפל בתסמין.",
+            "timing": "האיטיות חולפת אחרי שהיישומים מסיימים לעלות."
+          }
+        },
+        "windows": {
+          "name": "עדכון Windows ממתין לאתחול",
+          "action": "windows",
+          "fix": "שומרים את העבודה, מתאמים אתחול רגיל ובודקים בהיסטוריית העדכונים שההתקנה הסתיימה. מודדים שוב אחרי שהפעילות ברקע נרגעה.",
+          "clues": {
+            "task": "שירות העדכון עובד ברקע והדיסק עמוס.",
+            "update": "עדכון מצטבר שכבר הותקן דורש אתחול להשלמה.",
+            "apps": "אין יישום חריג בהפעלה.",
+            "devices": "הדרייבר תואם ואין התראות.",
+            "bios": "אין עדכון קושחה רלוונטי.",
+            "timing": "האיטיות התחילה בזמן התקנת העדכון."
+          }
+        },
+        "driver": {
+          "name": "מנהל התקן גרפי מתאים לא מותקן",
+          "action": "driver",
+          "fix": "מתקינים דרייבר גרפי ממקור רשמי לפי הדגם וגרסת Windows, בהתאם למדיניות הארגון. מאתחלים לפי ההנחיה ובודקים שהתצוגה חזרה להיות חלקה.",
+          "clues": {
+            "task": "המעבד מתאמץ במיוחד כשמזיזים חלונות או מנגנים וידאו.",
+            "update": "אין התקנה או אתחול ממתינים.",
+            "apps": "לא זוהתה השפעה חריגה של יישומי האתחול.",
+            "devices": "מופיע Microsoft Basic Display Adapter. ליצרן יש דרייבר מתאים לדגם ולגרסת Windows.",
+            "bios": "הערות גרסת הקושחה לא מתארות שום תיקון מתאים.",
+            "timing": "דפדוף, גלילה ווידאו מקרטעים. העתקת קבצים תקינה."
+          }
+        },
+        "firmware": {
+          "name": "תקלה מוכרת בקושחה מגבילה ביצועים",
+          "action": "firmware",
+          "fix": "בסימולציה בודקים התאמה מדויקת לדגם והערת גרסה שמציינת את התיקון. במחשב אמיתי פועלים לפי הוראות היצרן והארגון: מחברים מתח יציב, מוודאים שמפתח שחזור BitLocker זמין אם יש הצפנה, ולא קוטעים את העדכון. אחרי האתחול מודדים ביצועים שוב.",
+          "clues": {
+            "task": "תדר המעבד נשאר נמוך תחת עומס, אף שהטמפרטורה תקינה והמטען מתאים.",
+            "update": "אין עדכוני Windows או אתחול ממתינים.",
+            "apps": "אין יישומי אתחול חריגים.",
+            "devices": "כל הדרייברים הדרושים מותקנים.",
+            "bios": "בכרטיס היצרן המדומה מופיע תיקון לתופעת הגבלת תדר בדיוק בדגם ובגרסת ה־BIOS הנוכחית.",
+            "timing": "האיטיות חוזרת גם בלי יישומי רקע."
+          }
+        }
+      }
     }
   };
+  const REPAIR_ACTIONS = {
+  "startup": "צמצום יישומי אתחול לא חיוניים",
+  "windows": "השלמת עדכון Windows באתחול מבוקר",
+  "driver": "התקנת דרייבר מתאים מאתר היצרן",
+  "firmware": "עדכון BIOS מתאים לפי נוהל היצרן",
+  "all": "התקנת כל העדכונים בלי לבדוק התאמה"
+};
 
   // Self-check: every fault has a clue for every check in its scenario.
   for (const [sid, s] of Object.entries(SCENARIOS)) {
@@ -138,7 +230,7 @@
   try { best = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { best = {}; }
   const saveBest = () => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(best)); } catch (e) { /* storage unavailable */ } };
 
-  const state = { scenario: 'network', fault: null, checked: new Set(), wrong: 0, done: false };
+  const state = { scenario: 'network', fault: null, checked: new Set(), wrong: 0, diagnosed: false, done: false };
 
   const score = () => Math.max(10, 100 - Math.max(0, state.checked.size - 2) * 10 - state.wrong * 30);
 
@@ -152,6 +244,7 @@
     state.fault = pickFault(sid);
     state.checked = new Set();
     state.wrong = 0;
+    state.diagnosed = false;
     state.done = false;
     render();
   }
@@ -163,13 +256,13 @@
     document.querySelectorAll('[data-scenario-tab]').forEach((b) => {
       const on = b.dataset.scenarioTab === state.scenario;
       b.classList.toggle('is-active', on);
-      b.setAttribute('aria-selected', String(on));
+      b.setAttribute('aria-pressed', String(on));
       $('[data-best]', b).textContent = best[b.dataset.scenarioTab] ? `שיא: ${best[b.dataset.scenarioTab]}` : 'טרם שוחק';
     });
 
     $('[data-ticket]').textContent = s.ticket;
     const screen = $('[data-screen]');
-    screen.className = `pc-screen is-${state.scenario === 'network' ? 'net' : f.symptom}`;
+    screen.className = `pc-screen is-${f.symptom || s.screen}`;
 
     const checks = $('[data-checks]');
     checks.replaceChildren();
@@ -230,6 +323,44 @@
       $('[data-live-score]').textContent = score();
       return;
     }
+    if (state.scenario === 'slow') {
+      if (state.diagnosed) return;
+      state.diagnosed = true;
+      btn.classList.add('is-right');
+      document.querySelectorAll('.diag-btn').forEach((b) => { b.disabled = true; });
+      document.querySelectorAll('.check-btn').forEach((b) => { b.disabled = true; });
+      const choices = el('div','diag-list');
+      const prompt = el('h3',null,'3. איזה טיפול מבצעים?');
+      const feedback = el('p',null,'הפעולות מדומות בלבד. הן לא משנות את המחשב שלכם.');
+      fb.className = 'game-result';
+      fb.replaceChildren(prompt,feedback,choices);
+      for (const [action,label] of Object.entries(REPAIR_ACTIONS)) {
+        const option = el('button','diag-btn',label);
+        option.type = 'button';
+        option.addEventListener('click',() => {
+          if (state.done || option.disabled) return;
+          if (action === s.faults[state.fault].action) {
+            finish(btn);
+            return;
+          }
+          state.wrong += 1;
+          option.disabled = true;
+          option.classList.add('is-wrong');
+          feedback.textContent = 'הטיפול הזה לא פותר את הגורם שנמצא. בחרו פעולה שמתאימה לרמזים, לא את כל העדכונים.';
+          $('[data-live-score]').textContent = score();
+          choices.querySelector('button:not(:disabled)')?.focus();
+        });
+        choices.append(option);
+      }
+      choices.querySelector('button').focus();
+      return;
+    }
+    finish(btn);
+  }
+
+  function finish(btn) {
+    const s = SCENARIOS[state.scenario];
+    const fb = $('[data-result]');
     state.done = true;
     const pts = score();
     if (!best[state.scenario] || pts > best[state.scenario]) { best[state.scenario] = pts; saveBest(); }
@@ -241,6 +372,7 @@
       el('strong', null, `נמצאה התקלה! +${pts} נקודות`),
       el('p', null, `האבחנה: ${s.faults[state.fault].name}.`),
       el('p', null, `הפתרון: ${s.faults[state.fault].fix}`),
+      ...(state.scenario === 'slow' ? [el('p', null, 'בדיקה חוזרת בסימולציה: המחשב חזר להגיב כרגיל.')] : []),
       el('p', 'result-meta', `${state.checked.size} בדיקות, ${state.wrong} ניחושים שגויים.`)
     );
     const again = el('button', 'btn btn-primary', 'תקלה חדשה ↻');

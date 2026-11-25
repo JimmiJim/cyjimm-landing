@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/guides.css">
   <link rel="stylesheet" href="/assets/css/global-navigation.css">
   <link rel="stylesheet" href="/assets/css/accessibility.css">
-  <link rel="stylesheet" href="/assets/css/fix-the-pc.css">
+  <link rel="stylesheet" href="/assets/css/fix-the-pc.css?v=intake3">
   <link rel="canonical" href="https://cyjimm.com/guides/fix-the-pc/">
 </head>
 <body class="guide-page fix-pc-page">
@@ -51,7 +51,12 @@
 
       <div class="fix-board">
         <div class="fix-ticket-col">
-          <div class="fix-ticket"><span class="fix-ticket-tag">קריאת שירות</span><p data-ticket></p></div>
+          <div class="fix-ticket"><span class="fix-ticket-tag">קריאת שירות</span><p data-ticket></p>
+            <dl class="fix-ticket-details" data-ticket-details hidden>
+              <div><dt>מתי ובאיזה מצב זה קורה</dt><dd data-ticket-timing></dd></div>
+              <div><dt>מה כבר נבדק</dt><dd data-ticket-tried></dd></div>
+            </dl>
+          </div>
           <div class="pc-visual" aria-hidden="true">
             <div class="pc-monitor"><div class="pc-screen" data-screen><div class="pc-desktop"><span class="pc-window"></span><span class="pc-taskbar"><i class="pc-tray"></i></span></div><span class="pc-nosignal">No Signal</span></div></div>
             <div class="pc-stand"></div>
@@ -75,6 +80,6 @@
   <section class="section"><div class="wrap fix-more"><a class="btn btn-ghost" href="/guides/it-lab/">עוד אתגרים ב־IT Lab</a><a class="btn btn-ghost" href="/guides/">חזרה למדריכים</a><a class="btn btn-primary" href="/contact/?service=private-it">יש לכם תקלה אמיתית?</a></div></section>
 </main>
 <footer class="footer"><div class="wrap">© <span id="year"></span> CyJimm · <a href="/">ראשי</a> · <a href="/guides/">מדריכי IT</a> · <a href="/privacy.html">מדיניות פרטיות</a> · <a href="/terms.html">תנאי שימוש</a> · <a href="/accessibility.html">הצהרת נגישות</a></div></footer>
-<script src="/assets/js/page-helpers.js" defer></script><script src="/assets/js/global-navigation.js" defer></script><script src="/assets/js/accessibility.js" defer></script><script src="/assets/js/fix-the-pc.js" defer></script>
+<script src="/assets/js/page-helpers.js" defer></script><script src="/assets/js/global-navigation.js" defer></script><script src="/assets/js/accessibility.js" defer></script><script src="/assets/js/fix-the-pc.js?v=intake3" defer></script>
 </body>
 </html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>מצא את התקלה | משחק אבחון תקלות מחשב | CyJimm</title>
+  <meta name="description" content="משחק אינטראקטיבי: מאבחנים תקלת רשת ותקלת תצוגה במחשב מדומה, אוספים רמזים ומוצאים את שורש הבעיה.">
+  <meta property="og:title" content="מצא את התקלה | CyJimm" />
+  <meta property="og:description" content="משחק אינטראקטיבי: מאבחנים תקלת רשת ותקלת תצוגה במחשב מדומה, אוספים רמזים ומוצאים את שורש הבעיה." />
+  <meta property="og:url" content="https://cyjimm.com/guides/fix-the-pc/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://cyjimm.com/og.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="מצא את התקלה | CyJimm">
+  <meta name="twitter:description" content="משחק אינטראקטיבי: מאבחנים תקלת רשת ותקלת תצוגה במחשב מדומה, אוספים רמזים ומוצאים את שורש הבעיה.">
+  <meta name="twitter:image" content="https://cyjimm.com/og.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/guides.css">
+  <link rel="stylesheet" href="/assets/css/global-navigation.css">
+  <link rel="stylesheet" href="/assets/css/accessibility.css">
+  <link rel="stylesheet" href="/assets/css/fix-the-pc.css">
+  <link rel="canonical" href="https://cyjimm.com/guides/fix-the-pc/">
+</head>
+<body class="guide-page fix-pc-page">
+<a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
+<header class="cyjimm-global-header" data-global-nav><div class="cyjimm-global-nav-wrap"><a class="cyjimm-global-brand" href="/" aria-label="CyJimm - דף הבית"><img src="/logo-84.png" alt=""><span>CyJimm</span></a><button class="cyjimm-global-menu" type="button" aria-controls="globalNavLinks" aria-expanded="false" data-global-nav-toggle>תפריט</button><nav class="cyjimm-global-links" id="globalNavLinks" aria-label="ניווט ראשי" data-global-nav-links><a href="/">ראשי</a><a href="/#services">שירותים</a><a href="/websites/">בניית אתרים</a><a href="/jimmis-hub/">Jimmi's Hub - בית ועסק קטן</a><a href="/guides/" aria-current="page">מדריכי IT</a><a href="/team/">צוות</a><a href="/contact/">צור קשר</a><a href="/en/guides/" lang="en" dir="ltr">English</a></nav></div></header>
+
+<main id="main-content">
+  <section class="hero fix-hero">
+    <div class="wrap">
+      <span class="eyebrow">משחק · Help Desk</span>
+      <h1>מצא את התקלה</h1>
+      <p class="lead">קריאה חדשה נכנסה למוקד. בצעו בדיקות, אספו רמזים וזהו את שורש הבעיה. כל תקלה נבחרת באקראי, ופחות בדיקות שוות יותר נקודות.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="fix-tabs" role="group" aria-label="בחירת תרחיש">
+        <button class="fix-tab" type="button" data-scenario-tab="network" aria-selected="true"><span aria-hidden="true">🌐</span><strong>תקלת תקשורת</strong><small data-best></small></button>
+        <button class="fix-tab" type="button" data-scenario-tab="display" aria-selected="false"><span aria-hidden="true">🖥️</span><strong>תקלת תצוגה</strong><small data-best></small></button>
+      </div>
+
+      <div class="fix-board">
+        <div class="fix-ticket-col">
+          <div class="fix-ticket"><span class="fix-ticket-tag">קריאת שירות</span><p data-ticket></p></div>
+          <div class="pc-visual" aria-hidden="true">
+            <div class="pc-monitor"><div class="pc-screen" data-screen><div class="pc-desktop"><span class="pc-window"></span><span class="pc-taskbar"><i class="pc-tray"></i></span></div><span class="pc-nosignal">No Signal</span></div></div>
+            <div class="pc-stand"></div>
+          </div>
+          <div class="fix-stats"><span>בדיקות: <b data-check-count>0</b></span><span>ניקוד אפשרי: <b data-live-score>100</b></span><button class="btn btn-ghost fix-reset" type="button" data-new-round>תקלה חדשה ↻</button></div>
+        </div>
+
+        <div class="fix-work-col">
+          <h2 class="fix-step">1. בצעו בדיקות</h2>
+          <p class="fix-hint">לחצו על בדיקה כדי לראות מה מצאתם. שתי הבדיקות הראשונות חינם, וכל בדיקה נוספת מורידה 10 נקודות.</p>
+          <div class="check-grid" data-checks></div>
+
+          <h2 class="fix-step">2. מה התקלה?</h2>
+          <div class="diag-list" data-diagnosis></div>
+          <div class="game-result" data-result aria-live="polite" hidden></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section"><div class="wrap fix-more"><a class="btn btn-ghost" href="/guides/it-lab/">עוד אתגרים ב־IT Lab</a><a class="btn btn-ghost" href="/guides/">חזרה למדריכים</a><a class="btn btn-primary" href="/contact/?service=private-it">יש לכם תקלה אמיתית?</a></div></section>
+</main>
+<footer class="footer"><div class="wrap">© <span id="year"></span> CyJimm · <a href="/">ראשי</a> · <a href="/guides/">מדריכי IT</a> · <a href="/privacy.html">מדיניות פרטיות</a> · <a href="/terms.html">תנאי שימוש</a> · <a href="/accessibility.html">הצהרת נגישות</a></div></footer>
+<script src="/assets/js/page-helpers.js" defer></script><script src="/assets/js/global-navigation.js" defer></script><script src="/assets/js/accessibility.js" defer></script><script src="/assets/js/fix-the-pc.js" defer></script>
+</body>
+</html>

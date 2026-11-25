@@ -6,6 +6,16 @@
     const nav = header.querySelector('[data-global-nav-links]');
     if (!button || !nav) return;
 
+    const isEnglish = /^en(?:-|$)/i.test(document.documentElement.lang);
+    const gamesPath = isEnglish ? '/en/games/' : '/games/';
+    const guides = nav.querySelector('a[href="' + (isEnglish ? '/en/guides/' : '/guides/') + '"]:not([lang])');
+    if (guides && !nav.querySelector('a[href="' + gamesPath + '"]:not([lang])')) {
+      const gamesLink = document.createElement('a');
+      gamesLink.href = gamesPath;
+      gamesLink.textContent = isEnglish ? 'Games' : 'משחקונים';
+      guides.after(gamesLink);
+    }
+
     function closeNavigation(returnFocus) {
       nav.classList.remove('is-open');
       button.setAttribute('aria-expanded', 'false');

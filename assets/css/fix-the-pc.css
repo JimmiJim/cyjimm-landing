@@ -1,6 +1,6 @@
 .fix-pc-page{background:radial-gradient(circle at 12% 8%,rgba(34,211,238,.08),transparent 28%),radial-gradient(circle at 88% 18%,rgba(225,29,72,.1),transparent 30%),#0b0b10}
 .fix-hero h1{font-size:clamp(36px,6vw,62px);margin:14px 0 12px}
-.fix-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.fix-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:22px}
 .fix-tab{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;text-align:start;padding:16px 18px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.04);color:inherit;font:inherit;cursor:pointer;transition:border-color .2s,background .2s}
 .fix-tab>span{grid-row:1/3;font-size:28px}
 .fix-tab small{color:#9aa4b2}
@@ -10,6 +10,10 @@
 .fix-ticket-col,.fix-work-col{padding:22px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02))}
 .fix-ticket{padding:14px 16px;border-radius:16px;background:#11131c;border:1px dashed rgba(255,255,255,.18)}
 .fix-ticket p{margin:8px 0 0;color:#e5e7eb}
+.fix-ticket-details{margin:12px 0 0;padding-block-start:10px;border-block-start:1px solid rgba(255,255,255,.15);font-size:.9rem;line-height:1.55}
+.fix-ticket-details div+div{margin-block-start:8px}
+.fix-ticket-details dt{font-weight:700;color:#f9fafb}
+.fix-ticket-details dd{margin:2px 0 0;color:#d1d5db;overflow-wrap:anywhere}
 .fix-ticket-tag{font-size:12px;font-weight:900;color:#fb923c}
 .pc-visual{display:grid;justify-items:center;margin:22px 0 16px}
 .pc-monitor{width:100%;max-width:340px;aspect-ratio:16/10;padding:10px;border-radius:14px;background:#1f2230;border:1px solid rgba(255,255,255,.12)}
@@ -60,3 +64,5 @@
 @media(max-width:900px){.fix-board{grid-template-columns:1fr}}
 @media(max-width:540px){.check-grid,.fix-tabs{grid-template-columns:1fr}.fix-ticket-col,.fix-work-col{padding:16px}}
 @media(prefers-reduced-motion:reduce){.pc-screen *{animation:none!important}}
+
+.pc-screen.is-slow .pc-window:after{content:"המחשב מגיב לאט";position:absolute;inset:0;display:grid;place-items:center;color:#334155;font-size:13px;font-weight:900;text-align:center}

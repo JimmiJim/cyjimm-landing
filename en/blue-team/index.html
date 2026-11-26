@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CyJimm | Blue Team - Defense Exercises</title>
+  <meta name="description" content="Two interactive Blue Team exercises with entirely fictional data: triage suspicious sign-ins and choose the right step at each stage of an incident.">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://cyjimm.com/en/blue-team/">
+  <link rel="alternate" hreflang="he" href="https://cyjimm.com/blue-team/">
+  <link rel="alternate" hreflang="en" href="https://cyjimm.com/en/blue-team/">
+  <link rel="alternate" hreflang="x-default" href="https://cyjimm.com/blue-team/">
+  <link rel="stylesheet" href="/assets/css/blue-team-game.css">
+  <script src="/assets/js/blue-team-game.js" defer></script>
+</head>
+<body class="bt-page">
+<a class="bt-skip" href="#bt-main">Skip to main content</a>
+<header class="bt-header">
+  <a class="bt-home" href="/en/">CyJimm</a>
+  <a class="bt-lang" id="bt-lang-switch" href="/blue-team/" lang="he" dir="rtl" hreflang="he">עברית</a>
+</header>
+<main id="bt-main" class="bt-main">
+  <section class="bt-hero" aria-labelledby="bt-page-title">
+    <h1 id="bt-page-title">Blue Team: Defense Exercises</h1>
+    <p class="bt-lead">Two short exercises in defensive thinking: spot sign-ins that deserve a closer look, and pick the right step at each stage of an incident.</p>
+    <p class="bt-note">All data on this page is entirely fictional and for learning only. There are no real systems here, and nothing is stored or sent.</p>
+  </section>
+
+  <section id="bt-triage" class="bt-exercise" data-exercise="triage" aria-labelledby="bt-triage-title">
+    <h2 id="bt-triage-title">Exercise 1: Sign-in triage</h2>
+    <p class="bt-desc">Four fictional sign-in records. For each one, decide whether it needs review or shows no immediate concern. Your first choice locks. Each correct answer earns 250 points.</p>
+    <button type="button" class="bt-btn bt-btn-primary" id="bt-triage-start" data-action="start">Start exercise</button>
+
+    <div id="bt-triage-play" class="bt-play" hidden>
+      <div class="bt-status">
+        <h3 id="bt-triage-progress" tabindex="-1"></h3>
+        <span id="bt-triage-score" class="bt-score"></span>
+      </div>
+      <div id="bt-triage-item" class="bt-item"></div>
+      <p id="bt-triage-choices-label" class="bt-choices-label">How would you classify this record?</p>
+      <div class="bt-choices" role="group" aria-labelledby="bt-triage-choices-label">
+        <button type="button" class="bt-btn bt-choice" id="bt-triage-choice-review" data-choice="review">Needs review</button>
+        <button type="button" class="bt-btn bt-choice" id="bt-triage-choice-ok" data-choice="ok">No immediate concern</button>
+      </div>
+      <p id="bt-triage-feedback" class="bt-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="bt-controls">
+        <button type="button" class="bt-btn bt-btn-primary" id="bt-triage-next" data-action="next" hidden></button>
+        <button type="button" class="bt-btn bt-btn-ghost" id="bt-triage-reset" data-action="reset">Reset exercise</button>
+      </div>
+    </div>
+
+    <div id="bt-triage-summary" class="bt-summary" hidden>
+      <h3 id="bt-triage-summary-title" tabindex="-1">Exercise 1 summary</h3>
+      <p id="bt-triage-summary-text"></p>
+      <button type="button" class="bt-btn bt-btn-primary" id="bt-triage-restart" data-action="restart">Play again</button>
+    </div>
+  </section>
+
+  <section id="bt-incident" class="bt-exercise" data-exercise="incident" aria-labelledby="bt-incident-title">
+    <h2 id="bt-incident-title">Exercise 2: Incident timeline</h2>
+    <p class="bt-desc">Three stages of a fictional incident. At each stage, choose the most appropriate step: isolate the fictional host, preserve evidence, or notify the response team. Your first choice locks. Each correct stage earns one point.</p>
+    <button type="button" class="bt-btn bt-btn-primary" id="bt-incident-start" data-action="start">Start exercise</button>
+
+    <div id="bt-incident-play" class="bt-play" hidden>
+      <div class="bt-status">
+        <h3 id="bt-incident-progress" tabindex="-1"></h3>
+        <span id="bt-incident-score" class="bt-score"></span>
+      </div>
+      <div id="bt-incident-item" class="bt-item"></div>
+      <p id="bt-incident-choices-label" class="bt-choices-label">What is the right step now?</p>
+      <div class="bt-choices" role="group" aria-labelledby="bt-incident-choices-label">
+        <button type="button" class="bt-btn bt-choice" id="bt-incident-choice-isolate" data-choice="isolate">Isolate the fictional host</button>
+        <button type="button" class="bt-btn bt-choice" id="bt-incident-choice-preserve" data-choice="preserve">Preserve evidence</button>
+        <button type="button" class="bt-btn bt-choice" id="bt-incident-choice-notify" data-choice="notify">Notify the response team</button>
+      </div>
+      <p id="bt-incident-feedback" class="bt-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="bt-controls">
+        <button type="button" class="bt-btn bt-btn-primary" id="bt-incident-next" data-action="next" hidden></button>
+        <button type="button" class="bt-btn bt-btn-ghost" id="bt-incident-reset" data-action="reset">Reset exercise</button>
+      </div>
+    </div>
+
+    <div id="bt-incident-summary" class="bt-summary" hidden>
+      <h3 id="bt-incident-summary-title" tabindex="-1">Exercise 2 summary</h3>
+      <p id="bt-incident-summary-text"></p>
+      <button type="button" class="bt-btn bt-btn-primary" id="bt-incident-restart" data-action="restart">Play again</button>
+    </div>
+  </section>
+
+  <noscript><p class="bt-note">These exercises need JavaScript enabled in your browser.</p></noscript>
+</main>
+<footer class="bt-footer">
+  <p>For learning only. All names, devices and events are fictional.</p>
+</footer>
+</body>
+</html>
